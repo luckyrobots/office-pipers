@@ -1,0 +1,43 @@
+nodes:
+  - id: 1
+    type: MeshCube
+    name: 260 cm dimension line
+    inputs:
+      SizeX: {kind: Float, value: 0.00300000003}
+      SizeY: {kind: Float, value: 0.00200000009}
+      SizeZ: {kind: Float, value: 2.5999999}
+    x: 40
+    y: 40
+  - {id: 2, type: BevelEdge, name: 260 cm dimension line edges, inputs: {Offset: {kind: Int32, value: 0}, Segments: {kind: Int32, value: 3}}, x: 280, y: 40}
+  - {id: 3, type: Transform, name: 260 cm dimension line position, inputs: {Translation: {kind: Float3, value: [0.899999976, 0.754999995, -1.64999998]}}, x: 520, y: 40}
+  - {id: 4, type: SetMaterial, name: 260 cm dimension line surface, inputs: {Material: {kind: Material, value: [0.0149999997, 0.419999987, 0.379999995, 1, 0, 0.349999994]}, Name: {kind: String, value: 260 cm dimension line}}, x: 760, y: 40}
+  - {id: 5, type: SetMeshName, name: 260 cm dimension line, inputs: {Name: {kind: String, value: 260 cm dimension line}}, x: 1000, y: 40}
+  - {id: 6, type: MeshCube, name: Dimension end tick, inputs: {SizeX: {kind: Float, value: 0.0350000001}, SizeY: {kind: Float, value: 0.00200000009}, SizeZ: {kind: Float, value: 0.00400000019}}, x: 40, y: 170}
+  - {id: 7, type: BevelEdge, name: Dimension end tick edges, inputs: {Offset: {kind: Int32, value: 0}, Segments: {kind: Int32, value: 3}}, x: 280, y: 170}
+  - {id: 8, type: Transform, name: Dimension end tick position, inputs: {Translation: {kind: Float3, value: [0.899999976, 0.754999995, -0.349999994]}}, x: 520, y: 170}
+  - {id: 9, type: SetMaterial, name: Dimension end tick surface, inputs: {Material: {kind: Material, value: [0.0149999997, 0.419999987, 0.379999995, 1, 0, 0.349999994]}, Name: {kind: String, value: Dimension end tick}}, x: 760, y: 170}
+  - {id: 10, type: SetMeshName, name: Dimension end tick, inputs: {Name: {kind: String, value: Dimension end tick}}, x: 1000, y: 170}
+  - {id: 11, type: MeshCube, name: Dimension extension, inputs: {SizeX: {kind: Float, value: 0.239999995}, SizeY: {kind: Float, value: 0.00100000005}, SizeZ: {kind: Float, value: 0.00100000005}}, x: 40, y: 300}
+  - {id: 12, type: BevelEdge, name: Dimension extension edges, inputs: {Offset: {kind: Int32, value: 0}, Segments: {kind: Int32, value: 3}}, x: 280, y: 300}
+  - {id: 13, type: Transform, name: Dimension extension position, inputs: {Translation: {kind: Float3, value: [0.800000012, 0.754000008, -0.349999994]}}, x: 520, y: 300}
+  - {id: 14, type: SetMaterial, name: Dimension extension surface, inputs: {Material: {kind: Material, value: [0.0149999997, 0.419999987, 0.379999995, 1, 0, 0.349999994]}, Name: {kind: String, value: Dimension extension}}, x: 760, y: 300}
+  - {id: 15, type: SetMeshName, name: Dimension extension, inputs: {Name: {kind: String, value: Dimension extension}}, x: 1000, y: 300}
+  - {id: 16, type: MeshCube, name: Dimension end tick, inputs: {SizeX: {kind: Float, value: 0.0350000001}, SizeY: {kind: Float, value: 0.00200000009}, SizeZ: {kind: Float, value: 0.00400000019}}, x: 40, y: 430}
+  - {id: 17, type: BevelEdge, name: Dimension end tick edges, inputs: {Offset: {kind: Int32, value: 0}, Segments: {kind: Int32, value: 3}}, x: 280, y: 430}
+  - {id: 18, type: Transform, name: Dimension end tick position, inputs: {Translation: {kind: Float3, value: [0.899999976, 0.754999995, -2.95000005]}}, x: 520, y: 430}
+  - {id: 19, type: SetMaterial, name: Dimension end tick surface, inputs: {Material: {kind: Material, value: [0.0149999997, 0.419999987, 0.379999995, 1, 0, 0.349999994]}, Name: {kind: String, value: Dimension end tick}}, x: 760, y: 430}
+  - {id: 20, type: SetMeshName, name: Dimension end tick, inputs: {Name: {kind: String, value: Dimension end tick}}, x: 1000, y: 430}
+  - {id: 21, type: MeshCube, name: Dimension extension, inputs: {SizeX: {kind: Float, value: 0.239999995}, SizeY: {kind: Float, value: 0.00100000005}, SizeZ: {kind: Float, value: 0.00100000005}}, x: 40, y: 560}
+  - {id: 22, type: BevelEdge, name: Dimension extension edges, inputs: {Offset: {kind: Int32, value: 0}, Segments: {kind: Int32, value: 3}}, x: 280, y: 560}
+  - {id: 23, type: Transform, name: Dimension extension position, inputs: {Translation: {kind: Float3, value: [0.800000012, 0.754000008, -2.95000005]}}, x: 520, y: 560}
+  - {id: 24, type: SetMaterial, name: Dimension extension surface, inputs: {Material: {kind: Material, value: [0.0149999997, 0.419999987, 0.379999995, 1, 0, 0.349999994]}, Name: {kind: String, value: Dimension extension}}, x: 760, y: 560}
+  - {id: 25, type: SetMeshName, name: Dimension extension, inputs: {Name: {kind: String, value: Dimension extension}}, x: 1000, y: 560}
+  - {id: 26, type: JoinGeometry, name: Assemble parts, x: 1240, y: 40}
+  - {id: 27, type: JoinGeometry, name: Assemble parts, x: 1480, y: 40}
+  - {id: 28, type: JoinGeometry, name: Assemble parts, x: 1720, y: 40}
+  - {id: 29, type: JoinGeometry, name: Assemble parts, x: 1960, y: 40}
+links: [{from: {node: 1, pin: Geometry}, to: {node: 2, pin: Geometry}}, {from: {node: 2, pin: Geometry}, to: {node: 3, pin: Geometry}}, {from: {node: 3, pin: Geometry}, to: {node: 4, pin: Geometry}}, {from: {node: 4, pin: Geometry}, to: {node: 5, pin: Geometry}}, {from: {node: 6, pin: Geometry}, to: {node: 7, pin: Geometry}}, {from: {node: 7, pin: Geometry}, to: {node: 8, pin: Geometry}}, {from: {node: 8, pin: Geometry}, to: {node: 9, pin: Geometry}}, {from: {node: 9, pin: Geometry}, to: {node: 10, pin: Geometry}}, {from: {node: 11, pin: Geometry}, to: {node: 12, pin: Geometry}}, {from: {node: 12, pin: Geometry}, to: {node: 13, pin: Geometry}}, {from: {node: 13, pin: Geometry}, to: {node: 14, pin: Geometry}}, {from: {node: 14, pin: Geometry}, to: {node: 15, pin: Geometry}}, {from: {node: 16, pin: Geometry}, to: {node: 17, pin: Geometry}}, {from: {node: 17, pin: Geometry}, to: {node: 18, pin: Geometry}}, {from: {node: 18, pin: Geometry}, to: {node: 19, pin: Geometry}}, {from: {node: 19, pin: Geometry}, to: {node: 20, pin: Geometry}}, {from: {node: 21, pin: Geometry}, to: {node: 22, pin: Geometry}}, {from: {node: 22, pin: Geometry}, to: {node: 23, pin: Geometry}}, {from: {node: 23, pin: Geometry}, to: {node: 24, pin: Geometry}}, {from: {node: 24, pin: Geometry}, to: {node: 25, pin: Geometry}}, {from: {node: 5, pin: Geometry}, to: {node: 26, pin: A}}, {from: {node: 10, pin: Geometry}, to: {node: 26, pin: B}}, {from: {node: 26, pin: Geometry}, to: {node: 27, pin: A}}, {from: {node: 15, pin: Geometry}, to: {node: 27, pin: B}}, {from: {node: 27, pin: Geometry}, to: {node: 28, pin: A}}, {from: {node: 20, pin: Geometry}, to: {node: 28, pin: B}}, {from: {node: 28, pin: Geometry}, to: {node: 29, pin: A}}, {from: {node: 25, pin: Geometry}, to: {node: 29, pin: B}}]
+outputs:
+  Geometry:
+    node: 29
+    pin: Geometry

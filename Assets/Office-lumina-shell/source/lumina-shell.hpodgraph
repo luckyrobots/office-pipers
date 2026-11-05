@@ -1,0 +1,31 @@
+nodes:
+  - id: 1
+    type: MeshCylinder
+    name: Lumina aluminum body
+    inputs:
+      Radius: {kind: Float, value: 0.0120000001}
+      Height: {kind: Float, value: 0.0729999989}
+      Sides: {kind: Int32, value: 48}
+    x: 40
+    y: 40
+  - {id: 2, type: Transform, name: Lumina aluminum body pose, inputs: {Translation: {kind: Float3, value: [0, 0, 0.0170000009]}, Rotation: {kind: Float3, value: [0, 0, 1.57079637]}}, x: 320, y: 40}
+  - {id: 3, type: SetMaterial, name: Lumina aluminum body material, inputs: {Material: {kind: Material, value: [0.720000029, 0.74000001, 0.75, 1, 0.699999988, 0.300000012]}, Name: {kind: String, value: Lumina aluminum body}}, x: 600, y: 40}
+  - {id: 4, type: MeshCylinder, name: Lens surround, inputs: {Radius: {kind: Float, value: 0.00999999978}, Height: {kind: Float, value: 0.00600000005}, Sides: {kind: Int32, value: 48}}, x: 40, y: 210}
+  - {id: 5, type: Transform, name: Lens surround pose, inputs: {Translation: {kind: Float3, value: [0, 0, 0]}, Rotation: {kind: Float3, value: [-1.57079637, 0, 0]}}, x: 320, y: 210}
+  - {id: 6, type: SetMaterial, name: Lens surround material, inputs: {Material: {kind: Material, value: [0.0160000008, 0.0199999996, 0.0209999997, 1, 0, 0.519999981]}, Name: {kind: String, value: Lens surround}}, x: 600, y: 210}
+  - {id: 7, type: MeshCylinder, name: Lens glass, inputs: {Radius: {kind: Float, value: 0.00600000005}, Height: {kind: Float, value: 0.00100000005}, Sides: {kind: Int32, value: 48}}, x: 40, y: 550}
+  - {id: 8, type: Transform, name: Lens glass pose, inputs: {Translation: {kind: Float3, value: [0, 0, -0.00400000019]}, Rotation: {kind: Float3, value: [-1.57079637, 0, 0]}}, x: 320, y: 550}
+  - {id: 9, type: SetMaterial, name: Lens glass material, inputs: {Material: {kind: Material, value: [0.00700000022, 0.0179999992, 0.0219999999, 1, 0, 0.0799999982]}, Name: {kind: String, value: Lens glass}}, x: 600, y: 550}
+  - {id: 10, type: MeshCube, name: Camera mount, inputs: {SizeX: {kind: Float, value: 0.0260000005}, SizeY: {kind: Float, value: 0.0280000009}, SizeZ: {kind: Float, value: 0.0179999992}}, x: 40, y: 380}
+  - {id: 11, type: BevelEdge, name: Camera mount edges, inputs: {Offset: {kind: Float, value: 0.00200000009}, Segments: {kind: Int32, value: 3}}, x: 320, y: 380}
+  - {id: 12, type: Transform, name: Camera mount position, inputs: {Translation: {kind: Float3, value: [0, -0.0209999997, 0.0189999994]}}, x: 600, y: 380}
+  - {id: 13, type: SetMaterial, name: Camera mount surface, inputs: {Material: {kind: Material, value: [0.0160000008, 0.0199999996, 0.0209999997, 1, 0, 0.519999981]}, Name: {kind: String, value: Camera mount}}, x: 880, y: 210}
+  - {id: 14, type: SetMeshName, name: Camera mount, inputs: {Name: {kind: String, value: Camera mount}}, x: 1160, y: 210}
+  - {id: 15, type: JoinGeometry, name: Assemble parts, x: 880, y: 40}
+  - {id: 16, type: JoinGeometry, name: Assemble parts, x: 1160, y: 40}
+  - {id: 17, type: JoinGeometry, name: Assemble parts, x: 1440, y: 40}
+links: [{from: {node: 1, pin: Geometry}, to: {node: 2, pin: Geometry}}, {from: {node: 2, pin: Geometry}, to: {node: 3, pin: Geometry}}, {from: {node: 4, pin: Geometry}, to: {node: 5, pin: Geometry}}, {from: {node: 5, pin: Geometry}, to: {node: 6, pin: Geometry}}, {from: {node: 7, pin: Geometry}, to: {node: 8, pin: Geometry}}, {from: {node: 8, pin: Geometry}, to: {node: 9, pin: Geometry}}, {from: {node: 10, pin: Geometry}, to: {node: 11, pin: Geometry}}, {from: {node: 11, pin: Geometry}, to: {node: 12, pin: Geometry}}, {from: {node: 12, pin: Geometry}, to: {node: 13, pin: Geometry}}, {from: {node: 13, pin: Geometry}, to: {node: 14, pin: Geometry}}, {from: {node: 3, pin: Geometry}, to: {node: 15, pin: A}}, {from: {node: 6, pin: Geometry}, to: {node: 15, pin: B}}, {from: {node: 15, pin: Geometry}, to: {node: 16, pin: A}}, {from: {node: 9, pin: Geometry}, to: {node: 16, pin: B}}, {from: {node: 16, pin: Geometry}, to: {node: 17, pin: A}}, {from: {node: 14, pin: Geometry}, to: {node: 17, pin: B}}]
+outputs:
+  Geometry:
+    node: 17
+    pin: Geometry

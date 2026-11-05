@@ -1,0 +1,31 @@
+nodes:
+  - id: 1
+    type: MeshCube
+    name: Poster backing
+    inputs:
+      SizeX: {kind: Float, value: 0.300000012}
+      SizeY: {kind: Float, value: 0.430000007}
+      SizeZ: {kind: Float, value: 0.00800000038}
+    x: 40
+    y: 40
+  - {id: 2, type: BevelEdge, name: Poster backing edges, inputs: {Offset: {kind: Float, value: 0.00100000005}, Segments: {kind: Int32, value: 3}}, x: 320, y: 40}
+  - {id: 3, type: Transform, name: Poster backing position, inputs: {Translation: {kind: Float3, value: [0, 0.215000004, 0]}}, x: 600, y: 40}
+  - {id: 4, type: SetMaterial, name: Poster backing surface, inputs: {Material: {kind: Material, value: [0.270000011, 0.150000006, 0.0599999987, 1, 0, 0.649999976]}, Name: {kind: String, value: Poster backing}}, x: 880, y: 40}
+  - {id: 5, type: SetMeshName, name: Poster backing, inputs: {Name: {kind: String, value: Poster backing}}, x: 1160, y: 40}
+  - {id: 6, type: MeshCube, name: Poster image area, inputs: {SizeX: {kind: Float, value: 0.270000011}, SizeY: {kind: Float, value: 0.289999992}, SizeZ: {kind: Float, value: 0.00100000005}}, x: 40, y: 210}
+  - {id: 7, type: BevelEdge, name: Poster image area edges, inputs: {Offset: {kind: Float, value: 0.000199999995}, Segments: {kind: Int32, value: 3}}, x: 320, y: 210}
+  - {id: 8, type: Transform, name: Poster image area position, inputs: {Translation: {kind: Float3, value: [0, 0.219999999, 0.00499999989]}}, x: 600, y: 210}
+  - {id: 9, type: SetMaterial, name: Poster image area surface, inputs: {Material: {kind: Material, value: [0.170000002, 0.200000003, 0.180000007, 1, 0, 0.649999976]}, Name: {kind: String, value: Poster image area}}, x: 880, y: 210}
+  - {id: 10, type: SetMeshName, name: Poster image area, inputs: {Name: {kind: String, value: Poster image area}}, x: 1160, y: 210}
+  - {id: 11, type: MeshCube, name: Poster lower caption bar, inputs: {SizeX: {kind: Float, value: 0.300000012}, SizeY: {kind: Float, value: 0.0719999969}, SizeZ: {kind: Float, value: 0.00100000005}}, x: 40, y: 380}
+  - {id: 12, type: BevelEdge, name: Poster lower caption bar edges, inputs: {Offset: {kind: Float, value: 0.000199999995}, Segments: {kind: Int32, value: 3}}, x: 320, y: 380}
+  - {id: 13, type: Transform, name: Poster lower caption bar position, inputs: {Translation: {kind: Float3, value: [0, 0.0379999988, 0.00499999989]}}, x: 600, y: 380}
+  - {id: 14, type: SetMaterial, name: Poster lower caption bar surface, inputs: {Material: {kind: Material, value: [0.0199999996, 0.0350000001, 0.0250000004, 1, 0, 0.699999988]}, Name: {kind: String, value: Poster lower caption bar}}, x: 880, y: 380}
+  - {id: 15, type: SetMeshName, name: Poster lower caption bar, inputs: {Name: {kind: String, value: Poster lower caption bar}}, x: 1160, y: 380}
+  - {id: 16, type: JoinGeometry, name: Assemble parts, x: 1440, y: 40}
+  - {id: 17, type: JoinGeometry, name: Assemble parts, x: 1720, y: 40}
+links: [{from: {node: 1, pin: Geometry}, to: {node: 2, pin: Geometry}}, {from: {node: 2, pin: Geometry}, to: {node: 3, pin: Geometry}}, {from: {node: 3, pin: Geometry}, to: {node: 4, pin: Geometry}}, {from: {node: 4, pin: Geometry}, to: {node: 5, pin: Geometry}}, {from: {node: 6, pin: Geometry}, to: {node: 7, pin: Geometry}}, {from: {node: 7, pin: Geometry}, to: {node: 8, pin: Geometry}}, {from: {node: 8, pin: Geometry}, to: {node: 9, pin: Geometry}}, {from: {node: 9, pin: Geometry}, to: {node: 10, pin: Geometry}}, {from: {node: 11, pin: Geometry}, to: {node: 12, pin: Geometry}}, {from: {node: 12, pin: Geometry}, to: {node: 13, pin: Geometry}}, {from: {node: 13, pin: Geometry}, to: {node: 14, pin: Geometry}}, {from: {node: 14, pin: Geometry}, to: {node: 15, pin: Geometry}}, {from: {node: 5, pin: Geometry}, to: {node: 16, pin: A}}, {from: {node: 10, pin: Geometry}, to: {node: 16, pin: B}}, {from: {node: 16, pin: Geometry}, to: {node: 17, pin: A}}, {from: {node: 15, pin: Geometry}, to: {node: 17, pin: B}}]
+outputs:
+  Geometry:
+    node: 17
+    pin: Geometry

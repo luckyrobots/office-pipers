@@ -1,0 +1,118 @@
+nodes:
+  - {id: 1, group: minwax-tube-body.yaml, params: {height_m: {param: height_m}, cap_diameter_m: {param: cap_diameter_m}}, x: 300, y: 40}
+  - {id: 2, group: minwax-separate-cap.yaml, params: {cap_diameter_m: {param: cap_diameter_m}, cap_height_m: {param: cap_height_m}}, x: 300, y: 190}
+  - id: 3
+    type: SetMeshBodyMembership
+    name: Tube body membership
+    inputs:
+      Body: {kind: String, value: wood_filler_tube}
+    x: 560
+    y: 40
+  - {id: 4, type: SetMeshBodyMembership, name: Separate cap body membership, inputs: {Body: {kind: String, value: wood_filler_cap}}, x: 560, y: 190}
+  - {id: 5, type: JoinGeometry, name: Retain two editable parts, x: 820, y: 40}
+  - {id: 6, type: DeclareBody, name: Tube assembly root, inputs: {Name: {kind: String, value: wood_filler_tube}}, x: 1080, y: 40}
+  - {id: 7, type: Math, name: Mul, inputs: {A: {param: height_m}, B: {kind: Float, value: -0.5}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 300, y: 340}
+  - {id: 8, type: Math, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}, B: {kind: Float, value: 0.0299999993}}, x: 560, y: 340}
+  - {id: 9, type: Math, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}, B: {param: cap_offset_y_m}}, x: 820, y: 190}
+  - {id: 10, type: CombineXYZ, name: Position, inputs: {X: {param: cap_offset_x_m}, Z: {kind: Float, value: 0}}, x: 1080, y: 190}
+  - {id: 11, type: DeclareBody, name: Removable cap with neck-axis pivot, inputs: {Name: {kind: String, value: wood_filler_cap}, Parent: {kind: String, value: wood_filler_tube}}, x: 1340, y: 40}
+  - {id: 12, type: AttachWeldJoint, name: Closed cap fixed child; zero additional DOFs, inputs: {Body: {kind: String, value: wood_filler_cap}}, x: 1600, y: 40}
+links: [{from: {node: 1, pin: Geometry}, to: {node: 3, pin: Geometry}}, {from: {node: 2, pin: Geometry}, to: {node: 4, pin: Geometry}}, {from: {node: 3, pin: Geometry}, to: {node: 5, pin: A}}, {from: {node: 4, pin: Geometry}, to: {node: 5, pin: B}}, {from: {node: 5, pin: Geometry}, to: {node: 6, pin: Asset}}, {from: {node: 7, pin: Value}, to: {node: 8, pin: A}}, {from: {node: 8, pin: Value}, to: {node: 9, pin: A}}, {from: {node: 9, pin: Value}, to: {node: 10, pin: Y}}, {from: {node: 6, pin: Asset}, to: {node: 11, pin: Asset}}, {from: {node: 10, pin: Vector}, to: {node: 11, pin: PosePos}}, {from: {node: 11, pin: Asset}, to: {node: 12, pin: Asset}}]
+parameters:
+  height_m:
+    kind: Float
+    default: 0.193000004
+    desc: Measured overall assembled height.
+  cap_diameter_m:
+    kind: Float
+    default: 0.0430000015
+    desc: Measured outside cap diameter.
+  cap_height_m:
+    kind: Float
+    default: 0.0329999998
+    desc: Photo-derived cap-height estimate.
+  cap_offset_x_m:
+    kind: Float
+    default: 0
+    desc: Inspection offset only; no unscrew/contact simulation is implied.
+  cap_offset_y_m:
+    kind: Float
+    default: 0
+    desc: Inspection vertical offset of the removable cap.
+outputs:
+  Asset:
+    node: 12
+    pin: Asset
+editor_generated_identities:
+  version: 2
+  signature: 14832122743297896610
+  nodes:
+    - scope:
+        []
+      generated: 13
+      node: 13
+      index: 12
+      type: 1225607449884475736
+      parameter: height_m
+      implementation: 0
+    - scope:
+        []
+      generated: 14
+      node: 14
+      index: 13
+      type: 1225607449884475736
+      parameter: cap_diameter_m
+      implementation: 0
+    - scope:
+        []
+      generated: 15
+      node: 15
+      index: 14
+      type: 1225607449884475736
+      parameter: cap_height_m
+      implementation: 0
+    - scope:
+        []
+      generated: 16
+      node: 16
+      index: 15
+      type: 1225607449884475736
+      parameter: cap_offset_x_m
+      implementation: 0
+    - scope:
+        []
+      generated: 17
+      node: 17
+      index: 16
+      type: 1225607449884475736
+      parameter: cap_offset_y_m
+      implementation: 0
+editor_generated_layout:
+  version: 2
+  signature: 14832122743297896610
+  nodes:
+    - scope:
+        []
+      node: 13
+      x: 40
+      y: 190
+    - scope:
+        []
+      node: 14
+      x: 40
+      y: 40
+    - scope:
+        []
+      node: 15
+      x: 40
+      y: 340
+    - scope:
+        []
+      node: 16
+      x: 820
+      y: 340
+    - scope:
+        []
+      node: 17
+      x: 560
+      y: 490

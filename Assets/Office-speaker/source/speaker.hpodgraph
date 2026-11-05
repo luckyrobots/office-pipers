@@ -1,0 +1,65 @@
+nodes:
+  - id: 1
+    type: MeshCube
+    name: Speaker cabinet
+    inputs:
+      SizeX: {kind: Float, value: 0.135000005}
+      SizeY: {kind: Float, value: 0.230000004}
+      SizeZ: {kind: Float, value: 0.144999996}
+    x: 40
+    y: 40
+  - {id: 2, type: BevelEdge, name: Speaker cabinet edges, inputs: {Offset: {kind: Float, value: 0.00700000022}, Segments: {kind: Int32, value: 3}}, x: 320, y: 40}
+  - {id: 3, type: Transform, name: Speaker cabinet position, inputs: {Translation: {kind: Float3, value: [0, 0.115000002, 0]}}, x: 600, y: 40}
+  - {id: 4, type: SetMaterial, name: Speaker cabinet surface, inputs: {Material: {kind: Material, value: [0.0160000008, 0.0199999996, 0.0209999997, 1, 0, 0.519999981]}, Name: {kind: String, value: Speaker cabinet}}, x: 880, y: 40}
+  - {id: 5, type: SetMeshName, name: Speaker cabinet, inputs: {Name: {kind: String, value: Speaker cabinet}}, x: 1160, y: 40}
+  - {id: 6, type: MeshCube, name: Inset baffle, inputs: {SizeX: {kind: Float, value: 0.119999997}, SizeY: {kind: Float, value: 0.214000002}, SizeZ: {kind: Float, value: 0.00400000019}}, x: 40, y: 210}
+  - {id: 7, type: BevelEdge, name: Inset baffle edges, inputs: {Offset: {kind: Float, value: 0.00499999989}, Segments: {kind: Int32, value: 3}}, x: 320, y: 210}
+  - {id: 8, type: Transform, name: Inset baffle position, inputs: {Translation: {kind: Float3, value: [0, 0.115000002, 0.074000001]}}, x: 600, y: 210}
+  - {id: 9, type: SetMaterial, name: Inset baffle surface, inputs: {Material: {kind: Material, value: [0.00999999978, 0.0120000001, 0.0130000003, 1, 0, 0.600000024]}, Name: {kind: String, value: Inset baffle}}, x: 880, y: 210}
+  - {id: 10, type: SetMeshName, name: Inset baffle, inputs: {Name: {kind: String, value: Inset baffle}}, x: 1160, y: 210}
+  - {id: 11, type: MeshCylinder, name: Woofer surround, inputs: {Radius: {kind: Float, value: 0.0450000018}, Height: {kind: Float, value: 0.00400000019}, Sides: {kind: Int32, value: 48}}, x: 40, y: 380}
+  - {id: 12, type: Transform, name: Woofer surround pose, inputs: {Translation: {kind: Float3, value: [0, 0.0850000009, 0.0790000036]}, Rotation: {kind: Float3, value: [-1.57079637, 0, 0]}}, x: 320, y: 380}
+  - {id: 13, type: SetMaterial, name: Woofer surround material, inputs: {Material: {kind: Material, value: [0.00499999989, 0.00600000005, 0.00700000022, 1, 0, 0.600000024]}, Name: {kind: String, value: Woofer surround}}, x: 600, y: 380}
+  - {id: 14, type: MeshCylinder, name: Woofer cone, inputs: {Radius: {kind: Float, value: 0.0410000011}, Height: {kind: Float, value: 0.00400000019}, Sides: {kind: Int32, value: 48}}, x: 40, y: 550}
+  - {id: 15, type: Transform, name: Woofer cone pose, inputs: {Translation: {kind: Float3, value: [0, 0.0850000009, 0.0820000023]}, Rotation: {kind: Float3, value: [-1.57079637, 0, 0]}}, x: 320, y: 550}
+  - {id: 16, type: SetMaterial, name: Woofer cone material, inputs: {Material: {kind: Material, value: [0.5, 0.340000004, 0.0250000004, 1, 0, 0.649999976]}, Name: {kind: String, value: Woofer cone}}, x: 600, y: 550}
+  - {id: 17, type: MeshCylinder, name: Woofer dust cap, inputs: {Radius: {kind: Float, value: 0.0147599997}, Height: {kind: Float, value: 0.00499999989}, Sides: {kind: Int32, value: 48}}, x: 40, y: 720}
+  - {id: 18, type: Transform, name: Woofer dust cap pose, inputs: {Translation: {kind: Float3, value: [0, 0.0850000009, 0.0850000009]}, Rotation: {kind: Float3, value: [-1.57079637, 0, 0]}}, x: 320, y: 720}
+  - {id: 19, type: SetMaterial, name: Woofer dust cap material, inputs: {Material: {kind: Material, value: [0.0160000008, 0.0199999996, 0.0209999997, 1, 0, 0.519999981]}, Name: {kind: String, value: Woofer dust cap}}, x: 600, y: 720}
+  - {id: 20, type: MeshCylinder, name: Tweeter surround, inputs: {Radius: {kind: Float, value: 0.0209999997}, Height: {kind: Float, value: 0.00400000019}, Sides: {kind: Int32, value: 48}}, x: 40, y: 890}
+  - {id: 21, type: Transform, name: Tweeter surround pose, inputs: {Translation: {kind: Float3, value: [0, 0.180000007, 0.0790000036]}, Rotation: {kind: Float3, value: [-1.57079637, 0, 0]}}, x: 320, y: 890}
+  - {id: 22, type: SetMaterial, name: Tweeter surround material, inputs: {Material: {kind: Material, value: [0.00499999989, 0.00600000005, 0.00700000022, 1, 0, 0.600000024]}, Name: {kind: String, value: Tweeter surround}}, x: 600, y: 890}
+  - {id: 23, type: MeshCylinder, name: Tweeter cone, inputs: {Radius: {kind: Float, value: 0.0170000009}, Height: {kind: Float, value: 0.00400000019}, Sides: {kind: Int32, value: 48}}, x: 40, y: 1060}
+  - {id: 24, type: Transform, name: Tweeter cone pose, inputs: {Translation: {kind: Float3, value: [0, 0.180000007, 0.0820000023]}, Rotation: {kind: Float3, value: [-1.57079637, 0, 0]}}, x: 320, y: 1060}
+  - {id: 25, type: SetMaterial, name: Tweeter cone material, inputs: {Material: {kind: Material, value: [0.0160000008, 0.0199999996, 0.0209999997, 1, 0, 0.519999981]}, Name: {kind: String, value: Tweeter cone}}, x: 600, y: 1060}
+  - {id: 26, type: MeshCylinder, name: Tweeter dust cap, inputs: {Radius: {kind: Float, value: 0.00612000003}, Height: {kind: Float, value: 0.00499999989}, Sides: {kind: Int32, value: 48}}, x: 40, y: 1230}
+  - {id: 27, type: Transform, name: Tweeter dust cap pose, inputs: {Translation: {kind: Float3, value: [0, 0.180000007, 0.0850000009]}, Rotation: {kind: Float3, value: [-1.57079637, 0, 0]}}, x: 320, y: 1230}
+  - {id: 28, type: SetMaterial, name: Tweeter dust cap material, inputs: {Material: {kind: Material, value: [0.0160000008, 0.0199999996, 0.0209999997, 1, 0, 0.519999981]}, Name: {kind: String, value: Tweeter dust cap}}, x: 600, y: 1230}
+  - {id: 29, type: MeshCylinder, name: Baffle screw, inputs: {Radius: {kind: Float, value: 0.00159999996}, Height: {kind: Float, value: 0.00200000009}, Sides: {kind: Int32, value: 48}}, x: 40, y: 1400}
+  - {id: 30, type: Transform, name: Baffle screw pose, inputs: {Translation: {kind: Float3, value: [-0.0529999994, 0.0179999992, 0.0780000016]}, Rotation: {kind: Float3, value: [-1.57079637, 0, 0]}}, x: 320, y: 1400}
+  - {id: 31, type: SetMaterial, name: Baffle screw material, inputs: {Material: {kind: Material, value: [0.330000013, 0.349999994, 0.340000004, 1, 0.699999988, 0.300000012]}, Name: {kind: String, value: Baffle screw}}, x: 600, y: 1400}
+  - {id: 32, type: MeshCylinder, name: Baffle screw, inputs: {Radius: {kind: Float, value: 0.00159999996}, Height: {kind: Float, value: 0.00200000009}, Sides: {kind: Int32, value: 48}}, x: 40, y: 1570}
+  - {id: 33, type: Transform, name: Baffle screw pose, inputs: {Translation: {kind: Float3, value: [-0.0529999994, 0.214000002, 0.0780000016]}, Rotation: {kind: Float3, value: [-1.57079637, 0, 0]}}, x: 320, y: 1570}
+  - {id: 34, type: SetMaterial, name: Baffle screw material, inputs: {Material: {kind: Material, value: [0.330000013, 0.349999994, 0.340000004, 1, 0.699999988, 0.300000012]}, Name: {kind: String, value: Baffle screw}}, x: 600, y: 1570}
+  - {id: 35, type: MeshCylinder, name: Baffle screw, inputs: {Radius: {kind: Float, value: 0.00159999996}, Height: {kind: Float, value: 0.00200000009}, Sides: {kind: Int32, value: 48}}, x: 40, y: 1740}
+  - {id: 36, type: Transform, name: Baffle screw pose, inputs: {Translation: {kind: Float3, value: [0.0529999994, 0.0179999992, 0.0780000016]}, Rotation: {kind: Float3, value: [-1.57079637, 0, 0]}}, x: 320, y: 1740}
+  - {id: 37, type: SetMaterial, name: Baffle screw material, inputs: {Material: {kind: Material, value: [0.330000013, 0.349999994, 0.340000004, 1, 0.699999988, 0.300000012]}, Name: {kind: String, value: Baffle screw}}, x: 600, y: 1740}
+  - {id: 38, type: MeshCylinder, name: Baffle screw, inputs: {Radius: {kind: Float, value: 0.00159999996}, Height: {kind: Float, value: 0.00200000009}, Sides: {kind: Int32, value: 48}}, x: 40, y: 1910}
+  - {id: 39, type: Transform, name: Baffle screw pose, inputs: {Translation: {kind: Float3, value: [0.0529999994, 0.214000002, 0.0780000016]}, Rotation: {kind: Float3, value: [-1.57079637, 0, 0]}}, x: 320, y: 1910}
+  - {id: 40, type: SetMaterial, name: Baffle screw material, inputs: {Material: {kind: Material, value: [0.330000013, 0.349999994, 0.340000004, 1, 0.699999988, 0.300000012]}, Name: {kind: String, value: Baffle screw}}, x: 600, y: 1910}
+  - {id: 41, type: JoinGeometry, name: Assemble parts, x: 1440, y: 40}
+  - {id: 42, type: JoinGeometry, name: Assemble parts, x: 1720, y: 40}
+  - {id: 43, type: JoinGeometry, name: Assemble parts, x: 2000, y: 40}
+  - {id: 44, type: JoinGeometry, name: Assemble parts, x: 2280, y: 40}
+  - {id: 45, type: JoinGeometry, name: Assemble parts, x: 2560, y: 40}
+  - {id: 46, type: JoinGeometry, name: Assemble parts, x: 2840, y: 40}
+  - {id: 47, type: JoinGeometry, name: Assemble parts, x: 3120, y: 40}
+  - {id: 48, type: JoinGeometry, name: Assemble parts, x: 3400, y: 40}
+  - {id: 49, type: JoinGeometry, name: Assemble parts, x: 3680, y: 40}
+  - {id: 50, type: JoinGeometry, name: Assemble parts, x: 3960, y: 40}
+  - {id: 51, type: JoinGeometry, name: Assemble parts, x: 4240, y: 40}
+links: [{from: {node: 1, pin: Geometry}, to: {node: 2, pin: Geometry}}, {from: {node: 2, pin: Geometry}, to: {node: 3, pin: Geometry}}, {from: {node: 3, pin: Geometry}, to: {node: 4, pin: Geometry}}, {from: {node: 4, pin: Geometry}, to: {node: 5, pin: Geometry}}, {from: {node: 6, pin: Geometry}, to: {node: 7, pin: Geometry}}, {from: {node: 7, pin: Geometry}, to: {node: 8, pin: Geometry}}, {from: {node: 8, pin: Geometry}, to: {node: 9, pin: Geometry}}, {from: {node: 9, pin: Geometry}, to: {node: 10, pin: Geometry}}, {from: {node: 11, pin: Geometry}, to: {node: 12, pin: Geometry}}, {from: {node: 12, pin: Geometry}, to: {node: 13, pin: Geometry}}, {from: {node: 14, pin: Geometry}, to: {node: 15, pin: Geometry}}, {from: {node: 15, pin: Geometry}, to: {node: 16, pin: Geometry}}, {from: {node: 17, pin: Geometry}, to: {node: 18, pin: Geometry}}, {from: {node: 18, pin: Geometry}, to: {node: 19, pin: Geometry}}, {from: {node: 20, pin: Geometry}, to: {node: 21, pin: Geometry}}, {from: {node: 21, pin: Geometry}, to: {node: 22, pin: Geometry}}, {from: {node: 23, pin: Geometry}, to: {node: 24, pin: Geometry}}, {from: {node: 24, pin: Geometry}, to: {node: 25, pin: Geometry}}, {from: {node: 26, pin: Geometry}, to: {node: 27, pin: Geometry}}, {from: {node: 27, pin: Geometry}, to: {node: 28, pin: Geometry}}, {from: {node: 29, pin: Geometry}, to: {node: 30, pin: Geometry}}, {from: {node: 30, pin: Geometry}, to: {node: 31, pin: Geometry}}, {from: {node: 32, pin: Geometry}, to: {node: 33, pin: Geometry}}, {from: {node: 33, pin: Geometry}, to: {node: 34, pin: Geometry}}, {from: {node: 35, pin: Geometry}, to: {node: 36, pin: Geometry}}, {from: {node: 36, pin: Geometry}, to: {node: 37, pin: Geometry}}, {from: {node: 38, pin: Geometry}, to: {node: 39, pin: Geometry}}, {from: {node: 39, pin: Geometry}, to: {node: 40, pin: Geometry}}, {from: {node: 5, pin: Geometry}, to: {node: 41, pin: A}}, {from: {node: 10, pin: Geometry}, to: {node: 41, pin: B}}, {from: {node: 41, pin: Geometry}, to: {node: 42, pin: A}}, {from: {node: 13, pin: Geometry}, to: {node: 42, pin: B}}, {from: {node: 42, pin: Geometry}, to: {node: 43, pin: A}}, {from: {node: 16, pin: Geometry}, to: {node: 43, pin: B}}, {from: {node: 43, pin: Geometry}, to: {node: 44, pin: A}}, {from: {node: 19, pin: Geometry}, to: {node: 44, pin: B}}, {from: {node: 44, pin: Geometry}, to: {node: 45, pin: A}}, {from: {node: 22, pin: Geometry}, to: {node: 45, pin: B}}, {from: {node: 45, pin: Geometry}, to: {node: 46, pin: A}}, {from: {node: 25, pin: Geometry}, to: {node: 46, pin: B}}, {from: {node: 46, pin: Geometry}, to: {node: 47, pin: A}}, {from: {node: 28, pin: Geometry}, to: {node: 47, pin: B}}, {from: {node: 47, pin: Geometry}, to: {node: 48, pin: A}}, {from: {node: 31, pin: Geometry}, to: {node: 48, pin: B}}, {from: {node: 48, pin: Geometry}, to: {node: 49, pin: A}}, {from: {node: 34, pin: Geometry}, to: {node: 49, pin: B}}, {from: {node: 49, pin: Geometry}, to: {node: 50, pin: A}}, {from: {node: 37, pin: Geometry}, to: {node: 50, pin: B}}, {from: {node: 50, pin: Geometry}, to: {node: 51, pin: A}}, {from: {node: 40, pin: Geometry}, to: {node: 51, pin: B}}]
+outputs:
+  Geometry:
+    node: 51
+    pin: Geometry

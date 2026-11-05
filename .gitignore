@@ -1,0 +1,34 @@
+# Lucky Engine generated state and captures
+Cache/
+DataSessions/
+Exports/
+Layouts/
+Binaries/
+Intermediates/
+**/Binaries/
+**/Intermediates/
+*.auto
+*.user
+EditorViewportSettings.yaml
+office-calibration.json
+
+# Generated C# solution and build products
+bin/
+obj/
+*.sln
+*.csproj
+Win-CreateScriptProjects.bat
+CreateScriptProjects.sh
+
+# Machine settings and credentials
+.vs/
+.vscode/
+.idea/
+*.suo
+.env
+.env.*
+*.pfx
+*.key
+.claude/settings.local.json
+Thumbs.db
+.DS_Store

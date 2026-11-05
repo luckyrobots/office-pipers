@@ -1,0 +1,57 @@
+nodes:
+  - id: 1
+    type: MeshCube
+    name: Black cabinet
+    inputs:
+      SizeX: {kind: Float, value: 0.340000004}
+      SizeY: {kind: Float, value: 0.560000002}
+      SizeZ: {kind: Float, value: 0.360000014}
+    x: 40
+    y: 40
+  - {id: 2, type: BevelEdge, name: Black cabinet edges, inputs: {Offset: {kind: Float, value: 0.00499999989}, Segments: {kind: Int32, value: 3}}, x: 320, y: 40}
+  - {id: 3, type: Transform, name: Black cabinet position, inputs: {Translation: {kind: Float3, value: [0.99000001, 0.300000012, -0.660000026]}}, x: 600, y: 40}
+  - {id: 4, type: SetMaterial, name: Black cabinet surface, inputs: {Material: {kind: Material, value: [0.0160000008, 0.0199999996, 0.0209999997, 1, 0, 0.519999981]}, Name: {kind: String, value: Black cabinet}}, x: 880, y: 40}
+  - {id: 5, type: SetMeshName, name: Black cabinet, inputs: {Name: {kind: String, value: Black cabinet}}, x: 1160, y: 40}
+  - {id: 6, type: MeshCube, name: Cabinet door, inputs: {SizeX: {kind: Float, value: 0.326000005}, SizeY: {kind: Float, value: 0.529999971}, SizeZ: {kind: Float, value: 0.0120000001}}, x: 40, y: 210}
+  - {id: 7, type: BevelEdge, name: Cabinet door edges, inputs: {Offset: {kind: Float, value: 0.00300000003}, Segments: {kind: Int32, value: 3}}, x: 320, y: 210}
+  - {id: 8, type: Transform, name: Cabinet door position, inputs: {Translation: {kind: Float3, value: [0.99000001, 0.300000012, -0.472000003]}}, x: 600, y: 210}
+  - {id: 9, type: SetMaterial, name: Cabinet door surface, inputs: {Material: {kind: Material, value: [0.0140000004, 0.0179999992, 0.0189999994, 1, 0, 0.379999995]}, Name: {kind: String, value: Cabinet door}}, x: 880, y: 210}
+  - {id: 10, type: SetMeshName, name: Cabinet door, inputs: {Name: {kind: String, value: Cabinet door}}, x: 1160, y: 210}
+  - {id: 11, type: MeshCube, name: Cabinet handle, inputs: {SizeX: {kind: Float, value: 0.00899999961}, SizeY: {kind: Float, value: 0.159999996}, SizeZ: {kind: Float, value: 0.0120000001}}, x: 40, y: 380}
+  - {id: 12, type: BevelEdge, name: Cabinet handle edges, inputs: {Offset: {kind: Float, value: 0.00200000009}, Segments: {kind: Int32, value: 3}}, x: 320, y: 380}
+  - {id: 13, type: Transform, name: Cabinet handle position, inputs: {Translation: {kind: Float3, value: [1.13499999, 0.360000014, -0.460000008]}}, x: 600, y: 380}
+  - {id: 14, type: SetMaterial, name: Cabinet handle surface, inputs: {Material: {kind: Material, value: [0.200000003, 0.219999999, 0.209999993, 1, 0, 0.720000029]}, Name: {kind: String, value: Cabinet handle}}, x: 880, y: 380}
+  - {id: 15, type: SetMeshName, name: Cabinet handle, inputs: {Name: {kind: String, value: Cabinet handle}}, x: 1160, y: 380}
+  - {id: 16, type: MeshCube, name: Cardboard panel, inputs: {SizeX: {kind: Float, value: 0.389999986}, SizeY: {kind: Float, value: 0.579999983}, SizeZ: {kind: Float, value: 0.0140000004}}, x: 40, y: 550}
+  - {id: 17, type: BevelEdge, name: Cardboard panel edges, inputs: {Offset: {kind: Float, value: 0.00100000005}, Segments: {kind: Int32, value: 3}}, x: 320, y: 550}
+  - {id: 18, type: Transform, name: Cardboard panel position, inputs: {Translation: {kind: Float3, value: [1.38, 0.349999994, -0.860000014]}}, x: 600, y: 550}
+  - {id: 19, type: SetMaterial, name: Cardboard panel surface, inputs: {Material: {kind: Material, value: [0.370000005, 0.230000004, 0.104999997, 1, 0, 0.899999976]}, Name: {kind: String, value: Cardboard panel}}, x: 880, y: 550}
+  - {id: 20, type: SetMeshName, name: Cardboard panel, inputs: {Name: {kind: String, value: Cardboard panel}}, x: 1160, y: 550}
+  - {id: 21, type: MeshCube, name: Folded cardboard edge, inputs: {SizeX: {kind: Float, value: 0.0179999992}, SizeY: {kind: Float, value: 0.579999983}, SizeZ: {kind: Float, value: 0.0350000001}}, x: 40, y: 720}
+  - {id: 22, type: BevelEdge, name: Folded cardboard edge edges, inputs: {Offset: {kind: Float, value: 0.00100000005}, Segments: {kind: Int32, value: 3}}, x: 320, y: 720}
+  - {id: 23, type: Transform, name: Folded cardboard edge position, inputs: {Translation: {kind: Float3, value: [1.57000005, 0.349999994, -0.850000024]}}, x: 600, y: 720}
+  - {id: 24, type: SetMaterial, name: Folded cardboard edge surface, inputs: {Material: {kind: Material, value: [0.310000002, 0.180000007, 0.0700000003, 1, 0, 0.899999976]}, Name: {kind: String, value: Folded cardboard edge}}, x: 880, y: 720}
+  - {id: 25, type: SetMeshName, name: Folded cardboard edge, inputs: {Name: {kind: String, value: Folded cardboard edge}}, x: 1160, y: 720}
+  - {id: 26, type: MeshCube, name: Floor subwoofer, inputs: {SizeX: {kind: Float, value: 0.25}, SizeY: {kind: Float, value: 0.25}, SizeZ: {kind: Float, value: 0.219999999}}, x: 40, y: 890}
+  - {id: 27, type: BevelEdge, name: Floor subwoofer edges, inputs: {Offset: {kind: Float, value: 0.00400000019}, Segments: {kind: Int32, value: 3}}, x: 320, y: 890}
+  - {id: 28, type: Transform, name: Floor subwoofer position, inputs: {Translation: {kind: Float3, value: [-0.140000001, 0.159999996, -0.75999999]}}, x: 600, y: 890}
+  - {id: 29, type: SetMaterial, name: Floor subwoofer surface, inputs: {Material: {kind: Material, value: [0.0160000008, 0.0199999996, 0.0209999997, 1, 0, 0.519999981]}, Name: {kind: String, value: Floor subwoofer}}, x: 880, y: 890}
+  - {id: 30, type: SetMeshName, name: Floor subwoofer, inputs: {Name: {kind: String, value: Floor subwoofer}}, x: 1160, y: 890}
+  - {id: 31, type: MeshCylinder, name: Subwoofer cone, inputs: {Radius: {kind: Float, value: 0.0780000016}, Height: {kind: Float, value: 0.00499999989}, Sides: {kind: Int32, value: 48}}, x: 40, y: 1060}
+  - {id: 32, type: Transform, name: Subwoofer cone pose, inputs: {Translation: {kind: Float3, value: [-0.140000001, 0.159999996, -0.646000028]}, Rotation: {kind: Float3, value: [-1.57079637, 0, 0]}}, x: 320, y: 1060}
+  - {id: 33, type: SetMaterial, name: Subwoofer cone material, inputs: {Material: {kind: Material, value: [0.5, 0.340000004, 0.0250000004, 1, 0, 0.649999976]}, Name: {kind: String, value: Subwoofer cone}}, x: 600, y: 1060}
+  - {id: 34, type: MeshCylinder, name: Subwoofer centre, inputs: {Radius: {kind: Float, value: 0.0359999985}, Height: {kind: Float, value: 0.00600000005}, Sides: {kind: Int32, value: 48}}, x: 40, y: 1230}
+  - {id: 35, type: Transform, name: Subwoofer centre pose, inputs: {Translation: {kind: Float3, value: [-0.140000001, 0.159999996, -0.64200002]}, Rotation: {kind: Float3, value: [-1.57079637, 0, 0]}}, x: 320, y: 1230}
+  - {id: 36, type: SetMaterial, name: Subwoofer centre material, inputs: {Material: {kind: Material, value: [0.0160000008, 0.0199999996, 0.0209999997, 1, 0, 0.519999981]}, Name: {kind: String, value: Subwoofer centre}}, x: 600, y: 1230}
+  - {id: 37, type: JoinGeometry, name: Assemble parts, x: 1440, y: 40}
+  - {id: 38, type: JoinGeometry, name: Assemble parts, x: 1720, y: 40}
+  - {id: 39, type: JoinGeometry, name: Assemble parts, x: 2000, y: 40}
+  - {id: 40, type: JoinGeometry, name: Assemble parts, x: 2280, y: 40}
+  - {id: 41, type: JoinGeometry, name: Assemble parts, x: 2560, y: 40}
+  - {id: 42, type: JoinGeometry, name: Assemble parts, x: 2840, y: 40}
+  - {id: 43, type: JoinGeometry, name: Assemble parts, x: 3120, y: 40}
+links: [{from: {node: 1, pin: Geometry}, to: {node: 2, pin: Geometry}}, {from: {node: 2, pin: Geometry}, to: {node: 3, pin: Geometry}}, {from: {node: 3, pin: Geometry}, to: {node: 4, pin: Geometry}}, {from: {node: 4, pin: Geometry}, to: {node: 5, pin: Geometry}}, {from: {node: 6, pin: Geometry}, to: {node: 7, pin: Geometry}}, {from: {node: 7, pin: Geometry}, to: {node: 8, pin: Geometry}}, {from: {node: 8, pin: Geometry}, to: {node: 9, pin: Geometry}}, {from: {node: 9, pin: Geometry}, to: {node: 10, pin: Geometry}}, {from: {node: 11, pin: Geometry}, to: {node: 12, pin: Geometry}}, {from: {node: 12, pin: Geometry}, to: {node: 13, pin: Geometry}}, {from: {node: 13, pin: Geometry}, to: {node: 14, pin: Geometry}}, {from: {node: 14, pin: Geometry}, to: {node: 15, pin: Geometry}}, {from: {node: 16, pin: Geometry}, to: {node: 17, pin: Geometry}}, {from: {node: 17, pin: Geometry}, to: {node: 18, pin: Geometry}}, {from: {node: 18, pin: Geometry}, to: {node: 19, pin: Geometry}}, {from: {node: 19, pin: Geometry}, to: {node: 20, pin: Geometry}}, {from: {node: 21, pin: Geometry}, to: {node: 22, pin: Geometry}}, {from: {node: 22, pin: Geometry}, to: {node: 23, pin: Geometry}}, {from: {node: 23, pin: Geometry}, to: {node: 24, pin: Geometry}}, {from: {node: 24, pin: Geometry}, to: {node: 25, pin: Geometry}}, {from: {node: 26, pin: Geometry}, to: {node: 27, pin: Geometry}}, {from: {node: 27, pin: Geometry}, to: {node: 28, pin: Geometry}}, {from: {node: 28, pin: Geometry}, to: {node: 29, pin: Geometry}}, {from: {node: 29, pin: Geometry}, to: {node: 30, pin: Geometry}}, {from: {node: 31, pin: Geometry}, to: {node: 32, pin: Geometry}}, {from: {node: 32, pin: Geometry}, to: {node: 33, pin: Geometry}}, {from: {node: 34, pin: Geometry}, to: {node: 35, pin: Geometry}}, {from: {node: 35, pin: Geometry}, to: {node: 36, pin: Geometry}}, {from: {node: 5, pin: Geometry}, to: {node: 37, pin: A}}, {from: {node: 10, pin: Geometry}, to: {node: 37, pin: B}}, {from: {node: 37, pin: Geometry}, to: {node: 38, pin: A}}, {from: {node: 15, pin: Geometry}, to: {node: 38, pin: B}}, {from: {node: 38, pin: Geometry}, to: {node: 39, pin: A}}, {from: {node: 20, pin: Geometry}, to: {node: 39, pin: B}}, {from: {node: 39, pin: Geometry}, to: {node: 40, pin: A}}, {from: {node: 25, pin: Geometry}, to: {node: 40, pin: B}}, {from: {node: 40, pin: Geometry}, to: {node: 41, pin: A}}, {from: {node: 30, pin: Geometry}, to: {node: 41, pin: B}}, {from: {node: 41, pin: Geometry}, to: {node: 42, pin: A}}, {from: {node: 33, pin: Geometry}, to: {node: 42, pin: B}}, {from: {node: 42, pin: Geometry}, to: {node: 43, pin: A}}, {from: {node: 36, pin: Geometry}, to: {node: 43, pin: B}}]
+outputs:
+  Geometry:
+    node: 43
+    pin: Geometry

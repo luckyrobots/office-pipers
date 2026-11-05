@@ -1,0 +1,25 @@
+{
+  "source": "https://github.com/agilexrobotics/pika_ros",
+  "commit": "1ec77880011af608f7f6af8d3c0e7c163b300984",
+  "vendor_urdf": "src/pika_gripper_description/urdf/piper_pika_gripper_description.urdf",
+  "mesh_sha256": {
+    "gripper_base_link.STL": "ac4593d07d4d95436bb125e76df22332414c24f287ff3de0b35c3336cdfca5e6",
+    "gripper_left_link.STL": "16de0af984683c4286bf826557c1ea3c40380c64f890969cde5c880726c7474b",
+    "gripper_right_link.STL": "0a10906fa2ed940db0de90b0f171db3cc550c8cfd56b83bebd33b9a8955e0b66"
+  },
+  "assumptions": [
+    "75 cm desk height",
+    "Piper arm kinematics preserved from Lucky Engine pack; Pika mount follows AgileX URDF",
+    "Housing/finger collision boxes are approximate; do not use as hardware collision protection",
+    "Gripper aperture calibration must be verified against physical feedback before driving real hardware"
+  ],
+  "initial_joint_degrees": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "initial_pose_note": "Corrected stock raised home pose (J2=1.57, J3=-1.3485 radians) to reported hardware zero. Pika aperture unchanged."
+}

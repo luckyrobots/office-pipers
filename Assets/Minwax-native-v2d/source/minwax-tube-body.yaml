@@ -1,0 +1,578 @@
+nodes:
+  - id: 1
+    type: Math
+    name: Overall measured height scale
+    inputs:
+      A:
+        param: height_m
+      B: {kind: Float, value: 0.193000004}
+      Operation: {kind: Menu, value: e0b15a19922764e8}
+    x: 300
+    y: 1090
+  - {id: 2, type: MeshGrid, name: Editable sleeve parameter grid, inputs: {SizeX: {kind: Float, value: 1}, SizeZ: {kind: Float, value: 1}, SegmentsX: {kind: Int32, value: 192}, SegmentsZ: {kind: Int32, value: 144}}, x: 5500, y: 190}
+  - {id: 3, type: PositionField, x: 40, y: 340}
+  - {id: 4, type: SeparateXYZField, name: Source sleeve parameters, x: 300, y: 340}
+  - {id: 5, type: MathField, name: Sleeve height coordinate, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}, B: {kind: Float, value: 0.5}}, x: 560, y: 40}
+  - {id: 6, type: MathField, name: Circumference angle; front U=.5, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 6.28318548}}, x: 560, y: 940}
+  - {id: 7, type: MathField, name: Sin, inputs: {Operation: {kind: Menu, value: 9851c119faa5d10d}}, x: 820, y: 3490}
+  - {id: 8, type: MathField, name: Cos, inputs: {Operation: {kind: Menu, value: 0c0e1c19aaba833c}}, x: 820, y: 2890}
+  - {id: 9, type: Math, name: Mul, inputs: {A: {param: cap_diameter_m}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 300, y: 1240}
+  - {id: 10, type: Math, name: Mul, inputs: {A: {param: cap_diameter_m}, B: {kind: Float, value: 0.518000007}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 300, y: 1540}
+  - {id: 11, type: Math, name: Mul, inputs: {A: {param: grasp_width_m}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 300, y: 1840}
+  - {id: 12, type: Math, name: Mul, inputs: {A: {param: grasp_width_m}, B: {kind: Float, value: 0.592999995}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 300, y: 2140}
+  - {id: 13, type: Math, name: Mul, inputs: {A: {param: crimp_width_m}, B: {kind: Float, value: 0.48300001}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 300, y: 2590}
+  - {id: 14, type: Math, name: Mul, inputs: {A: {param: crimp_width_m}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 300, y: 2890}
+  - {id: 15, type: Math, name: Mul, inputs: {A: {param: crimp_width_m}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 300, y: 2740}
+  - {id: 16, type: Math, name: Mul, inputs: {A: {param: cap_diameter_m}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 300, y: 1390}
+  - {id: 17, type: Math, name: Mul, inputs: {A: {param: cap_diameter_m}, B: {kind: Float, value: 0.507000029}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 300, y: 1690}
+  - {id: 18, type: Math, name: Mul, inputs: {A: {param: grasp_depth_m}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 300, y: 1990}
+  - {id: 19, type: Math, name: Mul, inputs: {A: {param: grasp_depth_m}, B: {kind: Float, value: 0.349999994}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 300, y: 2290}
+  - {id: 20, type: Math, name: Mul, inputs: {A: {param: grasp_depth_m}, B: {kind: Float, value: 0.129999995}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 300, y: 2440}
+  - {id: 21, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 1540}
+  - {id: 22, type: Math, name: Sleeve half-width tangent, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.114864863}}, x: 820, y: 3790}
+  - {id: 23, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 1690}
+  - {id: 24, type: Math, name: Sleeve half-width tangent, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.37037161}}, x: 820, y: 3940}
+  - {id: 25, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 1990}
+  - {id: 26, type: Math, name: Sleeve half-width tangent, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.540540516}}, x: 820, y: 4240}
+  - {id: 27, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 2440}
+  - {id: 28, type: Math, name: Sleeve half-width tangent, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.55530405}}, x: 820, y: 4690}
+  - {id: 29, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 2890}
+  - {id: 30, type: Math, name: Sleeve half-width tangent, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.337837845}}, x: 820, y: 5140}
+  - {id: 31, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 3190}
+  - {id: 32, type: Math, name: Sleeve half-width tangent, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.0743243247}}, x: 820, y: 5440}
+  - {id: 33, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 3340}
+  - {id: 34, type: Math, name: Sleeve half-width tangent, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.00675675692}}, x: 820, y: 5590}
+  - {id: 35, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {kind: Float, value: 0}}, x: 820, y: 190}
+  - {id: 36, type: MathField, name: Div, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.114864863}}, x: 1080, y: 190}
+  - {id: 37, type: ClampFieldFloat, inputs: {Min: {kind: Float, value: 0}, Max: {kind: Float, value: 1}}, x: 1340, y: 190}
+  - {id: 38, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 1600, y: 190}
+  - {id: 39, type: MathField, name: Pow, inputs: {Operation: {kind: Menu, value: 8da37f19f4069495}, B: {kind: Float, value: 3}}, x: 1600, y: 1240}
+  - {id: 40, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 3}}, x: 1860, y: 1990}
+  - {id: 41, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 2140}
+  - {id: 42, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 1990}
+  - {id: 43, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 190}
+  - {id: 44, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 190}
+  - {id: 45, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2380, y: 190}
+  - {id: 46, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 1860, y: 5740}
+  - {id: 47, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 3640}
+  - {id: 48, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2380, y: 2140}
+  - {id: 49, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.114864863}}, x: 1080, y: 3940}
+  - {id: 50, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2640, y: 190}
+  - {id: 51, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.114864863}}, x: 1080, y: 4090}
+  - {id: 52, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2120, y: 4090}
+  - {id: 53, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2900, y: 190}
+  - {id: 54, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 3160, y: 190}
+  - {id: 55, type: MathField, name: Sleeve half-width band 1, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 3420, y: 190}
+  - {id: 56, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {kind: Float, value: 0.114864863}}, x: 820, y: 340}
+  - {id: 57, type: MathField, name: Div, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.255506754}}, x: 1080, y: 340}
+  - {id: 58, type: ClampFieldFloat, inputs: {Min: {kind: Float, value: 0}, Max: {kind: Float, value: 1}}, x: 1340, y: 340}
+  - {id: 59, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 1600, y: 340}
+  - {id: 60, type: MathField, name: Pow, inputs: {Operation: {kind: Menu, value: 8da37f19f4069495}, B: {kind: Float, value: 3}}, x: 1600, y: 1540}
+  - {id: 61, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 3}}, x: 1860, y: 2290}
+  - {id: 62, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 2440}
+  - {id: 63, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 2140}
+  - {id: 64, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 340}
+  - {id: 65, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 340}
+  - {id: 66, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2380, y: 340}
+  - {id: 67, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 1860, y: 5890}
+  - {id: 68, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 3940}
+  - {id: 69, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2380, y: 2290}
+  - {id: 70, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.255506754}}, x: 1080, y: 4240}
+  - {id: 71, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2640, y: 340}
+  - {id: 72, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.255506754}}, x: 1080, y: 4540}
+  - {id: 73, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2120, y: 4240}
+  - {id: 74, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2900, y: 340}
+  - {id: 75, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 3160, y: 340}
+  - {id: 76, type: MathField, name: Sleeve half-width band 2, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 3680, y: 190}
+  - {id: 77, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {kind: Float, value: 0.37037161}}, x: 820, y: 490}
+  - {id: 78, type: MathField, name: Div, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.285033792}}, x: 1080, y: 490}
+  - {id: 79, type: ClampFieldFloat, inputs: {Min: {kind: Float, value: 0}, Max: {kind: Float, value: 1}}, x: 1340, y: 490}
+  - {id: 80, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 1600, y: 490}
+  - {id: 81, type: MathField, name: Pow, inputs: {Operation: {kind: Menu, value: 8da37f19f4069495}, B: {kind: Float, value: 3}}, x: 1600, y: 1840}
+  - {id: 82, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 3}}, x: 1860, y: 2590}
+  - {id: 83, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 2740}
+  - {id: 84, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 2290}
+  - {id: 85, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 490}
+  - {id: 86, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 490}
+  - {id: 87, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2380, y: 490}
+  - {id: 88, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 1860, y: 6040}
+  - {id: 89, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 4090}
+  - {id: 90, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2380, y: 2440}
+  - {id: 91, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.285033792}}, x: 1080, y: 4690}
+  - {id: 92, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2640, y: 490}
+  - {id: 93, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.285033792}}, x: 1080, y: 5440}
+  - {id: 94, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2120, y: 4390}
+  - {id: 95, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2900, y: 490}
+  - {id: 96, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 3160, y: 490}
+  - {id: 97, type: MathField, name: Sleeve half-width band 3, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 3940, y: 190}
+  - {id: 98, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {kind: Float, value: 0.655405402}}, x: 820, y: 640}
+  - {id: 99, type: MathField, name: Div, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.270270258}}, x: 1080, y: 640}
+  - {id: 100, type: ClampFieldFloat, inputs: {Min: {kind: Float, value: 0}, Max: {kind: Float, value: 1}}, x: 1340, y: 640}
+  - {id: 101, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 1600, y: 640}
+  - {id: 102, type: MathField, name: Pow, inputs: {Operation: {kind: Menu, value: 8da37f19f4069495}, B: {kind: Float, value: 3}}, x: 1600, y: 2290}
+  - {id: 103, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 3}}, x: 1860, y: 2890}
+  - {id: 104, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 3040}
+  - {id: 105, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 2440}
+  - {id: 106, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 640}
+  - {id: 107, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 640}
+  - {id: 108, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2380, y: 640}
+  - {id: 109, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 1860, y: 6190}
+  - {id: 110, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 4690}
+  - {id: 111, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2380, y: 2590}
+  - {id: 112, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.270270258}}, x: 1080, y: 5590}
+  - {id: 113, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2640, y: 640}
+  - {id: 114, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.270270258}}, x: 1080, y: 6340}
+  - {id: 115, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2120, y: 4540}
+  - {id: 116, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2900, y: 640}
+  - {id: 117, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 3160, y: 640}
+  - {id: 118, type: MathField, name: Sleeve half-width band 4, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 4200, y: 190}
+  - {id: 119, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {kind: Float, value: 0.92567569}}, x: 820, y: 790}
+  - {id: 120, type: MathField, name: Div, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.0675675645}}, x: 1080, y: 790}
+  - {id: 121, type: ClampFieldFloat, inputs: {Min: {kind: Float, value: 0}, Max: {kind: Float, value: 1}}, x: 1340, y: 790}
+  - {id: 122, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 1600, y: 940}
+  - {id: 123, type: MathField, name: Pow, inputs: {Operation: {kind: Menu, value: 8da37f19f4069495}, B: {kind: Float, value: 3}}, x: 1600, y: 2440}
+  - {id: 124, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 3}}, x: 1860, y: 3190}
+  - {id: 125, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 3340}
+  - {id: 126, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 2590}
+  - {id: 127, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 790}
+  - {id: 128, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 790}
+  - {id: 129, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2380, y: 790}
+  - {id: 130, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 1860, y: 6340}
+  - {id: 131, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 5140}
+  - {id: 132, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2380, y: 2740}
+  - {id: 133, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.0675675645}}, x: 1080, y: 6490}
+  - {id: 134, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2640, y: 790}
+  - {id: 135, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.0675675645}}, x: 1080, y: 6940}
+  - {id: 136, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2120, y: 4690}
+  - {id: 137, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2900, y: 790}
+  - {id: 138, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 3160, y: 790}
+  - {id: 139, type: MathField, name: Sleeve half-width band 5, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 4460, y: 190}
+  - {id: 140, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {kind: Float, value: 0.993243217}}, x: 820, y: 1090}
+  - {id: 141, type: MathField, name: Div, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.00675675692}}, x: 1080, y: 1090}
+  - {id: 142, type: ClampFieldFloat, inputs: {Min: {kind: Float, value: 0}, Max: {kind: Float, value: 1}}, x: 1340, y: 1090}
+  - {id: 143, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 1600, y: 1090}
+  - {id: 144, type: MathField, name: Pow, inputs: {Operation: {kind: Menu, value: 8da37f19f4069495}, B: {kind: Float, value: 3}}, x: 1600, y: 2890}
+  - {id: 145, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 3}}, x: 1860, y: 3790}
+  - {id: 146, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 3940}
+  - {id: 147, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 2890}
+  - {id: 148, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 940}
+  - {id: 149, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 940}
+  - {id: 150, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2380, y: 940}
+  - {id: 151, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 1860, y: 6640}
+  - {id: 152, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 5290}
+  - {id: 153, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2380, y: 3040}
+  - {id: 154, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.00675675692}}, x: 1080, y: 7090}
+  - {id: 155, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2640, y: 940}
+  - {id: 156, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.00675675692}}, x: 1080, y: 7240}
+  - {id: 157, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2120, y: 4990}
+  - {id: 158, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2900, y: 940}
+  - {id: 159, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 3160, y: 940}
+  - {id: 160, type: MathField, name: Sleeve half-width band 6, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 4720, y: 190}
+  - {id: 161, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 1840}
+  - {id: 162, type: Math, name: Sleeve half-thickness tangent, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.114864863}}, x: 820, y: 4090}
+  - {id: 163, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 2140}
+  - {id: 164, type: Math, name: Sleeve half-thickness tangent, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.37037161}}, x: 820, y: 4390}
+  - {id: 165, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 2290}
+  - {id: 166, type: Math, name: Sleeve half-thickness tangent, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.540540516}}, x: 820, y: 4540}
+  - {id: 167, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 2590}
+  - {id: 168, type: Math, name: Sleeve half-thickness tangent, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.55530405}}, x: 820, y: 4840}
+  - {id: 169, type: Math, name: Sub, inputs: {A: {kind: Float, value: 0.00219999999}, Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 2740}
+  - {id: 170, type: Math, name: Sleeve half-thickness tangent, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.337837845}}, x: 820, y: 4990}
+  - {id: 171, type: Math, name: Sub, inputs: {A: {kind: Float, value: 0.00190000003}, Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 3040}
+  - {id: 172, type: Math, name: Sleeve half-thickness tangent, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.0743243247}}, x: 820, y: 5290}
+  - {id: 173, type: Math, name: Sub, inputs: {A: {kind: Float, value: 0.00190000003}, Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {kind: Float, value: 0.00219999999}}, x: 40, y: 1690}
+  - {id: 174, type: Math, name: Sleeve half-thickness tangent, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.00675675692}}, x: 300, y: 3040}
+  - {id: 175, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {kind: Float, value: 0}}, x: 820, y: 940}
+  - {id: 176, type: MathField, name: Div, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.114864863}}, x: 1080, y: 940}
+  - {id: 177, type: ClampFieldFloat, inputs: {Min: {kind: Float, value: 0}, Max: {kind: Float, value: 1}}, x: 1340, y: 940}
+  - {id: 178, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 1600, y: 790}
+  - {id: 179, type: MathField, name: Pow, inputs: {Operation: {kind: Menu, value: 8da37f19f4069495}, B: {kind: Float, value: 3}}, x: 1600, y: 2740}
+  - {id: 180, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 3}}, x: 1860, y: 3490}
+  - {id: 181, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 3640}
+  - {id: 182, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 2740}
+  - {id: 183, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 40}
+  - {id: 184, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 40}
+  - {id: 185, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2380, y: 40}
+  - {id: 186, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 1860, y: 6490}
+  - {id: 187, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 3790}
+  - {id: 188, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2380, y: 2890}
+  - {id: 189, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.114864863}}, x: 1080, y: 4390}
+  - {id: 190, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2640, y: 40}
+  - {id: 191, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.114864863}}, x: 1080, y: 4840}
+  - {id: 192, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2120, y: 4840}
+  - {id: 193, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2900, y: 40}
+  - {id: 194, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 3160, y: 40}
+  - {id: 195, type: MathField, name: Sleeve half-thickness band 1, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 3420, y: 40}
+  - {id: 196, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {kind: Float, value: 0.114864863}}, x: 820, y: 1240}
+  - {id: 197, type: MathField, name: Div, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.255506754}}, x: 1080, y: 1240}
+  - {id: 198, type: ClampFieldFloat, inputs: {Min: {kind: Float, value: 0}, Max: {kind: Float, value: 1}}, x: 1340, y: 1240}
+  - {id: 199, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 1600, y: 1390}
+  - {id: 200, type: MathField, name: Pow, inputs: {Operation: {kind: Menu, value: 8da37f19f4069495}, B: {kind: Float, value: 3}}, x: 1600, y: 3340}
+  - {id: 201, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 3}}, x: 1860, y: 4090}
+  - {id: 202, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 4240}
+  - {id: 203, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 3040}
+  - {id: 204, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 1090}
+  - {id: 205, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 1090}
+  - {id: 206, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2380, y: 1090}
+  - {id: 207, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 1860, y: 6790}
+  - {id: 208, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 4240}
+  - {id: 209, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2380, y: 3190}
+  - {id: 210, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.255506754}}, x: 1080, y: 4990}
+  - {id: 211, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2640, y: 1090}
+  - {id: 212, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.255506754}}, x: 1080, y: 5140}
+  - {id: 213, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2120, y: 5140}
+  - {id: 214, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2900, y: 1090}
+  - {id: 215, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 3160, y: 1090}
+  - {id: 216, type: MathField, name: Sleeve half-thickness band 2, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 3680, y: 40}
+  - {id: 217, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {kind: Float, value: 0.37037161}}, x: 820, y: 1390}
+  - {id: 218, type: MathField, name: Div, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.285033792}}, x: 1080, y: 1390}
+  - {id: 219, type: ClampFieldFloat, inputs: {Min: {kind: Float, value: 0}, Max: {kind: Float, value: 1}}, x: 1340, y: 1390}
+  - {id: 220, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 1600, y: 1690}
+  - {id: 221, type: MathField, name: Pow, inputs: {Operation: {kind: Menu, value: 8da37f19f4069495}, B: {kind: Float, value: 3}}, x: 1600, y: 3490}
+  - {id: 222, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 3}}, x: 1860, y: 4390}
+  - {id: 223, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 4540}
+  - {id: 224, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 3190}
+  - {id: 225, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 1240}
+  - {id: 226, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 1240}
+  - {id: 227, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2380, y: 1240}
+  - {id: 228, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 1860, y: 6940}
+  - {id: 229, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 4540}
+  - {id: 230, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2380, y: 3340}
+  - {id: 231, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.285033792}}, x: 1080, y: 5290}
+  - {id: 232, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2640, y: 1240}
+  - {id: 233, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.285033792}}, x: 1080, y: 5740}
+  - {id: 234, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2120, y: 5290}
+  - {id: 235, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2900, y: 1240}
+  - {id: 236, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 3160, y: 1240}
+  - {id: 237, type: MathField, name: Sleeve half-thickness band 3, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 3940, y: 40}
+  - {id: 238, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {kind: Float, value: 0.655405402}}, x: 820, y: 1540}
+  - {id: 239, type: MathField, name: Div, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.270270258}}, x: 1080, y: 1540}
+  - {id: 240, type: ClampFieldFloat, inputs: {Min: {kind: Float, value: 0}, Max: {kind: Float, value: 1}}, x: 1340, y: 1540}
+  - {id: 241, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 1600, y: 1990}
+  - {id: 242, type: MathField, name: Pow, inputs: {Operation: {kind: Menu, value: 8da37f19f4069495}, B: {kind: Float, value: 3}}, x: 1600, y: 3640}
+  - {id: 243, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 3}}, x: 1860, y: 4690}
+  - {id: 244, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 4840}
+  - {id: 245, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 3340}
+  - {id: 246, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 1390}
+  - {id: 247, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 1390}
+  - {id: 248, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2380, y: 1390}
+  - {id: 249, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 1860, y: 7090}
+  - {id: 250, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 4840}
+  - {id: 251, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2380, y: 3490}
+  - {id: 252, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.270270258}}, x: 1080, y: 5890}
+  - {id: 253, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2640, y: 1390}
+  - {id: 254, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.270270258}}, x: 1080, y: 6040}
+  - {id: 255, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2120, y: 5440}
+  - {id: 256, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2900, y: 1390}
+  - {id: 257, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 3160, y: 1390}
+  - {id: 258, type: MathField, name: Sleeve half-thickness band 4, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 4200, y: 40}
+  - {id: 259, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {kind: Float, value: 0.92567569}}, x: 820, y: 1690}
+  - {id: 260, type: MathField, name: Div, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.0675675645}}, x: 1080, y: 1690}
+  - {id: 261, type: ClampFieldFloat, inputs: {Min: {kind: Float, value: 0}, Max: {kind: Float, value: 1}}, x: 1340, y: 1690}
+  - {id: 262, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 1600, y: 2140}
+  - {id: 263, type: MathField, name: Pow, inputs: {Operation: {kind: Menu, value: 8da37f19f4069495}, B: {kind: Float, value: 3}}, x: 1600, y: 3790}
+  - {id: 264, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 3}}, x: 1860, y: 4990}
+  - {id: 265, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 5140}
+  - {id: 266, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 3490}
+  - {id: 267, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 1540}
+  - {id: 268, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 1540}
+  - {id: 269, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2380, y: 1540}
+  - {id: 270, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 1860, y: 7240}
+  - {id: 271, type: Math, name: Sub, inputs: {A: {kind: Float, value: 0.00219999999}, Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 560, y: 4990}
+  - {id: 272, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2380, y: 3640}
+  - {id: 273, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.0675675645}}, x: 1080, y: 6190}
+  - {id: 274, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2640, y: 1540}
+  - {id: 275, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.0675675645}}, x: 1080, y: 6640}
+  - {id: 276, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2120, y: 5590}
+  - {id: 277, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2900, y: 1540}
+  - {id: 278, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 3160, y: 1540}
+  - {id: 279, type: MathField, name: Sleeve half-thickness band 5, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 4460, y: 40}
+  - {id: 280, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {kind: Float, value: 0.993243217}}, x: 820, y: 2140}
+  - {id: 281, type: MathField, name: Div, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.00675675692}}, x: 1080, y: 2140}
+  - {id: 282, type: ClampFieldFloat, inputs: {Min: {kind: Float, value: 0}, Max: {kind: Float, value: 1}}, x: 1340, y: 1990}
+  - {id: 283, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 1600, y: 2590}
+  - {id: 284, type: MathField, name: Pow, inputs: {Operation: {kind: Menu, value: 8da37f19f4069495}, B: {kind: Float, value: 3}}, x: 1600, y: 3940}
+  - {id: 285, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 3}}, x: 1860, y: 5440}
+  - {id: 286, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 5590}
+  - {id: 287, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 3790}
+  - {id: 288, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 2}}, x: 1860, y: 1690}
+  - {id: 289, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 2120, y: 1690}
+  - {id: 290, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2380, y: 1690}
+  - {id: 291, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 1860, y: 7390}
+  - {id: 292, type: Math, name: Sub, inputs: {A: {kind: Float, value: 0.00190000003}, Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {kind: Float, value: 0.00219999999}}, x: 2120, y: 3940}
+  - {id: 293, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2380, y: 3940}
+  - {id: 294, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.00675675692}}, x: 1080, y: 6790}
+  - {id: 295, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2640, y: 1690}
+  - {id: 296, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.00675675692}}, x: 560, y: 4390}
+  - {id: 297, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2120, y: 5740}
+  - {id: 298, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 2900, y: 1690}
+  - {id: 299, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 3160, y: 1690}
+  - {id: 300, type: MathField, name: Sleeve half-thickness band 6, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 4720, y: 40}
+  - {id: 301, type: MathField, name: Sign, inputs: {Operation: {kind: Menu, value: 789d8024e7a81744}}, x: 1080, y: 3490}
+  - {id: 302, type: MathField, name: Abs, inputs: {Operation: {kind: Menu, value: f9c2d219a01755db}}, x: 1080, y: 2740}
+  - {id: 303, type: MathField, name: Pow, inputs: {Operation: {kind: Menu, value: 8da37f19f4069495}, B: {kind: Float, value: 0.769230783}}, x: 1340, y: 2890}
+  - {id: 304, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 1600, y: 4540}
+  - {id: 305, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 4980, y: 190}
+  - {id: 306, type: MathField, name: Sign, inputs: {Operation: {kind: Menu, value: 789d8024e7a81744}}, x: 1080, y: 3340}
+  - {id: 307, type: MathField, name: Abs, inputs: {Operation: {kind: Menu, value: f9c2d219a01755db}}, x: 1080, y: 2590}
+  - {id: 308, type: MathField, name: Pow, inputs: {Operation: {kind: Menu, value: 8da37f19f4069495}, B: {kind: Float, value: 0.769230783}}, x: 1340, y: 2740}
+  - {id: 309, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 1600, y: 4390}
+  - {id: 310, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 4980, y: 40}
+  - {id: 311, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {kind: Float, value: 0.860000014}}, x: 820, y: 40}
+  - {id: 312, type: MathField, name: Div, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.0949999988}}, x: 1080, y: 40}
+  - {id: 313, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 1340, y: 40}
+  - {id: 314, type: MathField, name: Negate, inputs: {Operation: {kind: Menu, value: fb08f40348095c7b}}, x: 1600, y: 40}
+  - {id: 315, type: MathField, name: Exp, inputs: {Operation: {kind: Menu, value: d91b2b198e295068}}, x: 1860, y: 1840}
+  - {id: 316, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 4}}, x: 820, y: 3190}
+  - {id: 317, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 10}}, x: 820, y: 3040}
+  - {id: 318, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 1080, y: 3040}
+  - {id: 319, type: MathField, name: Sin, inputs: {Operation: {kind: Menu, value: 9851c119faa5d10d}}, x: 1340, y: 3190}
+  - {id: 320, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2120, y: 1840}
+  - {id: 321, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 1080, y: 3640}
+  - {id: 322, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2380, y: 1840}
+  - {id: 323, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {param: fold_strength_m}}, x: 2640, y: 1840}
+  - {id: 324, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 5240, y: 40}
+  - {id: 325, type: Math, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.148000002}}, x: 560, y: 1390}
+  - {id: 326, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 820, y: 3640}
+  - {id: 327, type: Math, name: Height above cap bottom, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: -0.063500002}}, x: 560, y: 3490}
+  - {id: 328, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 1080, y: 3790}
+  - {id: 329, type: CombineXYZField, name: Parametric position, x: 5500, y: 40}
+  - {id: 330, type: SetPosition, name: Measured parametric flexible sleeve, x: 5760, y: 40}
+  - {id: 331, type: FlipFaces, name: Outward sleeve winding, x: 6020, y: 40}
+  - {id: 332, type: UVTransform, name: Full-wrap label V=(height−33)/160, inputs: {Scale: {kind: Float3, value: [1, 0.925000012, 1]}, Offset: {kind: Float3, value: [0, -0.0375000015, 0]}}, x: 6280, y: 40}
+  - {id: 333, type: NormalField, name: Smooth native sleeve normals native normals, x: 6280, y: 190}
+  - {id: 334, type: SetPointNormal, name: Smooth native sleeve normals, x: 6540, y: 40}
+  - {id: 335, type: SetMaterial, name: Minwax clean printed label PBR, inputs: {Material: {kind: Material, value: [1, 1, 1, 1, 1, 1]}, BaseColorTexture: {param: label_basecolor_texture}, MetallicRoughnessTexture: {param: label_metallic_roughness_texture}, Name: {kind: String, value: Minwax printed sleeve}}, x: 6800, y: 40}
+  - {id: 336, type: SetMeshName, name: Minwax flexible sleeve, inputs: {Name: {kind: String, value: Minwax_flexible_sleeve}}, x: 7060, y: 40}
+  - {id: 337, type: CurveFromAnchors, name: Molded nozzle and shoulder section, inputs: {AnchorCount: {kind: Int32, value: 8}, Anchor0: {kind: Float3, value: [0, -0.0914999992, 0]}, Anchor1: {kind: Float3, value: [0.00240000011, -0.0914999992, 0]}, Anchor2: {kind: Float3, value: [0.00449999981, -0.0874999985, 0]}, Anchor3: {kind: Float3, value: [0.00499999989, -0.075000003, 0]}, Anchor4: {kind: Float3, value: [0.00730000017, -0.0729999989, 0]}, Anchor5: {kind: Float3, value: [0.00730000017, -0.0659999996, 0]}, Anchor6: {kind: Float3, value: [0.0215000007, -0.063500002, 0]}, Anchor7: {kind: Float3, value: [0, -0.063500002, 0]}}, x: 40, y: 490}
+  - {id: 338, type: RevolveCurve, name: Clean molded shoulder/nozzle, inputs: {Segments: {kind: Int32, value: 192}}, x: 300, y: 490}
+  - {id: 339, type: MergeByDistance, name: Weld nozzle axis, inputs: {Distance: {kind: Float, value: 1.00000001e-07}}, x: 560, y: 490}
+  - {id: 340, type: MeshCylinder, name: Outlet bore, inputs: {Sides: {kind: Int32, value: 64}, Radius: {kind: Float, value: 0.00164999999}, Height: {kind: Float, value: 0.0140000004}}, x: 40, y: 1840}
+  - {id: 341, type: Transform, name: Outlet bore location, inputs: {Translation: {kind: Float3, value: [0, -0.0860000029, 0]}}, x: 300, y: 3340}
+  - {id: 342, type: MeshBoolean, name: Hollow nozzle outlet, inputs: {Operation: {kind: Menu, value: b67e0e7c0869f982}}, x: 820, y: 2290}
+  - {id: 343, type: BevelEdge, name: Yellow molded shoulder and nozzle molded edge radius, inputs: {Offset: {kind: Float, value: 0.000250000012}, Segments: {kind: Int32, value: 3}, AngleThreshold: {kind: Float, value: 0.649999976}}, x: 1080, y: 2290}
+  - {id: 344, type: RecalculateNormals, name: Yellow molded shoulder and nozzle consistent outward shell, x: 1340, y: 2140}
+  - {id: 345, type: NormalField, name: Yellow molded shoulder and nozzle smooth normals native normals, x: 1340, y: 2290}
+  - {id: 346, type: SetPointNormal, name: Yellow molded shoulder and nozzle smooth normals, x: 1600, y: 4090}
+  - {id: 347, type: SetMaterial, name: Yellow molded shoulder and nozzle PBR, inputs: {Material: {kind: Material, value: [0.920000017, 0.569999993, 0.0170000009, 1, 0, 0.319999993]}, Name: {kind: String, value: Yellow molded shoulder and nozzle}}, x: 1860, y: 7540}
+  - {id: 348, type: SetMeshName, name: Yellow molded shoulder and nozzle, inputs: {Name: {kind: String, value: Yellow molded shoulder and nozzle}}, x: 2120, y: 5890}
+  - {id: 349, type: CurveSpiral, name: Three native male thread turns, inputs: {Resolution: {kind: Int32, value: 96}, Rotations: {kind: Float, value: 3}, StartRadius: {kind: Float, value: 0.00755000021}, EndRadius: {kind: Float, value: 0.00755000021}, Height: {kind: Float, value: 0.00630000001}}, x: 40, y: 640}
+  - {id: 350, type: CurveToTube, name: Rounded molded male thread, inputs: {Radius: {kind: Float, value: 0.000419999997}, Sides: {kind: Int32, value: 8}}, x: 300, y: 790}
+  - {id: 351, type: Transform, name: Yellow screw threads placement, inputs: {Translation: {kind: Float3, value: [0, -0.0719999969, 0]}}, x: 560, y: 790}
+  - {id: 352, type: RecalculateNormals, name: Yellow screw threads consistent outward shell, x: 820, y: 2590}
+  - {id: 353, type: NormalField, name: Yellow screw threads smooth normals native normals, x: 820, y: 2740}
+  - {id: 354, type: SetPointNormal, name: Yellow screw threads smooth normals, x: 1080, y: 2890}
+  - {id: 355, type: SetMaterial, name: Yellow screw threads PBR, inputs: {Material: {kind: Material, value: [0.920000017, 0.569999993, 0.0170000009, 1, 0, 0.319999993]}, Name: {kind: String, value: Yellow screw threads}}, x: 1340, y: 3040}
+  - {id: 356, type: SetMeshName, name: Yellow screw threads, inputs: {Name: {kind: String, value: Yellow screw threads}}, x: 1600, y: 4690}
+  - {id: 357, type: MeshCylinder, name: Recessed filler in outlet, inputs: {Sides: {kind: Int32, value: 48}, Radius: {kind: Float, value: 0.00164000003}, Height: {kind: Float, value: 0.000500000024}}, x: 40, y: 790}
+  - {id: 358, type: Transform, name: Filler visible inside nozzle placement, inputs: {Translation: {kind: Float3, value: [0, -0.0799999982, 0]}}, x: 300, y: 940}
+  - {id: 359, type: RecalculateNormals, name: Filler visible inside nozzle consistent outward shell, x: 560, y: 1090}
+  - {id: 360, type: NormalField, name: Filler visible inside nozzle smooth normals native normals, x: 560, y: 1240}
+  - {id: 361, type: SetPointNormal, name: Filler visible inside nozzle smooth normals, x: 820, y: 3340}
+  - {id: 362, type: SetMaterial, name: Filler visible inside nozzle PBR, inputs: {Material: {kind: Material, value: [0.419999987, 0.310000002, 0.159999996, 1, 0, 0.769999981]}, Name: {kind: String, value: Filler visible inside nozzle}}, x: 1080, y: 3190}
+  - {id: 363, type: SetMeshName, name: Filler visible inside nozzle, inputs: {Name: {kind: String, value: Filler visible inside nozzle}}, x: 1340, y: 3340}
+  - {id: 364, type: MeshCube, name: Flat heat-sealed crimp, inputs: {SizeX: {param: crimp_width_m}, SizeY: {kind: Float, value: 0.0120000001}, SizeZ: {kind: Float, value: 0.00179999997}}, x: 300, y: 3190}
+  - {id: 365, type: BevelEdge, name: Crimp perimeter rounding, inputs: {Offset: {kind: Float, value: 0.000419999997}, Segments: {kind: Int32, value: 3}}, x: 560, y: 5440}
+  - {id: 366, type: Math, name: Height above cap bottom, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.0904999971}}, x: 560, y: 340}
+  - {id: 367, type: CombineXYZ, name: Position, inputs: {X: {kind: Float, value: 0}, Z: {kind: Float, value: 0}}, x: 820, y: 1990}
+  - {id: 368, type: Transform, name: Crimp at measured top, x: 1080, y: 1990}
+  - {id: 369, type: MeshCube, name: Euro-slot straight centre, inputs: {SizeX: {kind: Float, value: 0.0216000006}, SizeY: {kind: Float, value: 0.00439999998}, SizeZ: {kind: Float, value: 0.00999999978}}, x: 40, y: 40}
+  - {id: 370, type: Transform, inputs: {Translation: {kind: Float3, value: [0, 0.0904999971, 0]}}, x: 300, y: 40}
+  - {id: 371, type: MeshCylinder, name: Rounded hanger cutout, inputs: {Sides: {kind: Int32, value: 64}, Radius: {kind: Float, value: 0.00219999999}, Height: {kind: Float, value: 0.00999999978}}, x: 40, y: 190}
+  - {id: 372, type: Transform, inputs: {Rotation: {kind: Float3, value: [1.57079637, 0, 0]}, Translation: {kind: Float3, value: [-0.0108000003, 0.0904999971, 0]}}, x: 300, y: 190}
+  - {id: 373, type: MeshCylinder, name: Rounded hanger cutout, inputs: {Sides: {kind: Int32, value: 64}, Radius: {kind: Float, value: 0.00219999999}, Height: {kind: Float, value: 0.00999999978}}, x: 40, y: 1990}
+  - {id: 374, type: Transform, inputs: {Rotation: {kind: Float3, value: [1.57079637, 0, 0]}, Translation: {kind: Float3, value: [0.0108000003, 0.0904999971, 0]}}, x: 300, y: 3490}
+  - {id: 375, type: MeshCylinder, name: Rounded hanger cutout, inputs: {Sides: {kind: Int32, value: 64}, Radius: {kind: Float, value: 0.00410000002}, Height: {kind: Float, value: 0.00999999978}}, x: 40, y: 2140}
+  - {id: 376, type: Transform, inputs: {Rotation: {kind: Float3, value: [1.57079637, 0, 0]}, Translation: {kind: Float3, value: [0, 0.0912000015, 0]}}, x: 300, y: 3640}
+  - {id: 377, type: MeshBoolean, name: Union hanger cutting volumes, inputs: {Operation: {kind: Menu, value: 0ae93fb50ca42f94}}, x: 560, y: 190}
+  - {id: 378, type: MeshBoolean, name: Union hanger cutting volumes, inputs: {Operation: {kind: Menu, value: 0ae93fb50ca42f94}}, x: 820, y: 1840}
+  - {id: 379, type: MeshBoolean, name: Union hanger cutting volumes, inputs: {Operation: {kind: Menu, value: 0ae93fb50ca42f94}}, x: 1080, y: 1840}
+  - {id: 380, type: MeshBoolean, name: Real through-cut hanger hole, inputs: {Operation: {kind: Menu, value: b67e0e7c0869f982}}, x: 1340, y: 1840}
+  - {id: 381, type: RecalculateNormals, name: Gold crimp with hanger opening consistent outward shell, x: 1600, y: 3040}
+  - {id: 382, type: NormalField, name: Gold crimp with hanger opening smooth normals native normals, x: 1600, y: 3190}
+  - {id: 383, type: SetPointNormal, name: Gold crimp with hanger opening smooth normals, x: 1860, y: 5290}
+  - {id: 384, type: SetMaterial, name: Gold crimp with hanger opening PBR, inputs: {Material: {kind: Material, value: [0.920000017, 0.569999993, 0.0170000009, 1, 0, 0.319999993]}, Name: {kind: String, value: Gold crimp with hanger opening}}, x: 2120, y: 3640}
+  - {id: 385, type: SetMeshName, name: Gold crimp with hanger opening, inputs: {Name: {kind: String, value: Gold crimp with hanger opening}}, x: 2380, y: 3790}
+  - {id: 386, type: Math, name: Mul, inputs: {A: {param: crimp_width_m}, B: {kind: Float, value: 0.994000018}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 300, y: 640}
+  - {id: 387, type: MeshCube, name: Black welded seam band, inputs: {SizeY: {kind: Float, value: 0.00430000015}, SizeZ: {kind: Float, value: 0.00310000009}}, x: 560, y: 640}
+  - {id: 388, type: Transform, name: Black pressed sealing band placement, inputs: {Translation: {kind: Float3, value: [0, 0.0852999985, 0]}}, x: 820, y: 2440}
+  - {id: 389, type: BevelEdge, name: Black pressed sealing band molded edge radius, inputs: {Offset: {kind: Float, value: 0.000349999988}, Segments: {kind: Int32, value: 3}, AngleThreshold: {kind: Float, value: 0.649999976}}, x: 1080, y: 2440}
+  - {id: 390, type: RecalculateNormals, name: Black pressed sealing band consistent outward shell, x: 1340, y: 2440}
+  - {id: 391, type: NormalField, name: Black pressed sealing band smooth normals native normals, x: 1340, y: 2590}
+  - {id: 392, type: SetPointNormal, name: Black pressed sealing band smooth normals, x: 1600, y: 4240}
+  - {id: 393, type: SetMaterial, name: Black pressed sealing band PBR, inputs: {Material: {kind: Material, value: [0.0120000001, 0.0140000004, 0.0160000008, 1, 0, 0.310000002]}, Name: {kind: String, value: Black pressed sealing band}}, x: 1860, y: 7690}
+  - {id: 394, type: SetMeshName, name: Black pressed sealing band, inputs: {Name: {kind: String, value: Black pressed sealing band}}, x: 2120, y: 6040}
+  - {id: 395, type: JoinGeometry, name: Assemble separate part 1, x: 7320, y: 40}
+  - {id: 396, type: JoinGeometry, name: Assemble separate part 2, x: 7580, y: 40}
+  - {id: 397, type: JoinGeometry, name: Assemble separate part 3, x: 7840, y: 40}
+  - {id: 398, type: JoinGeometry, name: Assemble separate part 4, x: 8100, y: 40}
+  - {id: 399, type: JoinGeometry, name: Assemble separate part 5, x: 8360, y: 40}
+  - {id: 400, type: SetMeshOutputRole, name: Visual-only procedural tube, inputs: {Role: {kind: Menu, value: 393ee15f7d35d08d}}, x: 8620, y: 40}
+links: [{from: {node: 3, pin: Value}, to: {node: 4, pin: Source}}, {from: {node: 4, pin: Z}, to: {node: 5, pin: A}}, {from: {node: 4, pin: X}, to: {node: 6, pin: A}}, {from: {node: 6, pin: Value}, to: {node: 7, pin: A}}, {from: {node: 6, pin: Value}, to: {node: 8, pin: A}}, {from: {node: 10, pin: Value}, to: {node: 21, pin: A}}, {from: {node: 9, pin: Value}, to: {node: 21, pin: B}}, {from: {node: 21, pin: Value}, to: {node: 22, pin: A}}, {from: {node: 11, pin: Value}, to: {node: 23, pin: A}}, {from: {node: 9, pin: Value}, to: {node: 23, pin: B}}, {from: {node: 23, pin: Value}, to: {node: 24, pin: A}}, {from: {node: 12, pin: Value}, to: {node: 25, pin: A}}, {from: {node: 10, pin: Value}, to: {node: 25, pin: B}}, {from: {node: 25, pin: Value}, to: {node: 26, pin: A}}, {from: {node: 13, pin: Value}, to: {node: 27, pin: A}}, {from: {node: 11, pin: Value}, to: {node: 27, pin: B}}, {from: {node: 27, pin: Value}, to: {node: 28, pin: A}}, {from: {node: 14, pin: Value}, to: {node: 29, pin: A}}, {from: {node: 12, pin: Value}, to: {node: 29, pin: B}}, {from: {node: 29, pin: Value}, to: {node: 30, pin: A}}, {from: {node: 15, pin: Value}, to: {node: 31, pin: A}}, {from: {node: 13, pin: Value}, to: {node: 31, pin: B}}, {from: {node: 31, pin: Value}, to: {node: 32, pin: A}}, {from: {node: 15, pin: Value}, to: {node: 33, pin: A}}, {from: {node: 14, pin: Value}, to: {node: 33, pin: B}}, {from: {node: 33, pin: Value}, to: {node: 34, pin: A}}, {from: {node: 5, pin: Value}, to: {node: 35, pin: A}}, {from: {node: 35, pin: Value}, to: {node: 36, pin: A}}, {from: {node: 36, pin: Value}, to: {node: 37, pin: Source}}, {from: {node: 37, pin: Value}, to: {node: 38, pin: A}}, {from: {node: 37, pin: Value}, to: {node: 38, pin: B}}, {from: {node: 37, pin: Value}, to: {node: 39, pin: A}}, {from: {node: 38, pin: Value}, to: {node: 40, pin: A}}, {from: {node: 39, pin: Value}, to: {node: 41, pin: A}}, {from: {node: 40, pin: Value}, to: {node: 42, pin: A}}, {from: {node: 41, pin: Value}, to: {node: 42, pin: B}}, {from: {node: 38, pin: Value}, to: {node: 43, pin: A}}, {from: {node: 39, pin: Value}, to: {node: 44, pin: A}}, {from: {node: 43, pin: Value}, to: {node: 44, pin: B}}, {from: {node: 44, pin: Value}, to: {node: 45, pin: A}}, {from: {node: 37, pin: Value}, to: {node: 45, pin: B}}, {from: {node: 39, pin: Value}, to: {node: 46, pin: A}}, {from: {node: 38, pin: Value}, to: {node: 46, pin: B}}, {from: {node: 10, pin: Value}, to: {node: 47, pin: A}}, {from: {node: 9, pin: Value}, to: {node: 47, pin: B}}, {from: {node: 42, pin: Value}, to: {node: 48, pin: A}}, {from: {node: 47, pin: Value}, to: {node: 48, pin: B}}, {from: {node: 22, pin: Value}, to: {node: 49, pin: A}}, {from: {node: 45, pin: Value}, to: {node: 50, pin: A}}, {from: {node: 49, pin: Value}, to: {node: 50, pin: B}}, {from: {node: 24, pin: Value}, to: {node: 51, pin: A}}, {from: {node: 46, pin: Value}, to: {node: 52, pin: A}}, {from: {node: 51, pin: Value}, to: {node: 52, pin: B}}, {from: {node: 50, pin: Value}, to: {node: 53, pin: A}}, {from: {node: 52, pin: Value}, to: {node: 53, pin: B}}, {from: {node: 48, pin: Value}, to: {node: 54, pin: A}}, {from: {node: 53, pin: Value}, to: {node: 54, pin: B}}, {from: {node: 9, pin: Value}, to: {node: 55, pin: A}}, {from: {node: 54, pin: Value}, to: {node: 55, pin: B}}, {from: {node: 5, pin: Value}, to: {node: 56, pin: A}}, {from: {node: 56, pin: Value}, to: {node: 57, pin: A}}, {from: {node: 57, pin: Value}, to: {node: 58, pin: Source}}, {from: {node: 58, pin: Value}, to: {node: 59, pin: A}}, {from: {node: 58, pin: Value}, to: {node: 59, pin: B}}, {from: {node: 58, pin: Value}, to: {node: 60, pin: A}}, {from: {node: 59, pin: Value}, to: {node: 61, pin: A}}, {from: {node: 60, pin: Value}, to: {node: 62, pin: A}}, {from: {node: 61, pin: Value}, to: {node: 63, pin: A}}, {from: {node: 62, pin: Value}, to: {node: 63, pin: B}}, {from: {node: 59, pin: Value}, to: {node: 64, pin: A}}, {from: {node: 60, pin: Value}, to: {node: 65, pin: A}}, {from: {node: 64, pin: Value}, to: {node: 65, pin: B}}, {from: {node: 65, pin: Value}, to: {node: 66, pin: A}}, {from: {node: 58, pin: Value}, to: {node: 66, pin: B}}, {from: {node: 60, pin: Value}, to: {node: 67, pin: A}}, {from: {node: 59, pin: Value}, to: {node: 67, pin: B}}, {from: {node: 11, pin: Value}, to: {node: 68, pin: A}}, {from: {node: 10, pin: Value}, to: {node: 68, pin: B}}, {from: {node: 63, pin: Value}, to: {node: 69, pin: A}}, {from: {node: 68, pin: Value}, to: {node: 69, pin: B}}, {from: {node: 24, pin: Value}, to: {node: 70, pin: A}}, {from: {node: 66, pin: Value}, to: {node: 71, pin: A}}, {from: {node: 70, pin: Value}, to: {node: 71, pin: B}}, {from: {node: 26, pin: Value}, to: {node: 72, pin: A}}, {from: {node: 67, pin: Value}, to: {node: 73, pin: A}}, {from: {node: 72, pin: Value}, to: {node: 73, pin: B}}, {from: {node: 71, pin: Value}, to: {node: 74, pin: A}}, {from: {node: 73, pin: Value}, to: {node: 74, pin: B}}, {from: {node: 69, pin: Value}, to: {node: 75, pin: A}}, {from: {node: 74, pin: Value}, to: {node: 75, pin: B}}, {from: {node: 55, pin: Value}, to: {node: 76, pin: A}}, {from: {node: 75, pin: Value}, to: {node: 76, pin: B}}, {from: {node: 5, pin: Value}, to: {node: 77, pin: A}}, {from: {node: 77, pin: Value}, to: {node: 78, pin: A}}, {from: {node: 78, pin: Value}, to: {node: 79, pin: Source}}, {from: {node: 79, pin: Value}, to: {node: 80, pin: A}}, {from: {node: 79, pin: Value}, to: {node: 80, pin: B}}, {from: {node: 79, pin: Value}, to: {node: 81, pin: A}}, {from: {node: 80, pin: Value}, to: {node: 82, pin: A}}, {from: {node: 81, pin: Value}, to: {node: 83, pin: A}}, {from: {node: 82, pin: Value}, to: {node: 84, pin: A}}, {from: {node: 83, pin: Value}, to: {node: 84, pin: B}}, {from: {node: 80, pin: Value}, to: {node: 85, pin: A}}, {from: {node: 81, pin: Value}, to: {node: 86, pin: A}}, {from: {node: 85, pin: Value}, to: {node: 86, pin: B}}, {from: {node: 86, pin: Value}, to: {node: 87, pin: A}}, {from: {node: 79, pin: Value}, to: {node: 87, pin: B}}, {from: {node: 81, pin: Value}, to: {node: 88, pin: A}}, {from: {node: 80, pin: Value}, to: {node: 88, pin: B}}, {from: {node: 12, pin: Value}, to: {node: 89, pin: A}}, {from: {node: 11, pin: Value}, to: {node: 89, pin: B}}, {from: {node: 84, pin: Value}, to: {node: 90, pin: A}}, {from: {node: 89, pin: Value}, to: {node: 90, pin: B}}, {from: {node: 26, pin: Value}, to: {node: 91, pin: A}}, {from: {node: 87, pin: Value}, to: {node: 92, pin: A}}, {from: {node: 91, pin: Value}, to: {node: 92, pin: B}}, {from: {node: 28, pin: Value}, to: {node: 93, pin: A}}, {from: {node: 88, pin: Value}, to: {node: 94, pin: A}}, {from: {node: 93, pin: Value}, to: {node: 94, pin: B}}, {from: {node: 92, pin: Value}, to: {node: 95, pin: A}}, {from: {node: 94, pin: Value}, to: {node: 95, pin: B}}, {from: {node: 90, pin: Value}, to: {node: 96, pin: A}}, {from: {node: 95, pin: Value}, to: {node: 96, pin: B}}, {from: {node: 76, pin: Value}, to: {node: 97, pin: A}}, {from: {node: 96, pin: Value}, to: {node: 97, pin: B}}, {from: {node: 5, pin: Value}, to: {node: 98, pin: A}}, {from: {node: 98, pin: Value}, to: {node: 99, pin: A}}, {from: {node: 99, pin: Value}, to: {node: 100, pin: Source}}, {from: {node: 100, pin: Value}, to: {node: 101, pin: A}}, {from: {node: 100, pin: Value}, to: {node: 101, pin: B}}, {from: {node: 100, pin: Value}, to: {node: 102, pin: A}}, {from: {node: 101, pin: Value}, to: {node: 103, pin: A}}, {from: {node: 102, pin: Value}, to: {node: 104, pin: A}}, {from: {node: 103, pin: Value}, to: {node: 105, pin: A}}, {from: {node: 104, pin: Value}, to: {node: 105, pin: B}}, {from: {node: 101, pin: Value}, to: {node: 106, pin: A}}, {from: {node: 102, pin: Value}, to: {node: 107, pin: A}}, {from: {node: 106, pin: Value}, to: {node: 107, pin: B}}, {from: {node: 107, pin: Value}, to: {node: 108, pin: A}}, {from: {node: 100, pin: Value}, to: {node: 108, pin: B}}, {from: {node: 102, pin: Value}, to: {node: 109, pin: A}}, {from: {node: 101, pin: Value}, to: {node: 109, pin: B}}, {from: {node: 13, pin: Value}, to: {node: 110, pin: A}}, {from: {node: 12, pin: Value}, to: {node: 110, pin: B}}, {from: {node: 105, pin: Value}, to: {node: 111, pin: A}}, {from: {node: 110, pin: Value}, to: {node: 111, pin: B}}, {from: {node: 28, pin: Value}, to: {node: 112, pin: A}}, {from: {node: 108, pin: Value}, to: {node: 113, pin: A}}, {from: {node: 112, pin: Value}, to: {node: 113, pin: B}}, {from: {node: 30, pin: Value}, to: {node: 114, pin: A}}, {from: {node: 109, pin: Value}, to: {node: 115, pin: A}}, {from: {node: 114, pin: Value}, to: {node: 115, pin: B}}, {from: {node: 113, pin: Value}, to: {node: 116, pin: A}}, {from: {node: 115, pin: Value}, to: {node: 116, pin: B}}, {from: {node: 111, pin: Value}, to: {node: 117, pin: A}}, {from: {node: 116, pin: Value}, to: {node: 117, pin: B}}, {from: {node: 97, pin: Value}, to: {node: 118, pin: A}}, {from: {node: 117, pin: Value}, to: {node: 118, pin: B}}, {from: {node: 5, pin: Value}, to: {node: 119, pin: A}}, {from: {node: 119, pin: Value}, to: {node: 120, pin: A}}, {from: {node: 120, pin: Value}, to: {node: 121, pin: Source}}, {from: {node: 121, pin: Value}, to: {node: 122, pin: A}}, {from: {node: 121, pin: Value}, to: {node: 122, pin: B}}, {from: {node: 121, pin: Value}, to: {node: 123, pin: A}}, {from: {node: 122, pin: Value}, to: {node: 124, pin: A}}, {from: {node: 123, pin: Value}, to: {node: 125, pin: A}}, {from: {node: 124, pin: Value}, to: {node: 126, pin: A}}, {from: {node: 125, pin: Value}, to: {node: 126, pin: B}}, {from: {node: 122, pin: Value}, to: {node: 127, pin: A}}, {from: {node: 123, pin: Value}, to: {node: 128, pin: A}}, {from: {node: 127, pin: Value}, to: {node: 128, pin: B}}, {from: {node: 128, pin: Value}, to: {node: 129, pin: A}}, {from: {node: 121, pin: Value}, to: {node: 129, pin: B}}, {from: {node: 123, pin: Value}, to: {node: 130, pin: A}}, {from: {node: 122, pin: Value}, to: {node: 130, pin: B}}, {from: {node: 14, pin: Value}, to: {node: 131, pin: A}}, {from: {node: 13, pin: Value}, to: {node: 131, pin: B}}, {from: {node: 126, pin: Value}, to: {node: 132, pin: A}}, {from: {node: 131, pin: Value}, to: {node: 132, pin: B}}, {from: {node: 30, pin: Value}, to: {node: 133, pin: A}}, {from: {node: 129, pin: Value}, to: {node: 134, pin: A}}, {from: {node: 133, pin: Value}, to: {node: 134, pin: B}}, {from: {node: 32, pin: Value}, to: {node: 135, pin: A}}, {from: {node: 130, pin: Value}, to: {node: 136, pin: A}}, {from: {node: 135, pin: Value}, to: {node: 136, pin: B}}, {from: {node: 134, pin: Value}, to: {node: 137, pin: A}}, {from: {node: 136, pin: Value}, to: {node: 137, pin: B}}, {from: {node: 132, pin: Value}, to: {node: 138, pin: A}}, {from: {node: 137, pin: Value}, to: {node: 138, pin: B}}, {from: {node: 118, pin: Value}, to: {node: 139, pin: A}}, {from: {node: 138, pin: Value}, to: {node: 139, pin: B}}, {from: {node: 5, pin: Value}, to: {node: 140, pin: A}}, {from: {node: 140, pin: Value}, to: {node: 141, pin: A}}, {from: {node: 141, pin: Value}, to: {node: 142, pin: Source}}, {from: {node: 142, pin: Value}, to: {node: 143, pin: A}}, {from: {node: 142, pin: Value}, to: {node: 143, pin: B}}, {from: {node: 142, pin: Value}, to: {node: 144, pin: A}}, {from: {node: 143, pin: Value}, to: {node: 145, pin: A}}, {from: {node: 144, pin: Value}, to: {node: 146, pin: A}}, {from: {node: 145, pin: Value}, to: {node: 147, pin: A}}, {from: {node: 146, pin: Value}, to: {node: 147, pin: B}}, {from: {node: 143, pin: Value}, to: {node: 148, pin: A}}, {from: {node: 144, pin: Value}, to: {node: 149, pin: A}}, {from: {node: 148, pin: Value}, to: {node: 149, pin: B}}, {from: {node: 149, pin: Value}, to: {node: 150, pin: A}}, {from: {node: 142, pin: Value}, to: {node: 150, pin: B}}, {from: {node: 144, pin: Value}, to: {node: 151, pin: A}}, {from: {node: 143, pin: Value}, to: {node: 151, pin: B}}, {from: {node: 15, pin: Value}, to: {node: 152, pin: A}}, {from: {node: 14, pin: Value}, to: {node: 152, pin: B}}, {from: {node: 147, pin: Value}, to: {node: 153, pin: A}}, {from: {node: 152, pin: Value}, to: {node: 153, pin: B}}, {from: {node: 32, pin: Value}, to: {node: 154, pin: A}}, {from: {node: 150, pin: Value}, to: {node: 155, pin: A}}, {from: {node: 154, pin: Value}, to: {node: 155, pin: B}}, {from: {node: 34, pin: Value}, to: {node: 156, pin: A}}, {from: {node: 151, pin: Value}, to: {node: 157, pin: A}}, {from: {node: 156, pin: Value}, to: {node: 157, pin: B}}, {from: {node: 155, pin: Value}, to: {node: 158, pin: A}}, {from: {node: 157, pin: Value}, to: {node: 158, pin: B}}, {from: {node: 153, pin: Value}, to: {node: 159, pin: A}}, {from: {node: 158, pin: Value}, to: {node: 159, pin: B}}, {from: {node: 139, pin: Value}, to: {node: 160, pin: A}}, {from: {node: 159, pin: Value}, to: {node: 160, pin: B}}, {from: {node: 17, pin: Value}, to: {node: 161, pin: A}}, {from: {node: 16, pin: Value}, to: {node: 161, pin: B}}, {from: {node: 161, pin: Value}, to: {node: 162, pin: A}}, {from: {node: 18, pin: Value}, to: {node: 163, pin: A}}, {from: {node: 16, pin: Value}, to: {node: 163, pin: B}}, {from: {node: 163, pin: Value}, to: {node: 164, pin: A}}, {from: {node: 19, pin: Value}, to: {node: 165, pin: A}}, {from: {node: 17, pin: Value}, to: {node: 165, pin: B}}, {from: {node: 165, pin: Value}, to: {node: 166, pin: A}}, {from: {node: 20, pin: Value}, to: {node: 167, pin: A}}, {from: {node: 18, pin: Value}, to: {node: 167, pin: B}}, {from: {node: 167, pin: Value}, to: {node: 168, pin: A}}, {from: {node: 19, pin: Value}, to: {node: 169, pin: B}}, {from: {node: 169, pin: Value}, to: {node: 170, pin: A}}, {from: {node: 20, pin: Value}, to: {node: 171, pin: B}}, {from: {node: 171, pin: Value}, to: {node: 172, pin: A}}, {from: {node: 173, pin: Value}, to: {node: 174, pin: A}}, {from: {node: 5, pin: Value}, to: {node: 175, pin: A}}, {from: {node: 175, pin: Value}, to: {node: 176, pin: A}}, {from: {node: 176, pin: Value}, to: {node: 177, pin: Source}}, {from: {node: 177, pin: Value}, to: {node: 178, pin: A}}, {from: {node: 177, pin: Value}, to: {node: 178, pin: B}}, {from: {node: 177, pin: Value}, to: {node: 179, pin: A}}, {from: {node: 178, pin: Value}, to: {node: 180, pin: A}}, {from: {node: 179, pin: Value}, to: {node: 181, pin: A}}, {from: {node: 180, pin: Value}, to: {node: 182, pin: A}}, {from: {node: 181, pin: Value}, to: {node: 182, pin: B}}, {from: {node: 178, pin: Value}, to: {node: 183, pin: A}}, {from: {node: 179, pin: Value}, to: {node: 184, pin: A}}, {from: {node: 183, pin: Value}, to: {node: 184, pin: B}}, {from: {node: 184, pin: Value}, to: {node: 185, pin: A}}, {from: {node: 177, pin: Value}, to: {node: 185, pin: B}}, {from: {node: 179, pin: Value}, to: {node: 186, pin: A}}, {from: {node: 178, pin: Value}, to: {node: 186, pin: B}}, {from: {node: 17, pin: Value}, to: {node: 187, pin: A}}, {from: {node: 16, pin: Value}, to: {node: 187, pin: B}}, {from: {node: 182, pin: Value}, to: {node: 188, pin: A}}, {from: {node: 187, pin: Value}, to: {node: 188, pin: B}}, {from: {node: 162, pin: Value}, to: {node: 189, pin: A}}, {from: {node: 185, pin: Value}, to: {node: 190, pin: A}}, {from: {node: 189, pin: Value}, to: {node: 190, pin: B}}, {from: {node: 164, pin: Value}, to: {node: 191, pin: A}}, {from: {node: 186, pin: Value}, to: {node: 192, pin: A}}, {from: {node: 191, pin: Value}, to: {node: 192, pin: B}}, {from: {node: 190, pin: Value}, to: {node: 193, pin: A}}, {from: {node: 192, pin: Value}, to: {node: 193, pin: B}}, {from: {node: 188, pin: Value}, to: {node: 194, pin: A}}, {from: {node: 193, pin: Value}, to: {node: 194, pin: B}}, {from: {node: 16, pin: Value}, to: {node: 195, pin: A}}, {from: {node: 194, pin: Value}, to: {node: 195, pin: B}}, {from: {node: 5, pin: Value}, to: {node: 196, pin: A}}, {from: {node: 196, pin: Value}, to: {node: 197, pin: A}}, {from: {node: 197, pin: Value}, to: {node: 198, pin: Source}}, {from: {node: 198, pin: Value}, to: {node: 199, pin: A}}, {from: {node: 198, pin: Value}, to: {node: 199, pin: B}}, {from: {node: 198, pin: Value}, to: {node: 200, pin: A}}, {from: {node: 199, pin: Value}, to: {node: 201, pin: A}}, {from: {node: 200, pin: Value}, to: {node: 202, pin: A}}, {from: {node: 201, pin: Value}, to: {node: 203, pin: A}}, {from: {node: 202, pin: Value}, to: {node: 203, pin: B}}, {from: {node: 199, pin: Value}, to: {node: 204, pin: A}}, {from: {node: 200, pin: Value}, to: {node: 205, pin: A}}, {from: {node: 204, pin: Value}, to: {node: 205, pin: B}}, {from: {node: 205, pin: Value}, to: {node: 206, pin: A}}, {from: {node: 198, pin: Value}, to: {node: 206, pin: B}}, {from: {node: 200, pin: Value}, to: {node: 207, pin: A}}, {from: {node: 199, pin: Value}, to: {node: 207, pin: B}}, {from: {node: 18, pin: Value}, to: {node: 208, pin: A}}, {from: {node: 17, pin: Value}, to: {node: 208, pin: B}}, {from: {node: 203, pin: Value}, to: {node: 209, pin: A}}, {from: {node: 208, pin: Value}, to: {node: 209, pin: B}}, {from: {node: 164, pin: Value}, to: {node: 210, pin: A}}, {from: {node: 206, pin: Value}, to: {node: 211, pin: A}}, {from: {node: 210, pin: Value}, to: {node: 211, pin: B}}, {from: {node: 166, pin: Value}, to: {node: 212, pin: A}}, {from: {node: 207, pin: Value}, to: {node: 213, pin: A}}, {from: {node: 212, pin: Value}, to: {node: 213, pin: B}}, {from: {node: 211, pin: Value}, to: {node: 214, pin: A}}, {from: {node: 213, pin: Value}, to: {node: 214, pin: B}}, {from: {node: 209, pin: Value}, to: {node: 215, pin: A}}, {from: {node: 214, pin: Value}, to: {node: 215, pin: B}}, {from: {node: 195, pin: Value}, to: {node: 216, pin: A}}, {from: {node: 215, pin: Value}, to: {node: 216, pin: B}}, {from: {node: 5, pin: Value}, to: {node: 217, pin: A}}, {from: {node: 217, pin: Value}, to: {node: 218, pin: A}}, {from: {node: 218, pin: Value}, to: {node: 219, pin: Source}}, {from: {node: 219, pin: Value}, to: {node: 220, pin: A}}, {from: {node: 219, pin: Value}, to: {node: 220, pin: B}}, {from: {node: 219, pin: Value}, to: {node: 221, pin: A}}, {from: {node: 220, pin: Value}, to: {node: 222, pin: A}}, {from: {node: 221, pin: Value}, to: {node: 223, pin: A}}, {from: {node: 222, pin: Value}, to: {node: 224, pin: A}}, {from: {node: 223, pin: Value}, to: {node: 224, pin: B}}, {from: {node: 220, pin: Value}, to: {node: 225, pin: A}}, {from: {node: 221, pin: Value}, to: {node: 226, pin: A}}, {from: {node: 225, pin: Value}, to: {node: 226, pin: B}}, {from: {node: 226, pin: Value}, to: {node: 227, pin: A}}, {from: {node: 219, pin: Value}, to: {node: 227, pin: B}}, {from: {node: 221, pin: Value}, to: {node: 228, pin: A}}, {from: {node: 220, pin: Value}, to: {node: 228, pin: B}}, {from: {node: 19, pin: Value}, to: {node: 229, pin: A}}, {from: {node: 18, pin: Value}, to: {node: 229, pin: B}}, {from: {node: 224, pin: Value}, to: {node: 230, pin: A}}, {from: {node: 229, pin: Value}, to: {node: 230, pin: B}}, {from: {node: 166, pin: Value}, to: {node: 231, pin: A}}, {from: {node: 227, pin: Value}, to: {node: 232, pin: A}}, {from: {node: 231, pin: Value}, to: {node: 232, pin: B}}, {from: {node: 168, pin: Value}, to: {node: 233, pin: A}}, {from: {node: 228, pin: Value}, to: {node: 234, pin: A}}, {from: {node: 233, pin: Value}, to: {node: 234, pin: B}}, {from: {node: 232, pin: Value}, to: {node: 235, pin: A}}, {from: {node: 234, pin: Value}, to: {node: 235, pin: B}}, {from: {node: 230, pin: Value}, to: {node: 236, pin: A}}, {from: {node: 235, pin: Value}, to: {node: 236, pin: B}}, {from: {node: 216, pin: Value}, to: {node: 237, pin: A}}, {from: {node: 236, pin: Value}, to: {node: 237, pin: B}}, {from: {node: 5, pin: Value}, to: {node: 238, pin: A}}, {from: {node: 238, pin: Value}, to: {node: 239, pin: A}}, {from: {node: 239, pin: Value}, to: {node: 240, pin: Source}}, {from: {node: 240, pin: Value}, to: {node: 241, pin: A}}, {from: {node: 240, pin: Value}, to: {node: 241, pin: B}}, {from: {node: 240, pin: Value}, to: {node: 242, pin: A}}, {from: {node: 241, pin: Value}, to: {node: 243, pin: A}}, {from: {node: 242, pin: Value}, to: {node: 244, pin: A}}, {from: {node: 243, pin: Value}, to: {node: 245, pin: A}}, {from: {node: 244, pin: Value}, to: {node: 245, pin: B}}, {from: {node: 241, pin: Value}, to: {node: 246, pin: A}}, {from: {node: 242, pin: Value}, to: {node: 247, pin: A}}, {from: {node: 246, pin: Value}, to: {node: 247, pin: B}}, {from: {node: 247, pin: Value}, to: {node: 248, pin: A}}, {from: {node: 240, pin: Value}, to: {node: 248, pin: B}}, {from: {node: 242, pin: Value}, to: {node: 249, pin: A}}, {from: {node: 241, pin: Value}, to: {node: 249, pin: B}}, {from: {node: 20, pin: Value}, to: {node: 250, pin: A}}, {from: {node: 19, pin: Value}, to: {node: 250, pin: B}}, {from: {node: 245, pin: Value}, to: {node: 251, pin: A}}, {from: {node: 250, pin: Value}, to: {node: 251, pin: B}}, {from: {node: 168, pin: Value}, to: {node: 252, pin: A}}, {from: {node: 248, pin: Value}, to: {node: 253, pin: A}}, {from: {node: 252, pin: Value}, to: {node: 253, pin: B}}, {from: {node: 170, pin: Value}, to: {node: 254, pin: A}}, {from: {node: 249, pin: Value}, to: {node: 255, pin: A}}, {from: {node: 254, pin: Value}, to: {node: 255, pin: B}}, {from: {node: 253, pin: Value}, to: {node: 256, pin: A}}, {from: {node: 255, pin: Value}, to: {node: 256, pin: B}}, {from: {node: 251, pin: Value}, to: {node: 257, pin: A}}, {from: {node: 256, pin: Value}, to: {node: 257, pin: B}}, {from: {node: 237, pin: Value}, to: {node: 258, pin: A}}, {from: {node: 257, pin: Value}, to: {node: 258, pin: B}}, {from: {node: 5, pin: Value}, to: {node: 259, pin: A}}, {from: {node: 259, pin: Value}, to: {node: 260, pin: A}}, {from: {node: 260, pin: Value}, to: {node: 261, pin: Source}}, {from: {node: 261, pin: Value}, to: {node: 262, pin: A}}, {from: {node: 261, pin: Value}, to: {node: 262, pin: B}}, {from: {node: 261, pin: Value}, to: {node: 263, pin: A}}, {from: {node: 262, pin: Value}, to: {node: 264, pin: A}}, {from: {node: 263, pin: Value}, to: {node: 265, pin: A}}, {from: {node: 264, pin: Value}, to: {node: 266, pin: A}}, {from: {node: 265, pin: Value}, to: {node: 266, pin: B}}, {from: {node: 262, pin: Value}, to: {node: 267, pin: A}}, {from: {node: 263, pin: Value}, to: {node: 268, pin: A}}, {from: {node: 267, pin: Value}, to: {node: 268, pin: B}}, {from: {node: 268, pin: Value}, to: {node: 269, pin: A}}, {from: {node: 261, pin: Value}, to: {node: 269, pin: B}}, {from: {node: 263, pin: Value}, to: {node: 270, pin: A}}, {from: {node: 262, pin: Value}, to: {node: 270, pin: B}}, {from: {node: 20, pin: Value}, to: {node: 271, pin: B}}, {from: {node: 266, pin: Value}, to: {node: 272, pin: A}}, {from: {node: 271, pin: Value}, to: {node: 272, pin: B}}, {from: {node: 170, pin: Value}, to: {node: 273, pin: A}}, {from: {node: 269, pin: Value}, to: {node: 274, pin: A}}, {from: {node: 273, pin: Value}, to: {node: 274, pin: B}}, {from: {node: 172, pin: Value}, to: {node: 275, pin: A}}, {from: {node: 270, pin: Value}, to: {node: 276, pin: A}}, {from: {node: 275, pin: Value}, to: {node: 276, pin: B}}, {from: {node: 274, pin: Value}, to: {node: 277, pin: A}}, {from: {node: 276, pin: Value}, to: {node: 277, pin: B}}, {from: {node: 272, pin: Value}, to: {node: 278, pin: A}}, {from: {node: 277, pin: Value}, to: {node: 278, pin: B}}, {from: {node: 258, pin: Value}, to: {node: 279, pin: A}}, {from: {node: 278, pin: Value}, to: {node: 279, pin: B}}, {from: {node: 5, pin: Value}, to: {node: 280, pin: A}}, {from: {node: 280, pin: Value}, to: {node: 281, pin: A}}, {from: {node: 281, pin: Value}, to: {node: 282, pin: Source}}, {from: {node: 282, pin: Value}, to: {node: 283, pin: A}}, {from: {node: 282, pin: Value}, to: {node: 283, pin: B}}, {from: {node: 282, pin: Value}, to: {node: 284, pin: A}}, {from: {node: 283, pin: Value}, to: {node: 285, pin: A}}, {from: {node: 284, pin: Value}, to: {node: 286, pin: A}}, {from: {node: 285, pin: Value}, to: {node: 287, pin: A}}, {from: {node: 286, pin: Value}, to: {node: 287, pin: B}}, {from: {node: 283, pin: Value}, to: {node: 288, pin: A}}, {from: {node: 284, pin: Value}, to: {node: 289, pin: A}}, {from: {node: 288, pin: Value}, to: {node: 289, pin: B}}, {from: {node: 289, pin: Value}, to: {node: 290, pin: A}}, {from: {node: 282, pin: Value}, to: {node: 290, pin: B}}, {from: {node: 284, pin: Value}, to: {node: 291, pin: A}}, {from: {node: 283, pin: Value}, to: {node: 291, pin: B}}, {from: {node: 287, pin: Value}, to: {node: 293, pin: A}}, {from: {node: 292, pin: Value}, to: {node: 293, pin: B}}, {from: {node: 172, pin: Value}, to: {node: 294, pin: A}}, {from: {node: 290, pin: Value}, to: {node: 295, pin: A}}, {from: {node: 294, pin: Value}, to: {node: 295, pin: B}}, {from: {node: 174, pin: Value}, to: {node: 296, pin: A}}, {from: {node: 291, pin: Value}, to: {node: 297, pin: A}}, {from: {node: 296, pin: Value}, to: {node: 297, pin: B}}, {from: {node: 295, pin: Value}, to: {node: 298, pin: A}}, {from: {node: 297, pin: Value}, to: {node: 298, pin: B}}, {from: {node: 293, pin: Value}, to: {node: 299, pin: A}}, {from: {node: 298, pin: Value}, to: {node: 299, pin: B}}, {from: {node: 279, pin: Value}, to: {node: 300, pin: A}}, {from: {node: 299, pin: Value}, to: {node: 300, pin: B}}, {from: {node: 7, pin: Value}, to: {node: 301, pin: A}}, {from: {node: 7, pin: Value}, to: {node: 302, pin: A}}, {from: {node: 302, pin: Value}, to: {node: 303, pin: A}}, {from: {node: 301, pin: Value}, to: {node: 304, pin: A}}, {from: {node: 303, pin: Value}, to: {node: 304, pin: B}}, {from: {node: 160, pin: Value}, to: {node: 305, pin: A}}, {from: {node: 304, pin: Value}, to: {node: 305, pin: B}}, {from: {node: 8, pin: Value}, to: {node: 306, pin: A}}, {from: {node: 8, pin: Value}, to: {node: 307, pin: A}}, {from: {node: 307, pin: Value}, to: {node: 308, pin: A}}, {from: {node: 306, pin: Value}, to: {node: 309, pin: A}}, {from: {node: 308, pin: Value}, to: {node: 309, pin: B}}, {from: {node: 300, pin: Value}, to: {node: 310, pin: A}}, {from: {node: 309, pin: Value}, to: {node: 310, pin: B}}, {from: {node: 5, pin: Value}, to: {node: 311, pin: A}}, {from: {node: 311, pin: Value}, to: {node: 312, pin: A}}, {from: {node: 312, pin: Value}, to: {node: 313, pin: A}}, {from: {node: 312, pin: Value}, to: {node: 313, pin: B}}, {from: {node: 313, pin: Value}, to: {node: 314, pin: A}}, {from: {node: 314, pin: Value}, to: {node: 315, pin: A}}, {from: {node: 6, pin: Value}, to: {node: 316, pin: A}}, {from: {node: 5, pin: Value}, to: {node: 317, pin: A}}, {from: {node: 316, pin: Value}, to: {node: 318, pin: A}}, {from: {node: 317, pin: Value}, to: {node: 318, pin: B}}, {from: {node: 318, pin: Value}, to: {node: 319, pin: A}}, {from: {node: 315, pin: Value}, to: {node: 320, pin: A}}, {from: {node: 319, pin: Value}, to: {node: 320, pin: B}}, {from: {node: 7, pin: Value}, to: {node: 321, pin: A}}, {from: {node: 7, pin: Value}, to: {node: 321, pin: B}}, {from: {node: 320, pin: Value}, to: {node: 322, pin: A}}, {from: {node: 321, pin: Value}, to: {node: 322, pin: B}}, {from: {node: 322, pin: Value}, to: {node: 323, pin: A}}, {from: {node: 310, pin: Value}, to: {node: 324, pin: A}}, {from: {node: 323, pin: Value}, to: {node: 324, pin: B}}, {from: {node: 1, pin: Value}, to: {node: 325, pin: A}}, {from: {node: 5, pin: Value}, to: {node: 326, pin: A}}, {from: {node: 325, pin: Value}, to: {node: 326, pin: B}}, {from: {node: 1, pin: Value}, to: {node: 327, pin: A}}, {from: {node: 326, pin: Value}, to: {node: 328, pin: A}}, {from: {node: 327, pin: Value}, to: {node: 328, pin: B}}, {from: {node: 305, pin: Value}, to: {node: 329, pin: X}}, {from: {node: 328, pin: Value}, to: {node: 329, pin: Y}}, {from: {node: 324, pin: Value}, to: {node: 329, pin: Z}}, {from: {node: 2, pin: Geometry}, to: {node: 330, pin: Geometry}}, {from: {node: 329, pin: Value}, to: {node: 330, pin: Position}}, {from: {node: 330, pin: Geometry}, to: {node: 331, pin: Geometry}}, {from: {node: 331, pin: Geometry}, to: {node: 332, pin: Geometry}}, {from: {node: 332, pin: Geometry}, to: {node: 334, pin: Points}}, {from: {node: 333, pin: Value}, to: {node: 334, pin: Normal}}, {from: {node: 334, pin: Points}, to: {node: 335, pin: Geometry}}, {from: {node: 335, pin: Geometry}, to: {node: 336, pin: Geometry}}, {from: {node: 337, pin: Curves}, to: {node: 338, pin: Profile}}, {from: {node: 338, pin: Geometry}, to: {node: 339, pin: Geometry}}, {from: {node: 340, pin: Geometry}, to: {node: 341, pin: Geometry}}, {from: {node: 339, pin: Geometry}, to: {node: 342, pin: A}}, {from: {node: 341, pin: Geometry}, to: {node: 342, pin: B}}, {from: {node: 342, pin: Geometry}, to: {node: 343, pin: Geometry}}, {from: {node: 343, pin: Geometry}, to: {node: 344, pin: Geometry}}, {from: {node: 344, pin: Geometry}, to: {node: 346, pin: Points}}, {from: {node: 345, pin: Value}, to: {node: 346, pin: Normal}}, {from: {node: 346, pin: Points}, to: {node: 347, pin: Geometry}}, {from: {node: 347, pin: Geometry}, to: {node: 348, pin: Geometry}}, {from: {node: 349, pin: Curves}, to: {node: 350, pin: Curves}}, {from: {node: 350, pin: Geometry}, to: {node: 351, pin: Geometry}}, {from: {node: 351, pin: Geometry}, to: {node: 352, pin: Geometry}}, {from: {node: 352, pin: Geometry}, to: {node: 354, pin: Points}}, {from: {node: 353, pin: Value}, to: {node: 354, pin: Normal}}, {from: {node: 354, pin: Points}, to: {node: 355, pin: Geometry}}, {from: {node: 355, pin: Geometry}, to: {node: 356, pin: Geometry}}, {from: {node: 357, pin: Geometry}, to: {node: 358, pin: Geometry}}, {from: {node: 358, pin: Geometry}, to: {node: 359, pin: Geometry}}, {from: {node: 359, pin: Geometry}, to: {node: 361, pin: Points}}, {from: {node: 360, pin: Value}, to: {node: 361, pin: Normal}}, {from: {node: 361, pin: Points}, to: {node: 362, pin: Geometry}}, {from: {node: 362, pin: Geometry}, to: {node: 363, pin: Geometry}}, {from: {node: 364, pin: Geometry}, to: {node: 365, pin: Geometry}}, {from: {node: 1, pin: Value}, to: {node: 366, pin: A}}, {from: {node: 366, pin: Value}, to: {node: 367, pin: Y}}, {from: {node: 365, pin: Geometry}, to: {node: 368, pin: Geometry}}, {from: {node: 367, pin: Vector}, to: {node: 368, pin: Translation}}, {from: {node: 369, pin: Geometry}, to: {node: 370, pin: Geometry}}, {from: {node: 371, pin: Geometry}, to: {node: 372, pin: Geometry}}, {from: {node: 373, pin: Geometry}, to: {node: 374, pin: Geometry}}, {from: {node: 375, pin: Geometry}, to: {node: 376, pin: Geometry}}, {from: {node: 370, pin: Geometry}, to: {node: 377, pin: A}}, {from: {node: 372, pin: Geometry}, to: {node: 377, pin: B}}, {from: {node: 377, pin: Geometry}, to: {node: 378, pin: A}}, {from: {node: 374, pin: Geometry}, to: {node: 378, pin: B}}, {from: {node: 378, pin: Geometry}, to: {node: 379, pin: A}}, {from: {node: 376, pin: Geometry}, to: {node: 379, pin: B}}, {from: {node: 368, pin: Geometry}, to: {node: 380, pin: A}}, {from: {node: 379, pin: Geometry}, to: {node: 380, pin: B}}, {from: {node: 380, pin: Geometry}, to: {node: 381, pin: Geometry}}, {from: {node: 381, pin: Geometry}, to: {node: 383, pin: Points}}, {from: {node: 382, pin: Value}, to: {node: 383, pin: Normal}}, {from: {node: 383, pin: Points}, to: {node: 384, pin: Geometry}}, {from: {node: 384, pin: Geometry}, to: {node: 385, pin: Geometry}}, {from: {node: 386, pin: Value}, to: {node: 387, pin: SizeX}}, {from: {node: 387, pin: Geometry}, to: {node: 388, pin: Geometry}}, {from: {node: 388, pin: Geometry}, to: {node: 389, pin: Geometry}}, {from: {node: 389, pin: Geometry}, to: {node: 390, pin: Geometry}}, {from: {node: 390, pin: Geometry}, to: {node: 392, pin: Points}}, {from: {node: 391, pin: Value}, to: {node: 392, pin: Normal}}, {from: {node: 392, pin: Points}, to: {node: 393, pin: Geometry}}, {from: {node: 393, pin: Geometry}, to: {node: 394, pin: Geometry}}, {from: {node: 336, pin: Geometry}, to: {node: 395, pin: A}}, {from: {node: 348, pin: Geometry}, to: {node: 395, pin: B}}, {from: {node: 395, pin: Geometry}, to: {node: 396, pin: A}}, {from: {node: 356, pin: Geometry}, to: {node: 396, pin: B}}, {from: {node: 396, pin: Geometry}, to: {node: 397, pin: A}}, {from: {node: 363, pin: Geometry}, to: {node: 397, pin: B}}, {from: {node: 397, pin: Geometry}, to: {node: 398, pin: A}}, {from: {node: 385, pin: Geometry}, to: {node: 398, pin: B}}, {from: {node: 398, pin: Geometry}, to: {node: 399, pin: A}}, {from: {node: 394, pin: Geometry}, to: {node: 399, pin: B}}, {from: {node: 399, pin: Geometry}, to: {node: 400, pin: Geometry}}]
+parameters:
+  height_m:
+    kind: Float
+    default: 0.193000004
+    desc: Measured assembled height; local Y-up, overall geometric midpoint origin.
+    group: Dimensions and clean sleeve shape
+    min: 0.150000006
+    max: 0.25
+  cap_diameter_m:
+    kind: Float
+    default: 0.0430000015
+    desc: Measured round cap diameter. Scan used only as a dimensional reference.
+    group: Dimensions and clean sleeve shape
+    min: 0.0350000001
+    max: 0.0500000007
+  grasp_width_m:
+    kind: Float
+    default: 0.0554303527
+    desc: Reference width at 87.815mm above cap bottom.
+    group: Dimensions and clean sleeve shape
+    min: 0.0450000018
+    max: 0.0700000003
+  grasp_depth_m:
+    kind: Float
+    default: 0.0404617898
+    desc: Reference front/back thickness at the same grasp section.
+    group: Dimensions and clean sleeve shape
+    min: 0.0299999993
+    max: 0.0500000007
+  crimp_width_m:
+    kind: Float
+    default: 0.0765599981
+    desc: Reference widest flattened crimp width.
+    group: Dimensions and clean sleeve shape
+    min: 0.0599999987
+    max: 0.0900000036
+  fold_strength_m:
+    kind: Float
+    default: 0.000300000014
+    desc: Controlled shallow upper sleeve folds. Not scan surface noise.
+    group: Dimensions and clean sleeve shape
+    min: 0
+    max: 0.00100000005
+  label_basecolor_texture:
+    kind: String
+    default: resources/minwax-label-basecolor.png
+    desc: Clean vector-derived full-wrap label; no scan pixels.
+  label_metallic_roughness_texture:
+    kind: String
+    default: resources/minwax-label-metallic-roughness.png
+    desc: Dielectric printed sleeve; G roughness/B metallic.
+outputs:
+  Geometry:
+    node: 400
+    pin: Geometry
+editor_generated_identities:
+  version: 2
+  signature: 1256811842648734239
+  nodes:
+    - scope:
+        []
+      generated: 401
+      node: 401
+      index: 400
+      type: 1225607449884475736
+      parameter: height_m
+      implementation: 0
+    - scope:
+        []
+      generated: 402
+      node: 402
+      index: 401
+      type: 1225607449884475736
+      parameter: cap_diameter_m
+      implementation: 0
+    - scope:
+        []
+      generated: 403
+      node: 403
+      index: 402
+      type: 1225607449884475736
+      parameter: grasp_width_m
+      implementation: 0
+    - scope:
+        []
+      generated: 404
+      node: 404
+      index: 403
+      type: 1225607449884475736
+      parameter: grasp_depth_m
+      implementation: 0
+    - scope:
+        []
+      generated: 405
+      node: 405
+      index: 404
+      type: 1225607449884475736
+      parameter: crimp_width_m
+      implementation: 0
+    - scope:
+        []
+      generated: 406
+      node: 406
+      index: 405
+      type: 1225607449884475736
+      parameter: fold_strength_m
+      implementation: 0
+    - scope:
+        []
+      generated: 407
+      node: 407
+      index: 406
+      type: 570702574955171331
+      parameter: label_basecolor_texture
+      implementation: 0
+    - scope:
+        []
+      generated: 408
+      node: 408
+      index: 407
+      type: 570702574955171331
+      parameter: label_metallic_roughness_texture
+      implementation: 0
+editor_generated_layout:
+  version: 2
+  signature: 1256811842648734239
+  nodes:
+    - scope:
+        []
+      node: 401
+      x: 40
+      y: 940
+    - scope:
+        []
+      node: 402
+      x: 40
+      y: 1090
+    - scope:
+        []
+      node: 403
+      x: 40
+      y: 1240
+    - scope:
+        []
+      node: 404
+      x: 40
+      y: 1390
+    - scope:
+        []
+      node: 405
+      x: 40
+      y: 1540
+    - scope:
+        []
+      node: 406
+      x: 2380
+      y: 1990
+    - scope:
+        []
+      node: 407
+      x: 6540
+      y: 190
+    - scope:
+        []
+      node: 408
+      x: 6540
+      y: 340

@@ -1,0 +1,61 @@
+nodes:
+  - id: 1
+    type: MeshCube
+    name: Painted concrete wall
+    inputs:
+      SizeX: {kind: Float, value: 3.4000001}
+      SizeY: {kind: Float, value: 2.6500001}
+      SizeZ: {kind: Float, value: 0.119999997}
+    x: 40
+    y: 40
+  - {id: 2, type: BevelEdge, name: Painted concrete wall edges, inputs: {Offset: {kind: Float, value: 0.00100000005}, Segments: {kind: Int32, value: 3}}, x: 320, y: 40}
+  - {id: 3, type: Transform, name: Painted concrete wall position, inputs: {Translation: {kind: Float3, value: [0, 1.32500005, -1]}}, x: 600, y: 40}
+  - {id: 4, type: SetMaterial, name: Painted concrete wall surface, inputs: {Material: {kind: Material, value: [0.730000019, 0.75, 0.720000029, 1, 0, 0.899999976]}, Name: {kind: String, value: Painted concrete wall}}, x: 880, y: 40}
+  - {id: 5, type: SetMeshName, name: Painted concrete wall, inputs: {Name: {kind: String, value: Painted concrete wall}}, x: 1160, y: 40}
+  - {id: 6, type: ShaderTexCoord, inputs: {Name: {kind: String, value: coords}}, x: 40, y: 210}
+  - {id: 7, type: ShaderNoisePerlin, inputs: {Name: {kind: String, value: mottle}, VectorFromNode: {kind: String, value: coords}, VectorFromOutput: {kind: String, value: Object}, Scale: {kind: Float, value: 7}, Detail: {kind: Float, value: 5}, Roughness: {kind: Float, value: 0.649999976}}, x: 320, y: 210}
+  - {id: 8, type: ShaderColorRamp, inputs: {Name: {kind: String, value: tone}, FacFromNode: {kind: String, value: mottle}, FacFromOutput: {kind: String, value: Fac}, Stop0Pos: {kind: Float, value: 0.25}, Stop0Color: {kind: ColorFloat, value: [0.579999983, 0.610000014, 0.579999983, 1]}, Stop1Pos: {kind: Float, value: 0.75}, Stop1Color: {kind: ColorFloat, value: [0.829999983, 0.850000024, 0.800000012, 1]}}, x: 600, y: 210}
+  - {id: 9, type: ShaderBsdfPrincipled, inputs: {Name: {kind: String, value: paint}, BaseColorFromNode: {kind: String, value: tone}, BaseColorFromOutput: {kind: String, value: Color}, Roughness: {kind: Float, value: 0.939999998}, Metallic: {kind: Float, value: 0}}, x: 880, y: 210}
+  - {id: 10, type: ShaderMaterialOutput, inputs: {Name: {kind: String, value: out}, SurfaceFromNode: {kind: String, value: paint}, SurfaceFromOutput: {kind: String, value: BSDF}}, x: 1160, y: 210}
+  - {id: 11, type: SetShaderGraphMaterial, inputs: {FallbackMaterial: {kind: Material, value: [0.730000019, 0.75, 0.720000029, 1, 0, 0.899999976]}}, x: 1440, y: 40}
+  - {id: 12, type: MeshCube, name: Concrete floor, inputs: {SizeX: {kind: Float, value: 3.4000001}, SizeY: {kind: Float, value: 0.0399999991}, SizeZ: {kind: Float, value: 3.5}}, x: 40, y: 380}
+  - {id: 13, type: BevelEdge, name: Concrete floor edges, inputs: {Offset: {kind: Float, value: 0.00100000005}, Segments: {kind: Int32, value: 3}}, x: 320, y: 380}
+  - {id: 14, type: Transform, name: Concrete floor position, inputs: {Translation: {kind: Float3, value: [0, -0.0250000004, 0.25]}}, x: 600, y: 380}
+  - {id: 15, type: SetMaterial, name: Concrete floor surface, inputs: {Material: {kind: Material, value: [0.319999993, 0.330000013, 0.300000012, 1, 0, 0.920000017]}, Name: {kind: String, value: Concrete floor}}, x: 880, y: 380}
+  - {id: 16, type: SetMeshName, name: Concrete floor, inputs: {Name: {kind: String, value: Concrete floor}}, x: 1160, y: 380}
+  - {id: 17, type: MeshCube, name: Wall panel joint 0.82, inputs: {SizeX: {kind: Float, value: 3.4000001}, SizeY: {kind: Float, value: 0.00249999994}, SizeZ: {kind: Float, value: 0.00200000009}}, x: 40, y: 550}
+  - {id: 18, type: BevelEdge, name: Wall panel joint 0.82 edges, inputs: {Offset: {kind: Float, value: 0.000300000014}, Segments: {kind: Int32, value: 3}}, x: 320, y: 550}
+  - {id: 19, type: Transform, name: Wall panel joint 0.82 position, inputs: {Translation: {kind: Float3, value: [0, 0.819999993, -0.938000023]}}, x: 600, y: 550}
+  - {id: 20, type: SetMaterial, name: Wall panel joint 0.82 surface, inputs: {Material: {kind: Material, value: [0.5, 0.519999981, 0.49000001, 1, 0, 0.949999988]}, Name: {kind: String, value: Wall panel joint 0.82}}, x: 880, y: 550}
+  - {id: 21, type: SetMeshName, name: Wall panel joint 0.82, inputs: {Name: {kind: String, value: Wall panel joint 0.82}}, x: 1160, y: 550}
+  - {id: 22, type: MeshCube, name: Wall panel joint 1.6, inputs: {SizeX: {kind: Float, value: 3.4000001}, SizeY: {kind: Float, value: 0.00249999994}, SizeZ: {kind: Float, value: 0.00200000009}}, x: 40, y: 720}
+  - {id: 23, type: BevelEdge, name: Wall panel joint 1.6 edges, inputs: {Offset: {kind: Float, value: 0.000300000014}, Segments: {kind: Int32, value: 3}}, x: 320, y: 720}
+  - {id: 24, type: Transform, name: Wall panel joint 1.6 position, inputs: {Translation: {kind: Float3, value: [0, 1.60000002, -0.938000023]}}, x: 600, y: 720}
+  - {id: 25, type: SetMaterial, name: Wall panel joint 1.6 surface, inputs: {Material: {kind: Material, value: [0.5, 0.519999981, 0.49000001, 1, 0, 0.949999988]}, Name: {kind: String, value: Wall panel joint 1.6}}, x: 880, y: 720}
+  - {id: 26, type: SetMeshName, name: Wall panel joint 1.6, inputs: {Name: {kind: String, value: Wall panel joint 1.6}}, x: 1160, y: 720}
+  - {id: 27, type: MeshCube, name: Wall panel joint 2.36, inputs: {SizeX: {kind: Float, value: 3.4000001}, SizeY: {kind: Float, value: 0.00249999994}, SizeZ: {kind: Float, value: 0.00200000009}}, x: 40, y: 890}
+  - {id: 28, type: BevelEdge, name: Wall panel joint 2.36 edges, inputs: {Offset: {kind: Float, value: 0.000300000014}, Segments: {kind: Int32, value: 3}}, x: 320, y: 890}
+  - {id: 29, type: Transform, name: Wall panel joint 2.36 position, inputs: {Translation: {kind: Float3, value: [0, 2.3599999, -0.938000023]}}, x: 600, y: 890}
+  - {id: 30, type: SetMaterial, name: Wall panel joint 2.36 surface, inputs: {Material: {kind: Material, value: [0.5, 0.519999981, 0.49000001, 1, 0, 0.949999988]}, Name: {kind: String, value: Wall panel joint 2.36}}, x: 880, y: 890}
+  - {id: 31, type: SetMeshName, name: Wall panel joint 2.36, inputs: {Name: {kind: String, value: Wall panel joint 2.36}}, x: 1160, y: 890}
+  - {id: 32, type: MeshCube, name: Wall vertical seam -1.08, inputs: {SizeX: {kind: Float, value: 0.00200000009}, SizeY: {kind: Float, value: 2.6500001}, SizeZ: {kind: Float, value: 0.00100000005}}, x: 40, y: 1060}
+  - {id: 33, type: BevelEdge, name: Wall vertical seam -1.08 edges, inputs: {Offset: {kind: Float, value: 0.000199999995}, Segments: {kind: Int32, value: 3}}, x: 320, y: 1060}
+  - {id: 34, type: Transform, name: Wall vertical seam -1.08 position, inputs: {Translation: {kind: Float3, value: [-1.08000004, 1.32500005, -0.938000023]}}, x: 600, y: 1060}
+  - {id: 35, type: SetMaterial, name: Wall vertical seam -1.08 surface, inputs: {Material: {kind: Material, value: [0.540000021, 0.550000012, 0.519999981, 1, 0, 0.949999988]}, Name: {kind: String, value: Wall vertical seam -1.08}}, x: 880, y: 1060}
+  - {id: 36, type: SetMeshName, name: Wall vertical seam -1.08, inputs: {Name: {kind: String, value: Wall vertical seam -1.08}}, x: 1160, y: 1060}
+  - {id: 37, type: MeshCube, name: Wall vertical seam 0.96, inputs: {SizeX: {kind: Float, value: 0.00200000009}, SizeY: {kind: Float, value: 2.6500001}, SizeZ: {kind: Float, value: 0.00100000005}}, x: 40, y: 1230}
+  - {id: 38, type: BevelEdge, name: Wall vertical seam 0.96 edges, inputs: {Offset: {kind: Float, value: 0.000199999995}, Segments: {kind: Int32, value: 3}}, x: 320, y: 1230}
+  - {id: 39, type: Transform, name: Wall vertical seam 0.96 position, inputs: {Translation: {kind: Float3, value: [0.959999979, 1.32500005, -0.938000023]}}, x: 600, y: 1230}
+  - {id: 40, type: SetMaterial, name: Wall vertical seam 0.96 surface, inputs: {Material: {kind: Material, value: [0.540000021, 0.550000012, 0.519999981, 1, 0, 0.949999988]}, Name: {kind: String, value: Wall vertical seam 0.96}}, x: 880, y: 1230}
+  - {id: 41, type: SetMeshName, name: Wall vertical seam 0.96, inputs: {Name: {kind: String, value: Wall vertical seam 0.96}}, x: 1160, y: 1230}
+  - {id: 42, type: JoinGeometry, name: Assemble parts, x: 1720, y: 40}
+  - {id: 43, type: JoinGeometry, name: Assemble parts, x: 2000, y: 40}
+  - {id: 44, type: JoinGeometry, name: Assemble parts, x: 2280, y: 40}
+  - {id: 45, type: JoinGeometry, name: Assemble parts, x: 2560, y: 40}
+  - {id: 46, type: JoinGeometry, name: Assemble parts, x: 2840, y: 40}
+  - {id: 47, type: JoinGeometry, name: Assemble parts, x: 3120, y: 40}
+links: [{from: {node: 1, pin: Geometry}, to: {node: 2, pin: Geometry}}, {from: {node: 2, pin: Geometry}, to: {node: 3, pin: Geometry}}, {from: {node: 3, pin: Geometry}, to: {node: 4, pin: Geometry}}, {from: {node: 4, pin: Geometry}, to: {node: 5, pin: Geometry}}, {from: {node: 6, pin: Graph}, to: {node: 7, pin: Graph}}, {from: {node: 7, pin: Graph}, to: {node: 8, pin: Graph}}, {from: {node: 8, pin: Graph}, to: {node: 9, pin: Graph}}, {from: {node: 9, pin: Graph}, to: {node: 10, pin: Graph}}, {from: {node: 5, pin: Geometry}, to: {node: 11, pin: Geometry}}, {from: {node: 10, pin: Graph}, to: {node: 11, pin: Graph}}, {from: {node: 12, pin: Geometry}, to: {node: 13, pin: Geometry}}, {from: {node: 13, pin: Geometry}, to: {node: 14, pin: Geometry}}, {from: {node: 14, pin: Geometry}, to: {node: 15, pin: Geometry}}, {from: {node: 15, pin: Geometry}, to: {node: 16, pin: Geometry}}, {from: {node: 17, pin: Geometry}, to: {node: 18, pin: Geometry}}, {from: {node: 18, pin: Geometry}, to: {node: 19, pin: Geometry}}, {from: {node: 19, pin: Geometry}, to: {node: 20, pin: Geometry}}, {from: {node: 20, pin: Geometry}, to: {node: 21, pin: Geometry}}, {from: {node: 22, pin: Geometry}, to: {node: 23, pin: Geometry}}, {from: {node: 23, pin: Geometry}, to: {node: 24, pin: Geometry}}, {from: {node: 24, pin: Geometry}, to: {node: 25, pin: Geometry}}, {from: {node: 25, pin: Geometry}, to: {node: 26, pin: Geometry}}, {from: {node: 27, pin: Geometry}, to: {node: 28, pin: Geometry}}, {from: {node: 28, pin: Geometry}, to: {node: 29, pin: Geometry}}, {from: {node: 29, pin: Geometry}, to: {node: 30, pin: Geometry}}, {from: {node: 30, pin: Geometry}, to: {node: 31, pin: Geometry}}, {from: {node: 32, pin: Geometry}, to: {node: 33, pin: Geometry}}, {from: {node: 33, pin: Geometry}, to: {node: 34, pin: Geometry}}, {from: {node: 34, pin: Geometry}, to: {node: 35, pin: Geometry}}, {from: {node: 35, pin: Geometry}, to: {node: 36, pin: Geometry}}, {from: {node: 37, pin: Geometry}, to: {node: 38, pin: Geometry}}, {from: {node: 38, pin: Geometry}, to: {node: 39, pin: Geometry}}, {from: {node: 39, pin: Geometry}, to: {node: 40, pin: Geometry}}, {from: {node: 40, pin: Geometry}, to: {node: 41, pin: Geometry}}, {from: {node: 11, pin: Geometry}, to: {node: 42, pin: A}}, {from: {node: 16, pin: Geometry}, to: {node: 42, pin: B}}, {from: {node: 42, pin: Geometry}, to: {node: 43, pin: A}}, {from: {node: 21, pin: Geometry}, to: {node: 43, pin: B}}, {from: {node: 43, pin: Geometry}, to: {node: 44, pin: A}}, {from: {node: 26, pin: Geometry}, to: {node: 44, pin: B}}, {from: {node: 44, pin: Geometry}, to: {node: 45, pin: A}}, {from: {node: 31, pin: Geometry}, to: {node: 45, pin: B}}, {from: {node: 45, pin: Geometry}, to: {node: 46, pin: A}}, {from: {node: 36, pin: Geometry}, to: {node: 46, pin: B}}, {from: {node: 46, pin: Geometry}, to: {node: 47, pin: A}}, {from: {node: 41, pin: Geometry}, to: {node: 47, pin: B}}]
+outputs:
+  Geometry:
+    node: 47
+    pin: Geometry

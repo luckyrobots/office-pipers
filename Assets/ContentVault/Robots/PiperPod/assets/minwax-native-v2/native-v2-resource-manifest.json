@@ -1,0 +1,209 @@
+{
+  "schema": "lucky.minwax.native-visual-resource-identity",
+  "version": 1,
+  "podPackageGeneration": "d8bb0cf5cb9e6778803792434a0a5e8966003b18bebaa298f73e88f6a0f108e8",
+  "podEntrySha256": "59de46c939f88a64dba43e4d0cc422b95410512e2f15a13b6ed0ca19dca63f5d",
+  "resourceFingerprintSha256": "ea14b19f9a2539ef3ea1fe0dc67a6e75a304b4ce8b5b937110b52d3a1330778d",
+  "files": [
+    {
+      "path": "editable-package/CURRENT",
+      "sha256": "a3310d092fe4a61965eac002653f9a6554335400354ee05d9dc72d6f996ec266",
+      "bytes": 88
+    },
+    {
+      "path": "editable-package/generations/d8bb0cf5cb9e6778803792434a0a5e8966003b18bebaa298f73e88f6a0f108e8/manifest.yaml",
+      "sha256": "d8bb0cf5cb9e6778803792434a0a5e8966003b18bebaa298f73e88f6a0f108e8",
+      "bytes": 1312
+    },
+    {
+      "path": "editable-package/generations/d8bb0cf5cb9e6778803792434a0a5e8966003b18bebaa298f73e88f6a0f108e8/sources/minwax-native-v2e-source/minwax-closed-assembly.hpodgraph",
+      "sha256": "59de46c939f88a64dba43e4d0cc422b95410512e2f15a13b6ed0ca19dca63f5d",
+      "bytes": 4290
+    },
+    {
+      "path": "editable-package/generations/d8bb0cf5cb9e6778803792434a0a5e8966003b18bebaa298f73e88f6a0f108e8/sources/minwax-native-v2e-source/minwax-open-preview.hpodgraph",
+      "sha256": "ef14f516b8b8548cb548e98b33ab8309f2ccb988ab570b0d99658c7225790914",
+      "bytes": 4301
+    },
+    {
+      "path": "editable-package/generations/d8bb0cf5cb9e6778803792434a0a5e8966003b18bebaa298f73e88f6a0f108e8/sources/minwax-native-v2e-source/minwax-separate-cap.yaml",
+      "sha256": "30a61dcbf36f897b265dfe0d8d48602bec372eecba275399fa08f1a6d413cae6",
+      "bytes": 43439
+    },
+    {
+      "path": "editable-package/generations/d8bb0cf5cb9e6778803792434a0a5e8966003b18bebaa298f73e88f6a0f108e8/sources/minwax-native-v2e-source/minwax-tube-body.yaml",
+      "sha256": "a42190a800d975a9f9b9be75876f8efd93ffcbf54c0f4e852267a8df04c41734",
+      "bytes": 92289
+    },
+    {
+      "path": "editable-package/generations/d8bb0cf5cb9e6778803792434a0a5e8966003b18bebaa298f73e88f6a0f108e8/sources/minwax-native-v2e-source/resources/minwax-label-basecolor.png",
+      "sha256": "6def3925c5130f2792360c1b63040dfb3c6b8ef0cb81d6664e1162414413be9f",
+      "bytes": 372621
+    },
+    {
+      "path": "editable-package/generations/d8bb0cf5cb9e6778803792434a0a5e8966003b18bebaa298f73e88f6a0f108e8/sources/minwax-native-v2e-source/resources/minwax-label-master.svg",
+      "sha256": "3411dc0f776f7b4f3a61cd196724e5e13e5cc1fc0c017e3defc3f8a76359d01d",
+      "bytes": 170828
+    },
+    {
+      "path": "editable-package/generations/d8bb0cf5cb9e6778803792434a0a5e8966003b18bebaa298f73e88f6a0f108e8/sources/minwax-native-v2e-source/resources/minwax-label-metallic-roughness.png",
+      "sha256": "733eb4e4a025825e4f6d1472289a2cc9d51e3c93c82b06641ad868ca772c4c91",
+      "bytes": 460376
+    },
+    {
+      "path": "label-artwork-source/artwork-validation.json",
+      "sha256": "152087917759d972ff0ac12f92fc7d8a2af163ad928d8fb627b57107014b82b3",
+      "bytes": 978
+    },
+    {
+      "path": "label-artwork-source/Build-Label.ps1",
+      "sha256": "fd348aab89ee97d9fc7497c81a592f177965fac9d2bbd6050b2edf49cf9aacbb",
+      "bytes": 398
+    },
+    {
+      "path": "label-artwork-source/BuildLabel.cs.txt",
+      "sha256": "01eafb3ddc576d3a00dcf812e58b1625e1b8f0f95a62f3bbbb87223defa67c5e",
+      "bytes": 9134
+    },
+    {
+      "path": "label-artwork-source/minwax-label-master.svg",
+      "sha256": "3411dc0f776f7b4f3a61cd196724e5e13e5cc1fc0c017e3defc3f8a76359d01d",
+      "bytes": 170828
+    },
+    {
+      "path": "label-artwork-source/README.md",
+      "sha256": "a8b40e216ec626ade9508e95ee65d384a99c147812059b5343ec6f459107d76d",
+      "bytes": 3765
+    },
+    {
+      "path": "minwax-assembled-yup.glb",
+      "sha256": "d4007c8b366ee3d24edc2b60b6d51ed328f1d49fba9241065e6330fe7adb3a51",
+      "bytes": 11981284
+    },
+    {
+      "path": "minwax-assembled-zup.glb",
+      "sha256": "c83c579ba4700644e15cd25da33ed9986c444da8d14fa4c036e3b446de812213",
+      "bytes": 11981284
+    },
+    {
+      "path": "native-material-meshes.json",
+      "sha256": "a95057844c8577ff3ad66533d8a5acc42616595458250f8e8c03b9bd198bc9a8",
+      "bytes": 5134
+    },
+    {
+      "path": "parts-yup/wood_filler_cap.glb",
+      "sha256": "9a4d1b200d0cfff41d38c502a2eb1930e86feb66c7376ee05e3ec3ee76abf0aa",
+      "bytes": 6157908
+    },
+    {
+      "path": "parts-yup/wood_filler_tube.glb",
+      "sha256": "b38d7f00bb7c1f3441a0d48460b4926f33eed983b0cd430cdbe07ffb39246f5f",
+      "bytes": 6941124
+    },
+    {
+      "path": "parts-zup/wood_filler_cap.glb",
+      "sha256": "0936f7253e7c4fe2c0fd2d6ba37b12532bde4a42fb4febd2fc8d0caa99334e39",
+      "bytes": 6157908
+    },
+    {
+      "path": "parts-zup/wood_filler_tube.glb",
+      "sha256": "15c457e58ec2e589ad5e15d0cde4e9aaa8ddf8ffa0b2d4f5a924177b4865fd84",
+      "bytes": 6941124
+    },
+    {
+      "path": "resources/minwax-label-basecolor.png",
+      "sha256": "6def3925c5130f2792360c1b63040dfb3c6b8ef0cb81d6664e1162414413be9f",
+      "bytes": 372621
+    },
+    {
+      "path": "resources/minwax-label-metallic-roughness.png",
+      "sha256": "733eb4e4a025825e4f6d1472289a2cc9d51e3c93c82b06641ad868ca772c4c91",
+      "bytes": 460376
+    },
+    {
+      "path": "wood_filler_cap_part_0.obj",
+      "sha256": "aa4e0096960d79c812964d7e4c84dfdc7cc6923f87e414b4a30893370e6f6419",
+      "bytes": 12744614
+    },
+    {
+      "path": "wood_filler_cap_part_1.obj",
+      "sha256": "cc1a933fb624e1af93c932da7ea09dd8b83aefe2a2acae9eaaf6876b41ba8f30",
+      "bytes": 1022067
+    },
+    {
+      "path": "wood_filler_cap_part_10.obj",
+      "sha256": "835dd79cdd7d3dc6a1f7fe5f36001c3c8287c2ac747a9509c85dde5e6e7cc439",
+      "bytes": 51434
+    },
+    {
+      "path": "wood_filler_cap_part_2.obj",
+      "sha256": "af43d9f548c18685a3c5f4979ff72202529869e1565f167831be6d86e1110f2e",
+      "bytes": 1096878
+    },
+    {
+      "path": "wood_filler_cap_part_3.obj",
+      "sha256": "c3bf524aef9a92014df7ababf791359007ca051b0e108a1ffc7a4cea7a72b0ff",
+      "bytes": 52279
+    },
+    {
+      "path": "wood_filler_cap_part_4.obj",
+      "sha256": "fc3c0c126242fa0a71789eea4d6e259b347edf766ed2d46a9fc588475bb00583",
+      "bytes": 51930
+    },
+    {
+      "path": "wood_filler_cap_part_5.obj",
+      "sha256": "a7b28d42f8aac7ab673b00d6265d139719be8044bf9b2f165c86bd048aefd472",
+      "bytes": 52710
+    },
+    {
+      "path": "wood_filler_cap_part_6.obj",
+      "sha256": "25e471a97bb6a3898dac039b3fef4db0a8593b86c5f56b84f4c5f683dc005bd7",
+      "bytes": 52405
+    },
+    {
+      "path": "wood_filler_cap_part_7.obj",
+      "sha256": "89700cf9b866035b0bff9f64a4ca2f4cf302b0f958bbb960e9ad8525133991ad",
+      "bytes": 52820
+    },
+    {
+      "path": "wood_filler_cap_part_8.obj",
+      "sha256": "0d8891833171153260c2375b20b45b01c687c419f3f4a478016171352c628177",
+      "bytes": 51930
+    },
+    {
+      "path": "wood_filler_cap_part_9.obj",
+      "sha256": "e0d96a3f5d2c38095c5d41c58fc83f4690137d3e1d1bb460b44057c70c7e1c5c",
+      "bytes": 52358
+    },
+    {
+      "path": "wood_filler_tube_part_0.obj",
+      "sha256": "0d2bcb0ce9c1b63d0dcbe62a9083ca49e70a6bcd2b17297991c1e8bfa637ceae",
+      "bytes": 15607172
+    },
+    {
+      "path": "wood_filler_tube_part_1.obj",
+      "sha256": "f1a7d71096b7f7c569cece45a0276ed3a1e97fca6c5958b7d09fd2ac89bc1e0c",
+      "bytes": 3033749
+    },
+    {
+      "path": "wood_filler_tube_part_2.obj",
+      "sha256": "65b85e25f812e429c6235a637c86f5acd4c82cf4e8e636a4b249d8034c7dfe1f",
+      "bytes": 1096650
+    },
+    {
+      "path": "wood_filler_tube_part_3.obj",
+      "sha256": "e4745c6de3d2b11333c917252c06263e9320dbbb918afbe51abb7d09fddd9906",
+      "bytes": 29709
+    },
+    {
+      "path": "wood_filler_tube_part_4.obj",
+      "sha256": "5b130bfb497ca490d4e3fa1529491ee5b60b7a04286d08edb5c45cf3b235ae2a",
+      "bytes": 306787
+    },
+    {
+      "path": "wood_filler_tube_part_5.obj",
+      "sha256": "41f38f44a9a67672e64be8aaff6123e48642c454262e3d4df86d19e62d7d277d",
+      "bytes": 51327
+    }
+  ]
+}

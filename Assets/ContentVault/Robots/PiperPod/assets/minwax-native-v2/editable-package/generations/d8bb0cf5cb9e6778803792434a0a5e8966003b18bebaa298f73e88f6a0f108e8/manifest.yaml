@@ -1,0 +1,35 @@
+version: 1
+tree: sources/minwax-native-v2e-source
+entry: minwax-closed-assembly.hpodgraph
+seed: 0
+resource_completeness: unverified
+dependency_scope: external_groups_and_explicit_resources
+files:
+  - path: minwax-closed-assembly.hpodgraph
+    sha256: 59de46c939f88a64dba43e4d0cc422b95410512e2f15a13b6ed0ca19dca63f5d
+    bytes: 4290
+    role: entry
+  - path: minwax-open-preview.hpodgraph
+    sha256: ef14f516b8b8548cb548e98b33ab8309f2ccb988ab570b0d99658c7225790914
+    bytes: 4301
+    role: explicit_resource
+  - path: minwax-separate-cap.yaml
+    sha256: 30a61dcbf36f897b265dfe0d8d48602bec372eecba275399fa08f1a6d413cae6
+    bytes: 43439
+    role: group
+  - path: minwax-tube-body.yaml
+    sha256: a42190a800d975a9f9b9be75876f8efd93ffcbf54c0f4e852267a8df04c41734
+    bytes: 92289
+    role: group
+  - path: resources/minwax-label-basecolor.png
+    sha256: 6def3925c5130f2792360c1b63040dfb3c6b8ef0cb81d6664e1162414413be9f
+    bytes: 372621
+    role: explicit_resource
+  - path: resources/minwax-label-master.svg
+    sha256: 3411dc0f776f7b4f3a61cd196724e5e13e5cc1fc0c017e3defc3f8a76359d01d
+    bytes: 170828
+    role: explicit_resource
+  - path: resources/minwax-label-metallic-roughness.png
+    sha256: 733eb4e4a025825e4f6d1472289a2cc9d51e3c93c82b06641ad868ca772c4c91
+    bytes: 460376
+    role: explicit_resource

@@ -1,0 +1,310 @@
+nodes:
+  - id: 1
+    type: Math
+    name: Mul
+    inputs:
+      A:
+        param: cap_diameter_m
+      B: {kind: Float, value: 0.5}
+      Operation: {kind: Menu, value: 1def8519b5034941}
+    x: 300
+    y: 1690
+  - {id: 2, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {param: cap_rib_depth_m}}, x: 560, y: 3190}
+  - {id: 3, type: Math, name: Mul, inputs: {A: {param: cap_pivot_above_bottom_m}, B: {kind: Float, value: -1}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 300, y: 2290}
+  - {id: 4, type: CombineXYZ, name: Position, inputs: {X: {kind: Float, value: 0}, Z: {kind: Float, value: 0}}, x: 560, y: 3940}
+  - {id: 5, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {kind: Float, value: 0.000500000024}}, x: 820, y: 340}
+  - {id: 6, type: Math, name: Mul, inputs: {A: {param: cap_pivot_above_bottom_m}, B: {kind: Float, value: -1}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 300, y: 2590}
+  - {id: 7, type: CombineXYZ, name: Position, inputs: {Z: {kind: Float, value: 0}}, x: 1080, y: 190}
+  - {id: 8, type: Math, name: Sub, inputs: {A: {kind: Float, value: 0.00079999998}, Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {param: cap_pivot_above_bottom_m}}, x: 300, y: 2740}
+  - {id: 9, type: CombineXYZ, name: Position, inputs: {Z: {kind: Float, value: 0}}, x: 820, y: 3190}
+  - {id: 10, type: CurveFromAnchors, name: Cap lower molded rim section, inputs: {AnchorCount: {kind: Int32, value: 3}}, x: 1340, y: 190}
+  - {id: 11, type: FilletCurve, name: Rounded lower cap lip, inputs: {Radius: {kind: Float, value: 0.000250000012}, Resolution: {kind: Int32, value: 4}}, x: 1600, y: 190}
+  - {id: 12, type: Math, name: Sub, inputs: {A: {kind: Float, value: 0.00079999998}, Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {param: cap_pivot_above_bottom_m}}, x: 300, y: 2890}
+  - {id: 13, type: CombineXYZ, name: Position, inputs: {Z: {kind: Float, value: 0}}, x: 820, y: 2890}
+  - {id: 14, type: Math, name: Sub, inputs: {A: {param: cap_height_m}, B: {kind: Float, value: 0.00079999998}, Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 300, y: 1990}
+  - {id: 15, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {param: cap_pivot_above_bottom_m}}, x: 560, y: 3640}
+  - {id: 16, type: CombineXYZ, name: Position, inputs: {Z: {kind: Float, value: 0}}, x: 820, y: 3040}
+  - {id: 17, type: CurveLine, name: Vertically sampled grip wall, inputs: {Resolution: {kind: Int32, value: 18}}, x: 1080, y: 2890}
+  - {id: 18, type: Math, name: Sub, inputs: {A: {param: cap_height_m}, B: {kind: Float, value: 0.00079999998}, Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 300, y: 2140}
+  - {id: 19, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {param: cap_pivot_above_bottom_m}}, x: 560, y: 3790}
+  - {id: 20, type: CombineXYZ, name: Position, inputs: {Z: {kind: Float, value: 0}}, x: 820, y: 3490}
+  - {id: 21, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {kind: Float, value: 0.000500000024}}, x: 820, y: 2290}
+  - {id: 22, type: Math, name: Sub, inputs: {A: {param: cap_height_m}, Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {param: cap_pivot_above_bottom_m}}, x: 300, y: 3340}
+  - {id: 23, type: CombineXYZ, name: Position, inputs: {Z: {kind: Float, value: 0}}, x: 1080, y: 2290}
+  - {id: 24, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {kind: Float, value: 0.00170000002}}, x: 820, y: 2440}
+  - {id: 25, type: Math, name: Sub, inputs: {A: {param: cap_height_m}, Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {param: cap_pivot_above_bottom_m}}, x: 300, y: 3490}
+  - {id: 26, type: CombineXYZ, name: Position, inputs: {Z: {kind: Float, value: 0}}, x: 1080, y: 2440}
+  - {id: 27, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {kind: Float, value: 0.00170000002}}, x: 820, y: 2590}
+  - {id: 28, type: Math, name: Sub, inputs: {A: {kind: Float, value: 0.00249999994}, Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {param: cap_pivot_above_bottom_m}}, x: 300, y: 3040}
+  - {id: 29, type: CombineXYZ, name: Position, inputs: {Z: {kind: Float, value: 0}}, x: 1080, y: 2590}
+  - {id: 30, type: Math, name: Sub, inputs: {A: {kind: Float, value: 0.00249999994}, Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {param: cap_pivot_above_bottom_m}}, x: 300, y: 2440}
+  - {id: 31, type: CombineXYZ, name: Position, inputs: {X: {kind: Float, value: 0}, Z: {kind: Float, value: 0}}, x: 560, y: 4090}
+  - {id: 32, type: CurveFromAnchors, name: Cap open rim and inner wall section, inputs: {AnchorCount: {kind: Int32, value: 5}}, x: 1340, y: 3490}
+  - {id: 33, type: FilletCurve, name: Rounded cap mouth and inner corners, inputs: {Radius: {kind: Float, value: 0.000250000012}, Resolution: {kind: Int32, value: 4}}, x: 1600, y: 1990}
+  - {id: 34, type: JoinCurves, name: Cap lower lip to sampled outer wall, x: 1860, y: 190}
+  - {id: 35, type: JoinCurves, name: Complete hollow cap meridian, x: 2120, y: 190}
+  - {id: 36, type: RevolveCurve, name: Solid-bottom hollow molded cap, inputs: {Segments: {kind: Int32, value: 720}}, x: 2380, y: 190}
+  - {id: 37, type: PositionField, x: 40, y: 40}
+  - {id: 38, type: SeparateXYZField, x: 300, y: 1390}
+  - {id: 39, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 560, y: 3340}
+  - {id: 40, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 560, y: 3490}
+  - {id: 41, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 820, y: 2740}
+  - {id: 42, type: MathField, name: Sqrt, inputs: {Operation: {kind: Menu, value: bd3bd0250e546faf}}, x: 1080, y: 2740}
+  - {id: 43, type: MathField, name: Div, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}}, x: 560, y: 40}
+  - {id: 44, type: MathField, name: Atan, inputs: {Operation: {kind: Menu, value: d3d0308b388e95bf}}, x: 820, y: 40}
+  - {id: 45, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {param: cap_rib_count}}, x: 1080, y: 40}
+  - {id: 46, type: MathField, name: Cos, inputs: {Operation: {kind: Menu, value: 0c0e1c19aaba833c}}, x: 1340, y: 40}
+  - {id: 47, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {kind: Float, value: 0.5}}, x: 1600, y: 40}
+  - {id: 48, type: MathField, name: Add, inputs: {A: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: f9aee319a006c9b4}}, x: 1860, y: 40}
+  - {id: 49, type: MathField, name: Pow, inputs: {Operation: {kind: Menu, value: 8da37f19f4069495}, B: {kind: Float, value: 2}}, x: 2120, y: 40}
+  - {id: 50, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}, B: {param: cap_pivot_above_bottom_m}}, x: 560, y: 2890}
+  - {id: 51, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {kind: Float, value: 0.000899999985}}, x: 820, y: 1990}
+  - {id: 52, type: MathField, name: Div, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.00139999995}}, x: 1080, y: 1990}
+  - {id: 53, type: ClampFieldFloat, inputs: {Min: {kind: Float, value: 0}, Max: {kind: Float, value: 1}}, x: 1340, y: 3190}
+  - {id: 54, type: Math, name: Sub, inputs: {A: {param: cap_height_m}, B: {kind: Float, value: 0.000899999985}, Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 300, y: 3640}
+  - {id: 55, type: MathField, name: Add, inputs: {Operation: {kind: Menu, value: f9aee319a006c9b4}, B: {param: cap_pivot_above_bottom_m}}, x: 560, y: 3040}
+  - {id: 56, type: MathField, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}}, x: 820, y: 2140}
+  - {id: 57, type: MathField, name: Div, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}, B: {kind: Float, value: 0.00139999995}}, x: 1080, y: 2140}
+  - {id: 58, type: ClampFieldFloat, inputs: {Min: {kind: Float, value: 0}, Max: {kind: Float, value: 1}}, x: 1340, y: 3340}
+  - {id: 59, type: Math, name: Sub, inputs: {Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {kind: Float, value: 9.99999975e-05}}, x: 820, y: 3340}
+  - {id: 60, type: MathField, name: GreaterThan, inputs: {Operation: {kind: Menu, value: 00d7476ca2db143e}}, x: 1340, y: 3640}
+  - {id: 61, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}, B: {param: cap_rib_depth_m}}, x: 2380, y: 40}
+  - {id: 62, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 1600, y: 1840}
+  - {id: 63, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2640, y: 40}
+  - {id: 64, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 2900, y: 40}
+  - {id: 65, type: MathField, name: Div, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}}, x: 1340, y: 3790}
+  - {id: 66, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 3160, y: 40}
+  - {id: 67, type: MathField, name: Div, inputs: {Operation: {kind: Menu, value: e0b15a19922764e8}}, x: 1340, y: 3940}
+  - {id: 68, type: MathField, name: Mul, inputs: {Operation: {kind: Menu, value: 1def8519b5034941}}, x: 3160, y: 190}
+  - {id: 69, type: CombineXYZField, name: Parametric position, inputs: {Y: {kind: Float, value: 0}}, x: 3420, y: 40}
+  - {id: 70, type: SetPosition, name: 120 actual molded cap ribs, x: 3680, y: 40}
+  - {id: 71, type: MergeByDistance, name: Weld cap axis and seam, inputs: {Distance: {kind: Float, value: 1.00000001e-07}}, x: 3940, y: 40}
+  - {id: 72, type: RecalculateNormals, name: Separate black ribbed cap consistent outward shell, x: 4200, y: 40}
+  - {id: 73, type: NormalField, name: Separate black ribbed cap smooth normals native normals, x: 4200, y: 190}
+  - {id: 74, type: SetPointNormal, name: Separate black ribbed cap smooth normals, x: 4460, y: 40}
+  - {id: 75, type: SetMaterial, name: Separate black ribbed cap PBR, inputs: {Material: {kind: Material, value: [0.0120000001, 0.0140000004, 0.0160000008, 1, 0, 0.310000002]}, Name: {kind: String, value: Separate black ribbed cap}}, x: 4720, y: 40}
+  - {id: 76, type: SetMeshName, name: Separate black ribbed cap, inputs: {Name: {kind: String, value: Separate black ribbed cap}}, x: 4980, y: 40}
+  - {id: 77, type: MeshCylinder, name: Internal screw boss outside, inputs: {Sides: {kind: Int32, value: 128}, Radius: {kind: Float, value: 0.00910000037}, Height: {kind: Float, value: 0.0209999997}}, x: 40, y: 640}
+  - {id: 78, type: MeshCylinder, name: Internal screw boss bore, inputs: {Sides: {kind: Int32, value: 128}, Radius: {kind: Float, value: 0.00765000004}, Height: {kind: Float, value: 0.023}}, x: 40, y: 790}
+  - {id: 79, type: MeshBoolean, name: Hollow internal screw boss, inputs: {Operation: {kind: Menu, value: b67e0e7c0869f982}}, x: 300, y: 3190}
+  - {id: 80, type: Math, name: Sub, inputs: {A: {kind: Float, value: 0.0130000003}, Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {param: cap_pivot_above_bottom_m}}, x: 300, y: 40}
+  - {id: 81, type: CombineXYZ, name: Position, inputs: {X: {kind: Float, value: 0}, Z: {kind: Float, value: 0}}, x: 560, y: 190}
+  - {id: 82, type: Transform, name: Cap internal screw boss placement, x: 820, y: 490}
+  - {id: 83, type: BevelEdge, name: Cap internal screw boss molded edge radius, inputs: {Offset: {kind: Float, value: 0.000230000005}, Segments: {kind: Int32, value: 3}, AngleThreshold: {kind: Float, value: 0.649999976}}, x: 1080, y: 340}
+  - {id: 84, type: RecalculateNormals, name: Cap internal screw boss consistent outward shell, x: 1340, y: 340}
+  - {id: 85, type: NormalField, name: Cap internal screw boss smooth normals native normals, x: 1340, y: 490}
+  - {id: 86, type: SetPointNormal, name: Cap internal screw boss smooth normals, x: 1600, y: 340}
+  - {id: 87, type: SetMaterial, name: Cap internal screw boss PBR, inputs: {Material: {kind: Material, value: [0.0120000001, 0.0140000004, 0.0160000008, 1, 0, 0.310000002]}, Name: {kind: String, value: Cap internal screw boss}}, x: 1860, y: 340}
+  - {id: 88, type: SetMeshName, name: Cap internal screw boss, inputs: {Name: {kind: String, value: Cap internal screw boss}}, x: 2120, y: 340}
+  - {id: 89, type: CurveSpiral, name: Native female screw thread, inputs: {Resolution: {kind: Int32, value: 96}, Rotations: {kind: Float, value: 3}, StartRadius: {kind: Float, value: 0.00769999996}, EndRadius: {kind: Float, value: 0.00769999996}, Height: {kind: Float, value: 0.00630000001}}, x: 40, y: 940}
+  - {id: 90, type: CurveToTube, name: Rounded female thread profile, inputs: {Radius: {kind: Float, value: 0.000319999992}, Sides: {kind: Int32, value: 8}}, x: 300, y: 3790}
+  - {id: 91, type: Math, name: Sub, inputs: {A: {kind: Float, value: 0.0170000009}, Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {param: cap_pivot_above_bottom_m}}, x: 300, y: 1540}
+  - {id: 92, type: CombineXYZ, name: Position, inputs: {X: {kind: Float, value: 0}, Z: {kind: Float, value: 0}}, x: 560, y: 2740}
+  - {id: 93, type: Transform, name: Cap inner screw thread placement, x: 820, y: 1840}
+  - {id: 94, type: RecalculateNormals, name: Cap inner screw thread consistent outward shell, x: 1080, y: 1690}
+  - {id: 95, type: NormalField, name: Cap inner screw thread smooth normals native normals, x: 1080, y: 1840}
+  - {id: 96, type: SetPointNormal, name: Cap inner screw thread smooth normals, x: 1340, y: 3040}
+  - {id: 97, type: SetMaterial, name: Cap inner screw thread PBR, inputs: {Material: {kind: Material, value: [0.0120000001, 0.0140000004, 0.0160000008, 1, 0, 0.310000002]}, Name: {kind: String, value: Cap inner screw thread}}, x: 1600, y: 1690}
+  - {id: 98, type: SetMeshName, name: Cap inner screw thread, inputs: {Name: {kind: String, value: Cap inner screw thread}}, x: 1860, y: 1690}
+  - {id: 99, type: MeshCube, name: Internal support web 1, inputs: {SizeX: {kind: Float, value: 0.00999999978}, SizeY: {kind: Float, value: 0.0120000001}, SizeZ: {kind: Float, value: 0.000899999985}}, x: 560, y: 490}
+  - {id: 100, type: Math, name: Sub, inputs: {A: {kind: Float, value: 0.00850000046}, Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {param: cap_pivot_above_bottom_m}}, x: 300, y: 190}
+  - {id: 101, type: CombineXYZ, name: Position, inputs: {X: {kind: Float, value: 0.0140000004}, Z: {kind: Float, value: 0}}, x: 560, y: 340}
+  - {id: 102, type: Transform, name: Cap molded support web 1 placement, inputs: {Rotation: {kind: Float3, value: [0, -0, 0]}}, x: 820, y: 640}
+  - {id: 103, type: BevelEdge, name: Cap molded support web 1 molded edge radius, inputs: {Offset: {kind: Float, value: 0.000199999995}, Segments: {kind: Int32, value: 3}, AngleThreshold: {kind: Float, value: 0.649999976}}, x: 1080, y: 490}
+  - {id: 104, type: RecalculateNormals, name: Cap molded support web 1 consistent outward shell, x: 1340, y: 640}
+  - {id: 105, type: NormalField, name: Cap molded support web 1 smooth normals native normals, x: 1340, y: 790}
+  - {id: 106, type: SetPointNormal, name: Cap molded support web 1 smooth normals, x: 1600, y: 490}
+  - {id: 107, type: SetMaterial, name: Cap molded support web 1 PBR, inputs: {Material: {kind: Material, value: [0.0120000001, 0.0140000004, 0.0160000008, 1, 0, 0.310000002]}, Name: {kind: String, value: Cap molded support web 1}}, x: 1860, y: 490}
+  - {id: 108, type: SetMeshName, name: Cap molded support web 1, inputs: {Name: {kind: String, value: Cap molded support web 1}}, x: 2120, y: 490}
+  - {id: 109, type: MeshCube, name: Internal support web 2, inputs: {SizeX: {kind: Float, value: 0.00999999978}, SizeY: {kind: Float, value: 0.0120000001}, SizeZ: {kind: Float, value: 0.000899999985}}, x: 560, y: 790}
+  - {id: 110, type: Math, name: Sub, inputs: {A: {kind: Float, value: 0.00850000046}, Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {param: cap_pivot_above_bottom_m}}, x: 300, y: 340}
+  - {id: 111, type: CombineXYZ, name: Position, inputs: {X: {kind: Float, value: 0.00989949517}, Z: {kind: Float, value: 0.00989949517}}, x: 560, y: 640}
+  - {id: 112, type: Transform, name: Cap molded support web 2 placement, inputs: {Rotation: {kind: Float3, value: [0, -0.785398185, 0]}}, x: 820, y: 790}
+  - {id: 113, type: BevelEdge, name: Cap molded support web 2 molded edge radius, inputs: {Offset: {kind: Float, value: 0.000199999995}, Segments: {kind: Int32, value: 3}, AngleThreshold: {kind: Float, value: 0.649999976}}, x: 1080, y: 640}
+  - {id: 114, type: RecalculateNormals, name: Cap molded support web 2 consistent outward shell, x: 1340, y: 940}
+  - {id: 115, type: NormalField, name: Cap molded support web 2 smooth normals native normals, x: 1340, y: 1090}
+  - {id: 116, type: SetPointNormal, name: Cap molded support web 2 smooth normals, x: 1600, y: 640}
+  - {id: 117, type: SetMaterial, name: Cap molded support web 2 PBR, inputs: {Material: {kind: Material, value: [0.0120000001, 0.0140000004, 0.0160000008, 1, 0, 0.310000002]}, Name: {kind: String, value: Cap molded support web 2}}, x: 1860, y: 640}
+  - {id: 118, type: SetMeshName, name: Cap molded support web 2, inputs: {Name: {kind: String, value: Cap molded support web 2}}, x: 2120, y: 640}
+  - {id: 119, type: MeshCube, name: Internal support web 3, inputs: {SizeX: {kind: Float, value: 0.00999999978}, SizeY: {kind: Float, value: 0.0120000001}, SizeZ: {kind: Float, value: 0.000899999985}}, x: 560, y: 1090}
+  - {id: 120, type: Math, name: Sub, inputs: {A: {kind: Float, value: 0.00850000046}, Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {param: cap_pivot_above_bottom_m}}, x: 300, y: 490}
+  - {id: 121, type: CombineXYZ, name: Position, inputs: {X: {kind: Float, value: 8.57252764e-19}, Z: {kind: Float, value: 0.0140000004}}, x: 560, y: 940}
+  - {id: 122, type: Transform, name: Cap molded support web 3 placement, inputs: {Rotation: {kind: Float3, value: [0, -1.57079637, 0]}}, x: 820, y: 940}
+  - {id: 123, type: BevelEdge, name: Cap molded support web 3 molded edge radius, inputs: {Offset: {kind: Float, value: 0.000199999995}, Segments: {kind: Int32, value: 3}, AngleThreshold: {kind: Float, value: 0.649999976}}, x: 1080, y: 790}
+  - {id: 124, type: RecalculateNormals, name: Cap molded support web 3 consistent outward shell, x: 1340, y: 1240}
+  - {id: 125, type: NormalField, name: Cap molded support web 3 smooth normals native normals, x: 1340, y: 1390}
+  - {id: 126, type: SetPointNormal, name: Cap molded support web 3 smooth normals, x: 1600, y: 790}
+  - {id: 127, type: SetMaterial, name: Cap molded support web 3 PBR, inputs: {Material: {kind: Material, value: [0.0120000001, 0.0140000004, 0.0160000008, 1, 0, 0.310000002]}, Name: {kind: String, value: Cap molded support web 3}}, x: 1860, y: 790}
+  - {id: 128, type: SetMeshName, name: Cap molded support web 3, inputs: {Name: {kind: String, value: Cap molded support web 3}}, x: 2120, y: 790}
+  - {id: 129, type: MeshCube, name: Internal support web 4, inputs: {SizeX: {kind: Float, value: 0.00999999978}, SizeY: {kind: Float, value: 0.0120000001}, SizeZ: {kind: Float, value: 0.000899999985}}, x: 560, y: 1390}
+  - {id: 130, type: Math, name: Sub, inputs: {A: {kind: Float, value: 0.00850000046}, Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {param: cap_pivot_above_bottom_m}}, x: 300, y: 640}
+  - {id: 131, type: CombineXYZ, name: Position, inputs: {X: {kind: Float, value: -0.00989949517}, Z: {kind: Float, value: 0.00989949517}}, x: 560, y: 1240}
+  - {id: 132, type: Transform, name: Cap molded support web 4 placement, inputs: {Rotation: {kind: Float3, value: [0, -2.3561945, 0]}}, x: 820, y: 1090}
+  - {id: 133, type: BevelEdge, name: Cap molded support web 4 molded edge radius, inputs: {Offset: {kind: Float, value: 0.000199999995}, Segments: {kind: Int32, value: 3}, AngleThreshold: {kind: Float, value: 0.649999976}}, x: 1080, y: 940}
+  - {id: 134, type: RecalculateNormals, name: Cap molded support web 4 consistent outward shell, x: 1340, y: 1540}
+  - {id: 135, type: NormalField, name: Cap molded support web 4 smooth normals native normals, x: 1340, y: 1690}
+  - {id: 136, type: SetPointNormal, name: Cap molded support web 4 smooth normals, x: 1600, y: 940}
+  - {id: 137, type: SetMaterial, name: Cap molded support web 4 PBR, inputs: {Material: {kind: Material, value: [0.0120000001, 0.0140000004, 0.0160000008, 1, 0, 0.310000002]}, Name: {kind: String, value: Cap molded support web 4}}, x: 1860, y: 940}
+  - {id: 138, type: SetMeshName, name: Cap molded support web 4, inputs: {Name: {kind: String, value: Cap molded support web 4}}, x: 2120, y: 940}
+  - {id: 139, type: MeshCube, name: Internal support web 5, inputs: {SizeX: {kind: Float, value: 0.00999999978}, SizeY: {kind: Float, value: 0.0120000001}, SizeZ: {kind: Float, value: 0.000899999985}}, x: 560, y: 1690}
+  - {id: 140, type: Math, name: Sub, inputs: {A: {kind: Float, value: 0.00850000046}, Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {param: cap_pivot_above_bottom_m}}, x: 300, y: 790}
+  - {id: 141, type: CombineXYZ, name: Position, inputs: {X: {kind: Float, value: -0.0140000004}, Z: {kind: Float, value: 1.71450553e-18}}, x: 560, y: 1540}
+  - {id: 142, type: Transform, name: Cap molded support web 5 placement, inputs: {Rotation: {kind: Float3, value: [0, -3.14159274, 0]}}, x: 820, y: 1240}
+  - {id: 143, type: BevelEdge, name: Cap molded support web 5 molded edge radius, inputs: {Offset: {kind: Float, value: 0.000199999995}, Segments: {kind: Int32, value: 3}, AngleThreshold: {kind: Float, value: 0.649999976}}, x: 1080, y: 1090}
+  - {id: 144, type: RecalculateNormals, name: Cap molded support web 5 consistent outward shell, x: 1340, y: 1840}
+  - {id: 145, type: NormalField, name: Cap molded support web 5 smooth normals native normals, x: 1340, y: 1990}
+  - {id: 146, type: SetPointNormal, name: Cap molded support web 5 smooth normals, x: 1600, y: 1090}
+  - {id: 147, type: SetMaterial, name: Cap molded support web 5 PBR, inputs: {Material: {kind: Material, value: [0.0120000001, 0.0140000004, 0.0160000008, 1, 0, 0.310000002]}, Name: {kind: String, value: Cap molded support web 5}}, x: 1860, y: 1090}
+  - {id: 148, type: SetMeshName, name: Cap molded support web 5, inputs: {Name: {kind: String, value: Cap molded support web 5}}, x: 2120, y: 1090}
+  - {id: 149, type: MeshCube, name: Internal support web 6, inputs: {SizeX: {kind: Float, value: 0.00999999978}, SizeY: {kind: Float, value: 0.0120000001}, SizeZ: {kind: Float, value: 0.000899999985}}, x: 560, y: 1990}
+  - {id: 150, type: Math, name: Sub, inputs: {A: {kind: Float, value: 0.00850000046}, Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {param: cap_pivot_above_bottom_m}}, x: 300, y: 940}
+  - {id: 151, type: CombineXYZ, name: Position, inputs: {X: {kind: Float, value: -0.00989949517}, Z: {kind: Float, value: -0.00989949517}}, x: 560, y: 1840}
+  - {id: 152, type: Transform, name: Cap molded support web 6 placement, inputs: {Rotation: {kind: Float3, value: [0, -3.92699075, 0]}}, x: 820, y: 1390}
+  - {id: 153, type: BevelEdge, name: Cap molded support web 6 molded edge radius, inputs: {Offset: {kind: Float, value: 0.000199999995}, Segments: {kind: Int32, value: 3}, AngleThreshold: {kind: Float, value: 0.649999976}}, x: 1080, y: 1240}
+  - {id: 154, type: RecalculateNormals, name: Cap molded support web 6 consistent outward shell, x: 1340, y: 2140}
+  - {id: 155, type: NormalField, name: Cap molded support web 6 smooth normals native normals, x: 1340, y: 2290}
+  - {id: 156, type: SetPointNormal, name: Cap molded support web 6 smooth normals, x: 1600, y: 1240}
+  - {id: 157, type: SetMaterial, name: Cap molded support web 6 PBR, inputs: {Material: {kind: Material, value: [0.0120000001, 0.0140000004, 0.0160000008, 1, 0, 0.310000002]}, Name: {kind: String, value: Cap molded support web 6}}, x: 1860, y: 1240}
+  - {id: 158, type: SetMeshName, name: Cap molded support web 6, inputs: {Name: {kind: String, value: Cap molded support web 6}}, x: 2120, y: 1240}
+  - {id: 159, type: MeshCube, name: Internal support web 7, inputs: {SizeX: {kind: Float, value: 0.00999999978}, SizeY: {kind: Float, value: 0.0120000001}, SizeZ: {kind: Float, value: 0.000899999985}}, x: 560, y: 2290}
+  - {id: 160, type: Math, name: Sub, inputs: {A: {kind: Float, value: 0.00850000046}, Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {param: cap_pivot_above_bottom_m}}, x: 300, y: 1090}
+  - {id: 161, type: CombineXYZ, name: Position, inputs: {X: {kind: Float, value: -2.57175829e-18}, Z: {kind: Float, value: -0.0140000004}}, x: 560, y: 2140}
+  - {id: 162, type: Transform, name: Cap molded support web 7 placement, inputs: {Rotation: {kind: Float3, value: [0, -4.71238899, 0]}}, x: 820, y: 1540}
+  - {id: 163, type: BevelEdge, name: Cap molded support web 7 molded edge radius, inputs: {Offset: {kind: Float, value: 0.000199999995}, Segments: {kind: Int32, value: 3}, AngleThreshold: {kind: Float, value: 0.649999976}}, x: 1080, y: 1390}
+  - {id: 164, type: RecalculateNormals, name: Cap molded support web 7 consistent outward shell, x: 1340, y: 2440}
+  - {id: 165, type: NormalField, name: Cap molded support web 7 smooth normals native normals, x: 1340, y: 2590}
+  - {id: 166, type: SetPointNormal, name: Cap molded support web 7 smooth normals, x: 1600, y: 1390}
+  - {id: 167, type: SetMaterial, name: Cap molded support web 7 PBR, inputs: {Material: {kind: Material, value: [0.0120000001, 0.0140000004, 0.0160000008, 1, 0, 0.310000002]}, Name: {kind: String, value: Cap molded support web 7}}, x: 1860, y: 1390}
+  - {id: 168, type: SetMeshName, name: Cap molded support web 7, inputs: {Name: {kind: String, value: Cap molded support web 7}}, x: 2120, y: 1390}
+  - {id: 169, type: MeshCube, name: Internal support web 8, inputs: {SizeX: {kind: Float, value: 0.00999999978}, SizeY: {kind: Float, value: 0.0120000001}, SizeZ: {kind: Float, value: 0.000899999985}}, x: 560, y: 2590}
+  - {id: 170, type: Math, name: Sub, inputs: {A: {kind: Float, value: 0.00850000046}, Operation: {kind: Menu, value: 987abd19fac8cf55}, B: {param: cap_pivot_above_bottom_m}}, x: 300, y: 1240}
+  - {id: 171, type: CombineXYZ, name: Position, inputs: {X: {kind: Float, value: 0.00989949517}, Z: {kind: Float, value: -0.00989949517}}, x: 560, y: 2440}
+  - {id: 172, type: Transform, name: Cap molded support web 8 placement, inputs: {Rotation: {kind: Float3, value: [0, -5.497787, 0]}}, x: 820, y: 1690}
+  - {id: 173, type: BevelEdge, name: Cap molded support web 8 molded edge radius, inputs: {Offset: {kind: Float, value: 0.000199999995}, Segments: {kind: Int32, value: 3}, AngleThreshold: {kind: Float, value: 0.649999976}}, x: 1080, y: 1540}
+  - {id: 174, type: RecalculateNormals, name: Cap molded support web 8 consistent outward shell, x: 1340, y: 2740}
+  - {id: 175, type: NormalField, name: Cap molded support web 8 smooth normals native normals, x: 1340, y: 2890}
+  - {id: 176, type: SetPointNormal, name: Cap molded support web 8 smooth normals, x: 1600, y: 1540}
+  - {id: 177, type: SetMaterial, name: Cap molded support web 8 PBR, inputs: {Material: {kind: Material, value: [0.0120000001, 0.0140000004, 0.0160000008, 1, 0, 0.310000002]}, Name: {kind: String, value: Cap molded support web 8}}, x: 1860, y: 1540}
+  - {id: 178, type: SetMeshName, name: Cap molded support web 8, inputs: {Name: {kind: String, value: Cap molded support web 8}}, x: 2120, y: 1540}
+  - {id: 179, type: JoinGeometry, name: Assemble separate part 1, x: 5240, y: 40}
+  - {id: 180, type: JoinGeometry, name: Assemble separate part 2, x: 5500, y: 40}
+  - {id: 181, type: JoinGeometry, name: Assemble separate part 3, x: 5760, y: 40}
+  - {id: 182, type: JoinGeometry, name: Assemble separate part 4, x: 6020, y: 40}
+  - {id: 183, type: JoinGeometry, name: Assemble separate part 5, x: 6280, y: 40}
+  - {id: 184, type: JoinGeometry, name: Assemble separate part 6, x: 6540, y: 40}
+  - {id: 185, type: JoinGeometry, name: Assemble separate part 7, x: 6800, y: 40}
+  - {id: 186, type: JoinGeometry, name: Assemble separate part 8, x: 7060, y: 40}
+  - {id: 187, type: JoinGeometry, name: Assemble separate part 9, x: 7320, y: 40}
+  - {id: 188, type: JoinGeometry, name: Assemble separate part 10, x: 7580, y: 40}
+  - {id: 189, type: SetMeshOutputRole, name: Visual-only separate cap, inputs: {Role: {kind: Menu, value: 393ee15f7d35d08d}}, x: 7840, y: 40}
+links: [{from: {node: 1, pin: Value}, to: {node: 2, pin: A}}, {from: {node: 3, pin: Value}, to: {node: 4, pin: Y}}, {from: {node: 2, pin: Value}, to: {node: 5, pin: A}}, {from: {node: 5, pin: Value}, to: {node: 7, pin: X}}, {from: {node: 6, pin: Value}, to: {node: 7, pin: Y}}, {from: {node: 2, pin: Value}, to: {node: 9, pin: X}}, {from: {node: 8, pin: Value}, to: {node: 9, pin: Y}}, {from: {node: 4, pin: Vector}, to: {node: 10, pin: Anchor0}}, {from: {node: 7, pin: Vector}, to: {node: 10, pin: Anchor1}}, {from: {node: 9, pin: Vector}, to: {node: 10, pin: Anchor2}}, {from: {node: 10, pin: Curves}, to: {node: 11, pin: Curves}}, {from: {node: 2, pin: Value}, to: {node: 13, pin: X}}, {from: {node: 12, pin: Value}, to: {node: 13, pin: Y}}, {from: {node: 14, pin: Value}, to: {node: 15, pin: A}}, {from: {node: 2, pin: Value}, to: {node: 16, pin: X}}, {from: {node: 15, pin: Value}, to: {node: 16, pin: Y}}, {from: {node: 13, pin: Vector}, to: {node: 17, pin: Start}}, {from: {node: 16, pin: Vector}, to: {node: 17, pin: End}}, {from: {node: 18, pin: Value}, to: {node: 19, pin: A}}, {from: {node: 2, pin: Value}, to: {node: 20, pin: X}}, {from: {node: 19, pin: Value}, to: {node: 20, pin: Y}}, {from: {node: 2, pin: Value}, to: {node: 21, pin: A}}, {from: {node: 21, pin: Value}, to: {node: 23, pin: X}}, {from: {node: 22, pin: Value}, to: {node: 23, pin: Y}}, {from: {node: 2, pin: Value}, to: {node: 24, pin: A}}, {from: {node: 24, pin: Value}, to: {node: 26, pin: X}}, {from: {node: 25, pin: Value}, to: {node: 26, pin: Y}}, {from: {node: 2, pin: Value}, to: {node: 27, pin: A}}, {from: {node: 27, pin: Value}, to: {node: 29, pin: X}}, {from: {node: 28, pin: Value}, to: {node: 29, pin: Y}}, {from: {node: 30, pin: Value}, to: {node: 31, pin: Y}}, {from: {node: 20, pin: Vector}, to: {node: 32, pin: Anchor0}}, {from: {node: 23, pin: Vector}, to: {node: 32, pin: Anchor1}}, {from: {node: 26, pin: Vector}, to: {node: 32, pin: Anchor2}}, {from: {node: 29, pin: Vector}, to: {node: 32, pin: Anchor3}}, {from: {node: 31, pin: Vector}, to: {node: 32, pin: Anchor4}}, {from: {node: 32, pin: Curves}, to: {node: 33, pin: Curves}}, {from: {node: 11, pin: Curves}, to: {node: 34, pin: A}}, {from: {node: 17, pin: Curves}, to: {node: 34, pin: B}}, {from: {node: 34, pin: Curves}, to: {node: 35, pin: A}}, {from: {node: 33, pin: Curves}, to: {node: 35, pin: B}}, {from: {node: 35, pin: Curves}, to: {node: 36, pin: Profile}}, {from: {node: 37, pin: Value}, to: {node: 38, pin: Source}}, {from: {node: 38, pin: X}, to: {node: 39, pin: A}}, {from: {node: 38, pin: X}, to: {node: 39, pin: B}}, {from: {node: 38, pin: Z}, to: {node: 40, pin: A}}, {from: {node: 38, pin: Z}, to: {node: 40, pin: B}}, {from: {node: 39, pin: Value}, to: {node: 41, pin: A}}, {from: {node: 40, pin: Value}, to: {node: 41, pin: B}}, {from: {node: 41, pin: Value}, to: {node: 42, pin: A}}, {from: {node: 38, pin: Z}, to: {node: 43, pin: A}}, {from: {node: 38, pin: X}, to: {node: 43, pin: B}}, {from: {node: 43, pin: Value}, to: {node: 44, pin: A}}, {from: {node: 44, pin: Value}, to: {node: 45, pin: A}}, {from: {node: 45, pin: Value}, to: {node: 46, pin: A}}, {from: {node: 46, pin: Value}, to: {node: 47, pin: A}}, {from: {node: 47, pin: Value}, to: {node: 48, pin: B}}, {from: {node: 48, pin: Value}, to: {node: 49, pin: A}}, {from: {node: 38, pin: Y}, to: {node: 50, pin: A}}, {from: {node: 50, pin: Value}, to: {node: 51, pin: A}}, {from: {node: 51, pin: Value}, to: {node: 52, pin: A}}, {from: {node: 52, pin: Value}, to: {node: 53, pin: Source}}, {from: {node: 38, pin: Y}, to: {node: 55, pin: A}}, {from: {node: 54, pin: Value}, to: {node: 56, pin: A}}, {from: {node: 55, pin: Value}, to: {node: 56, pin: B}}, {from: {node: 56, pin: Value}, to: {node: 57, pin: A}}, {from: {node: 57, pin: Value}, to: {node: 58, pin: Source}}, {from: {node: 2, pin: Value}, to: {node: 59, pin: A}}, {from: {node: 42, pin: Value}, to: {node: 60, pin: A}}, {from: {node: 59, pin: Value}, to: {node: 60, pin: B}}, {from: {node: 49, pin: Value}, to: {node: 61, pin: A}}, {from: {node: 53, pin: Value}, to: {node: 62, pin: A}}, {from: {node: 58, pin: Value}, to: {node: 62, pin: B}}, {from: {node: 61, pin: Value}, to: {node: 63, pin: A}}, {from: {node: 62, pin: Value}, to: {node: 63, pin: B}}, {from: {node: 63, pin: Value}, to: {node: 64, pin: A}}, {from: {node: 60, pin: Value}, to: {node: 64, pin: B}}, {from: {node: 38, pin: X}, to: {node: 65, pin: A}}, {from: {node: 42, pin: Value}, to: {node: 65, pin: B}}, {from: {node: 65, pin: Value}, to: {node: 66, pin: A}}, {from: {node: 64, pin: Value}, to: {node: 66, pin: B}}, {from: {node: 38, pin: Z}, to: {node: 67, pin: A}}, {from: {node: 42, pin: Value}, to: {node: 67, pin: B}}, {from: {node: 67, pin: Value}, to: {node: 68, pin: A}}, {from: {node: 64, pin: Value}, to: {node: 68, pin: B}}, {from: {node: 66, pin: Value}, to: {node: 69, pin: X}}, {from: {node: 68, pin: Value}, to: {node: 69, pin: Z}}, {from: {node: 36, pin: Geometry}, to: {node: 70, pin: Geometry}}, {from: {node: 69, pin: Value}, to: {node: 70, pin: Offset}}, {from: {node: 70, pin: Geometry}, to: {node: 71, pin: Geometry}}, {from: {node: 71, pin: Geometry}, to: {node: 72, pin: Geometry}}, {from: {node: 72, pin: Geometry}, to: {node: 74, pin: Points}}, {from: {node: 73, pin: Value}, to: {node: 74, pin: Normal}}, {from: {node: 74, pin: Points}, to: {node: 75, pin: Geometry}}, {from: {node: 75, pin: Geometry}, to: {node: 76, pin: Geometry}}, {from: {node: 77, pin: Geometry}, to: {node: 79, pin: A}}, {from: {node: 78, pin: Geometry}, to: {node: 79, pin: B}}, {from: {node: 80, pin: Value}, to: {node: 81, pin: Y}}, {from: {node: 79, pin: Geometry}, to: {node: 82, pin: Geometry}}, {from: {node: 81, pin: Vector}, to: {node: 82, pin: Translation}}, {from: {node: 82, pin: Geometry}, to: {node: 83, pin: Geometry}}, {from: {node: 83, pin: Geometry}, to: {node: 84, pin: Geometry}}, {from: {node: 84, pin: Geometry}, to: {node: 86, pin: Points}}, {from: {node: 85, pin: Value}, to: {node: 86, pin: Normal}}, {from: {node: 86, pin: Points}, to: {node: 87, pin: Geometry}}, {from: {node: 87, pin: Geometry}, to: {node: 88, pin: Geometry}}, {from: {node: 89, pin: Curves}, to: {node: 90, pin: Curves}}, {from: {node: 91, pin: Value}, to: {node: 92, pin: Y}}, {from: {node: 90, pin: Geometry}, to: {node: 93, pin: Geometry}}, {from: {node: 92, pin: Vector}, to: {node: 93, pin: Translation}}, {from: {node: 93, pin: Geometry}, to: {node: 94, pin: Geometry}}, {from: {node: 94, pin: Geometry}, to: {node: 96, pin: Points}}, {from: {node: 95, pin: Value}, to: {node: 96, pin: Normal}}, {from: {node: 96, pin: Points}, to: {node: 97, pin: Geometry}}, {from: {node: 97, pin: Geometry}, to: {node: 98, pin: Geometry}}, {from: {node: 100, pin: Value}, to: {node: 101, pin: Y}}, {from: {node: 99, pin: Geometry}, to: {node: 102, pin: Geometry}}, {from: {node: 101, pin: Vector}, to: {node: 102, pin: Translation}}, {from: {node: 102, pin: Geometry}, to: {node: 103, pin: Geometry}}, {from: {node: 103, pin: Geometry}, to: {node: 104, pin: Geometry}}, {from: {node: 104, pin: Geometry}, to: {node: 106, pin: Points}}, {from: {node: 105, pin: Value}, to: {node: 106, pin: Normal}}, {from: {node: 106, pin: Points}, to: {node: 107, pin: Geometry}}, {from: {node: 107, pin: Geometry}, to: {node: 108, pin: Geometry}}, {from: {node: 110, pin: Value}, to: {node: 111, pin: Y}}, {from: {node: 109, pin: Geometry}, to: {node: 112, pin: Geometry}}, {from: {node: 111, pin: Vector}, to: {node: 112, pin: Translation}}, {from: {node: 112, pin: Geometry}, to: {node: 113, pin: Geometry}}, {from: {node: 113, pin: Geometry}, to: {node: 114, pin: Geometry}}, {from: {node: 114, pin: Geometry}, to: {node: 116, pin: Points}}, {from: {node: 115, pin: Value}, to: {node: 116, pin: Normal}}, {from: {node: 116, pin: Points}, to: {node: 117, pin: Geometry}}, {from: {node: 117, pin: Geometry}, to: {node: 118, pin: Geometry}}, {from: {node: 120, pin: Value}, to: {node: 121, pin: Y}}, {from: {node: 119, pin: Geometry}, to: {node: 122, pin: Geometry}}, {from: {node: 121, pin: Vector}, to: {node: 122, pin: Translation}}, {from: {node: 122, pin: Geometry}, to: {node: 123, pin: Geometry}}, {from: {node: 123, pin: Geometry}, to: {node: 124, pin: Geometry}}, {from: {node: 124, pin: Geometry}, to: {node: 126, pin: Points}}, {from: {node: 125, pin: Value}, to: {node: 126, pin: Normal}}, {from: {node: 126, pin: Points}, to: {node: 127, pin: Geometry}}, {from: {node: 127, pin: Geometry}, to: {node: 128, pin: Geometry}}, {from: {node: 130, pin: Value}, to: {node: 131, pin: Y}}, {from: {node: 129, pin: Geometry}, to: {node: 132, pin: Geometry}}, {from: {node: 131, pin: Vector}, to: {node: 132, pin: Translation}}, {from: {node: 132, pin: Geometry}, to: {node: 133, pin: Geometry}}, {from: {node: 133, pin: Geometry}, to: {node: 134, pin: Geometry}}, {from: {node: 134, pin: Geometry}, to: {node: 136, pin: Points}}, {from: {node: 135, pin: Value}, to: {node: 136, pin: Normal}}, {from: {node: 136, pin: Points}, to: {node: 137, pin: Geometry}}, {from: {node: 137, pin: Geometry}, to: {node: 138, pin: Geometry}}, {from: {node: 140, pin: Value}, to: {node: 141, pin: Y}}, {from: {node: 139, pin: Geometry}, to: {node: 142, pin: Geometry}}, {from: {node: 141, pin: Vector}, to: {node: 142, pin: Translation}}, {from: {node: 142, pin: Geometry}, to: {node: 143, pin: Geometry}}, {from: {node: 143, pin: Geometry}, to: {node: 144, pin: Geometry}}, {from: {node: 144, pin: Geometry}, to: {node: 146, pin: Points}}, {from: {node: 145, pin: Value}, to: {node: 146, pin: Normal}}, {from: {node: 146, pin: Points}, to: {node: 147, pin: Geometry}}, {from: {node: 147, pin: Geometry}, to: {node: 148, pin: Geometry}}, {from: {node: 150, pin: Value}, to: {node: 151, pin: Y}}, {from: {node: 149, pin: Geometry}, to: {node: 152, pin: Geometry}}, {from: {node: 151, pin: Vector}, to: {node: 152, pin: Translation}}, {from: {node: 152, pin: Geometry}, to: {node: 153, pin: Geometry}}, {from: {node: 153, pin: Geometry}, to: {node: 154, pin: Geometry}}, {from: {node: 154, pin: Geometry}, to: {node: 156, pin: Points}}, {from: {node: 155, pin: Value}, to: {node: 156, pin: Normal}}, {from: {node: 156, pin: Points}, to: {node: 157, pin: Geometry}}, {from: {node: 157, pin: Geometry}, to: {node: 158, pin: Geometry}}, {from: {node: 160, pin: Value}, to: {node: 161, pin: Y}}, {from: {node: 159, pin: Geometry}, to: {node: 162, pin: Geometry}}, {from: {node: 161, pin: Vector}, to: {node: 162, pin: Translation}}, {from: {node: 162, pin: Geometry}, to: {node: 163, pin: Geometry}}, {from: {node: 163, pin: Geometry}, to: {node: 164, pin: Geometry}}, {from: {node: 164, pin: Geometry}, to: {node: 166, pin: Points}}, {from: {node: 165, pin: Value}, to: {node: 166, pin: Normal}}, {from: {node: 166, pin: Points}, to: {node: 167, pin: Geometry}}, {from: {node: 167, pin: Geometry}, to: {node: 168, pin: Geometry}}, {from: {node: 170, pin: Value}, to: {node: 171, pin: Y}}, {from: {node: 169, pin: Geometry}, to: {node: 172, pin: Geometry}}, {from: {node: 171, pin: Vector}, to: {node: 172, pin: Translation}}, {from: {node: 172, pin: Geometry}, to: {node: 173, pin: Geometry}}, {from: {node: 173, pin: Geometry}, to: {node: 174, pin: Geometry}}, {from: {node: 174, pin: Geometry}, to: {node: 176, pin: Points}}, {from: {node: 175, pin: Value}, to: {node: 176, pin: Normal}}, {from: {node: 176, pin: Points}, to: {node: 177, pin: Geometry}}, {from: {node: 177, pin: Geometry}, to: {node: 178, pin: Geometry}}, {from: {node: 76, pin: Geometry}, to: {node: 179, pin: A}}, {from: {node: 88, pin: Geometry}, to: {node: 179, pin: B}}, {from: {node: 179, pin: Geometry}, to: {node: 180, pin: A}}, {from: {node: 98, pin: Geometry}, to: {node: 180, pin: B}}, {from: {node: 180, pin: Geometry}, to: {node: 181, pin: A}}, {from: {node: 108, pin: Geometry}, to: {node: 181, pin: B}}, {from: {node: 181, pin: Geometry}, to: {node: 182, pin: A}}, {from: {node: 118, pin: Geometry}, to: {node: 182, pin: B}}, {from: {node: 182, pin: Geometry}, to: {node: 183, pin: A}}, {from: {node: 128, pin: Geometry}, to: {node: 183, pin: B}}, {from: {node: 183, pin: Geometry}, to: {node: 184, pin: A}}, {from: {node: 138, pin: Geometry}, to: {node: 184, pin: B}}, {from: {node: 184, pin: Geometry}, to: {node: 185, pin: A}}, {from: {node: 148, pin: Geometry}, to: {node: 185, pin: B}}, {from: {node: 185, pin: Geometry}, to: {node: 186, pin: A}}, {from: {node: 158, pin: Geometry}, to: {node: 186, pin: B}}, {from: {node: 186, pin: Geometry}, to: {node: 187, pin: A}}, {from: {node: 168, pin: Geometry}, to: {node: 187, pin: B}}, {from: {node: 187, pin: Geometry}, to: {node: 188, pin: A}}, {from: {node: 178, pin: Geometry}, to: {node: 188, pin: B}}, {from: {node: 188, pin: Geometry}, to: {node: 189, pin: Geometry}}]
+parameters:
+  cap_diameter_m:
+    kind: Float
+    default: 0.0430000015
+    desc: Round outside diameter at rib peaks.
+    group: Separate cap dimensions and molded detail
+    min: 0.0350000001
+    max: 0.0500000007
+  cap_height_m:
+    kind: Float
+    default: 0.0329999998
+    desc: Photo-derived cap height estimate, independently adjustable.
+    group: Separate cap dimensions and molded detail
+    min: 0.0250000004
+    max: 0.0399999991
+  cap_rib_count:
+    kind: Float
+    default: 120
+    desc: Molded vertical grip ribs; native geometric radial profile.
+    group: Separate cap dimensions and molded detail
+    min: 80
+    max: 160
+  cap_rib_depth_m:
+    kind: Float
+    default: 0.000449999992
+    desc: Estimated molded rib relief.
+    group: Separate cap dimensions and molded detail
+    min: 9.99999975e-05
+    max: 0.000699999975
+  cap_pivot_above_bottom_m:
+    kind: Float
+    default: 0.0299999993
+    desc: Cap/thread pivot; +Y is the assembly neck axis.
+outputs:
+  Geometry:
+    node: 189
+    pin: Geometry
+editor_generated_identities:
+  version: 2
+  signature: 7259123903794192650
+  nodes:
+    - scope:
+        []
+      generated: 190
+      node: 190
+      index: 189
+      type: 1225607449884475736
+      parameter: cap_diameter_m
+      implementation: 0
+    - scope:
+        []
+      generated: 191
+      node: 191
+      index: 190
+      type: 1225607449884475736
+      parameter: cap_height_m
+      implementation: 0
+    - scope:
+        []
+      generated: 192
+      node: 192
+      index: 191
+      type: 1225607449884475736
+      parameter: cap_rib_count
+      implementation: 0
+    - scope:
+        []
+      generated: 193
+      node: 193
+      index: 192
+      type: 1225607449884475736
+      parameter: cap_rib_depth_m
+      implementation: 0
+    - scope:
+        []
+      generated: 194
+      node: 194
+      index: 193
+      type: 1225607449884475736
+      parameter: cap_pivot_above_bottom_m
+      implementation: 0
+editor_generated_layout:
+  version: 2
+  signature: 7259123903794192650
+  nodes:
+    - scope:
+        []
+      node: 190
+      x: 40
+      y: 340
+    - scope:
+        []
+      node: 191
+      x: 40
+      y: 490
+    - scope:
+        []
+      node: 192
+      x: 820
+      y: 190
+    - scope:
+        []
+      node: 193
+      x: 300
+      y: 1840
+    - scope:
+        []
+      node: 194
+      x: 40
+      y: 190

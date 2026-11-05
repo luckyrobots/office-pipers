@@ -1,0 +1,198 @@
+// Offline artwork source. Requires the Windows System.Drawing API, not Python.
+// All visible text is transcribed from the two supplied product photos.
+using System;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.Globalization;
+using System.IO;
+using System.Text;
+
+public static class MinwaxLabelArtwork
+{
+	private const int Size = 4096;
+	private static Graphics Canvas;
+	private static StringBuilder Svg;
+	private static readonly Color Gold = ColorTranslator.FromHtml("#D4A50C");
+	private static readonly Color Ink = ColorTranslator.FromHtml("#111514");
+	private static readonly Color Cream = ColorTranslator.FromHtml("#E6DFC7");
+	private static readonly Color Red = ColorTranslator.FromHtml("#991C20");
+	private static string F(float value) { return value.ToString("0.###", CultureInfo.InvariantCulture); }
+	private static string Hex(Color value) { return "#" + value.R.ToString("X2") + value.G.ToString("X2") + value.B.ToString("X2"); }
+
+	private static string PathSvg(GraphicsPath path)
+	{
+		StringBuilder result = new StringBuilder();
+		PointF[] points = path.PathPoints;
+		byte[] types = path.PathTypes;
+		for (int index = 0; index < points.Length; index++)
+		{
+			int type = types[index] & 7;
+			if (type == 0)
+			{
+				result.Append("M" + F(points[index].X) + "," + F(points[index].Y));
+			}
+			else if (type == 1)
+			{
+				result.Append("L" + F(points[index].X) + "," + F(points[index].Y));
+			}
+			else if (type == 3)
+			{
+				result.Append("C" + F(points[index].X) + "," + F(points[index].Y) + " " + F(points[index + 1].X) + "," + F(points[index + 1].Y) + " " + F(points[index + 2].X) + "," + F(points[index + 2].Y));
+				index += 2;
+			}
+			if ((types[index] & 128) != 0)
+			{
+				result.Append("Z");
+			}
+		}
+		return result.ToString();
+	}
+
+	private static void Fill(GraphicsPath path, Color color, string name)
+	{
+		using (SolidBrush brush = new SolidBrush(color))
+		{
+			Canvas.FillPath(brush, path);
+		}
+		Svg.AppendLine("<path id=\"" + name + "\" fill=\"" + Hex(color) + "\" d=\"" + PathSvg(path) + "\"/>");
+	}
+
+	private static void Stroke(GraphicsPath path, Color color, float width, string name)
+	{
+		using (Pen pen = new Pen(color, width))
+		{
+			pen.LineJoin = LineJoin.Round;
+			Canvas.DrawPath(pen, path);
+		}
+		Svg.AppendLine("<path id=\"" + name + "\" fill=\"none\" stroke=\"" + Hex(color) + "\" stroke-width=\"" + F(width) + "\" stroke-linejoin=\"round\" d=\"" + PathSvg(path) + "\"/>");
+	}
+
+	private static void Rect(float x, float y, float width, float height, Color color, string name)
+	{
+		using (GraphicsPath path = new GraphicsPath())
+		{
+			path.AddRectangle(new RectangleF(x, y, width, height));
+			Fill(path, color, name);
+		}
+	}
+
+	private static GraphicsPath Badge(float left, float top, float width, float height)
+	{
+		GraphicsPath path = new GraphicsPath();
+		float chamfer = height * 0.31f;
+		path.AddPolygon(new PointF[] { new PointF(left + chamfer, top), new PointF(left + width - chamfer, top), new PointF(left + width, top + height * .5f), new PointF(left + width - chamfer, top + height), new PointF(left + chamfer, top + height), new PointF(left, top + height * .5f) });
+		return path;
+	}
+
+	private static void Text(string text, string family, FontStyle style, float centre, float top, float width, float height, Color color, string name)
+	{
+		using (GraphicsPath path = new GraphicsPath())
+		using (FontFamily font = new FontFamily(family))
+		{
+			path.AddString(text, font, (int)style, 100, PointF.Empty, StringFormat.GenericTypographic);
+			RectangleF bounds = path.GetBounds();
+			using (Matrix transform = new Matrix(width / bounds.Width, 0, 0, height / bounds.Height, centre - width * .5f - bounds.X * width / bounds.Width, top - bounds.Y * height / bounds.Height))
+			{
+				path.Transform(transform);
+			}
+			Svg.AppendLine("<!-- " + text.Replace("--", "-") + " -->");
+			Fill(path, color, name);
+		}
+	}
+
+	private static void Seal(float x, float y, float radius)
+	{
+		using (GraphicsPath disk = new GraphicsPath())
+		{
+			disk.AddEllipse(x - radius, y - radius, radius * 2, radius * 2);
+			Fill(disk, Red, "professional-seal");
+			Stroke(disk, Cream, 5, "professional-seal-outer-ring");
+		}
+		using (GraphicsPath ring = new GraphicsPath())
+		{
+			ring.AddEllipse(x - radius + 19, y - radius + 19, (radius - 19) * 2, (radius - 19) * 2);
+			Stroke(ring, Gold, 3, "professional-seal-inner-ring");
+		}
+		Text("PROFESSIONAL", "Arial", FontStyle.Bold, x, y - 85, 365, 65, Gold, "seal-professional");
+		Text("RESULTS", "Arial", FontStyle.Bold, x, y - 7, 240, 65, Gold, "seal-results");
+		Text("GUARANTEED!", "Arial", FontStyle.Bold, x, y + 61, 330, 60, Gold, "seal-guaranteed");
+	}
+
+	public static void Generate(string output)
+	{
+		Directory.CreateDirectory(Path.Combine(output, "resources"));
+		Svg = new StringBuilder("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"4096\" height=\"4096\" viewBox=\"0 0 4096 4096\">\n<title>Minwax Stainable Wood Filler — reconstructed sleeve artwork</title>\n<desc>Front U=.5, back seam U=0/1. V=(height above cap bottom in mm - 33)/160. All type is vector outlines. Artwork transcribed from supplied product photographs; unreadable reverse instructions intentionally omitted.</desc>\n");
+		using (Bitmap image = new Bitmap(Size, Size, PixelFormat.Format24bppRgb))
+		using (Graphics graphics = Graphics.FromImage(image))
+		{
+			Canvas = graphics;
+			graphics.SmoothingMode = SmoothingMode.AntiAlias;
+			graphics.CompositingQuality = CompositingQuality.HighQuality;
+			graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+			Rect(0, 0, Size, Size, Gold, "gold-polymer-background");
+			Rect(0, 300, Size, 696, Ink, "black-header");
+			Rect(0, 996, Size, 45, Red, "red-keyline");
+			// The narrow crimp/seal geometry is supplied by the model, not baked lighting.
+			Rect(0, 263, Size, 108, Ink, "black-sealed-band");
+			using (GraphicsPath badge = Badge(1098, 854, 1900, 446))
+			{
+				Fill(badge, Ink, "minwax-badge");
+				Stroke(badge, Cream, 13, "minwax-badge-outer-keyline");
+			}
+			using (GraphicsPath badge = Badge(1126, 881, 1844, 392))
+			{
+				Stroke(badge, Cream, 3.5f, "minwax-badge-inner-keyline");
+			}
+			Text("MINWAX", "Times New Roman", FontStyle.Bold, 2043, 908, 1504, 292, Cream, "minwax-wordmark");
+			Text("®", "Arial", FontStyle.Regular, 2845, 1126, 40, 40, Cream, "minwax-registered");
+			Text("SINCE 1904", "Arial", FontStyle.Bold, 2048, 1225, 315, 39, Cream, "minwax-since-1904");
+			Text("STAINABLE", "Times New Roman", FontStyle.Bold, 2048, 1422, 1540, 220, Ink, "stainable");
+			Text("WOOD", "Times New Roman", FontStyle.Bold, 2048, 1700, 1510, 330, Ink, "wood");
+			Text("FILLER", "Times New Roman", FontStyle.Bold, 2048, 2090, 1510, 330, Ink, "filler");
+			Text("Fills cracks,", "Arial", FontStyle.Bold, 2048, 2590, 788, 100, Ink, "fills-cracks");
+			Text("gouges and holes", "Arial", FontStyle.Bold, 2048, 2732, 1160, 100, Ink, "gouges-holes");
+			Text("Accepts all stains and paints", "Arial", FontStyle.Regular, 2048, 2890, 1360, 74, Ink, "stains-paints");
+			Text("Resists shrinking and cracking", "Arial", FontStyle.Regular, 2048, 3020, 1430, 74, Ink, "shrinking-cracking");
+			Text("Easy to sand smooth", "Arial", FontStyle.Regular, 2048, 3150, 1050, 74, Ink, "sand-smooth");
+			Text("Interior and exterior use", "Arial", FontStyle.Regular, 2048, 3280, 1165, 74, Ink, "interior-exterior");
+			// A fine wood-grain ribbon, drawn as linework rather than a photo patch.
+			for (int line = 0; line < 17; line++)
+			{
+				float y = 3550 + line * 6.5f;
+				using (GraphicsPath grain = new GraphicsPath())
+				{
+					grain.AddBezier(1050, y + line * 2, 1420, y + 115 - line * 3, 1610, y - 25, 2048, y + 20);
+					grain.AddBezier(2048, y + 20, 2430, y + 80, 2710, y - 95, 3046, y - 20);
+					Stroke(grain, ColorTranslator.FromHtml("#DDC16A"), 3.0f, "woodgrain-" + line);
+				}
+			}
+			Seal(2048, 3615, 215);
+			Text("6 FL OZ / 177 mL", "Arial", FontStyle.Bold, 2048, 3940, 790, 90, Ink, "capacity");
+			Svg.AppendLine("</svg>");
+			File.WriteAllText(Path.Combine(output, "minwax-label-master.svg"), Svg.ToString(), new UTF8Encoding(false));
+			image.Save(Path.Combine(output, "resources/minwax-label-basecolor.png"), ImageFormat.Png);
+			using (Bitmap crop = new Bitmap(1152, 2048, PixelFormat.Format24bppRgb))
+			using (Graphics preview = Graphics.FromImage(crop))
+			{
+				preview.InterpolationMode = InterpolationMode.HighQualityBicubic;
+				preview.DrawImage(image, new Rectangle(0, 0, 1152, 2048), new Rectangle(896, 0, 2304, 4096), GraphicsUnit.Pixel);
+				crop.Save(Path.Combine(output, "front-artwork-preview.png"), ImageFormat.Png);
+			}
+		}
+		using (Bitmap packed = new Bitmap(1024, 1024, PixelFormat.Format24bppRgb))
+		{
+			Random random = new Random(1904);
+			for (int y = 0; y < packed.Height; y++)
+			{
+				for (int x = 0; x < packed.Width; x++)
+				{
+					// Absolute glTF roughness G=.33..35. R unused, B=0 dielectric.
+					int roughness = 87 + random.Next(-2, 3);
+					packed.SetPixel(x, y, Color.FromArgb(255, roughness, 0));
+				}
+			}
+			packed.Save(Path.Combine(output, "resources/minwax-label-metallic-roughness.png"), ImageFormat.Png);
+		}
+	}
+}

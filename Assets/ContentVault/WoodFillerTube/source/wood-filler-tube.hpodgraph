@@ -1,0 +1,324 @@
+nodes:
+  - id: 1
+    type: Math
+    name: scale 0.33
+    inputs:
+      A:
+        param: diameter_m
+      B: {kind: Float, value: 0.330000013}
+      Operation: {kind: Menu, value: 1def8519b5034941}
+    x: 320
+    y: 200
+  - {id: 2, type: Math, name: scale 0.124, inputs: {A: {param: height_m}, B: {kind: Float, value: 0.123999998}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 40}
+  - {id: 3, type: MeshCylinder, name: Closed black screw cap, inputs: {Sides: {kind: Int32, value: 96}}, x: 600, y: 40}
+  - {id: 4, type: Math, name: scale -0.438, inputs: {A: {param: height_m}, B: {kind: Float, value: -0.437999994}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 4360}
+  - {id: 5, type: CombineXYZ, name: height offset -0.438, inputs: {X: {kind: Float, value: 0}, Z: {kind: Float, value: 0}}, x: 600, y: 3880}
+  - {id: 6, type: Math, name: scale 0.012, inputs: {A: {param: diameter_m}, B: {kind: Float, value: 0.0120000001}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 7720}
+  - {id: 7, type: BevelEdge, name: Screw cap edge rounding, inputs: {Segments: {kind: Int32, value: 3}}, x: 880, y: 40}
+  - {id: 8, type: Transform, name: Screw cap placement, x: 1160, y: 40}
+  - {id: 9, type: SetMaterial, name: Screw cap PBR, inputs: {Material: {param: cap_material}, Name: {kind: String, value: Screw cap}}, x: 1440, y: 40}
+  - {id: 10, type: SetMeshName, name: Screw cap, inputs: {Name: {kind: String, value: Screw cap}}, x: 1720, y: 40}
+  - {id: 11, type: Math, name: scale 0.337, inputs: {A: {param: diameter_m}, B: {kind: Float, value: 0.337000012}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 1960}
+  - {id: 12, type: Math, name: scale 0.006, inputs: {A: {param: height_m}, B: {kind: Float, value: 0.00600000005}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 1800}
+  - {id: 13, type: MeshCylinder, name: Cap collar 1, inputs: {Sides: {kind: Int32, value: 96}}, x: 600, y: 1640}
+  - {id: 14, type: Math, name: scale -0.468, inputs: {A: {param: height_m}, B: {kind: Float, value: -0.467999995}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 1480}
+  - {id: 15, type: CombineXYZ, name: height offset -0.468, inputs: {X: {kind: Float, value: 0}, Z: {kind: Float, value: 0}}, x: 600, y: 1480}
+  - {id: 16, type: Transform, name: Cap collar 1 placement, x: 880, y: 1480}
+  - {id: 17, type: SetMaterial, name: Cap collar 1 PBR, inputs: {Material: {param: cap_material}, Name: {kind: String, value: Cap collar 1}}, x: 1160, y: 1480}
+  - {id: 18, type: SetMeshName, name: Cap collar 1, inputs: {Name: {kind: String, value: Cap collar 1}}, x: 1440, y: 1320}
+  - {id: 19, type: MeshCylinder, name: Cap collar 2, inputs: {Sides: {kind: Int32, value: 96}}, x: 600, y: 1960}
+  - {id: 20, type: Math, name: scale -0.437, inputs: {A: {param: height_m}, B: {kind: Float, value: -0.437000006}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 1640}
+  - {id: 21, type: CombineXYZ, name: height offset -0.437, inputs: {X: {kind: Float, value: 0}, Z: {kind: Float, value: 0}}, x: 600, y: 1800}
+  - {id: 22, type: Transform, name: Cap collar 2 placement, x: 880, y: 1640}
+  - {id: 23, type: SetMaterial, name: Cap collar 2 PBR, inputs: {Material: {param: cap_material}, Name: {kind: String, value: Cap collar 2}}, x: 1160, y: 1640}
+  - {id: 24, type: SetMeshName, name: Cap collar 2, inputs: {Name: {kind: String, value: Cap collar 2}}, x: 1440, y: 1480}
+  - {id: 25, type: MeshCylinder, name: Cap collar 3, inputs: {Sides: {kind: Int32, value: 96}}, x: 600, y: 2280}
+  - {id: 26, type: Math, name: scale -0.406, inputs: {A: {param: height_m}, B: {kind: Float, value: -0.405999988}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 2280}
+  - {id: 27, type: CombineXYZ, name: height offset -0.406, inputs: {X: {kind: Float, value: 0}, Z: {kind: Float, value: 0}}, x: 600, y: 2120}
+  - {id: 28, type: Transform, name: Cap collar 3 placement, x: 880, y: 1800}
+  - {id: 29, type: SetMaterial, name: Cap collar 3 PBR, inputs: {Material: {param: cap_material}, Name: {kind: String, value: Cap collar 3}}, x: 1160, y: 1800}
+  - {id: 30, type: SetMeshName, name: Cap collar 3, inputs: {Name: {kind: String, value: Cap collar 3}}, x: 1440, y: 1640}
+  - {id: 31, type: Math, name: scale 0.235, inputs: {A: {param: diameter_m}, B: {kind: Float, value: 0.234999999}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 840}
+  - {id: 32, type: Math, name: scale 0.038, inputs: {A: {param: height_m}, B: {kind: Float, value: 0.0379999988}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 360}
+  - {id: 33, type: MeshCylinder, name: Narrow neck, inputs: {Sides: {kind: Int32, value: 64}}, x: 600, y: 200}
+  - {id: 34, type: Math, name: scale -0.362, inputs: {A: {param: height_m}, B: {kind: Float, value: -0.361999989}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 4520}
+  - {id: 35, type: CombineXYZ, name: height offset -0.362, inputs: {X: {kind: Float, value: 0}, Z: {kind: Float, value: 0}}, x: 600, y: 4200}
+  - {id: 36, type: Math, name: scale 0.008, inputs: {A: {param: diameter_m}, B: {kind: Float, value: 0.00800000038}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 7880}
+  - {id: 37, type: BevelEdge, name: Neck edge rounding, inputs: {Segments: {kind: Int32, value: 3}}, x: 880, y: 200}
+  - {id: 38, type: Transform, name: Neck placement, x: 1160, y: 200}
+  - {id: 39, type: SetMaterial, name: Neck PBR, inputs: {Material: {param: cap_material}, Name: {kind: String, value: Neck}}, x: 1440, y: 200}
+  - {id: 40, type: SetMeshName, name: Neck, inputs: {Name: {kind: String, value: Neck}}, x: 1720, y: 200}
+  - {id: 41, type: Math, name: scale 0.5, inputs: {A: {param: diameter_m}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 2120}
+  - {id: 42, type: Math, name: scale 0.108, inputs: {A: {param: height_m}, B: {kind: Float, value: 0.108000003}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 1320}
+  - {id: 43, type: MeshCone, name: Tapered shoulder, inputs: {Sides: {kind: Int32, value: 96}}, x: 600, y: 840}
+  - {id: 44, type: Math, name: scale -0.297, inputs: {A: {param: height_m}, B: {kind: Float, value: -0.296999991}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 4680}
+  - {id: 45, type: CombineXYZ, name: height offset -0.297, inputs: {X: {kind: Float, value: 0}, Z: {kind: Float, value: 0}}, x: 600, y: 4360}
+  - {id: 46, type: Math, name: scale 0.006, inputs: {A: {param: diameter_m}, B: {kind: Float, value: 0.00600000005}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 8040}
+  - {id: 47, type: BevelEdge, name: Yellow shoulder edge rounding, inputs: {Segments: {kind: Int32, value: 3}}, x: 880, y: 840}
+  - {id: 48, type: Transform, name: Yellow shoulder placement, x: 1160, y: 840}
+  - {id: 49, type: SetMaterial, name: Yellow shoulder PBR, inputs: {Material: {param: sleeve_material}, Name: {kind: String, value: Yellow shoulder}}, x: 1440, y: 840}
+  - {id: 50, type: SetMeshName, name: Yellow shoulder, inputs: {Name: {kind: String, value: Yellow shoulder}}, x: 1720, y: 840}
+  - {id: 51, type: CurveCircle, name: Rounded lower sleeve, inputs: {Resolution: {kind: Int32, value: 96}}, x: 600, y: 1000}
+  - {id: 52, type: Transform, name: Rounded lower sleeve oval, inputs: {Scale: {kind: Float3, value: [1, 1, 0.779999971]}}, x: 880, y: 1000}
+  - {id: 53, type: CurveCircle, name: Soft middle sleeve, inputs: {Resolution: {kind: Int32, value: 96}}, x: 600, y: 1160}
+  - {id: 54, type: Transform, name: Soft middle sleeve oval, inputs: {Scale: {kind: Float3, value: [1, 1, 0.649999976]}}, x: 880, y: 1160}
+  - {id: 55, type: CurveCircle, name: Flattened sealed end, inputs: {Resolution: {kind: Int32, value: 96}}, x: 600, y: 1320}
+  - {id: 56, type: Transform, name: Flattened sealed end oval, inputs: {Scale: {kind: Float3, value: [1, 1, 0.0549999997]}}, x: 880, y: 1320}
+  - {id: 57, type: Math, name: scale -0.243, inputs: {A: {param: height_m}, B: {kind: Float, value: -0.243000001}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 6760}
+  - {id: 58, type: Math, name: scale 0.105, inputs: {A: {param: height_m}, B: {kind: Float, value: 0.104999997}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 6920}
+  - {id: 59, type: LoftBetweenProfiles, name: Filled flexible body, inputs: {Sections: {kind: Int32, value: 20}, ProfileClosed: {kind: Bool, value: true}, CapStart: {kind: Bool, value: true}, CapEnd: {kind: Bool, value: false}}, x: 1160, y: 1000}
+  - {id: 60, type: SetMaterial, name: Yellow body PBR, inputs: {Material: {param: sleeve_material}, Name: {kind: String, value: Yellow body}}, x: 1440, y: 1000}
+  - {id: 61, type: SetMeshName, name: Yellow body, inputs: {Name: {kind: String, value: Yellow body}}, x: 1720, y: 1000}
+  - {id: 62, type: Math, name: scale 0.478, inputs: {A: {param: height_m}, B: {kind: Float, value: 0.477999985}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 7080}
+  - {id: 63, type: LoftBetweenProfiles, name: Flattened upper sleeve, inputs: {Sections: {kind: Int32, value: 24}, ProfileClosed: {kind: Bool, value: true}, CapStart: {kind: Bool, value: false}, CapEnd: {kind: Bool, value: true}}, x: 1160, y: 1320}
+  - {id: 64, type: SetMaterial, name: Yellow sealed sleeve PBR, inputs: {Material: {param: sleeve_material}, Name: {kind: String, value: Yellow sealed sleeve}}, x: 1440, y: 1160}
+  - {id: 65, type: SetMeshName, name: Yellow sealed sleeve, inputs: {Name: {kind: String, value: Yellow sealed sleeve}}, x: 1720, y: 1160}
+  - {id: 66, type: Math, name: scale 0.022, inputs: {A: {param: height_m}, B: {kind: Float, value: 0.0219999999}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 520}
+  - {id: 67, type: Math, name: scale 0.07, inputs: {A: {param: diameter_m}, B: {kind: Float, value: 0.0700000003}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 680}
+  - {id: 68, type: MeshCube, name: Crimp seam, inputs: {SizeX: {param: diameter_m}}, x: 600, y: 360}
+  - {id: 69, type: Math, name: scale 0.489, inputs: {A: {param: height_m}, B: {kind: Float, value: 0.488999993}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 4840}
+  - {id: 70, type: CombineXYZ, name: height offset 0.489, inputs: {X: {kind: Float, value: 0}, Z: {kind: Float, value: 0}}, x: 600, y: 4520}
+  - {id: 71, type: BevelEdge, name: Black crimp seam edge rounding, inputs: {Segments: {kind: Int32, value: 3}}, x: 880, y: 360}
+  - {id: 72, type: Transform, name: Black crimp seam placement, x: 1160, y: 360}
+  - {id: 73, type: SetMaterial, name: Black crimp seam PBR, inputs: {Material: {param: cap_material}, Name: {kind: String, value: Black crimp seam}}, x: 1440, y: 360}
+  - {id: 74, type: SetMeshName, name: Black crimp seam, inputs: {Name: {kind: String, value: Black crimp seam}}, x: 1720, y: 360}
+  - {id: 75, type: Math, name: scale 0.13, inputs: {A: {param: diameter_m}, B: {kind: Float, value: 0.129999995}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 1000}
+  - {id: 76, type: StringToCurves, name: WOOD printing, inputs: {String: {kind: String, value: WOOD}, AlignX: {kind: Menu, value: b38d497d992ab4a4}, AlignY: {kind: Menu, value: 4101ada154a1b958}}, x: 600, y: 520}
+  - {id: 77, type: FillCurve, name: WOOD ink faces, inputs: {Plane: {kind: Menu, value: 095d6f07b5e9405a}, Mode: {kind: Menu, value: 9c4d02e6ea70c6e2}}, x: 880, y: 520}
+  - {id: 78, type: Math, name: scale -0.07, inputs: {A: {param: height_m}, B: {kind: Float, value: -0.0700000003}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 5480}
+  - {id: 79, type: Math, name: scale 0.384, inputs: {A: {param: diameter_m}, B: {kind: Float, value: 0.384000003}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 5640}
+  - {id: 80, type: CombineXYZ, name: WOOD printed face, inputs: {X: {kind: Float, value: 0}}, x: 600, y: 5320}
+  - {id: 81, type: Transform, name: WOOD label placement, x: 1160, y: 520}
+  - {id: 82, type: SetMaterial, name: WOOD label PBR, inputs: {Material: {param: cap_material}, Name: {kind: String, value: WOOD label}}, x: 1440, y: 520}
+  - {id: 83, type: SetMeshName, name: WOOD label, inputs: {Name: {kind: String, value: WOOD label}}, x: 1720, y: 520}
+  - {id: 84, type: Math, name: scale 0.105, inputs: {A: {param: diameter_m}, B: {kind: Float, value: 0.104999997}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 1160}
+  - {id: 85, type: StringToCurves, name: FILLER printing, inputs: {String: {kind: String, value: FILLER}, AlignX: {kind: Menu, value: b38d497d992ab4a4}, AlignY: {kind: Menu, value: 4101ada154a1b958}}, x: 600, y: 680}
+  - {id: 86, type: FillCurve, name: FILLER ink faces, inputs: {Plane: {kind: Menu, value: 095d6f07b5e9405a}, Mode: {kind: Menu, value: 9c4d02e6ea70c6e2}}, x: 880, y: 680}
+  - {id: 87, type: Math, name: scale -0.115, inputs: {A: {param: height_m}, B: {kind: Float, value: -0.115000002}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 5800}
+  - {id: 88, type: CombineXYZ, name: FILLER printed face, inputs: {X: {kind: Float, value: 0}}, x: 600, y: 5480}
+  - {id: 89, type: Transform, name: FILLER label placement, x: 1160, y: 680}
+  - {id: 90, type: SetMaterial, name: FILLER label PBR, inputs: {Material: {param: cap_material}, Name: {kind: String, value: FILLER label}}, x: 1440, y: 680}
+  - {id: 91, type: SetMeshName, name: FILLER label, inputs: {Name: {kind: String, value: FILLER label}}, x: 1720, y: 680}
+  - {id: 92, type: Math, name: scale 0.003, inputs: {A: {param: height_m}, B: {kind: Float, value: 0.00300000003}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 2600}
+  - {id: 93, type: MeshCube, name: Small print band, inputs: {SizeZ: {kind: Float, value: 7.9999998e-05}}, x: 600, y: 2440}
+  - {id: 94, type: Math, name: scale -0.155, inputs: {A: {param: height_m}, B: {kind: Float, value: -0.155000001}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 2440}
+  - {id: 95, type: Math, name: scale 0.388, inputs: {A: {param: diameter_m}, B: {kind: Float, value: 0.388000011}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 3080}
+  - {id: 96, type: CombineXYZ, name: position, inputs: {X: {kind: Float, value: 0}}, x: 600, y: 2600}
+  - {id: 97, type: Transform, name: Label rule 1 placement, x: 880, y: 2120}
+  - {id: 98, type: SetMaterial, name: Label rule 1 PBR, inputs: {Material: {param: cap_material}, Name: {kind: String, value: Label rule 1}}, x: 1160, y: 1960}
+  - {id: 99, type: SetMeshName, name: Label rule 1, inputs: {Name: {kind: String, value: Label rule 1}}, x: 1440, y: 1800}
+  - {id: 100, type: Math, name: scale 0.44, inputs: {A: {param: diameter_m}, B: {kind: Float, value: 0.439999998}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 2760}
+  - {id: 101, type: MeshCube, name: Small print band, inputs: {SizeZ: {kind: Float, value: 7.9999998e-05}}, x: 600, y: 2760}
+  - {id: 102, type: Math, name: scale -0.17, inputs: {A: {param: height_m}, B: {kind: Float, value: -0.170000002}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 2920}
+  - {id: 103, type: CombineXYZ, name: position, inputs: {X: {kind: Float, value: 0}}, x: 600, y: 2920}
+  - {id: 104, type: Transform, name: Label rule 2 placement, x: 880, y: 2280}
+  - {id: 105, type: SetMaterial, name: Label rule 2 PBR, inputs: {Material: {param: cap_material}, Name: {kind: String, value: Label rule 2}}, x: 1160, y: 2120}
+  - {id: 106, type: SetMeshName, name: Label rule 2, inputs: {Name: {kind: String, value: Label rule 2}}, x: 1440, y: 1960}
+  - {id: 107, type: Math, name: scale 0.38, inputs: {A: {param: diameter_m}, B: {kind: Float, value: 0.379999995}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 3240}
+  - {id: 108, type: MeshCube, name: Small print band, inputs: {SizeZ: {kind: Float, value: 7.9999998e-05}}, x: 600, y: 3080}
+  - {id: 109, type: Math, name: scale -0.185, inputs: {A: {param: height_m}, B: {kind: Float, value: -0.185000002}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 3400}
+  - {id: 110, type: CombineXYZ, name: position, inputs: {X: {kind: Float, value: 0}}, x: 600, y: 3240}
+  - {id: 111, type: Transform, name: Label rule 3 placement, x: 880, y: 2440}
+  - {id: 112, type: SetMaterial, name: Label rule 3 PBR, inputs: {Material: {param: cap_material}, Name: {kind: String, value: Label rule 3}}, x: 1160, y: 2280}
+  - {id: 113, type: SetMeshName, name: Label rule 3, inputs: {Name: {kind: String, value: Label rule 3}}, x: 1440, y: 2120}
+  - {id: 114, type: Math, name: scale 0.58, inputs: {A: {param: diameter_m}, B: {kind: Float, value: 0.579999983}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 3720}
+  - {id: 115, type: Math, name: scale 0.16, inputs: {A: {param: height_m}, B: {kind: Float, value: 0.159999996}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 3560}
+  - {id: 116, type: MeshCube, name: Generic rear information label, inputs: {SizeZ: {kind: Float, value: 9.99999975e-05}}, x: 600, y: 3400}
+  - {id: 117, type: Math, name: scale -0.04, inputs: {A: {param: height_m}, B: {kind: Float, value: -0.0399999991}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 3880}
+  - {id: 118, type: Math, name: scale -0.373, inputs: {A: {param: diameter_m}, B: {kind: Float, value: -0.372999996}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 4040}
+  - {id: 119, type: CombineXYZ, name: position, inputs: {X: {kind: Float, value: 0}}, x: 600, y: 3560}
+  - {id: 120, type: Transform, name: Rear label placement, x: 880, y: 2600}
+  - {id: 121, type: SetMaterial, name: Rear label PBR, inputs: {Material: {param: label_material}, Name: {kind: String, value: Rear label}}, x: 1160, y: 2440}
+  - {id: 122, type: SetMeshName, name: Rear label, inputs: {Name: {kind: String, value: Rear label}}, x: 1440, y: 2280}
+  - {id: 123, type: JoinGeometry, name: Assemble tube 1, x: 2000, y: 40}
+  - {id: 124, type: JoinGeometry, name: Assemble tube 2, x: 2280, y: 40}
+  - {id: 125, type: JoinGeometry, name: Assemble tube 3, x: 2560, y: 40}
+  - {id: 126, type: JoinGeometry, name: Assemble tube 4, x: 2840, y: 40}
+  - {id: 127, type: JoinGeometry, name: Assemble tube 5, x: 3120, y: 40}
+  - {id: 128, type: JoinGeometry, name: Assemble tube 6, x: 3400, y: 40}
+  - {id: 129, type: JoinGeometry, name: Assemble tube 7, x: 3680, y: 40}
+  - {id: 130, type: JoinGeometry, name: Assemble tube 8, x: 3960, y: 40}
+  - {id: 131, type: JoinGeometry, name: Assemble tube 9, x: 4240, y: 40}
+  - {id: 132, type: JoinGeometry, name: Assemble tube 10, x: 4520, y: 40}
+  - {id: 133, type: JoinGeometry, name: Assemble tube 11, x: 4800, y: 40}
+  - {id: 134, type: JoinGeometry, name: Assemble tube 12, x: 5080, y: 40}
+  - {id: 135, type: JoinGeometry, name: Assemble tube 13, x: 5360, y: 40}
+  - {id: 136, type: JoinGeometry, name: Assemble tube 14, x: 5640, y: 40}
+  - {id: 137, type: SetMeshBodyMembership, name: One rigid tube body, inputs: {Body: {kind: String, value: wood_filler_tube}}, x: 5920, y: 40}
+  - {id: 138, type: DeclareBody, name: Wood filler tube body, inputs: {Name: {kind: String, value: wood_filler_tube}}, x: 6200, y: 40}
+  - {id: 139, type: AttachFreeJoint, name: Free tube pose, inputs: {Body: {kind: String, value: wood_filler_tube}}, x: 6480, y: 40}
+  - {id: 140, type: Math, name: Diameter squared, inputs: {A: {param: diameter_m}, B: {param: diameter_m}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 4200}
+  - {id: 141, type: Math, name: Hull volume scale, inputs: {B: {param: height_m}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 600, y: 3720}
+  - {id: 142, type: Math, name: Combined contact hull volume, inputs: {B: {kind: Float, value: 0.504531503}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 880, y: 2920}
+  - {id: 143, type: Math, name: Mass divided by hull volume, inputs: {A: {param: mass_kg}, Operation: {kind: Menu, value: e0b15a19922764e8}}, x: 1160, y: 2600}
+  - {id: 144, type: CombineXYZ, name: Estimated contact friction, inputs: {X: {param: sliding_friction}, Y: {kind: Float, value: 0.00400000019}, Z: {kind: Float, value: 9.99999975e-05}}, x: 320, y: 8520}
+  - {id: 145, type: Math, name: scale 0.062, inputs: {A: {param: height_m}, B: {kind: Float, value: 0.061999999}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 7240}
+  - {id: 146, type: CombineXYZ, name: height offset -0.438, inputs: {X: {kind: Float, value: 0}, Z: {kind: Float, value: 0}}, x: 600, y: 4040}
+  - {id: 147, type: AddCollisionCylinder, name: cap contact, inputs: {Body: {kind: String, value: wood_filler_tube}, Name: {kind: String, value: cap}, Axis: {kind: Menu, value: af64144c86024bb4}, Condim: {kind: Int32, value: 4}}, x: 6760, y: 40}
+  - {id: 148, type: Math, name: scale 0.46, inputs: {A: {param: diameter_m}, B: {kind: Float, value: 0.460000008}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 8200}
+  - {id: 149, type: Math, name: scale 0.285, inputs: {A: {param: height_m}, B: {kind: Float, value: 0.284999996}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 7400}
+  - {id: 150, type: Math, name: scale -0.045, inputs: {A: {param: height_m}, B: {kind: Float, value: -0.0450000018}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 5000}
+  - {id: 151, type: CombineXYZ, name: height offset -0.045, inputs: {X: {kind: Float, value: 0}, Z: {kind: Float, value: 0}}, x: 600, y: 4840}
+  - {id: 152, type: AddCollisionCylinder, name: main_body contact, inputs: {Body: {kind: String, value: wood_filler_tube}, Name: {kind: String, value: main_body}, Axis: {kind: Menu, value: af64144c86024bb4}, Condim: {kind: Int32, value: 4}}, x: 7040, y: 40}
+  - {id: 153, type: Math, name: scale 0.32, inputs: {A: {param: diameter_m}, B: {kind: Float, value: 0.319999993}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 8360}
+  - {id: 154, type: Math, name: scale 0.035, inputs: {A: {param: height_m}, B: {kind: Float, value: 0.0350000001}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 7560}
+  - {id: 155, type: Math, name: scale -0.34, inputs: {A: {param: height_m}, B: {kind: Float, value: -0.340000004}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 5160}
+  - {id: 156, type: CombineXYZ, name: height offset -0.34, inputs: {X: {kind: Float, value: 0}, Z: {kind: Float, value: 0}}, x: 600, y: 5000}
+  - {id: 157, type: AddCollisionCylinder, name: shoulder contact, inputs: {Body: {kind: String, value: wood_filler_tube}, Name: {kind: String, value: shoulder}, Axis: {kind: Menu, value: af64144c86024bb4}, Condim: {kind: Int32, value: 4}}, x: 7320, y: 40}
+  - {id: 158, type: Math, name: scale 0.48, inputs: {A: {param: diameter_m}, B: {kind: Float, value: 0.479999989}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 6440}
+  - {id: 159, type: Math, name: scale 0.14, inputs: {A: {param: height_m}, B: {kind: Float, value: 0.140000001}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 6280}
+  - {id: 160, type: Math, name: scale 0.11, inputs: {A: {param: diameter_m}, B: {kind: Float, value: 0.109999999}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 6600}
+  - {id: 161, type: CombineXYZ, name: flattened_upper half extents, x: 600, y: 5800}
+  - {id: 162, type: Math, name: scale 0.33, inputs: {A: {param: height_m}, B: {kind: Float, value: 0.330000013}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 5320}
+  - {id: 163, type: CombineXYZ, name: height offset 0.33, inputs: {X: {kind: Float, value: 0}, Z: {kind: Float, value: 0}}, x: 600, y: 5160}
+  - {id: 164, type: AddCollisionBox, name: flattened_upper contact, inputs: {Body: {kind: String, value: wood_filler_tube}, Name: {kind: String, value: flattened_upper}, Condim: {kind: Int32, value: 4}}, x: 7600, y: 40}
+  - {id: 165, type: Math, name: scale 0.011, inputs: {A: {param: height_m}, B: {kind: Float, value: 0.0109999999}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 5960}
+  - {id: 166, type: Math, name: scale 0.035, inputs: {A: {param: diameter_m}, B: {kind: Float, value: 0.0350000001}, Operation: {kind: Menu, value: 1def8519b5034941}}, x: 320, y: 6120}
+  - {id: 167, type: CombineXYZ, name: crimp half extents, x: 600, y: 5640}
+  - {id: 168, type: CombineXYZ, name: height offset 0.489, inputs: {X: {kind: Float, value: 0}, Z: {kind: Float, value: 0}}, x: 600, y: 4680}
+  - {id: 169, type: AddCollisionBox, name: crimp contact, inputs: {Body: {kind: String, value: wood_filler_tube}, Name: {kind: String, value: crimp}, Condim: {kind: Int32, value: 4}}, x: 7880, y: 40}
+links: [{from: {node: 1, pin: Value}, to: {node: 3, pin: Radius}}, {from: {node: 2, pin: Value}, to: {node: 3, pin: Height}}, {from: {node: 4, pin: Value}, to: {node: 5, pin: Y}}, {from: {node: 3, pin: Geometry}, to: {node: 7, pin: Geometry}}, {from: {node: 6, pin: Value}, to: {node: 7, pin: Offset}}, {from: {node: 7, pin: Geometry}, to: {node: 8, pin: Geometry}}, {from: {node: 5, pin: Vector}, to: {node: 8, pin: Translation}}, {from: {node: 8, pin: Geometry}, to: {node: 9, pin: Geometry}}, {from: {node: 9, pin: Geometry}, to: {node: 10, pin: Geometry}}, {from: {node: 11, pin: Value}, to: {node: 13, pin: Radius}}, {from: {node: 12, pin: Value}, to: {node: 13, pin: Height}}, {from: {node: 14, pin: Value}, to: {node: 15, pin: Y}}, {from: {node: 13, pin: Geometry}, to: {node: 16, pin: Geometry}}, {from: {node: 15, pin: Vector}, to: {node: 16, pin: Translation}}, {from: {node: 16, pin: Geometry}, to: {node: 17, pin: Geometry}}, {from: {node: 17, pin: Geometry}, to: {node: 18, pin: Geometry}}, {from: {node: 11, pin: Value}, to: {node: 19, pin: Radius}}, {from: {node: 12, pin: Value}, to: {node: 19, pin: Height}}, {from: {node: 20, pin: Value}, to: {node: 21, pin: Y}}, {from: {node: 19, pin: Geometry}, to: {node: 22, pin: Geometry}}, {from: {node: 21, pin: Vector}, to: {node: 22, pin: Translation}}, {from: {node: 22, pin: Geometry}, to: {node: 23, pin: Geometry}}, {from: {node: 23, pin: Geometry}, to: {node: 24, pin: Geometry}}, {from: {node: 11, pin: Value}, to: {node: 25, pin: Radius}}, {from: {node: 12, pin: Value}, to: {node: 25, pin: Height}}, {from: {node: 26, pin: Value}, to: {node: 27, pin: Y}}, {from: {node: 25, pin: Geometry}, to: {node: 28, pin: Geometry}}, {from: {node: 27, pin: Vector}, to: {node: 28, pin: Translation}}, {from: {node: 28, pin: Geometry}, to: {node: 29, pin: Geometry}}, {from: {node: 29, pin: Geometry}, to: {node: 30, pin: Geometry}}, {from: {node: 31, pin: Value}, to: {node: 33, pin: Radius}}, {from: {node: 32, pin: Value}, to: {node: 33, pin: Height}}, {from: {node: 34, pin: Value}, to: {node: 35, pin: Y}}, {from: {node: 33, pin: Geometry}, to: {node: 37, pin: Geometry}}, {from: {node: 36, pin: Value}, to: {node: 37, pin: Offset}}, {from: {node: 37, pin: Geometry}, to: {node: 38, pin: Geometry}}, {from: {node: 35, pin: Vector}, to: {node: 38, pin: Translation}}, {from: {node: 38, pin: Geometry}, to: {node: 39, pin: Geometry}}, {from: {node: 39, pin: Geometry}, to: {node: 40, pin: Geometry}}, {from: {node: 31, pin: Value}, to: {node: 43, pin: BottomRadius}}, {from: {node: 41, pin: Value}, to: {node: 43, pin: TopRadius}}, {from: {node: 42, pin: Value}, to: {node: 43, pin: Height}}, {from: {node: 44, pin: Value}, to: {node: 45, pin: Y}}, {from: {node: 43, pin: Geometry}, to: {node: 47, pin: Geometry}}, {from: {node: 46, pin: Value}, to: {node: 47, pin: Offset}}, {from: {node: 47, pin: Geometry}, to: {node: 48, pin: Geometry}}, {from: {node: 45, pin: Vector}, to: {node: 48, pin: Translation}}, {from: {node: 48, pin: Geometry}, to: {node: 49, pin: Geometry}}, {from: {node: 49, pin: Geometry}, to: {node: 50, pin: Geometry}}, {from: {node: 41, pin: Value}, to: {node: 51, pin: Radius}}, {from: {node: 51, pin: Curves}, to: {node: 52, pin: Curves}}, {from: {node: 41, pin: Value}, to: {node: 53, pin: Radius}}, {from: {node: 53, pin: Curves}, to: {node: 54, pin: Curves}}, {from: {node: 41, pin: Value}, to: {node: 55, pin: Radius}}, {from: {node: 55, pin: Curves}, to: {node: 56, pin: Curves}}, {from: {node: 52, pin: Curves}, to: {node: 59, pin: ProfileA}}, {from: {node: 54, pin: Curves}, to: {node: 59, pin: ProfileB}}, {from: {node: 57, pin: Value}, to: {node: 59, pin: YBottom}}, {from: {node: 58, pin: Value}, to: {node: 59, pin: YTop}}, {from: {node: 59, pin: Geometry}, to: {node: 60, pin: Geometry}}, {from: {node: 60, pin: Geometry}, to: {node: 61, pin: Geometry}}, {from: {node: 54, pin: Curves}, to: {node: 63, pin: ProfileA}}, {from: {node: 56, pin: Curves}, to: {node: 63, pin: ProfileB}}, {from: {node: 58, pin: Value}, to: {node: 63, pin: YBottom}}, {from: {node: 62, pin: Value}, to: {node: 63, pin: YTop}}, {from: {node: 63, pin: Geometry}, to: {node: 64, pin: Geometry}}, {from: {node: 64, pin: Geometry}, to: {node: 65, pin: Geometry}}, {from: {node: 66, pin: Value}, to: {node: 68, pin: SizeY}}, {from: {node: 67, pin: Value}, to: {node: 68, pin: SizeZ}}, {from: {node: 69, pin: Value}, to: {node: 70, pin: Y}}, {from: {node: 68, pin: Geometry}, to: {node: 71, pin: Geometry}}, {from: {node: 36, pin: Value}, to: {node: 71, pin: Offset}}, {from: {node: 71, pin: Geometry}, to: {node: 72, pin: Geometry}}, {from: {node: 70, pin: Vector}, to: {node: 72, pin: Translation}}, {from: {node: 72, pin: Geometry}, to: {node: 73, pin: Geometry}}, {from: {node: 73, pin: Geometry}, to: {node: 74, pin: Geometry}}, {from: {node: 75, pin: Value}, to: {node: 76, pin: Size}}, {from: {node: 76, pin: Curves}, to: {node: 77, pin: Curves}}, {from: {node: 78, pin: Value}, to: {node: 80, pin: Y}}, {from: {node: 79, pin: Value}, to: {node: 80, pin: Z}}, {from: {node: 77, pin: Geometry}, to: {node: 81, pin: Geometry}}, {from: {node: 80, pin: Vector}, to: {node: 81, pin: Translation}}, {from: {node: 81, pin: Geometry}, to: {node: 82, pin: Geometry}}, {from: {node: 82, pin: Geometry}, to: {node: 83, pin: Geometry}}, {from: {node: 84, pin: Value}, to: {node: 85, pin: Size}}, {from: {node: 85, pin: Curves}, to: {node: 86, pin: Curves}}, {from: {node: 87, pin: Value}, to: {node: 88, pin: Y}}, {from: {node: 79, pin: Value}, to: {node: 88, pin: Z}}, {from: {node: 86, pin: Geometry}, to: {node: 89, pin: Geometry}}, {from: {node: 88, pin: Vector}, to: {node: 89, pin: Translation}}, {from: {node: 89, pin: Geometry}, to: {node: 90, pin: Geometry}}, {from: {node: 90, pin: Geometry}, to: {node: 91, pin: Geometry}}, {from: {node: 41, pin: Value}, to: {node: 93, pin: SizeX}}, {from: {node: 92, pin: Value}, to: {node: 93, pin: SizeY}}, {from: {node: 94, pin: Value}, to: {node: 96, pin: Y}}, {from: {node: 95, pin: Value}, to: {node: 96, pin: Z}}, {from: {node: 93, pin: Geometry}, to: {node: 97, pin: Geometry}}, {from: {node: 96, pin: Vector}, to: {node: 97, pin: Translation}}, {from: {node: 97, pin: Geometry}, to: {node: 98, pin: Geometry}}, {from: {node: 98, pin: Geometry}, to: {node: 99, pin: Geometry}}, {from: {node: 100, pin: Value}, to: {node: 101, pin: SizeX}}, {from: {node: 92, pin: Value}, to: {node: 101, pin: SizeY}}, {from: {node: 102, pin: Value}, to: {node: 103, pin: Y}}, {from: {node: 95, pin: Value}, to: {node: 103, pin: Z}}, {from: {node: 101, pin: Geometry}, to: {node: 104, pin: Geometry}}, {from: {node: 103, pin: Vector}, to: {node: 104, pin: Translation}}, {from: {node: 104, pin: Geometry}, to: {node: 105, pin: Geometry}}, {from: {node: 105, pin: Geometry}, to: {node: 106, pin: Geometry}}, {from: {node: 107, pin: Value}, to: {node: 108, pin: SizeX}}, {from: {node: 92, pin: Value}, to: {node: 108, pin: SizeY}}, {from: {node: 109, pin: Value}, to: {node: 110, pin: Y}}, {from: {node: 95, pin: Value}, to: {node: 110, pin: Z}}, {from: {node: 108, pin: Geometry}, to: {node: 111, pin: Geometry}}, {from: {node: 110, pin: Vector}, to: {node: 111, pin: Translation}}, {from: {node: 111, pin: Geometry}, to: {node: 112, pin: Geometry}}, {from: {node: 112, pin: Geometry}, to: {node: 113, pin: Geometry}}, {from: {node: 114, pin: Value}, to: {node: 116, pin: SizeX}}, {from: {node: 115, pin: Value}, to: {node: 116, pin: SizeY}}, {from: {node: 117, pin: Value}, to: {node: 119, pin: Y}}, {from: {node: 118, pin: Value}, to: {node: 119, pin: Z}}, {from: {node: 116, pin: Geometry}, to: {node: 120, pin: Geometry}}, {from: {node: 119, pin: Vector}, to: {node: 120, pin: Translation}}, {from: {node: 120, pin: Geometry}, to: {node: 121, pin: Geometry}}, {from: {node: 121, pin: Geometry}, to: {node: 122, pin: Geometry}}, {from: {node: 10, pin: Geometry}, to: {node: 123, pin: A}}, {from: {node: 18, pin: Geometry}, to: {node: 123, pin: B}}, {from: {node: 123, pin: Geometry}, to: {node: 124, pin: A}}, {from: {node: 24, pin: Geometry}, to: {node: 124, pin: B}}, {from: {node: 124, pin: Geometry}, to: {node: 125, pin: A}}, {from: {node: 30, pin: Geometry}, to: {node: 125, pin: B}}, {from: {node: 125, pin: Geometry}, to: {node: 126, pin: A}}, {from: {node: 40, pin: Geometry}, to: {node: 126, pin: B}}, {from: {node: 126, pin: Geometry}, to: {node: 127, pin: A}}, {from: {node: 50, pin: Geometry}, to: {node: 127, pin: B}}, {from: {node: 127, pin: Geometry}, to: {node: 128, pin: A}}, {from: {node: 61, pin: Geometry}, to: {node: 128, pin: B}}, {from: {node: 128, pin: Geometry}, to: {node: 129, pin: A}}, {from: {node: 65, pin: Geometry}, to: {node: 129, pin: B}}, {from: {node: 129, pin: Geometry}, to: {node: 130, pin: A}}, {from: {node: 74, pin: Geometry}, to: {node: 130, pin: B}}, {from: {node: 130, pin: Geometry}, to: {node: 131, pin: A}}, {from: {node: 83, pin: Geometry}, to: {node: 131, pin: B}}, {from: {node: 131, pin: Geometry}, to: {node: 132, pin: A}}, {from: {node: 91, pin: Geometry}, to: {node: 132, pin: B}}, {from: {node: 132, pin: Geometry}, to: {node: 133, pin: A}}, {from: {node: 99, pin: Geometry}, to: {node: 133, pin: B}}, {from: {node: 133, pin: Geometry}, to: {node: 134, pin: A}}, {from: {node: 106, pin: Geometry}, to: {node: 134, pin: B}}, {from: {node: 134, pin: Geometry}, to: {node: 135, pin: A}}, {from: {node: 113, pin: Geometry}, to: {node: 135, pin: B}}, {from: {node: 135, pin: Geometry}, to: {node: 136, pin: A}}, {from: {node: 122, pin: Geometry}, to: {node: 136, pin: B}}, {from: {node: 136, pin: Geometry}, to: {node: 137, pin: Geometry}}, {from: {node: 137, pin: Geometry}, to: {node: 138, pin: Asset}}, {from: {node: 138, pin: Asset}, to: {node: 139, pin: Asset}}, {from: {node: 140, pin: Value}, to: {node: 141, pin: A}}, {from: {node: 141, pin: Value}, to: {node: 142, pin: A}}, {from: {node: 142, pin: Value}, to: {node: 143, pin: B}}, {from: {node: 4, pin: Value}, to: {node: 146, pin: Y}}, {from: {node: 139, pin: Asset}, to: {node: 147, pin: Asset}}, {from: {node: 1, pin: Value}, to: {node: 147, pin: Radius}}, {from: {node: 145, pin: Value}, to: {node: 147, pin: HalfLength}}, {from: {node: 146, pin: Vector}, to: {node: 147, pin: PosePos}}, {from: {node: 143, pin: Value}, to: {node: 147, pin: Density}}, {from: {node: 144, pin: Vector}, to: {node: 147, pin: Friction}}, {from: {node: 150, pin: Value}, to: {node: 151, pin: Y}}, {from: {node: 147, pin: Asset}, to: {node: 152, pin: Asset}}, {from: {node: 148, pin: Value}, to: {node: 152, pin: Radius}}, {from: {node: 149, pin: Value}, to: {node: 152, pin: HalfLength}}, {from: {node: 151, pin: Vector}, to: {node: 152, pin: PosePos}}, {from: {node: 143, pin: Value}, to: {node: 152, pin: Density}}, {from: {node: 144, pin: Vector}, to: {node: 152, pin: Friction}}, {from: {node: 155, pin: Value}, to: {node: 156, pin: Y}}, {from: {node: 152, pin: Asset}, to: {node: 157, pin: Asset}}, {from: {node: 153, pin: Value}, to: {node: 157, pin: Radius}}, {from: {node: 154, pin: Value}, to: {node: 157, pin: HalfLength}}, {from: {node: 156, pin: Vector}, to: {node: 157, pin: PosePos}}, {from: {node: 143, pin: Value}, to: {node: 157, pin: Density}}, {from: {node: 144, pin: Vector}, to: {node: 157, pin: Friction}}, {from: {node: 158, pin: Value}, to: {node: 161, pin: X}}, {from: {node: 159, pin: Value}, to: {node: 161, pin: Y}}, {from: {node: 160, pin: Value}, to: {node: 161, pin: Z}}, {from: {node: 162, pin: Value}, to: {node: 163, pin: Y}}, {from: {node: 157, pin: Asset}, to: {node: 164, pin: Asset}}, {from: {node: 161, pin: Vector}, to: {node: 164, pin: HalfExtents}}, {from: {node: 163, pin: Vector}, to: {node: 164, pin: PosePos}}, {from: {node: 143, pin: Value}, to: {node: 164, pin: Density}}, {from: {node: 144, pin: Vector}, to: {node: 164, pin: Friction}}, {from: {node: 41, pin: Value}, to: {node: 167, pin: X}}, {from: {node: 165, pin: Value}, to: {node: 167, pin: Y}}, {from: {node: 166, pin: Value}, to: {node: 167, pin: Z}}, {from: {node: 69, pin: Value}, to: {node: 168, pin: Y}}, {from: {node: 164, pin: Asset}, to: {node: 169, pin: Asset}}, {from: {node: 167, pin: Vector}, to: {node: 169, pin: HalfExtents}}, {from: {node: 168, pin: Vector}, to: {node: 169, pin: PosePos}}, {from: {node: 143, pin: Value}, to: {node: 169, pin: Density}}, {from: {node: 144, pin: Vector}, to: {node: 169, pin: Friction}}]
+parameters:
+  height_m:
+    kind: Float
+    default: 0.193000004
+    desc: Measured overall height, metres. Upright local Y axis; origin at geometric mid-height.
+    group: Measured dimensions / estimated dynamics
+    min: 0.100000001
+    max: 0.349999994
+  diameter_m:
+    kind: Float
+    default: 0.0430000015
+    desc: Measured widest body diameter, metres.
+    group: Measured dimensions / estimated dynamics
+    min: 0.0199999996
+    max: 0.0799999982
+  mass_kg:
+    kind: Float
+    default: 0.180000007
+    desc: "ESTIMATE: rigid approximation total mass, kg. Weigh the physical tube before dynamics qualification."
+    group: Measured dimensions / estimated dynamics
+    min: 0.0299999993
+    max: 0.5
+  sliding_friction:
+    kind: Float
+    default: 0.699999988
+    desc: "ESTIMATE: MuJoCo sliding friction; not experimentally identified."
+    group: Measured dimensions / estimated dynamics
+    min: 0.100000001
+    max: 1.5
+  sleeve_material:
+    kind: Material
+    default: [0.939999998, 0.579999983, 0.0250000004, 1, 0, 0.430000007]
+    desc: Yellow printed flexible sleeve; generic appearance, no brand inferred.
+  cap_material:
+    kind: Material
+    default: [0.0120000001, 0.0140000004, 0.0109999999, 1, 0, 0.360000014]
+    desc: Matte black screw cap, seam and printing.
+  label_material:
+    kind: Material
+    default: [0.860000014, 0.829999983, 0.709999979, 1, 0, 0.540000021]
+    desc: Off-white generic rear label.
+outputs:
+  Asset:
+    node: 169
+    pin: Asset
+editor_generated_identities:
+  version: 2
+  signature: 16083285556628464748
+  nodes:
+    - scope:
+        []
+      generated: 170
+      node: 170
+      index: 169
+      type: 1225607449884475736
+      parameter: height_m
+      implementation: 0
+    - scope:
+        []
+      generated: 171
+      node: 171
+      index: 170
+      type: 1225607449884475736
+      parameter: diameter_m
+      implementation: 0
+    - scope:
+        []
+      generated: 172
+      node: 172
+      index: 171
+      type: 1225607449884475736
+      parameter: mass_kg
+      implementation: 0
+    - scope:
+        []
+      generated: 173
+      node: 173
+      index: 172
+      type: 1225607449884475736
+      parameter: sliding_friction
+      implementation: 0
+    - scope:
+        []
+      generated: 174
+      node: 174
+      index: 173
+      type: 16092479795279869743
+      parameter: sleeve_material
+      implementation: 0
+    - scope:
+        []
+      generated: 175
+      node: 175
+      index: 174
+      type: 16092479795279869743
+      parameter: cap_material
+      implementation: 0
+    - scope:
+        []
+      generated: 176
+      node: 176
+      index: 175
+      type: 16092479795279869743
+      parameter: label_material
+      implementation: 0
+editor_generated_layout:
+  version: 2
+  signature: 16083285556628464748
+  nodes:
+    - scope:
+        []
+      node: 170
+      x: 40
+      y: 40
+    - scope:
+        []
+      node: 171
+      x: 40
+      y: 200
+    - scope:
+        []
+      node: 172
+      x: 880
+      y: 3080
+    - scope:
+        []
+      node: 173
+      x: 40
+      y: 360
+    - scope:
+        []
+      node: 174
+      x: 1160
+      y: 1160
+    - scope:
+        []
+      node: 175
+      x: 880
+      y: 1960
+    - scope:
+        []
+      node: 176
+      x: 880
+      y: 2760

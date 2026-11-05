@@ -1,0 +1,147 @@
+nodes:
+  - id: 1
+    type: MeshCube
+    name: White laminate tabletop
+    inputs:
+      SizeX:
+        param: width
+      SizeY: {kind: Float, value: 0.0299999993}
+      SizeZ:
+        param: depth
+    x: 340
+    y: 40
+  - {id: 2, type: BevelEdge, name: White laminate tabletop edges, inputs: {Offset: {kind: Float, value: 0.00300000003}, Segments: {kind: Int32, value: 3}}, x: 640, y: 40}
+  - {id: 3, type: Transform, name: White laminate tabletop position, inputs: {Translation: {kind: Float3, value: [0, 0.735000014, 0]}}, x: 940, y: 40}
+  - {id: 4, type: SetMaterial, name: White laminate tabletop surface, inputs: {Material: {param: finish}, Name: {kind: String, value: White laminate tabletop}}, x: 1240, y: 40}
+  - {id: 5, type: SetMeshName, name: White laminate tabletop, inputs: {Name: {kind: String, value: White laminate tabletop}}, x: 1540, y: 40}
+  - {id: 6, type: MeshCube, name: left_front_leg, inputs: {SizeX: {kind: Float, value: 0.0450000018}, SizeY: {kind: Float, value: 0.720000029}, SizeZ: {kind: Float, value: 0.0450000018}}, x: 40, y: 380}
+  - {id: 7, type: BevelEdge, name: left_front_leg edges, inputs: {Offset: {kind: Float, value: 0.00200000009}, Segments: {kind: Int32, value: 3}}, x: 340, y: 210}
+  - {id: 8, type: Transform, name: left_front_leg position, inputs: {Translation: {kind: Float3, value: [-0.61500001, 0.360000014, 0.264999986]}}, x: 640, y: 210}
+  - {id: 9, type: SetMaterial, name: left_front_leg surface, inputs: {Material: {param: frame}, Name: {kind: String, value: left_front_leg}}, x: 940, y: 380}
+  - {id: 10, type: SetMeshName, name: left_front_leg, inputs: {Name: {kind: String, value: left_front_leg}}, x: 1240, y: 210}
+  - {id: 11, type: MeshCube, name: left_back_leg, inputs: {SizeX: {kind: Float, value: 0.0450000018}, SizeY: {kind: Float, value: 0.720000029}, SizeZ: {kind: Float, value: 0.0450000018}}, x: 40, y: 550}
+  - {id: 12, type: BevelEdge, name: left_back_leg edges, inputs: {Offset: {kind: Float, value: 0.00200000009}, Segments: {kind: Int32, value: 3}}, x: 340, y: 380}
+  - {id: 13, type: Transform, name: left_back_leg position, inputs: {Translation: {kind: Float3, value: [-0.61500001, 0.360000014, -0.264999986]}}, x: 640, y: 380}
+  - {id: 14, type: SetMaterial, name: left_back_leg surface, inputs: {Material: {param: frame}, Name: {kind: String, value: left_back_leg}}, x: 940, y: 550}
+  - {id: 15, type: SetMeshName, name: left_back_leg, inputs: {Name: {kind: String, value: left_back_leg}}, x: 1240, y: 380}
+  - {id: 16, type: MeshCube, name: left_apron, inputs: {SizeX: {kind: Float, value: 0.0350000001}, SizeY: {kind: Float, value: 0.0500000007}, SizeZ: {kind: Float, value: 0.569999993}}, x: 40, y: 720}
+  - {id: 17, type: BevelEdge, name: left_apron edges, inputs: {Offset: {kind: Float, value: 0.00100000005}, Segments: {kind: Int32, value: 3}}, x: 340, y: 550}
+  - {id: 18, type: Transform, name: left_apron position, inputs: {Translation: {kind: Float3, value: [-0.61500001, 0.680000007, 0]}}, x: 640, y: 550}
+  - {id: 19, type: SetMaterial, name: left_apron surface, inputs: {Material: {param: frame}, Name: {kind: String, value: left_apron}}, x: 940, y: 720}
+  - {id: 20, type: SetMeshName, name: left_apron, inputs: {Name: {kind: String, value: left_apron}}, x: 1240, y: 550}
+  - {id: 21, type: MeshCube, name: right_front_leg, inputs: {SizeX: {kind: Float, value: 0.0450000018}, SizeY: {kind: Float, value: 0.720000029}, SizeZ: {kind: Float, value: 0.0450000018}}, x: 40, y: 890}
+  - {id: 22, type: BevelEdge, name: right_front_leg edges, inputs: {Offset: {kind: Float, value: 0.00200000009}, Segments: {kind: Int32, value: 3}}, x: 340, y: 720}
+  - {id: 23, type: Transform, name: right_front_leg position, inputs: {Translation: {kind: Float3, value: [0.61500001, 0.360000014, 0.264999986]}}, x: 640, y: 720}
+  - {id: 24, type: SetMaterial, name: right_front_leg surface, inputs: {Material: {param: frame}, Name: {kind: String, value: right_front_leg}}, x: 940, y: 890}
+  - {id: 25, type: SetMeshName, name: right_front_leg, inputs: {Name: {kind: String, value: right_front_leg}}, x: 1240, y: 720}
+  - {id: 26, type: MeshCube, name: right_back_leg, inputs: {SizeX: {kind: Float, value: 0.0450000018}, SizeY: {kind: Float, value: 0.720000029}, SizeZ: {kind: Float, value: 0.0450000018}}, x: 40, y: 1060}
+  - {id: 27, type: BevelEdge, name: right_back_leg edges, inputs: {Offset: {kind: Float, value: 0.00200000009}, Segments: {kind: Int32, value: 3}}, x: 340, y: 890}
+  - {id: 28, type: Transform, name: right_back_leg position, inputs: {Translation: {kind: Float3, value: [0.61500001, 0.360000014, -0.264999986]}}, x: 640, y: 1060}
+  - {id: 29, type: SetMaterial, name: right_back_leg surface, inputs: {Material: {param: frame}, Name: {kind: String, value: right_back_leg}}, x: 940, y: 1060}
+  - {id: 30, type: SetMeshName, name: right_back_leg, inputs: {Name: {kind: String, value: right_back_leg}}, x: 1240, y: 890}
+  - {id: 31, type: MeshCube, name: right_apron, inputs: {SizeX: {kind: Float, value: 0.0350000001}, SizeY: {kind: Float, value: 0.0500000007}, SizeZ: {kind: Float, value: 0.569999993}}, x: 40, y: 1230}
+  - {id: 32, type: BevelEdge, name: right_apron edges, inputs: {Offset: {kind: Float, value: 0.00100000005}, Segments: {kind: Int32, value: 3}}, x: 340, y: 1060}
+  - {id: 33, type: Transform, name: right_apron position, inputs: {Translation: {kind: Float3, value: [0.61500001, 0.680000007, 0]}}, x: 640, y: 1230}
+  - {id: 34, type: SetMaterial, name: right_apron surface, inputs: {Material: {param: frame}, Name: {kind: String, value: right_apron}}, x: 940, y: 1230}
+  - {id: 35, type: SetMeshName, name: right_apron, inputs: {Name: {kind: String, value: right_apron}}, x: 1240, y: 1060}
+  - {id: 36, type: MeshCube, name: Back crossbar, inputs: {SizeX: {kind: Float, value: 1.23000002}, SizeY: {kind: Float, value: 0.0500000007}, SizeZ: {kind: Float, value: 0.0350000001}}, x: 40, y: 1400}
+  - {id: 37, type: BevelEdge, name: Back crossbar edges, inputs: {Offset: {kind: Float, value: 0.00100000005}, Segments: {kind: Int32, value: 3}}, x: 340, y: 1230}
+  - {id: 38, type: Transform, name: Back crossbar position, inputs: {Translation: {kind: Float3, value: [0, 0.680000007, -0.264999986]}}, x: 640, y: 1400}
+  - {id: 39, type: SetMaterial, name: Back crossbar surface, inputs: {Material: {param: frame}, Name: {kind: String, value: Back crossbar}}, x: 940, y: 1400}
+  - {id: 40, type: SetMeshName, name: Back crossbar, inputs: {Name: {kind: String, value: Back crossbar}}, x: 1240, y: 1230}
+  - {id: 41, type: JoinGeometry, name: Assemble parts, x: 1840, y: 40}
+  - {id: 42, type: JoinGeometry, name: Assemble parts, x: 2140, y: 40}
+  - {id: 43, type: JoinGeometry, name: Assemble parts, x: 2440, y: 40}
+  - {id: 44, type: JoinGeometry, name: Assemble parts, x: 2740, y: 40}
+  - {id: 45, type: JoinGeometry, name: Assemble parts, x: 3040, y: 40}
+  - {id: 46, type: JoinGeometry, name: Assemble parts, x: 3340, y: 40}
+  - {id: 47, type: JoinGeometry, name: Assemble parts, x: 3640, y: 40}
+  - {id: 48, type: SetMeshBodyMembership, name: Desk body identity, inputs: {Body: {kind: String, value: office_desk}}, x: 3940, y: 40}
+  - {id: 49, type: DeclareBody, name: Fixed desk, inputs: {Name: {kind: String, value: office_desk}}, x: 4240, y: 40}
+  - {id: 50, type: AddCollisionBox, name: top collision, inputs: {Body: {kind: String, value: office_desk}, Name: {kind: String, value: top}, HalfExtents: {kind: Float3, value: [0.699999988, 0.0149999997, 0.349999994]}, PosePos: {kind: Float3, value: [0, 0.735000014, 0]}, Friction: {kind: Float3, value: [0.600000024, 0.00499999989, 9.99999975e-05]}}, x: 4540, y: 40}
+  - {id: 51, type: AddCollisionBox, name: left_front_leg collision, inputs: {Body: {kind: String, value: office_desk}, Name: {kind: String, value: left_front_leg}, HalfExtents: {kind: Float3, value: [0.0225000009, 0.360000014, 0.0225000009]}, PosePos: {kind: Float3, value: [-0.61500001, 0.360000014, 0.264999986]}, Friction: {kind: Float3, value: [0.600000024, 0.00499999989, 9.99999975e-05]}}, x: 4840, y: 40}
+  - {id: 52, type: AddCollisionBox, name: left_back_leg collision, inputs: {Body: {kind: String, value: office_desk}, Name: {kind: String, value: left_back_leg}, HalfExtents: {kind: Float3, value: [0.0225000009, 0.360000014, 0.0225000009]}, PosePos: {kind: Float3, value: [-0.61500001, 0.360000014, -0.264999986]}, Friction: {kind: Float3, value: [0.600000024, 0.00499999989, 9.99999975e-05]}}, x: 5140, y: 40}
+  - {id: 53, type: AddCollisionBox, name: right_front_leg collision, inputs: {Body: {kind: String, value: office_desk}, Name: {kind: String, value: right_front_leg}, HalfExtents: {kind: Float3, value: [0.0225000009, 0.360000014, 0.0225000009]}, PosePos: {kind: Float3, value: [0.61500001, 0.360000014, 0.264999986]}, Friction: {kind: Float3, value: [0.600000024, 0.00499999989, 9.99999975e-05]}}, x: 5440, y: 40}
+  - {id: 54, type: AddCollisionBox, name: right_back_leg collision, inputs: {Body: {kind: String, value: office_desk}, Name: {kind: String, value: right_back_leg}, HalfExtents: {kind: Float3, value: [0.0225000009, 0.360000014, 0.0225000009]}, PosePos: {kind: Float3, value: [0.61500001, 0.360000014, -0.264999986]}, Friction: {kind: Float3, value: [0.600000024, 0.00499999989, 9.99999975e-05]}}, x: 5740, y: 40}
+links: [{from: {node: 1, pin: Geometry}, to: {node: 2, pin: Geometry}}, {from: {node: 2, pin: Geometry}, to: {node: 3, pin: Geometry}}, {from: {node: 3, pin: Geometry}, to: {node: 4, pin: Geometry}}, {from: {node: 4, pin: Geometry}, to: {node: 5, pin: Geometry}}, {from: {node: 6, pin: Geometry}, to: {node: 7, pin: Geometry}}, {from: {node: 7, pin: Geometry}, to: {node: 8, pin: Geometry}}, {from: {node: 8, pin: Geometry}, to: {node: 9, pin: Geometry}}, {from: {node: 9, pin: Geometry}, to: {node: 10, pin: Geometry}}, {from: {node: 11, pin: Geometry}, to: {node: 12, pin: Geometry}}, {from: {node: 12, pin: Geometry}, to: {node: 13, pin: Geometry}}, {from: {node: 13, pin: Geometry}, to: {node: 14, pin: Geometry}}, {from: {node: 14, pin: Geometry}, to: {node: 15, pin: Geometry}}, {from: {node: 16, pin: Geometry}, to: {node: 17, pin: Geometry}}, {from: {node: 17, pin: Geometry}, to: {node: 18, pin: Geometry}}, {from: {node: 18, pin: Geometry}, to: {node: 19, pin: Geometry}}, {from: {node: 19, pin: Geometry}, to: {node: 20, pin: Geometry}}, {from: {node: 21, pin: Geometry}, to: {node: 22, pin: Geometry}}, {from: {node: 22, pin: Geometry}, to: {node: 23, pin: Geometry}}, {from: {node: 23, pin: Geometry}, to: {node: 24, pin: Geometry}}, {from: {node: 24, pin: Geometry}, to: {node: 25, pin: Geometry}}, {from: {node: 26, pin: Geometry}, to: {node: 27, pin: Geometry}}, {from: {node: 27, pin: Geometry}, to: {node: 28, pin: Geometry}}, {from: {node: 28, pin: Geometry}, to: {node: 29, pin: Geometry}}, {from: {node: 29, pin: Geometry}, to: {node: 30, pin: Geometry}}, {from: {node: 31, pin: Geometry}, to: {node: 32, pin: Geometry}}, {from: {node: 32, pin: Geometry}, to: {node: 33, pin: Geometry}}, {from: {node: 33, pin: Geometry}, to: {node: 34, pin: Geometry}}, {from: {node: 34, pin: Geometry}, to: {node: 35, pin: Geometry}}, {from: {node: 36, pin: Geometry}, to: {node: 37, pin: Geometry}}, {from: {node: 37, pin: Geometry}, to: {node: 38, pin: Geometry}}, {from: {node: 38, pin: Geometry}, to: {node: 39, pin: Geometry}}, {from: {node: 39, pin: Geometry}, to: {node: 40, pin: Geometry}}, {from: {node: 5, pin: Geometry}, to: {node: 41, pin: A}}, {from: {node: 10, pin: Geometry}, to: {node: 41, pin: B}}, {from: {node: 41, pin: Geometry}, to: {node: 42, pin: A}}, {from: {node: 15, pin: Geometry}, to: {node: 42, pin: B}}, {from: {node: 42, pin: Geometry}, to: {node: 43, pin: A}}, {from: {node: 20, pin: Geometry}, to: {node: 43, pin: B}}, {from: {node: 43, pin: Geometry}, to: {node: 44, pin: A}}, {from: {node: 25, pin: Geometry}, to: {node: 44, pin: B}}, {from: {node: 44, pin: Geometry}, to: {node: 45, pin: A}}, {from: {node: 30, pin: Geometry}, to: {node: 45, pin: B}}, {from: {node: 45, pin: Geometry}, to: {node: 46, pin: A}}, {from: {node: 35, pin: Geometry}, to: {node: 46, pin: B}}, {from: {node: 46, pin: Geometry}, to: {node: 47, pin: A}}, {from: {node: 40, pin: Geometry}, to: {node: 47, pin: B}}, {from: {node: 47, pin: Geometry}, to: {node: 48, pin: Geometry}}, {from: {node: 48, pin: Geometry}, to: {node: 49, pin: Asset}}, {from: {node: 49, pin: Asset}, to: {node: 50, pin: Asset}}, {from: {node: 50, pin: Asset}, to: {node: 51, pin: Asset}}, {from: {node: 51, pin: Asset}, to: {node: 52, pin: Asset}}, {from: {node: 52, pin: Asset}, to: {node: 53, pin: Asset}}, {from: {node: 53, pin: Asset}, to: {node: 54, pin: Asset}}]
+parameters:
+  finish:
+    kind: Material
+    default: [0.819999993, 0.839999974, 0.850000024, 1, 0, 0.379999995]
+    desc: White satin laminate, linear RGB
+  frame:
+    kind: Material
+    default: [0.75999999, 0.779999971, 0.790000021, 1, 0.100000001, 0.319999993]
+    desc: White powder coated steel
+  width:
+    kind: Float
+    default: 1.39999998
+    desc: Width in metres
+  depth:
+    kind: Float
+    default: 0.699999988
+    desc: Depth in metres
+outputs:
+  Asset:
+    node: 54
+    pin: Asset
+editor_generated_identities:
+  version: 2
+  signature: 912844999139855121
+  nodes:
+    - scope:
+        []
+      generated: 55
+      node: 55
+      index: 54
+      type: 16092479795279869743
+      parameter: finish
+      implementation: 0
+    - scope:
+        []
+      generated: 56
+      node: 56
+      index: 55
+      type: 16092479795279869743
+      parameter: frame
+      implementation: 0
+    - scope:
+        []
+      generated: 57
+      node: 57
+      index: 56
+      type: 1225607449884475736
+      parameter: width
+      implementation: 0
+    - scope:
+        []
+      generated: 58
+      node: 58
+      index: 57
+      type: 1225607449884475736
+      parameter: depth
+      implementation: 0
+editor_generated_layout:
+  version: 2
+  signature: 912844999139855121
+  nodes:
+    - scope:
+        []
+      node: 55
+      x: 940
+      y: 210
+    - scope:
+        []
+      node: 56
+      x: 640
+      y: 890
+    - scope:
+        []
+      node: 57
+      x: 40
+      y: 40
+    - scope:
+        []
+      node: 58
+      x: 40
+      y: 210

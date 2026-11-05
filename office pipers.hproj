@@ -1,0 +1,30 @@
+Project:
+  Name: office pipers
+  Version: 1.0
+  AssetDirectory: Assets
+  AssetRegistry: Assets/AssetRegistry.hzr
+  AudioCommandsRegistryPath: Assets/AudioCommandsRegistry.hzr
+  MeshPath: Assets/Meshes
+  MeshSourcePath: Assets/Meshes/Source
+  AnimationPath: Assets/Animation
+  ScriptClientProjectPath: Assets/Scripts/Client
+  ScriptServerProjectPath: Assets/Scripts/Server
+  ScriptModulePath: Assets/Scripts/Binaries
+  DefaultNamespace: OfficePipers
+  ScriptAssemblyName: OfficePipers
+  StartScene: Scenes/TubePickPlaceNative.hscene
+  AutomaticallyReloadAssembly: true
+  AutoSave: true
+  AutoSaveInterval: 60
+  Audio:
+    FileStreamingDurationThreshold: 30
+  Physics:
+    FixedTimestep: 0.0166666675
+    Gravity: [0, -9.81000042, 0]
+    SolverPositionIterations: 2
+    SolverVelocityIterations: 10
+    MaxBodies: 5700
+    CaptureOnPlay: false
+    CaptureMethod: 0
+  LogTagOverrides:
+    {}

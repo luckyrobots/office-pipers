@@ -1,0 +1,68 @@
+{
+  "source_url": "https://scaniverse.com/scan/356vimoazqajzk66",
+  "downloaded_original_glb": "Original user-supplied Scaniverse download; not included in this project snapshot",
+  "product": "Minwax Stainable Wood Filler, 6 fl oz / 177mL, confirmed from user photos",
+  "source_vertices": 65106,
+  "source_triangles": 113792,
+  "cropped_vertices": 28213,
+  "cropped_triangles": 49339,
+  "crop_source_y_metres": 0.0495,
+  "source_cap_axis_xz_metres": [
+    -0.00995911,
+    -0.01990488
+  ],
+  "uniform_height_scale": 0.9999209853087957,
+  "height_metres": 0.193,
+  "yup_bounds_metres": {
+    "min": [
+      -0.03625043109059334,
+      -0.09650000184774399,
+      -0.025107651948928833
+    ],
+    "max": [
+      0.04030929133296013,
+      0.09650000184774399,
+      0.022533750161528587
+    ]
+  },
+  "notes": [
+    "Original scan includes a support platform and nearby table; those are removed from staged visual.",
+    "Scan preserves flattened crimp width (~77mm), wider than round cap/body diameter (~41mm in the scan).",
+    "Scan contact geometry/mass/friction are unchanged; task-only NoSlip3 numerical slip suppression is now qualified.",
+    "Bottom crop follows measured193mm height; a small cap underside crop is hidden by tabletop.",
+    "Texture contains baked capture lighting; it is not a measured PBR albedo map."
+  ],
+  "files": {
+    "minwax-original-texture.jpg": {
+      "bytes": 1411753,
+      "sha256": "83defa4a2aaffb342ecd96dc19488c58aadf14ed9c892bf8b6002cb123d0afd9"
+    },
+    "minwax-render-texture.png": {
+      "bytes": 12523946,
+      "sha256": "c800f1c79c2dab94256f1b57c4980e8cbefa3d185b255c7a8b07358824cf45a6"
+    },
+    "minwax-tube-scan.glb": {
+      "bytes": 2908112,
+      "sha256": "a9c1f0a1ff503513d1ec0da7a8198066b927e19a8fcf9731d4697235291fda30"
+    },
+    "minwax-tube-scan.mtl": {
+      "bytes": 91,
+      "sha256": "c3f9f84b69edea82204ee9d4961b7d0cc4f7426cc8302d1bb963e2d4522b1f6c"
+    },
+    "minwax-tube-scan.obj": {
+      "bytes": 3833170,
+      "sha256": "a645b692b1e7db9889c6ab17e8fa3ee220783dbd2ee5d60c087a1aa71f35759e"
+    }
+  },
+  "installed_task_sha256": "63a5ba5b6be49eeeb6d216594714255d61a8d50b41d4ef799fb3b8f20e519163",
+  "contact_qualification_tests": 72,
+  "round_diameter_measurement_mm": 43,
+  "actual_contact_grasp_section_mm": [
+    55.430353,
+    40.46179
+  ],
+  "contact_solver_option": {
+    "noslip_iterations": 3
+  },
+  "contact_qualification": "MINWAX-CONTACT-QUALIFICATION.json: ramped gripper commands, 8.64s lifts, 5s hold, 1.2x motion durations"
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "minwax-clean-label-artwork-validation",
+  "version": 1,
+  "source": "supplied product photos; vector reconstruction",
+  "scanPixelsUsed": false,
+  "nativeSceneModified": false,
+  "images": [
+    {
+      "topLeftPixel": -2841332,
+      "topRightPixel": -2841332,
+      "file": "resources/minwax-label-basecolor.png",
+      "sha256": "6def3925c5130f2792360c1b63040dfb3c6b8ef0cb81d6664e1162414413be9f",
+      "height": 4096,
+      "width": 4096
+    },
+    {
+      "topLeftPixel": -43264,
+      "topRightPixel": -43776,
+      "file": "resources/minwax-label-metallic-roughness.png",
+      "sha256": "733eb4e4a025825e4f6d1472289a2cc9d51e3c93c82b06641ad868ca772c4c91",
+      "height": 1024,
+      "width": 1024
+    }
+  ],
+  "metallicPixelsNonZero": 0,
+  "roughnessByteRange": [
+    85,
+    89
+  ],
+  "svgValid": true,
+  "svgPathCount": 43,
+  "nativeMaterialEvaluation": "delegated to tube_authoring during detached model integration"
+}

@@ -1,0 +1,22 @@
+* text=auto
+*.cs text eol=lf
+*.md text eol=lf
+*.lua text eol=lf
+*.ps1 text eol=crlf
+*.hscene text eol=lf
+*.hzr text eol=lf
+*.hpodgraph text eol=lf
+*.yaml text eol=lf
+*.xml text eol=lf
+*.json text eol=lf
+*.obj filter=lfs diff=lfs merge=lfs -text
+*.stl filter=lfs diff=lfs merge=lfs -text
+*.STL filter=lfs diff=lfs merge=lfs -text
+*.glb filter=lfs diff=lfs merge=lfs -text
+*.bin filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
+*.hsmesh filter=lfs diff=lfs merge=lfs -text
+# Qualification and editable POD manifests hash exact asset bytes, including line endings.
+Assets/** -text
