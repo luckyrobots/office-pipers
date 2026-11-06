@@ -260,7 +260,14 @@ namespace LuckyExporter
 				SimRobot robot = m_Robots[i];
 				LD_PlateWaypoint? waypoint = m_Director!.ControlledBy(robot.Entity);
 				if (waypoint is null && m_Director.ActiveRobot is not null)
+				{
+					robot.Mujoco.GetSitePoseMj(robot.GraspSite, out Vector3 _, out Quaternion site, out Vector3 _);
+					Vector3 fingers = (robot.Mujoco.GetAxisHzToMj().Conjugate * site) * new Vector3(1.0f, 0.0f, 0.0f);
+					Vector3 at = HandPosition(robot);
+					string wrist = string.Join(" ", Array.ConvertAll(robot.JointAddresses, a => robot.Mujoco.GetJointPosition(a).ToString("0.00")));
+					Log.Info($"[PlateMotion] {m_LogTime:0.00} resting{i} at {at.X:0.000} {at.Y:0.000} {at.Z:0.000} fingers {fingers.X:0.000} {fingers.Y:0.000} {fingers.Z:0.000} joints {wrist}");
 					continue;
+				}
 				Vector3 target = m_Director.CommandedPosition(robot.Entity);
 				Vector3 hand = HandPosition(robot);
 				string joints = string.Join(" ", Array.ConvertAll(robot.JointAddresses, a => robot.Mujoco.GetJointPosition(a).ToString("0.000")));

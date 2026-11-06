@@ -81,6 +81,22 @@ namespace LuckyExporter
 		[Tooltip("How long the robots take to ease to rest on Play, before the first waypoint.")]
 		public float StartupTime = 1f;
 
+		[DisplayName("Watch While Resting")]
+		[Tooltip("A resting robot turns to watch whatever another robot is carrying, the nearest if there are two, and turns back when nothing is carried. The whole arm turns about its base and tips about its shoulder, leaving the wrist alone, as moving the wrist at rest makes it spin. It stops as soon as its next waypoint moves it. Check nothing is in the way of the resting hands' sweep.")]
+		public bool WatchWhileResting = true;
+
+		[DisplayName("Watch Limit")]
+		[Units("deg")]
+		[Slider(0.0f, 90.0f)]
+		[Tooltip("How far a watching arm can turn about its base from its rest pose. It tips about its shoulder by up to 25 degrees up and 20 down.")]
+		public float WatchLimit = 45.0f;
+
+		[DisplayName("Watch Turn Time")]
+		[Units("s")]
+		[Slider(0.05f, 2.0f)]
+		[Tooltip("How quickly a watching hand follows. Less is snappier, more is lazier.")]
+		public float WatchTurnTime = 0.3f;
+
 		[DisplayName("Currently Controlled")]
 		[Tooltip("While playing: the robot a waypoint is controlling, and which waypoint.")]
 		public string CurrentlyControlled = "";
@@ -91,6 +107,11 @@ namespace LuckyExporter
 		private const float WristNearAxis = 0.06f; // closer than this to its base axis, the IK's solution can flip
 		private const float RadPerDeg = MathF.PI / 180.0f;
 		private const float DegPerRad = 180.0f / MathF.PI;
+		private const float CarriedAhead = 0.08f; // how far along the fingers the middle of something held tends to be
+		private const float WatchMaxSpeed = 60.0f * RadPerDeg; // radians per second
+		private const float HeldOpening = 0.5f; // a gripper closed further than this counts as carrying
+		private const float WatchMaxUp = 25.0f * RadPerDeg; // the shoulder's end stop is about 42 degrees up from rest
+		private const float WatchMaxDown = 20.0f * RadPerDeg; // keeps the hand about 100 mm above the table
 
 		private sealed class RobotState
 		{
@@ -111,6 +132,8 @@ namespace LuckyExporter
 			public float CarriedTime; // how far past the last Continuous waypoint this update's time already is
 			public bool Carrying;
 			public int FlowsInto = -1; // the waypoint to start as soon as the current one ends
+			public float LookYaw; // radians about the base's vertical axis, added to the target while it watches
+			public float LookPitch; // radians the arm tips down about its shoulder, added to the target while it watches
 			public float Opening = 1.0f; // 0 closed .. 1 open
 			public float OpeningFrom = 1.0f;
 			public float OpeningTo = 1.0f;
@@ -172,6 +195,7 @@ namespace LuckyExporter
 			foreach (RobotState robot in m_Robots)
 			{
 				UpdateGripper(robot, deltaTime);
+				UpdateWatch(robot, deltaTime);
 				WriteTarget(robot);
 			}
 		}
@@ -565,6 +589,8 @@ namespace LuckyExporter
 			robot.TargetRotation = rotation;
 			robot.SolveRotation = true;
 			robot.PoleWeight = 0.0f; // the graph's ease covers the change
+			robot.LookYaw = 0.0f;
+			robot.LookPitch = 0.0f;
 			robot.Controller.SetInputBool(RobotInput.LeftArm_Tracking_Mode.ForArm(0, true), false);
 			WriteTarget(robot);
 			robot.Controller.SetInputFloat(RobotInput.Duration.ID(), MathF.Max(time, 0.01f));
@@ -579,16 +605,90 @@ namespace LuckyExporter
 				yield return 0;
 		}
 
+		// ---- Watching ----
+
+		// Only what the director commands, so a real robot watches the same way. The turn is added when writing the target, so the
+		// target itself never changes, and ending the watch leaves the robot exactly where its waypoints expect. Turning only the hand
+		// can't work at rest, as the wrist is near its dead spot, and tipping it down goes through that spot, spinning it at 15 rad/s.
+		// Turning about the base and tipping about the shoulder move the arm as one rigid piece, so only joints 1 and 2 move.
+		private void UpdateWatch(RobotState robot, float deltaTime)
+		{
+			float wantedYaw = 0.0f;
+			float wantedPitch = 0.0f;
+			if (WatchWhileResting && robot.AtRest && FindCarried(robot) is Vector3 carried)
+			{
+				float limit = WatchLimit * RadPerDeg;
+				Vector3 origin = robot.Entity.Transform.WorldTranslation;
+				Vector3 fingers = robot.TargetRotation * new Vector3(1.0f, 0.0f, 0.0f);
+				// The hand rests on a line out from the base, so facing something from the base also faces it from the hand. About +Y, angles run from +X away from +Z.
+				float off = MathF.Atan2(fingers.Z, fingers.X) - MathF.Atan2(carried.Z - origin.Z, carried.X - origin.X);
+				wantedYaw = Math.Clamp(MathF.Atan2(MathF.Sin(off), MathF.Cos(off)), -limit, limit);
+				// Seen from where the hand is now, as tipping moves it. Tipping down lowers it, which asks for less tip, so this settles.
+				WatchingPose(robot, out Vector3 hand, out _);
+				float across = new Vector3(carried.X - hand.X, 0.0f, carried.Z - hand.Z).Length();
+				float down = MathF.Atan2(hand.Y - carried.Y, MathF.Max(across, 0.01f));
+				wantedPitch = Math.Clamp(down + MathF.Asin(Math.Clamp(fingers.Y, -1.0f, 1.0f)), -MathF.Min(limit, WatchMaxUp), MathF.Min(limit, WatchMaxDown));
+			}
+			float blend = 1.0f - MathF.Exp(-deltaTime / MathF.Max(WatchTurnTime, 0.01f));
+			float maxStep = WatchMaxSpeed * deltaTime;
+			robot.LookYaw += Math.Clamp((wantedYaw - robot.LookYaw) * blend, -maxStep, maxStep);
+			robot.LookPitch += Math.Clamp((wantedPitch - robot.LookPitch) * blend, -maxStep, maxStep);
+		}
+
+		// The middle of what the nearest other robot is carrying, or null
+		private Vector3? FindCarried(RobotState watcher)
+		{
+			Vector3? nearest = null;
+			float nearestDistance = float.MaxValue;
+			foreach (RobotState robot in m_Robots)
+			{
+				if (robot == watcher || robot.Waypoint is null || robot.Opening > HeldOpening)
+					continue;
+				Vector3 middle = robot.Target + robot.TargetRotation * new Vector3(CarriedAhead, 0.0f, 0.0f);
+				float distance = (middle - watcher.Target).Length();
+				if (distance < nearestDistance)
+				{
+					nearest = middle;
+					nearestDistance = distance;
+				}
+			}
+			return nearest;
+		}
+
 		// ---- Writing to the robots ----
 
 		private static void WriteTarget(RobotState robot)
 		{
 			robot.Controller.SetInputBool(RobotInput.LeftArm_Solve_Orientation.ForArm(0, true), robot.SolveRotation);
-			robot.Controller.SetInputVector3(RobotInput.LeftArm_Target_Position.ForArm(0, true), robot.Target);
-			robot.Controller.SetInputVector3(RobotInput.LeftArm_Target_Orientation.ForArm(0, true), robot.TargetRotation.EulerAngles * DegPerRad);
+			WatchingPose(robot, out Vector3 position, out Quaternion rotation);
+			robot.Controller.SetInputVector3(RobotInput.LeftArm_Target_Position.ForArm(0, true), position);
+			robot.Controller.SetInputVector3(RobotInput.LeftArm_Target_Orientation.ForArm(0, true), rotation.EulerAngles * DegPerRad);
 			Vector3 armMiddle = (robot.Shoulder + robot.Target) * 0.5f;
 			robot.Controller.SetInputVector3(RobotInput.LeftArm_Pole_Target.ForArm(0, true), armMiddle + robot.PoleDirection * PoleReach);
 			robot.Controller.SetInputFloat(RobotInput.LeftArm_Pole_Weight.ForArm(0, true), robot.PoleWeight);
+		}
+
+		// The target with the watching turn added: the whole arm tips about its shoulder, then turns about its base
+		private static void WatchingPose(RobotState robot, out Vector3 position, out Quaternion rotation)
+		{
+			position = robot.Target;
+			rotation = robot.TargetRotation;
+			if (robot.LookYaw == 0.0f && robot.LookPitch == 0.0f)
+				return;
+			Vector3 reach = position - robot.Shoulder;
+			// The shoulder's axis is square to the plane the wrist is in, not the hand, and any other axis has to move the wrist
+			Vector3 ahead = position - rotation * new Vector3(GraspToWrist, 0.0f, 0.0f) - robot.Shoulder;
+			ahead.Y = 0.0f;
+			if (ahead.Length() > 0.001f)
+			{
+				// Up cross ahead, which tips the arm down
+				Quaternion tip = FromRotationVector(new Vector3(ahead.Z, 0.0f, -ahead.X).Normalized() * robot.LookPitch);
+				position = robot.Shoulder + tip * reach;
+				rotation = tip * rotation;
+			}
+			Quaternion turn = FromRotationVector(new Vector3(0.0f, robot.LookYaw, 0.0f));
+			position = robot.Shoulder + turn * (position - robot.Shoulder);
+			rotation = (turn * rotation).Normalized();
 		}
 
 		// The grasp site's frame: X along the fingers, Y the way the jaws open, Z the hand's top, as near up as the fingers allow
