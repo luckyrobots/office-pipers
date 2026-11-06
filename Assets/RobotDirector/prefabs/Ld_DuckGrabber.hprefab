@@ -1,0 +1,66 @@
+Prefab:
+  - Entity: 6204718395527146093
+    Domain: Client
+    TagComponent:
+      Tag: LD_DuckGrabber
+    Parent: 0
+    Children:
+      []
+    PrefabComponent:
+      Prefab: 15800883266158508846
+      SourceEntity: 6204718395527146093
+      NestedPrefabEntityID: 0
+      Entity: 0
+      Flags: 3
+      OverriddenComponentHashes:
+        []
+    TransformComponent:
+      Position: [0, 0, 0]
+      Rotation: [3.14159274, 0, 0]
+      Scale: [1, 1, 1]
+    ScriptComponent:
+      ScriptID: 3111879001
+      ScriptName: LuckyExporter.LD_DuckGrabber
+      Fields:
+        - ID: 749558725
+          Name: Arm
+          Type: Int
+          Value: 0
+        - ID: 1711695481
+          Name: Duration
+          Type: Float
+          Value: 2
+        - ID: 3014850810
+          Name: WaitStart
+          Type: Float
+          Value: 0
+        - ID: 3987087018
+          Name: Hold
+          Type: Float
+          Value: 0
+        - ID: 4072588196
+          Name: SolveOrientation
+          Type: Bool
+          Value: true
+        - ID: 1699997770
+          Name: OrientationSource
+          Type: Int
+          Value: 1
+        - ID: 1595624209
+          Name: Orientation
+          Type: Vector3
+          Value: [0, 0, 0]
+        - ID: 684625652
+          Name: GrabberAction
+          Type: Int
+          Value: 0
+        - ID: 3450793629
+          Name: OffsetPosition
+          Type: Vector3
+          Value: [0, 0, 0]
+    StaticMeshComponent:
+      AssetID: 8871440724551037858
+      MaterialTable:
+        0: 4910352822346532527
+        1: 0
+      Visible: true

@@ -230,13 +230,13 @@
                       <inertial pos="0.033255 -0.014661 -0.0057614" mass="0.033674" diaginertia="0.000015284 0.000034485 0.000039744" />
                       <joint name="joint7" axis="0 1 0" range="-0.0470221912391186 0" class="finger" />
                       <geom name="pika_left_finger" mesh="gripper_left_link" material="pika_black" class="visual" />
-                      <geom name="pika_left_finger_collision" type="box" size="0.028 0.006 0.009" pos="0.033255 -0.014661 -0.0057614" class="collision" />
+                      <geom name="pika_left_finger_collision" type="box" size="0.05 0.006 0.012" pos="0.0553 -0.0355 -0.0057614" class="collision" />
                     </body>
                     <body name="link8" pos="0.0815 -0.088529 0.0064182" gravcomp="1">
                       <inertial pos="0.033255 0.014661 -0.0058113" mass="0.033674" diaginertia="0.000015284 0.000034485 0.000039744" />
                       <joint name="joint8" axis="0 1 0" range="0 0.0470221912391186" class="finger" />
                       <geom name="pika_right_finger" mesh="gripper_right_link" material="pika_black" class="visual" />
-                      <geom name="pika_right_finger_collision" type="box" size="0.028 0.006 0.009" pos="0.033255 0.014661 -0.0058113" class="collision" />
+                      <geom name="pika_right_finger_collision" type="box" size="0.05 0.006 0.012" pos="0.0553 0.0355 -0.0058113" class="collision" />
                     </body>
                   </body>
                 </body>

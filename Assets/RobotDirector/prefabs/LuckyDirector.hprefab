@@ -1,0 +1,120 @@
+Prefab:
+  - Entity: 15538146560687651094
+    Domain: Client
+    TagComponent:
+      Tag: LuckyDirector
+    Parent: 0
+    Children:
+      - Handle: 13643126416112876992
+    PrefabComponent:
+      Prefab: 636354898109013385
+      SourceEntity: 15538146560687651094
+      NestedPrefabEntityID: 0
+      Entity: 0
+      Flags: 3
+      OverriddenComponentHashes:
+        []
+    TransformComponent:
+      Position: [0, 0, 0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+  - Entity: 13643126416112876992
+    Domain: Client
+    TagComponent:
+      Tag: LuckyDirector
+    Parent: 15538146560687651094
+    Children:
+      - Handle: 6557723317435134027
+    PrefabComponent:
+      Prefab: 636354898109013385
+      SourceEntity: 13643126416112876992
+      NestedPrefabEntityID: 0
+      Entity: 0
+      Flags: 0
+      OverriddenComponentHashes:
+        []
+    TransformComponent:
+      Position: [0, 0, 0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    ScriptComponent:
+      ScriptID: 3219483528
+      ScriptName: CanTake.RobotDirector
+      Fields:
+        - ID: 2308154290
+          Name: Robot
+          Type: Entity
+          Value: 0
+        - ID: 329059349
+          Name: TaskList
+          Type: Entity
+          Value: 0
+        - ID: 144908177
+          Name: TaskVisibility
+          Type: Int
+          Value: 0
+        - ID: 4097732672
+          Name: Loop
+          Type: Bool
+          Value: false
+        - ID: 3568967096
+          Name: TrackingMode
+          Type: Bool
+          Value: true
+        - ID: 75181845
+          Name: HighAccuracy
+          Type: Bool
+          Value: false
+  - Entity: 6557723317435134027
+    Domain: Client
+    TagComponent:
+      Tag: SM_Logo
+    Parent: 13643126416112876992
+    Children:
+      []
+    PrefabComponent:
+      Prefab: 636354898109013385
+      SourceEntity: 6557723317435134027
+      NestedPrefabEntityID: 0
+      Entity: 0
+      Flags: 0
+      OverriddenComponentHashes:
+        []
+    TransformComponent:
+      Position: [0, 0, 0]
+      Rotation: [0, -1.57079995, 0]
+      Scale: [0.143286005, 0.143286005, 0.143286005]
+    ScriptComponent:
+      ScriptID: 3219483528
+      ScriptName: CanTake.RobotDirector
+      Fields:
+        - ID: 2308154290
+          Name: Robot
+          Type: Entity
+          Value: 0
+        - ID: 329059349
+          Name: TaskList
+          Type: Entity
+          Value: 0
+        - ID: 144908177
+          Name: TaskVisibility
+          Type: Int
+          Value: 0
+        - ID: 4097732672
+          Name: Loop
+          Type: Bool
+          Value: false
+        - ID: 3568967096
+          Name: TrackingMode
+          Type: Bool
+          Value: true
+        - ID: 75181845
+          Name: HighAccuracy
+          Type: Bool
+          Value: false
+    StaticMeshComponent:
+      AssetID: 5848693416638250557
+      MaterialTable:
+        0: 4910352822346532527
+        1: 0
+      Visible: true

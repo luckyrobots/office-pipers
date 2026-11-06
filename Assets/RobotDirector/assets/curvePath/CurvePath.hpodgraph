@@ -1,0 +1,467 @@
+nodes:
+  - id: 1
+    type: CurveFromAnchors
+    name: anchors
+    inputs:
+      AnchorCount:
+        param: anchor_count
+      Anchor0:
+        param: anchor_0
+      Anchor1:
+        param: anchor_1
+      Anchor2:
+        param: anchor_2
+      Anchor3:
+        param: anchor_3
+      Anchor4:
+        param: anchor_4
+      Anchor5:
+        param: anchor_5
+      Anchor6:
+        param: anchor_6
+      Anchor7:
+        param: anchor_7
+    x: 360
+    y: 40
+  - {id: 2, type: CurveBezierAligned, name: bezier, inputs: {Resolution: {param: smoothness}, Closed: {param: closed}, Axis0: {param: axis_0}, Axis1: {param: axis_1}, Axis2: {param: axis_2}, Axis3: {param: axis_3}, Axis4: {param: axis_4}, Axis5: {param: axis_5}, Axis6: {param: axis_6}, Axis7: {param: axis_7}, ScaleL0: {param: tension}, ScaleL1: {param: tension}, ScaleL2: {param: tension}, ScaleL3: {param: tension}, ScaleL4: {param: tension}, ScaleL5: {param: tension}, ScaleL6: {param: tension}, ScaleL7: {param: tension}, ScaleR0: {param: tension}, ScaleR1: {param: tension}, ScaleR2: {param: tension}, ScaleR3: {param: tension}, ScaleR4: {param: tension}, ScaleR5: {param: tension}, ScaleR6: {param: tension}, ScaleR7: {param: tension}}, x: 680, y: 40}
+  - {id: 3, type: ResampleCurve, name: resample, inputs: {Mode: {kind: Menu, value: 202fffd5a2e1c595}, Length: {param: spacing}}, x: 1000, y: 40}
+  - {id: 4, type: CurveToTube, name: tube, inputs: {Radius: {param: radius}, Sides: {param: sides}}, x: 1320, y: 40}
+  - {id: 5, type: SetMaterial, name: material, inputs: {Name: {kind: String, value: CurvePath}}, x: 1640, y: 40}
+  - {id: 6, type: Viewer, name: out, inputs: {Axis: {kind: Menu, value: 33ed5b48bd6992b4}}, x: 1960, y: 40}
+links: [{from: {node: 1, pin: Curves}, to: {node: 2, pin: Anchors}}, {from: {node: 2, pin: Curves}, to: {node: 3, pin: Curves}}, {from: {node: 3, pin: Curves}, to: {node: 4, pin: Curves}}, {from: {node: 4, pin: Geometry}, to: {node: 5, pin: Geometry}}, {from: {node: 5, pin: Geometry}, to: {node: 6, pin: Geometry}}]
+parameters:
+  anchor_0:
+    kind: Float3
+    default: [0, 0, 0]
+    desc: Waypoint 0, local to the curve entity (set by the CurvePath script)
+    group: Waypoints
+  anchor_1:
+    kind: Float3
+    default: [0.300000012, 0.100000001, 0]
+    desc: Waypoint 1, local to the curve entity (set by the CurvePath script)
+    group: Waypoints
+  anchor_2:
+    kind: Float3
+    default: [0.600000024, 0, 0.200000003]
+    desc: Waypoint 2, local to the curve entity (set by the CurvePath script)
+    group: Waypoints
+  anchor_3:
+    kind: Float3
+    default: [0.899999976, 0.100000001, 0.200000003]
+    desc: Waypoint 3, local to the curve entity (set by the CurvePath script)
+    group: Waypoints
+  anchor_4:
+    kind: Float3
+    default: [0, 0, 0]
+    desc: Waypoint 4, local to the curve entity (set by the CurvePath script)
+    group: Waypoints
+  anchor_5:
+    kind: Float3
+    default: [0, 0, 0]
+    desc: Waypoint 5, local to the curve entity (set by the CurvePath script)
+    group: Waypoints
+  anchor_6:
+    kind: Float3
+    default: [0, 0, 0]
+    desc: Waypoint 6, local to the curve entity (set by the CurvePath script)
+    group: Waypoints
+  anchor_7:
+    kind: Float3
+    default: [0, 0, 0]
+    desc: Waypoint 7, local to the curve entity (set by the CurvePath script)
+    group: Waypoints
+  axis_0:
+    kind: Float3
+    default: [0, 0, 0]
+    desc: Direction the curve passes through waypoint 0; zero = automatic
+    group: Waypoints
+  axis_1:
+    kind: Float3
+    default: [0, 0, 0]
+    desc: Direction the curve passes through waypoint 1; zero = automatic
+    group: Waypoints
+  axis_2:
+    kind: Float3
+    default: [0, 0, 0]
+    desc: Direction the curve passes through waypoint 2; zero = automatic
+    group: Waypoints
+  axis_3:
+    kind: Float3
+    default: [0, 0, 0]
+    desc: Direction the curve passes through waypoint 3; zero = automatic
+    group: Waypoints
+  axis_4:
+    kind: Float3
+    default: [0, 0, 0]
+    desc: Direction the curve passes through waypoint 4; zero = automatic
+    group: Waypoints
+  axis_5:
+    kind: Float3
+    default: [0, 0, 0]
+    desc: Direction the curve passes through waypoint 5; zero = automatic
+    group: Waypoints
+  axis_6:
+    kind: Float3
+    default: [0, 0, 0]
+    desc: Direction the curve passes through waypoint 6; zero = automatic
+    group: Waypoints
+  axis_7:
+    kind: Float3
+    default: [0, 0, 0]
+    desc: Direction the curve passes through waypoint 7; zero = automatic
+    group: Waypoints
+  anchor_count:
+    kind: Int32
+    default: 4
+    desc: How many anchors are used (2-8)
+    group: Waypoints
+    min: 2
+    max: 8
+  closed:
+    kind: Bool
+    default: false
+    desc: Join the last waypoint back to the first
+    group: Curve
+  smoothness:
+    kind: Int32
+    default: 16
+    desc: Samples per segment of the smoothed curve
+    group: Curve
+    min: 2
+    max: 64
+  tension:
+    kind: Float
+    default: 1
+    desc: Handle length at each waypoint; higher holds the arrow direction longer
+    group: Curve
+    min: 0
+    max: 3
+  spacing:
+    kind: Float
+    default: 0.0199999996
+    desc: Distance between rings along the tube, metres
+    group: Curve
+    min: 0.00200000009
+    max: 0.200000003
+  radius:
+    kind: Float
+    default: 0.00400000019
+    desc: Tube radius, metres
+    group: Tube
+    min: 0.000500000024
+    max: 0.0500000007
+  sides:
+    kind: Int32
+    default: 8
+    desc: Sides around the tube (3-32)
+    group: Tube
+    min: 3
+    max: 32
+output: 6
+editor_generated_identities:
+  version: 2
+  signature: 2048893048010308497
+  nodes:
+    - scope:
+        []
+      generated: 7
+      node: 7
+      index: 6
+      type: 13865574504075541761
+      parameter: anchor_0
+      implementation: 0
+    - scope:
+        []
+      generated: 8
+      node: 8
+      index: 7
+      type: 13865574504075541761
+      parameter: anchor_1
+      implementation: 0
+    - scope:
+        []
+      generated: 9
+      node: 9
+      index: 8
+      type: 13865574504075541761
+      parameter: anchor_2
+      implementation: 0
+    - scope:
+        []
+      generated: 10
+      node: 10
+      index: 9
+      type: 13865574504075541761
+      parameter: anchor_3
+      implementation: 0
+    - scope:
+        []
+      generated: 11
+      node: 11
+      index: 10
+      type: 13865574504075541761
+      parameter: anchor_4
+      implementation: 0
+    - scope:
+        []
+      generated: 12
+      node: 12
+      index: 11
+      type: 13865574504075541761
+      parameter: anchor_5
+      implementation: 0
+    - scope:
+        []
+      generated: 13
+      node: 13
+      index: 12
+      type: 13865574504075541761
+      parameter: anchor_6
+      implementation: 0
+    - scope:
+        []
+      generated: 14
+      node: 14
+      index: 13
+      type: 13865574504075541761
+      parameter: anchor_7
+      implementation: 0
+    - scope:
+        []
+      generated: 15
+      node: 15
+      index: 14
+      type: 13865574504075541761
+      parameter: axis_0
+      implementation: 0
+    - scope:
+        []
+      generated: 16
+      node: 16
+      index: 15
+      type: 13865574504075541761
+      parameter: axis_1
+      implementation: 0
+    - scope:
+        []
+      generated: 17
+      node: 17
+      index: 16
+      type: 13865574504075541761
+      parameter: axis_2
+      implementation: 0
+    - scope:
+        []
+      generated: 18
+      node: 18
+      index: 17
+      type: 13865574504075541761
+      parameter: axis_3
+      implementation: 0
+    - scope:
+        []
+      generated: 19
+      node: 19
+      index: 18
+      type: 13865574504075541761
+      parameter: axis_4
+      implementation: 0
+    - scope:
+        []
+      generated: 20
+      node: 20
+      index: 19
+      type: 13865574504075541761
+      parameter: axis_5
+      implementation: 0
+    - scope:
+        []
+      generated: 21
+      node: 21
+      index: 20
+      type: 13865574504075541761
+      parameter: axis_6
+      implementation: 0
+    - scope:
+        []
+      generated: 22
+      node: 22
+      index: 21
+      type: 13865574504075541761
+      parameter: axis_7
+      implementation: 0
+    - scope:
+        []
+      generated: 23
+      node: 23
+      index: 22
+      type: 16700481663363744371
+      parameter: anchor_count
+      implementation: 0
+    - scope:
+        []
+      generated: 24
+      node: 24
+      index: 23
+      type: 12933979428429614694
+      parameter: closed
+      implementation: 0
+    - scope:
+        []
+      generated: 25
+      node: 25
+      index: 24
+      type: 16700481663363744371
+      parameter: smoothness
+      implementation: 0
+    - scope:
+        []
+      generated: 26
+      node: 26
+      index: 25
+      type: 1225607449884475736
+      parameter: tension
+      implementation: 0
+    - scope:
+        []
+      generated: 27
+      node: 27
+      index: 26
+      type: 1225607449884475736
+      parameter: spacing
+      implementation: 0
+    - scope:
+        []
+      generated: 28
+      node: 28
+      index: 27
+      type: 1225607449884475736
+      parameter: radius
+      implementation: 0
+    - scope:
+        []
+      generated: 29
+      node: 29
+      index: 28
+      type: 16700481663363744371
+      parameter: sides
+      implementation: 0
+editor_generated_layout:
+  version: 2
+  signature: 2048893048010308497
+  nodes:
+    - scope:
+        []
+      node: 7
+      x: 40
+      y: 40
+    - scope:
+        []
+      node: 8
+      x: 40
+      y: 240
+    - scope:
+        []
+      node: 9
+      x: 40
+      y: 440
+    - scope:
+        []
+      node: 10
+      x: 40
+      y: 640
+    - scope:
+        []
+      node: 11
+      x: 40
+      y: 840
+    - scope:
+        []
+      node: 12
+      x: 40
+      y: 1040
+    - scope:
+        []
+      node: 13
+      x: 40
+      y: 1240
+    - scope:
+        []
+      node: 14
+      x: 40
+      y: 1440
+    - scope:
+        []
+      node: 15
+      x: 360
+      y: 240
+    - scope:
+        []
+      node: 16
+      x: 360
+      y: 440
+    - scope:
+        []
+      node: 17
+      x: 360
+      y: 640
+    - scope:
+        []
+      node: 18
+      x: 360
+      y: 840
+    - scope:
+        []
+      node: 19
+      x: 360
+      y: 1040
+    - scope:
+        []
+      node: 20
+      x: 360
+      y: 1240
+    - scope:
+        []
+      node: 21
+      x: 360
+      y: 1440
+    - scope:
+        []
+      node: 22
+      x: 360
+      y: 1640
+    - scope:
+        []
+      node: 23
+      x: 40
+      y: 1640
+    - scope:
+        []
+      node: 24
+      x: 360
+      y: 1840
+    - scope:
+        []
+      node: 25
+      x: 360
+      y: 2040
+    - scope:
+        []
+      node: 26
+      x: 360
+      y: 2240
+    - scope:
+        []
+      node: 27
+      x: 680
+      y: 240
+    - scope:
+        []
+      node: 28
+      x: 1000
+      y: 240
+    - scope:
+        []
+      node: 29
+      x: 1000
+      y: 440

@@ -1,0 +1,78 @@
+Prefab:
+  - Entity: 12648430011730552117
+    Domain: Client
+    TagComponent:
+      Tag: LD_PlateWaypoint
+    Parent: 0
+    Children:
+      - Handle: 6184207395518264073
+    PrefabComponent:
+      Prefab: 7419263058817724391
+      SourceEntity: 12648430011730552117
+      NestedPrefabEntityID: 0
+      Entity: 0
+      Flags: 3
+      OverriddenComponentHashes:
+        []
+    TransformComponent:
+      Position: [0, 0, 0]
+      Rotation: [3.14159274, 0, 0]
+      Scale: [1, 1, 1]
+    ScriptComponent:
+      ScriptID: 2011178992
+      ScriptName: LuckyExporter.LD_PlateWaypoint
+      Fields:
+        - ID: 2734771722
+          Name: Robot
+          Type: Entity
+          Value: 0
+        - ID: 422133490
+          Name: Duration
+          Type: Float
+          Value: 2
+        - ID: 2298083599
+          Name: WaitStart
+          Type: Float
+          Value: 0
+        - ID: 192616356
+          Name: WaitEnd
+          Type: Float
+          Value: 0
+        - ID: 1241522927
+          Name: Gripper
+          Type: Int
+          Value: 0
+        - ID: 1496535292
+          Name: GripperTime
+          Type: Float
+          Value: 1
+    StaticMeshComponent:
+      AssetID: 5559630666313415891
+      MaterialTable:
+        0: 4910352822346532527
+        1: 0
+      Visible: true
+  - Entity: 6184207395518264073
+    Domain: Client
+    TagComponent:
+      Tag: Elbow Pole
+    Parent: 12648430011730552117
+    Children:
+      []
+    PrefabComponent:
+      Prefab: 7419263058817724391
+      SourceEntity: 6184207395518264073
+      NestedPrefabEntityID: 0
+      Entity: 0
+      Flags: 0
+      OverriddenComponentHashes:
+        []
+    TransformComponent:
+      Position: [0, 0, 0]
+      Rotation: [0, 0, 0]
+      Scale: [0.0299999993, 0.0299999993, 0.0299999993]
+    StaticMeshComponent:
+      AssetID: 16552787454420947319
+      MaterialTable:
+        0: 0
+      Visible: true

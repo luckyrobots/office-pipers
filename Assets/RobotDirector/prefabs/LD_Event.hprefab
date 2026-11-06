@@ -1,0 +1,154 @@
+Prefab:
+  - Entity: 3265425742478343088
+    Domain: Client
+    TagComponent:
+      Tag: LD_Event
+    Parent: 0
+    Children:
+      - Handle: 4027548492989267165
+    PrefabComponent:
+      Prefab: 8354136821058096875
+      SourceEntity: 3265425742478343088
+      NestedPrefabEntityID: 0
+      Entity: 0
+      Flags: 3
+      OverriddenComponentHashes:
+        []
+    TransformComponent:
+      Position: [0, 0, 0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+  - Entity: 4027548492989267165
+    Domain: Client
+    TagComponent:
+      Tag: LD_Event
+    Parent: 3265425742478343088
+    Children:
+      - Handle: 17931498291238807330
+      - Handle: 244338776121120850
+      - Handle: 2972143989412426080
+    PrefabComponent:
+      Prefab: 8354136821058096875
+      SourceEntity: 4027548492989267165
+      NestedPrefabEntityID: 0
+      Entity: 0
+      Flags: 0
+      OverriddenComponentHashes:
+        []
+    TransformComponent:
+      Position: [0, 0.573966563, 0]
+      Rotation: [0, 1.57079637, 0]
+      Scale: [1, 1, 1]
+    ScriptComponent:
+      ScriptID: 1340118057
+      ScriptName: LuckyExporter.LD_Event
+      Fields:
+        - ID: 1106507701
+          Name: Arm
+          Type: Int
+          Value: 0
+        - ID: 2414235978
+          Name: WaitStart
+          Type: Float
+          Value: 0
+        - ID: 440067866
+          Name: Hold
+          Type: Float
+          Value: 0
+        - ID: 3535127111
+          Name: Action
+          Type: Int
+          Value: 0
+        - ID: 2858108473
+          Name: Amount
+          Type: Float
+          Value: 90
+        - ID: 1929204162
+          Name: Time
+          Type: Float
+          Value: 1
+        - ID: 3839309399
+          Name: IsAsync
+          Type: Bool
+          Value: false
+    StaticMeshComponent:
+      AssetID: 1138875474485037065
+      MaterialTable:
+        0: 4910352822346532527
+        1: 0
+      Visible: true
+  - Entity: 17931498291238807330
+    Domain: Client
+    TagComponent:
+      Tag: LD_Rotate
+    Parent: 4027548492989267165
+    Children:
+      []
+    PrefabComponent:
+      Prefab: 8354136821058096875
+      SourceEntity: 17931498291238807330
+      NestedPrefabEntityID: 0
+      Entity: 0
+      Flags: 0
+      OverriddenComponentHashes:
+        []
+    TransformComponent:
+      Position: [0, 0.00260000001, 0]
+      Rotation: [1.57079637, 0, 0]
+      Scale: [0.490829825, 0.490829885, 0.490829885]
+    StaticMeshComponent:
+      AssetID: 2347882247835264959
+      MaterialTable:
+        0: 4910352822346532527
+        1: 0
+      Visible: true
+  - Entity: 244338776121120850
+    Domain: Client
+    TagComponent:
+      Tag: LD_Close
+    Parent: 4027548492989267165
+    Children:
+      []
+    PrefabComponent:
+      Prefab: 8354136821058096875
+      SourceEntity: 244338776121120850
+      NestedPrefabEntityID: 0
+      Entity: 0
+      Flags: 0
+      OverriddenComponentHashes:
+        []
+    TransformComponent:
+      Position: [0, 0.00260000001, 0]
+      Rotation: [0, 1.57079637, 0]
+      Scale: [1, 1, 1]
+    StaticMeshComponent:
+      AssetID: 1426231606741906005
+      MaterialTable:
+        0: 4910352822346532527
+        1: 0
+      Visible: true
+  - Entity: 2972143989412426080
+    Domain: Client
+    TagComponent:
+      Tag: LD_Open
+    Parent: 4027548492989267165
+    Children:
+      []
+    PrefabComponent:
+      Prefab: 8354136821058096875
+      SourceEntity: 2972143989412426080
+      NestedPrefabEntityID: 0
+      Entity: 0
+      Flags: 0
+      OverriddenComponentHashes:
+        []
+    TransformComponent:
+      Position: [0, 0.00255498663, 0]
+      Rotation: [0, 1.57079637, 0]
+      Scale: [1, 1, 1]
+    StaticMeshComponent:
+      AssetID: 7006161624537359908
+      MaterialTable:
+        0: 4910352822346532527
+        1: 0
+      Visible: true

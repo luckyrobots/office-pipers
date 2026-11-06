@@ -1,0 +1,58 @@
+Prefab:
+  - Entity: 14073525394733427356
+    Domain: Client
+    TagComponent:
+      Tag: LD_Target
+    Parent: 0
+    Children:
+      []
+    PrefabComponent:
+      Prefab: 17547198071456496605
+      SourceEntity: 14073525394733427356
+      NestedPrefabEntityID: 0
+      Entity: 0
+      Flags: 3
+      OverriddenComponentHashes:
+        []
+    TransformComponent:
+      Position: [0, 0, 0]
+      Rotation: [3.14159274, 0, 0]
+      Scale: [1, 1, 1]
+    ScriptComponent:
+      ScriptID: 4151148970
+      ScriptName: LuckyExporter.LD_Waypoint
+      Fields:
+        - ID: 3928569998
+          Name: Arm
+          Type: Int
+          Value: 0
+        - ID: 3455889984
+          Name: Duration
+          Type: Float
+          Value: 2
+        - ID: 1954049161
+          Name: WaitStart
+          Type: Float
+          Value: 0
+        - ID: 1422174967
+          Name: Hold
+          Type: Float
+          Value: 0
+        - ID: 706088741
+          Name: SolveOrientation
+          Type: Bool
+          Value: true
+        - ID: 3140709237
+          Name: OrientationSource
+          Type: Int
+          Value: 1
+        - ID: 1375494142
+          Name: Orientation
+          Type: Vector3
+          Value: [0, 0, 0]
+    StaticMeshComponent:
+      AssetID: 5559630666313415891
+      MaterialTable:
+        0: 4910352822346532527
+        1: 0
+      Visible: true

@@ -1,0 +1,31 @@
+{
+  "name": "RobotDirector",
+  "description": "Robot sequencing (RobotDirector, RobotAction), curve following (CurveFollower) and the CurvePath procedural curve with its edit-mode sync. Paths are relative to this folder. LuckyLive registers each asset under its fixed handle in the open project, so the prefabs' references resolve in any project. JSON, but not named .json: the editor would load that as a Motion asset.",
+  "assets": [
+    { "path": "prefabs/LuckyDirector.hprefab", "handle": "636354898109013385", "type": "Prefab" },
+    { "path": "prefabs/LD_Path.hprefab", "handle": "9133740402045639558", "type": "Prefab" },
+    { "path": "prefabs/LD_Target.hprefab", "handle": "17547198071456496605", "type": "Prefab" },
+    { "path": "prefabs/LD_PlateWaypoint.hprefab", "handle": "7419263058817724391", "type": "Prefab" },
+    { "path": "prefabs/LD_Event.hprefab", "handle": "8354136821058096875", "type": "Prefab" },
+    { "path": "prefabs/LD_Goal.hprefab", "handle": "8996897022188778477", "type": "Prefab" },
+    { "path": "prefabs/Ld_DuckGrabber.hprefab", "handle": "15800883266158508846", "type": "Prefab" },
+    { "path": "assets/curvePath/CurvePath.hpodgraph", "handle": "8097080000623581226", "type": "PodGraph" },
+    { "path": "assets/waypoint/M_CurveWaypoint.hmaterial", "handle": "4910352822346532527", "type": "Material" },
+    { "path": "assets/waypoint/SM_LD_Waypoint.glb", "handle": "17703573934312611978", "type": "MeshSource" },
+    { "path": "assets/waypoint/SM_LD_Waypoint.hsmesh", "handle": "5559630666313415891", "type": "StaticMesh" },
+    { "path": "assets/target/SM_LD_Target.glb", "handle": "14945740897774750398", "type": "MeshSource" },
+    { "path": "assets/target/SM_LD_Target.hsmesh", "handle": "8871440724551037858", "type": "StaticMesh" },
+    { "path": "assets/events/SM_LD_Event.glb", "handle": "12274580165014017970", "type": "MeshSource" },
+    { "path": "assets/events/SM_LD_Event.hsmesh", "handle": "1138875474485037065", "type": "StaticMesh" },
+    { "path": "assets/events/SM_LD_Rotate.glb", "handle": "10880858306888761120", "type": "MeshSource" },
+    { "path": "assets/events/SM_LD_Rotate.hsmesh", "handle": "2347882247835264959", "type": "StaticMesh" },
+    { "path": "assets/events/SM_LD_Close_1.glb", "handle": "11004246521856882623", "type": "MeshSource" },
+    { "path": "assets/events/SM_LD_Close_1.hsmesh", "handle": "1426231606741906005", "type": "StaticMesh" },
+    { "path": "assets/events/SM_LD_Open_1.glb", "handle": "4516365758047234959", "type": "MeshSource" },
+    { "path": "assets/events/SM_LD_Open_1.hsmesh", "handle": "7006161624537359908", "type": "StaticMesh" },
+    { "path": "assets/events/SM_LD_Hidden.glb", "handle": "7769080619584512381", "type": "MeshSource" },
+    { "path": "assets/events/SM_LD_Hidden.hsmesh", "handle": "5600224601578857925", "type": "StaticMesh" },
+    { "path": "assets/logo/SM_Logo.glb", "handle": "4655458743204400647", "type": "MeshSource" },
+    { "path": "assets/logo/SM_Logo.hsmesh", "handle": "5848693416638250557", "type": "StaticMesh" }
+  ]
+}

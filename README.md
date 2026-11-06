@@ -52,6 +52,24 @@ On November 5, 2026, the saved 35 mm insertion / 30 mm close configuration compl
 
 Keep the asset registry, IDs and relative resource paths together when moving assets. The task verifies the authored position-actuator model's pinned SHA-256. Editing the qualified XML requires deliberate requalification and an update to that source identity; do not bypass its checks merely to run an edited model.
 
+## Robot control with LuckyDirector
+
+`Assets/Scenes/Main.hscene` has four live Pipers, each driven by a `RobotDirector` under the **Robot Directors** entity. Open the scene and press **Play**: each arm loops through the waypoints in its `Piper N Tasks` list, working its gripper as it goes. To change a routine, move the arrow markers (their tips are where the fingertips go) or edit the `LD_Waypoint` fields. This is simulation only and sends no hardware commands. The separate MuJoCo instances don't collide with each other or the desk, so keep each arm's targets in its own part of the desk.
+
+The tube scenes are unchanged: only Piper 1 is a live robot there, and the other three are static collision geometry in a SHA-pinned task model.
+
+`Assets/RobotDirector/` is the LuckyDirector package, with these local changes:
+
+- **Pika gripper support:** open and closed are the right way round, and waypoints, wrist turns and curves use the Pika's hand frame (X along the fingers). A project's robots must share one hand type.
+- **Engine API:** ported from `Entity.ID` to `Entity.Handle`. `Handle` isn't the scene UUID, so `LD_DuckGrabber`'s Fake Hold can't find its body and warns instead of holding.
+
+Known editor crashes on the tested build (`3f8f06a`):
+
+- Selecting an entity whose script has an unassigned `Entity` field, which includes a freshly dropped `LuckyDirector` prefab. Assign the fields without selecting it, or by editing the scene file with the editor closed.
+- Opening a scene while another is still loading.
+
+The scripts need `EntityHandle` and `Scene.FindEntityByHandle`. `Assets/Scripts/Client/Source/EpisodeFollowerCompat.cs` stands in for the private `EpisodeFollowers` API with "no physical follower registered"; delete it on an engine that has the real one, or episodes won't wait for physical followers.
+
 ## Plugin, hardware and cameras
 
 The native **Pipers** panel/backend comes from [luckyrobots/piper-direct-c](https://github.com/luckyrobots/piper-direct-c); the plugin catalog is [luckyrobots/luckyengine-plugins](https://github.com/luckyrobots/luckyengine-plugins). The current local development package includes changes beyond the public backend repository's current release state. Use the package supplied for the matching engine build, or build the coordinated source revisions; no working remote plugin release is asserted here.

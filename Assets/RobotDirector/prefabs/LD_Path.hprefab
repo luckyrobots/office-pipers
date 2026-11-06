@@ -1,0 +1,190 @@
+Prefab:
+  - Entity: 8833502618929620825
+    Domain: Client
+    TagComponent:
+      Tag: LD_Path
+    Parent: 0
+    Children:
+      - Handle: 8783131763540065879
+    PrefabComponent:
+      Prefab: 9133740402045639558
+      SourceEntity: 8833502618929620825
+      NestedPrefabEntityID: 0
+      Entity: 0
+      Flags: 3
+      OverriddenComponentHashes:
+        []
+    TransformComponent:
+      Position: [0, 0, 0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+  - Entity: 8783131763540065879
+    Domain: Client
+    TagComponent:
+      Tag: CurvePath
+    Parent: 8833502618929620825
+    Children:
+      - Handle: 1793782009282875693
+      - Handle: 8742924964998369570
+      - Handle: 4596011791745986699
+    PrefabComponent:
+      Prefab: 9133740402045639558
+      SourceEntity: 8783131763540065879
+      NestedPrefabEntityID: 0
+      Entity: 0
+      Flags: 0
+      OverriddenComponentHashes:
+        []
+    TransformComponent:
+      Position: [0, 0, 0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    ScriptComponent:
+      ScriptID: 3622133756
+      ScriptName: CanTake.CurvePath
+      Fields:
+        - ID: 3066195227
+          Name: FollowArrows
+          Type: Bool
+          Value: false
+        - ID: 130922364
+          Name: Tension
+          Type: Float
+          Value: 1.22300005
+        - ID: 121448046
+          Name: Closed
+          Type: Bool
+          Value: false
+        - ID: 2824654324
+          Name: Radius
+          Type: Float
+          Value: 0.00200000009
+        - ID: 300498244
+          Name: VisibleDuringSim
+          Type: Bool
+          Value: true
+        - ID: 3177781544
+          Name: AutoStartEditSync
+          Type: Bool
+          Value: true
+        - ID: 2532761973
+          Name: SyncStatus
+          Type: String
+          Value: Not connected
+    PodComponent:
+      Kind: 0
+      VisibleToCameras: false
+      AttachmentsFollowBodies: true
+      ProjectLights: false
+      PodGraph: 8097080000623581226
+      ParamOverrides:
+        - Node: 7
+          Vec: [0.141141996, 0, 0]
+        - Node: 8
+          Vec: [0.000810235739, 0, 0]
+        - Node: 9
+          Vec: [-0.152276367, 0, 0]
+        - Node: 10
+          Vec: [-0.139577001, 0.0741041973, 0]
+        - Node: 15
+          Vec: [0, 0, 0]
+        - Node: 11
+          Vec: [0.772576988, 0.0476392992, -0.0622969009]
+        - Node: 16
+          Vec: [0, 0, 0]
+        - Node: 17
+          Vec: [0, 0, 0]
+        - Node: 18
+          Vec: [0, 0, 0]
+        - Node: 19
+          Vec: [0, 0, 0]
+        - Node: 23
+          Float: false
+          V: 3
+        - Node: 26
+          Float: true
+          V: 1.22300005
+        - Node: 28
+          Float: true
+          V: 0.00200000009
+        - Node: 24
+          Bool: false
+        - Node: 29
+          Float: false
+          V: 3
+      MaterialTable:
+        0: 4910352822346532527
+  - Entity: 1793782009282875693
+    Domain: Client
+    TagComponent:
+      Tag: Waypoint_1
+    Parent: 8783131763540065879
+    Children:
+      []
+    PrefabComponent:
+      Prefab: 9133740402045639558
+      SourceEntity: 1793782009282875693
+      NestedPrefabEntityID: 0
+      Entity: 0
+      Flags: 0
+      OverriddenComponentHashes:
+        []
+    TransformComponent:
+      Position: [0.141141996, 0, 0]
+      Rotation: [3.14159274, 0, 0]
+      Scale: [1, 1, 1]
+    StaticMeshComponent:
+      AssetID: 5559630666313415891
+      MaterialTable:
+        0: 4910352822346532527
+        1: 0
+      Visible: true
+  - Entity: 8742924964998369570
+    Domain: Client
+    TagComponent:
+      Tag: Waypoint_2
+    Parent: 8783131763540065879
+    Children:
+      []
+    PrefabComponent:
+      Prefab: 9133740402045639558
+      SourceEntity: 8742924964998369570
+      NestedPrefabEntityID: 0
+      Entity: 0
+      Flags: 0
+      OverriddenComponentHashes:
+        []
+    TransformComponent:
+      Position: [0.000810235739, 0, 0]
+      Rotation: [3.14159274, 0, 0]
+      Scale: [1, 1, 1]
+    StaticMeshComponent:
+      AssetID: 5559630666313415891
+      MaterialTable:
+        0: 4910352822346532527
+        1: 0
+      Visible: true
+  - Entity: 4596011791745986699
+    Domain: Client
+    TagComponent:
+      Tag: Waypoint_3
+    Parent: 8783131763540065879
+    Children:
+      []
+    PrefabComponent:
+      Prefab: 9133740402045639558
+      SourceEntity: 4596011791745986699
+      NestedPrefabEntityID: 0
+      Entity: 0
+      Flags: 0
+      OverriddenComponentHashes:
+        []
+    TransformComponent:
+      Position: [-0.152276367, 0, 0]
+      Rotation: [3.14159274, 0, 0]
+      Scale: [1, 1, 1]
+    StaticMeshComponent:
+      AssetID: 5559630666313415891
+      MaterialTable:
+        0: 4910352822346532527
+      Visible: true
