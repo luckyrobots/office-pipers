@@ -480,6 +480,79 @@ Entities:
       MaterialTable:
         0: 4910352822346532527
       Visible: true
+  - Entity: 346023315672674171
+    Domain: Client
+    TagComponent:
+      Tag: 3_Ready_A3
+    Parent: 9184620573361947725
+    Children:
+      - Handle: 15003625771515772709
+    TransformComponent:
+      Position: [0.41, 0.93, -0.1]
+      Rotation: [-0.136406, -1.34931, 1.97294]
+      Scale: [1, 1, 1]
+    ScriptComponent:
+      ScriptID: 2011178992
+      ScriptName: LuckyExporter.LD_PlateWaypoint
+      Fields:
+        - ID: 2734771722
+          Name: Robot
+          Type: Entity
+          Value: 6476866661349383801
+        - ID: 422133490
+          Name: Duration
+          Type: Float
+          Value: 1.5
+        - ID: 4252465837
+          Name: SolveRotation
+          Type: Bool
+          Value: false
+        - ID: 3148052878
+          Name: UseElbowPole
+          Type: Bool
+          Value: false
+        - ID: 3423540088
+          Name: PoleWeight
+          Type: Float
+          Value: 0.02
+        - ID: 456138183
+          Name: Continuous
+          Type: Bool
+          Value: false
+        - ID: 2075578939
+          Name: OverlapFromLast
+          Type: Float
+          Value: 10
+        - ID: 2298083599
+          Name: WaitStart
+          Type: Float
+          Value: 2
+        - ID: 192616356
+          Name: WaitEnd
+          Type: Float
+          Value: 0
+        - ID: 1241522927
+          Name: Gripper
+          Type: Int
+          Value: 0
+        - ID: 1496535292
+          Name: GripperTime
+          Type: Float
+          Value: 0.233
+        - ID: 471090152
+          Name: Rest
+          Type: Int
+          Value: 1
+        - ID: 2245170723
+          Name: RestTime
+          Type: Float
+          Value: 0.1
+    StaticMeshComponent:
+      AssetID: 5559630666313415891
+      MaterialTable:
+        0: 4910352822346532527
+        1: 0
+      Visible: true
   - Entity: 408777118912792925
     Domain: Client
     TagComponent:
@@ -805,7 +878,6 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
-        1: 0
       Visible: true
   - Entity: 848682834052465792
     Domain: Client
@@ -1223,6 +1295,22 @@ Entities:
       Visible: true
     MujocoGeomComponent:
       ID: 77
+  - Entity: 1537331324613638991
+    Domain: Client
+    TagComponent:
+      Tag: Elbow Pole
+    Parent: 17648917201742650108
+    Children:
+      []
+    TransformComponent:
+      Position: [0, 0, 0]
+      Rotation: [0, 0, 0]
+      Scale: [0.01, 0.01, 0.01]
+    StaticMeshComponent:
+      AssetID: 16552787454420947319
+      MaterialTable:
+        0: 4910352822346532527
+      Visible: true
   - Entity: 1566582122035644143
     Domain: Client
     TagComponent:
@@ -1332,6 +1420,22 @@ Entities:
       Visible: true
     MujocoGeomComponent:
       ID: 30
+  - Entity: 1781408122619424241
+    Domain: Client
+    TagComponent:
+      Tag: Elbow Pole
+    Parent: 10402873124045459715
+    Children:
+      []
+    TransformComponent:
+      Position: [0, 0, 0]
+      Rotation: [0, 0, 0]
+      Scale: [0.01, 0.01, 0.01]
+    StaticMeshComponent:
+      AssetID: 16552787454420947319
+      MaterialTable:
+        0: 4910352822346532527
+      Visible: true
   - Entity: 1876378993143399574
     Domain: Client
     TagComponent:
@@ -1499,6 +1603,22 @@ Entities:
       Scale: [1, 1, 1]
     MujocoBodyComponent:
       ID: 2
+  - Entity: 2152847318174837030
+    Domain: Client
+    TagComponent:
+      Tag: Elbow Pole
+    Parent: 9725301560965795264
+    Children:
+      []
+    TransformComponent:
+      Position: [0, 0, 0]
+      Rotation: [0, 0, 0]
+      Scale: [0.01, 0.01, 0.01]
+    StaticMeshComponent:
+      AssetID: 16552787454420947319
+      MaterialTable:
+        0: 4910352822346532527
+      Visible: true
   - Entity: 2188284775827857315
     Domain: Client
     TagComponent:
@@ -1861,7 +1981,6 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
-        1: 0
       Visible: true
   - Entity: 2750193846622917307
     Domain: Client
@@ -1934,7 +2053,6 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
-        1: 0
       Visible: true
   - Entity: 2758693470486315834
     Domain: Client
@@ -2047,7 +2165,6 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
-        1: 0
       Visible: true
   - Entity: 2833819804972238291
     Domain: Client
@@ -2140,7 +2257,6 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
-        1: 0
       Visible: true
   - Entity: 2858871075214658599
     Domain: Client
@@ -2431,7 +2547,7 @@ Entities:
     Children:
       - Handle: 13390526255292720163
     TransformComponent:
-      Position: [-0.00739112, 0.890158, -0.0250084]
+      Position: [0.0616679, 0.919718, -0.0250084]
       Rotation: [-0.136406, 1.34931, -1.97293]
       Scale: [1, 1, 1]
     ScriptComponent:
@@ -2465,7 +2581,7 @@ Entities:
         - ID: 2075578939
           Name: OverlapFromLast
           Type: Float
-          Value: 0.556
+          Value: 0.737
         - ID: 2298083599
           Name: WaitStart
           Type: Float
@@ -2494,7 +2610,6 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
-        1: 0
       Visible: true
   - Entity: 3354310072068136519
     Domain: Client
@@ -3014,7 +3129,7 @@ Entities:
       []
     TransformComponent:
       Position: [0, 0, 0]
-      Rotation: [1.57079, -0, 3.14159]
+      Rotation: [1.57079, -1.13687e-13, 3.14159]
       Scale: [1, 1, 1]
     MujocoBodyComponent:
       ID: 1
@@ -3192,6 +3307,22 @@ Entities:
       Visible: true
     MujocoGeomComponent:
       ID: 4
+  - Entity: 5061811750319300357
+    Domain: Client
+    TagComponent:
+      Tag: Elbow Pole
+    Parent: 15265383494148821740
+    Children:
+      []
+    TransformComponent:
+      Position: [0, 0, 0]
+      Rotation: [0, 0, 0]
+      Scale: [0.01, 0.01, 0.01]
+    StaticMeshComponent:
+      AssetID: 16552787454420947319
+      MaterialTable:
+        0: 4910352822346532527
+      Visible: true
   - Entity: 5091389827291494828
     Domain: Client
     TagComponent:
@@ -3243,6 +3374,79 @@ Entities:
       Rotation: 0
       DynamicSky: true
       TurbidityAzimuthInclination: [2.8, 3.8, 1]
+  - Entity: 5182520351700253512
+    Domain: Client
+    TagComponent:
+      Tag: 10_Place_A3
+    Parent: 9184620573361947725
+    Children:
+      - Handle: 10599646852233048500
+    TransformComponent:
+      Position: [0.26208, 0.89016, -0.104302]
+      Rotation: [0.33114, -1.36657, 1.51554]
+      Scale: [1, 1, 1]
+    ScriptComponent:
+      ScriptID: 2011178992
+      ScriptName: LuckyExporter.LD_PlateWaypoint
+      Fields:
+        - ID: 2734771722
+          Name: Robot
+          Type: Entity
+          Value: 6476866661349383801
+        - ID: 422133490
+          Name: Duration
+          Type: Float
+          Value: 1.5
+        - ID: 4252465837
+          Name: SolveRotation
+          Type: Bool
+          Value: true
+        - ID: 3148052878
+          Name: UseElbowPole
+          Type: Bool
+          Value: false
+        - ID: 3423540088
+          Name: PoleWeight
+          Type: Float
+          Value: 0.02
+        - ID: 456138183
+          Name: Continuous
+          Type: Bool
+          Value: false
+        - ID: 2075578939
+          Name: OverlapFromLast
+          Type: Float
+          Value: 10
+        - ID: 2298083599
+          Name: WaitStart
+          Type: Float
+          Value: 0
+        - ID: 192616356
+          Name: WaitEnd
+          Type: Float
+          Value: 0
+        - ID: 1241522927
+          Name: Gripper
+          Type: Int
+          Value: 4
+        - ID: 1496535292
+          Name: GripperTime
+          Type: Float
+          Value: 0.233
+        - ID: 471090152
+          Name: Rest
+          Type: Int
+          Value: 0
+        - ID: 2245170723
+          Name: RestTime
+          Type: Float
+          Value: 2
+    StaticMeshComponent:
+      AssetID: 5559630666313415891
+      MaterialTable:
+        0: 4910352822346532527
+        1: 0
+      Visible: true
   - Entity: 5189568502907838232
     Domain: Client
     TagComponent:
@@ -3552,6 +3756,22 @@ Entities:
       Visible: true
     MujocoGeomComponent:
       ID: 44
+  - Entity: 5630676986928825281
+    Domain: Client
+    TagComponent:
+      Tag: Elbow Pole
+    Parent: 13236873533356361806
+    Children:
+      []
+    TransformComponent:
+      Position: [0, 0, 0]
+      Rotation: [0, 0, 0]
+      Scale: [0.01, 0.01, 0.01]
+    StaticMeshComponent:
+      AssetID: 16552787454420947319
+      MaterialTable:
+        0: 4910352822346532527
+      Visible: true
   - Entity: 5697817370590149892
     Domain: Client
     TagComponent:
@@ -4467,6 +4687,79 @@ Entities:
         VignettingExponent: 4
         VignettingCorrection: 0
         SensorHeightMM: 24
+  - Entity: 6725374485437134666
+    Domain: Client
+    TagComponent:
+      Tag: 8_Over_A3
+    Parent: 9184620573361947725
+    Children:
+      - Handle: 11742994746517544749
+    TransformComponent:
+      Position: [0.27277, 1.125, -0.1]
+      Rotation: [0.417568, -1.50893, 1.23231]
+      Scale: [1, 1, 1]
+    ScriptComponent:
+      ScriptID: 2011178992
+      ScriptName: LuckyExporter.LD_PlateWaypoint
+      Fields:
+        - ID: 2734771722
+          Name: Robot
+          Type: Entity
+          Value: 6476866661349383801
+        - ID: 422133490
+          Name: Duration
+          Type: Float
+          Value: 1
+        - ID: 4252465837
+          Name: SolveRotation
+          Type: Bool
+          Value: true
+        - ID: 3148052878
+          Name: UseElbowPole
+          Type: Bool
+          Value: false
+        - ID: 3423540088
+          Name: PoleWeight
+          Type: Float
+          Value: 0.02
+        - ID: 456138183
+          Name: Continuous
+          Type: Bool
+          Value: false
+        - ID: 2075578939
+          Name: OverlapFromLast
+          Type: Float
+          Value: 10
+        - ID: 2298083599
+          Name: WaitStart
+          Type: Float
+          Value: 0
+        - ID: 192616356
+          Name: WaitEnd
+          Type: Float
+          Value: 1.9
+        - ID: 1241522927
+          Name: Gripper
+          Type: Int
+          Value: 0
+        - ID: 1496535292
+          Name: GripperTime
+          Type: Float
+          Value: 0.233
+        - ID: 471090152
+          Name: Rest
+          Type: Int
+          Value: 0
+        - ID: 2245170723
+          Name: RestTime
+          Type: Float
+          Value: 0.1
+    StaticMeshComponent:
+      AssetID: 5559630666313415891
+      MaterialTable:
+        0: 4910352822346532527
+        1: 0
+      Visible: true
   - Entity: 6767546649478591707
     Domain: Client
     TagComponent:
@@ -4748,6 +5041,22 @@ Entities:
       Visible: true
     MujocoGeomComponent:
       ID: 53
+  - Entity: 7160390995064663664
+    Domain: Client
+    TagComponent:
+      Tag: Elbow Pole
+    Parent: 11047408611023777959
+    Children:
+      []
+    TransformComponent:
+      Position: [0, 0, 0]
+      Rotation: [0, 0, 0]
+      Scale: [0.01, 0.01, 0.01]
+    StaticMeshComponent:
+      AssetID: 16552787454420947319
+      MaterialTable:
+        0: 4910352822346532527
+      Visible: true
   - Entity: 7189506171144522712
     Domain: Client
     TagComponent:
@@ -4793,7 +5102,7 @@ Entities:
       []
     TransformComponent:
       Position: [0, 0, 0]
-      Rotation: [1.57079, -0, 3.14159]
+      Rotation: [1.57079, -1.13687e-13, 3.14159]
       Scale: [1, 1, 1]
     MujocoBodyComponent:
       ID: 1
@@ -4901,7 +5210,6 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
-        1: 0
       Visible: true
   - Entity: 7307682523725032511
     Domain: Client
@@ -5099,6 +5407,79 @@ Entities:
       DropShadow: false
       ShadowDistance: 0
       ShadowColor: [0, 0, 0, 1]
+  - Entity: 8057099788071436868
+    Domain: Client
+    TagComponent:
+      Tag: 6_Turn_A3
+    Parent: 9184620573361947725
+    Children:
+      - Handle: 13036874876316005898
+    TransformComponent:
+      Position: [0.3688, 0.91407, 0.0554031]
+      Rotation: [-1.13382, -1.4833, 2.9622]
+      Scale: [1, 1, 1]
+    ScriptComponent:
+      ScriptID: 2011178992
+      ScriptName: LuckyExporter.LD_PlateWaypoint
+      Fields:
+        - ID: 2734771722
+          Name: Robot
+          Type: Entity
+          Value: 6476866661349383801
+        - ID: 422133490
+          Name: Duration
+          Type: Float
+          Value: 1
+        - ID: 4252465837
+          Name: SolveRotation
+          Type: Bool
+          Value: true
+        - ID: 3148052878
+          Name: UseElbowPole
+          Type: Bool
+          Value: false
+        - ID: 3423540088
+          Name: PoleWeight
+          Type: Float
+          Value: 0.02
+        - ID: 456138183
+          Name: Continuous
+          Type: Bool
+          Value: false
+        - ID: 2075578939
+          Name: OverlapFromLast
+          Type: Float
+          Value: 10
+        - ID: 2298083599
+          Name: WaitStart
+          Type: Float
+          Value: 0
+        - ID: 192616356
+          Name: WaitEnd
+          Type: Float
+          Value: 0
+        - ID: 1241522927
+          Name: Gripper
+          Type: Int
+          Value: 0
+        - ID: 1496535292
+          Name: GripperTime
+          Type: Float
+          Value: 0.233
+        - ID: 471090152
+          Name: Rest
+          Type: Int
+          Value: 0
+        - ID: 2245170723
+          Name: RestTime
+          Type: Float
+          Value: 0.1
+    StaticMeshComponent:
+      AssetID: 5559630666313415891
+      MaterialTable:
+        0: 4910352822346532527
+        1: 0
+      Visible: true
   - Entity: 8090546544204514601
     Domain: Client
     TagComponent:
@@ -5575,13 +5956,24 @@ Entities:
       - Handle: 827430383605479894
       - Handle: 2750193846620917301
       - Handle: 2750193846622917307
-      - Handle: 7293534437317933068
-      - Handle: 14983533826376433522
-      - Handle: 13112298532345485906
-      - Handle: 17659750653758644285
       - Handle: 2819621017015167741
-      - Handle: 3275881873670964659
       - Handle: 2845790977977555353
+      - Handle: 3275881873670964659
+      - Handle: 7293534437317933068
+      - Handle: 13112298532345485906
+      - Handle: 14983533826376433522
+      - Handle: 17659750653758644285
+      - Handle: 15369955568153563931
+      - Handle: 15265383494148821740
+      - Handle: 17648917201742650108
+      - Handle: 346023315672674171
+      - Handle: 11047408611023777959
+      - Handle: 8057099788071436868
+      - Handle: 9725301560965795264
+      - Handle: 10402873124045459715
+      - Handle: 6725374485437134666
+      - Handle: 5182520351700253512
+      - Handle: 13236873533356361806
     TransformComponent:
       Position: [0, 0, 0]
       Rotation: [0, 0, 0]
@@ -5876,6 +6268,79 @@ Entities:
       MaterialTable:
         0: 1761399664663822562
       Visible: true
+  - Entity: 9725301560965795264
+    Domain: Client
+    TagComponent:
+      Tag: 7_Grip_A3
+    Parent: 9184620573361947725
+    Children:
+      - Handle: 2152847318174837030
+    TransformComponent:
+      Position: [0.28208, 0.89016, 0.0527131]
+      Rotation: [-1.8317, -1.4718, 3.6573]
+      Scale: [1, 1, 1]
+    ScriptComponent:
+      ScriptID: 2011178992
+      ScriptName: LuckyExporter.LD_PlateWaypoint
+      Fields:
+        - ID: 2734771722
+          Name: Robot
+          Type: Entity
+          Value: 6476866661349383801
+        - ID: 422133490
+          Name: Duration
+          Type: Float
+          Value: 0.5
+        - ID: 4252465837
+          Name: SolveRotation
+          Type: Bool
+          Value: true
+        - ID: 3148052878
+          Name: UseElbowPole
+          Type: Bool
+          Value: false
+        - ID: 3423540088
+          Name: PoleWeight
+          Type: Float
+          Value: 0.02
+        - ID: 456138183
+          Name: Continuous
+          Type: Bool
+          Value: false
+        - ID: 2075578939
+          Name: OverlapFromLast
+          Type: Float
+          Value: 10
+        - ID: 2298083599
+          Name: WaitStart
+          Type: Float
+          Value: 0
+        - ID: 192616356
+          Name: WaitEnd
+          Type: Float
+          Value: 0
+        - ID: 1241522927
+          Name: Gripper
+          Type: Int
+          Value: 2
+        - ID: 1496535292
+          Name: GripperTime
+          Type: Float
+          Value: 0.233
+        - ID: 471090152
+          Name: Rest
+          Type: Int
+          Value: 0
+        - ID: 2245170723
+          Name: RestTime
+          Type: Float
+          Value: 0.1
+    StaticMeshComponent:
+      AssetID: 5559630666313415891
+      MaterialTable:
+        0: 4910352822346532527
+        1: 0
+      Visible: true
   - Entity: 9743553660603514688
     Domain: Client
     TagComponent:
@@ -6088,6 +6553,79 @@ Entities:
       Visible: true
     MujocoGeomComponent:
       ID: 13
+  - Entity: 10402873124045459715
+    Domain: Client
+    TagComponent:
+      Tag: 7_Up_A3
+    Parent: 9184620573361947725
+    Children:
+      - Handle: 1781408122619424241
+    TransformComponent:
+      Position: [0.27277, 1.125, 0.0405]
+      Rotation: [0.417568, -1.50893, 1.23231]
+      Scale: [1, 1, 1]
+    ScriptComponent:
+      ScriptID: 2011178992
+      ScriptName: LuckyExporter.LD_PlateWaypoint
+      Fields:
+        - ID: 2734771722
+          Name: Robot
+          Type: Entity
+          Value: 6476866661349383801
+        - ID: 422133490
+          Name: Duration
+          Type: Float
+          Value: 1
+        - ID: 4252465837
+          Name: SolveRotation
+          Type: Bool
+          Value: true
+        - ID: 3148052878
+          Name: UseElbowPole
+          Type: Bool
+          Value: false
+        - ID: 3423540088
+          Name: PoleWeight
+          Type: Float
+          Value: 0.02
+        - ID: 456138183
+          Name: Continuous
+          Type: Bool
+          Value: true
+        - ID: 2075578939
+          Name: OverlapFromLast
+          Type: Float
+          Value: 10
+        - ID: 2298083599
+          Name: WaitStart
+          Type: Float
+          Value: 0
+        - ID: 192616356
+          Name: WaitEnd
+          Type: Float
+          Value: 0
+        - ID: 1241522927
+          Name: Gripper
+          Type: Int
+          Value: 0
+        - ID: 1496535292
+          Name: GripperTime
+          Type: Float
+          Value: 0.233
+        - ID: 471090152
+          Name: Rest
+          Type: Int
+          Value: 0
+        - ID: 2245170723
+          Name: RestTime
+          Type: Float
+          Value: 0.1
+    StaticMeshComponent:
+      AssetID: 5559630666313415891
+      MaterialTable:
+        0: 4910352822346532527
+        1: 0
+      Visible: true
   - Entity: 10422950392539799505
     Domain: Client
     TagComponent:
@@ -6220,6 +6758,22 @@ Entities:
       Visible: true
     MujocoGeomComponent:
       ID: 80
+  - Entity: 10599646852233048500
+    Domain: Client
+    TagComponent:
+      Tag: Elbow Pole
+    Parent: 5182520351700253512
+    Children:
+      []
+    TransformComponent:
+      Position: [0, 0, 0]
+      Rotation: [0, 0, 0]
+      Scale: [0.01, 0.01, 0.01]
+    StaticMeshComponent:
+      AssetID: 16552787454420947319
+      MaterialTable:
+        0: 4910352822346532527
+      Visible: true
   - Entity: 10619167478735177103
     Domain: Client
     TagComponent:
@@ -6425,7 +6979,7 @@ Entities:
     Children:
       []
     TransformComponent:
-      Position: [0.19961, 0.784616, 0.289431]
+      Position: [0.19961, 0.784616, 0.0820385]
       Rotation: [-0.074125, 0, 0]
       Scale: [1, 1, 1]
     StaticMeshComponent:
@@ -6512,6 +7066,79 @@ Entities:
       Visible: true
     MujocoGeomComponent:
       ID: 5
+  - Entity: 11047408611023777959
+    Domain: Client
+    TagComponent:
+      Tag: 4_Place_A4
+    Parent: 9184620573361947725
+    Children:
+      - Handle: 7160390995064663664
+    TransformComponent:
+      Position: [0.26608, 0.89016, 0.0587304]
+      Rotation: [0.0864285, -1.62985, 1.76172]
+      Scale: [1, 1, 1]
+    ScriptComponent:
+      ScriptID: 2011178992
+      ScriptName: LuckyExporter.LD_PlateWaypoint
+      Fields:
+        - ID: 2734771722
+          Name: Robot
+          Type: Entity
+          Value: 454449482448867184
+        - ID: 422133490
+          Name: Duration
+          Type: Float
+          Value: 1.5
+        - ID: 4252465837
+          Name: SolveRotation
+          Type: Bool
+          Value: true
+        - ID: 3148052878
+          Name: UseElbowPole
+          Type: Bool
+          Value: false
+        - ID: 3423540088
+          Name: PoleWeight
+          Type: Float
+          Value: 0.02
+        - ID: 456138183
+          Name: Continuous
+          Type: Bool
+          Value: false
+        - ID: 2075578939
+          Name: OverlapFromLast
+          Type: Float
+          Value: 10
+        - ID: 2298083599
+          Name: WaitStart
+          Type: Float
+          Value: 0
+        - ID: 192616356
+          Name: WaitEnd
+          Type: Float
+          Value: 0
+        - ID: 1241522927
+          Name: Gripper
+          Type: Int
+          Value: 4
+        - ID: 1496535292
+          Name: GripperTime
+          Type: Float
+          Value: 0.233
+        - ID: 471090152
+          Name: Rest
+          Type: Int
+          Value: 2
+        - ID: 2245170723
+          Name: RestTime
+          Type: Float
+          Value: 2
+    StaticMeshComponent:
+      AssetID: 5559630666313415891
+      MaterialTable:
+        0: 4910352822346532527
+        1: 0
+      Visible: true
   - Entity: 11078812555160899600
     Domain: Client
     TagComponent:
@@ -6842,6 +7469,22 @@ Entities:
       Visible: true
     MujocoGeomComponent:
       ID: 78
+  - Entity: 11742994746517544749
+    Domain: Client
+    TagComponent:
+      Tag: Elbow Pole
+    Parent: 6725374485437134666
+    Children:
+      []
+    TransformComponent:
+      Position: [0, 0, 0]
+      Rotation: [0, 0, 0]
+      Scale: [0.01, 0.01, 0.01]
+    StaticMeshComponent:
+      AssetID: 16552787454420947319
+      MaterialTable:
+        0: 4910352822346532527
+      Visible: true
   - Entity: 11781709616446113894
     Domain: Client
     TagComponent:
@@ -7046,6 +7689,22 @@ Entities:
           Name: HighAccuracy
           Type: Bool
           Value: false
+  - Entity: 12101051528651804255
+    Domain: Client
+    TagComponent:
+      Tag: Elbow Pole
+    Parent: 15369955568153563931
+    Children:
+      []
+    TransformComponent:
+      Position: [0, 0, 0]
+      Rotation: [0, 0, 0]
+      Scale: [0.01, 0.01, 0.01]
+    StaticMeshComponent:
+      AssetID: 16552787454420947319
+      MaterialTable:
+        0: 4910352822346532527
+      Visible: true
   - Entity: 12114579262948300457
     Domain: Client
     TagComponent:
@@ -7450,6 +8109,22 @@ Entities:
       Visible: true
     MujocoGeomComponent:
       ID: 7
+  - Entity: 13036874876316005898
+    Domain: Client
+    TagComponent:
+      Tag: Elbow Pole
+    Parent: 8057099788071436868
+    Children:
+      []
+    TransformComponent:
+      Position: [0, 0, 0]
+      Rotation: [0, 0, 0]
+      Scale: [0.01, 0.01, 0.01]
+    StaticMeshComponent:
+      AssetID: 16552787454420947319
+      MaterialTable:
+        0: 4910352822346532527
+      Visible: true
   - Entity: 13059614856352918467
     Domain: Client
     TagComponent:
@@ -7594,7 +8269,6 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
-        1: 0
       Visible: true
   - Entity: 13113825566933996741
     Domain: Client
@@ -7682,6 +8356,79 @@ Entities:
       Visible: true
     MujocoGeomComponent:
       ID: 6
+  - Entity: 13236873533356361806
+    Domain: Client
+    TagComponent:
+      Tag: 11_End_A3
+    Parent: 9184620573361947725
+    Children:
+      - Handle: 5630676986928825281
+    TransformComponent:
+      Position: [0.36638, 0.89016, -0.131]
+      Rotation: [0.33114, -1.36657, 1.51554]
+      Scale: [1, 1, 1]
+    ScriptComponent:
+      ScriptID: 2011178992
+      ScriptName: LuckyExporter.LD_PlateWaypoint
+      Fields:
+        - ID: 2734771722
+          Name: Robot
+          Type: Entity
+          Value: 6476866661349383801
+        - ID: 422133490
+          Name: Duration
+          Type: Float
+          Value: 1.5
+        - ID: 4252465837
+          Name: SolveRotation
+          Type: Bool
+          Value: true
+        - ID: 3148052878
+          Name: UseElbowPole
+          Type: Bool
+          Value: false
+        - ID: 3423540088
+          Name: PoleWeight
+          Type: Float
+          Value: 0.02
+        - ID: 456138183
+          Name: Continuous
+          Type: Bool
+          Value: false
+        - ID: 2075578939
+          Name: OverlapFromLast
+          Type: Float
+          Value: 10
+        - ID: 2298083599
+          Name: WaitStart
+          Type: Float
+          Value: 0
+        - ID: 192616356
+          Name: WaitEnd
+          Type: Float
+          Value: 0
+        - ID: 1241522927
+          Name: Gripper
+          Type: Int
+          Value: 0
+        - ID: 1496535292
+          Name: GripperTime
+          Type: Float
+          Value: 0.233
+        - ID: 471090152
+          Name: Rest
+          Type: Int
+          Value: 2
+        - ID: 2245170723
+          Name: RestTime
+          Type: Float
+          Value: 2
+    StaticMeshComponent:
+      AssetID: 5559630666313415891
+      MaterialTable:
+        0: 4910352822346532527
+        1: 0
+      Visible: true
   - Entity: 13239024014130039964
     Domain: Client
     TagComponent:
@@ -7933,7 +8680,6 @@ Entities:
       AssetID: 13985921990890505022
       MaterialTable:
         0: 0
-        1: 0
       Visible: true
     MujocoMeshColliderComponent:
       StaticMesh: 13985921990890505022
@@ -8582,7 +9328,6 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
-        1: 0
       Visible: true
   - Entity: 14983545259072935749
     Domain: Client
@@ -8624,6 +9369,22 @@ Entities:
       Visible: true
     MujocoGeomComponent:
       ID: 84
+  - Entity: 15003625771515772709
+    Domain: Client
+    TagComponent:
+      Tag: Elbow Pole
+    Parent: 346023315672674171
+    Children:
+      []
+    TransformComponent:
+      Position: [0, 0, 0]
+      Rotation: [0, 0, 0]
+      Scale: [0.01, 0.01, 0.01]
+    StaticMeshComponent:
+      AssetID: 16552787454420947319
+      MaterialTable:
+        0: 4910352822346532527
+      Visible: true
   - Entity: 15106967863898667324
     Domain: Client
     TagComponent:
@@ -8738,6 +9499,79 @@ Entities:
       Visible: true
     MujocoGeomComponent:
       ID: 34
+  - Entity: 15265383494148821740
+    Domain: Client
+    TagComponent:
+      Tag: 2_Grip_A4b
+    Parent: 9184620573361947725
+    Children:
+      - Handle: 5061811750319300357
+    TransformComponent:
+      Position: [0.28208, 0.89016, 0.0908464]
+      Rotation: [-0.136406, -1.34931, 1.97294]
+      Scale: [1, 1, 1]
+    ScriptComponent:
+      ScriptID: 2011178992
+      ScriptName: LuckyExporter.LD_PlateWaypoint
+      Fields:
+        - ID: 2734771722
+          Name: Robot
+          Type: Entity
+          Value: 454449482448867184
+        - ID: 422133490
+          Name: Duration
+          Type: Float
+          Value: 1.5
+        - ID: 4252465837
+          Name: SolveRotation
+          Type: Bool
+          Value: true
+        - ID: 3148052878
+          Name: UseElbowPole
+          Type: Bool
+          Value: false
+        - ID: 3423540088
+          Name: PoleWeight
+          Type: Float
+          Value: 0.02
+        - ID: 456138183
+          Name: Continuous
+          Type: Bool
+          Value: true
+        - ID: 2075578939
+          Name: OverlapFromLast
+          Type: Float
+          Value: 10
+        - ID: 2298083599
+          Name: WaitStart
+          Type: Float
+          Value: 0
+        - ID: 192616356
+          Name: WaitEnd
+          Type: Float
+          Value: 0
+        - ID: 1241522927
+          Name: Gripper
+          Type: Int
+          Value: 2
+        - ID: 1496535292
+          Name: GripperTime
+          Type: Float
+          Value: 0.233
+        - ID: 471090152
+          Name: Rest
+          Type: Int
+          Value: 0
+        - ID: 2245170723
+          Name: RestTime
+          Type: Float
+          Value: 0.1
+    StaticMeshComponent:
+      AssetID: 5559630666313415891
+      MaterialTable:
+        0: 4910352822346532527
+        1: 0
+      Visible: true
   - Entity: 15291055687082849900
     Domain: Client
     TagComponent:
@@ -8758,6 +9592,79 @@ Entities:
       Visible: true
     MujocoGeomComponent:
       ID: 15
+  - Entity: 15369955568153563931
+    Domain: Client
+    TagComponent:
+      Tag: 2_Grip_A4a
+    Parent: 9184620573361947725
+    Children:
+      - Handle: 12101051528651804255
+    TransformComponent:
+      Position: [0.442601, 1.08656, 0.242927]
+      Rotation: [-0.136406, -1.34931, 1.97294]
+      Scale: [1, 1, 1]
+    ScriptComponent:
+      ScriptID: 2011178992
+      ScriptName: LuckyExporter.LD_PlateWaypoint
+      Fields:
+        - ID: 2734771722
+          Name: Robot
+          Type: Entity
+          Value: 454449482448867184
+        - ID: 422133490
+          Name: Duration
+          Type: Float
+          Value: 1
+        - ID: 4252465837
+          Name: SolveRotation
+          Type: Bool
+          Value: false
+        - ID: 3148052878
+          Name: UseElbowPole
+          Type: Bool
+          Value: false
+        - ID: 3423540088
+          Name: PoleWeight
+          Type: Float
+          Value: 0.02
+        - ID: 456138183
+          Name: Continuous
+          Type: Bool
+          Value: true
+        - ID: 2075578939
+          Name: OverlapFromLast
+          Type: Float
+          Value: 10
+        - ID: 2298083599
+          Name: WaitStart
+          Type: Float
+          Value: 0
+        - ID: 192616356
+          Name: WaitEnd
+          Type: Float
+          Value: 0
+        - ID: 1241522927
+          Name: Gripper
+          Type: Int
+          Value: 0
+        - ID: 1496535292
+          Name: GripperTime
+          Type: Float
+          Value: 0.233
+        - ID: 471090152
+          Name: Rest
+          Type: Int
+          Value: 0
+        - ID: 2245170723
+          Name: RestTime
+          Type: Float
+          Value: 0.1
+    StaticMeshComponent:
+      AssetID: 5559630666313415891
+      MaterialTable:
+        0: 4910352822346532527
+        1: 0
+      Visible: true
   - Entity: 15373849006636681021
     Domain: Client
     TagComponent:
@@ -10046,6 +10953,79 @@ Entities:
       Visible: true
     MujocoGeomComponent:
       ID: 40
+  - Entity: 17648917201742650108
+    Domain: Client
+    TagComponent:
+      Tag: 3_Lift_A4
+    Parent: 9184620573361947725
+    Children:
+      - Handle: 1537331324613638991
+    TransformComponent:
+      Position: [0.27277, 1.0853, 0.07799]
+      Rotation: [0.417568, -1.50893, 1.23231]
+      Scale: [1, 1, 1]
+    ScriptComponent:
+      ScriptID: 2011178992
+      ScriptName: LuckyExporter.LD_PlateWaypoint
+      Fields:
+        - ID: 2734771722
+          Name: Robot
+          Type: Entity
+          Value: 454449482448867184
+        - ID: 422133490
+          Name: Duration
+          Type: Float
+          Value: 2
+        - ID: 4252465837
+          Name: SolveRotation
+          Type: Bool
+          Value: true
+        - ID: 3148052878
+          Name: UseElbowPole
+          Type: Bool
+          Value: false
+        - ID: 3423540088
+          Name: PoleWeight
+          Type: Float
+          Value: 0.02
+        - ID: 456138183
+          Name: Continuous
+          Type: Bool
+          Value: true
+        - ID: 2075578939
+          Name: OverlapFromLast
+          Type: Float
+          Value: 10
+        - ID: 2298083599
+          Name: WaitStart
+          Type: Float
+          Value: 0
+        - ID: 192616356
+          Name: WaitEnd
+          Type: Float
+          Value: 0
+        - ID: 1241522927
+          Name: Gripper
+          Type: Int
+          Value: 0
+        - ID: 1496535292
+          Name: GripperTime
+          Type: Float
+          Value: 0.233
+        - ID: 471090152
+          Name: Rest
+          Type: Int
+          Value: 0
+        - ID: 2245170723
+          Name: RestTime
+          Type: Float
+          Value: 0.1
+    StaticMeshComponent:
+      AssetID: 5559630666313415891
+      MaterialTable:
+        0: 4910352822346532527
+        1: 0
+      Visible: true
   - Entity: 17659750653758644285
     Domain: Client
     TagComponent:
@@ -10088,7 +11068,7 @@ Entities:
         - ID: 2075578939
           Name: OverlapFromLast
           Type: Float
-          Value: 0
+          Value: 10
         - ID: 2298083599
           Name: WaitStart
           Type: Float
@@ -10117,7 +11097,6 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
-        1: 0
       Visible: true
   - Entity: 17663836012139420924
     Domain: Client

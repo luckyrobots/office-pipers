@@ -386,6 +386,9 @@ Assets:
   - Handle: 7997192225146930648
     FilePath: ContentVault/Robots/PiperPod/MG_Piper.hpodgraph
     Type: PodGraph
+  - Handle: 8001588097418319776
+    FilePath: Scenes/ConventionScene.hscene
+    Type: Scene
   - Handle: 8015385716643153388
     FilePath: ContentVault/Robots/PiperPod/assets/link2_18.obj
     Type: MeshSource
@@ -600,7 +603,7 @@ Assets:
     FilePath: OfficeDesk/source/office-desk.hpodgraph
     Type: PodGraph
   - Handle: 13868594234013994564
-    FilePath: Scenes/Main.hscene
+    FilePath: Scenes/ConventionScene_old.hscene
     Type: Scene
   - Handle: 13888033273458538049
     FilePath: ContentVault/Robots/PiperPod/assets/link5_3.obj

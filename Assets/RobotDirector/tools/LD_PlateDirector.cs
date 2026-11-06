@@ -110,6 +110,7 @@ namespace LuckyExporter
 			public Vector3 AngularVelocity;
 			public float CarriedTime; // how far past the last Continuous waypoint this update's time already is
 			public bool Carrying;
+			public int FlowsInto = -1; // the waypoint to start as soon as the current one ends
 			public float Opening = 1.0f; // 0 closed .. 1 open
 			public float OpeningFrom = 1.0f;
 			public float OpeningTo = 1.0f;
@@ -288,38 +289,66 @@ namespace LuckyExporter
 				robot.AtRest = true;
 			}
 
+			int count = m_Tasks.Count;
 			var running = new List<IEnumerator<int>>();
+			var ends = new float[count];
+			var startedEarly = new bool[count]; // flowed into ahead of its place in the list
 			float clock = 0.0f;
-			float lastEnd = 0.0f;
 			int next = 0;
+
+			void Start(int index)
+			{
+				RobotState robot = m_TaskRobots[index];
+				int flowsInto = NextInMotion(index, robot);
+				robot.FlowsInto = flowsInto;
+				LD_PlateWaypoint? flowWaypoint = flowsInto >= 0 ? m_Tasks[flowsInto] : null;
+				ends[index] = clock + TaskTime(m_Tasks[index], robot, flowWaypoint);
+				IEnumerator<int> task = RunTask(index, flowWaypoint).GetEnumerator();
+				if (task.MoveNext())
+					running.Add(task);
+			}
+
 			while (true)
 			{
 				clock += m_Delta;
 				running.RemoveAll(task => !task.MoveNext());
-				for (int started = 0; next < m_Tasks.Count && started < m_Tasks.Count && CanStart(next, running.Count, lastEnd - clock); started++)
+
+				// A Continuous waypoint carries straight on, whatever the other robots are doing
+				foreach (RobotState robot in m_Robots)
 				{
-					RobotState robot = m_TaskRobots[next];
-					LD_PlateWaypoint? flowsInto = NextInMotion(next, robot);
-					lastEnd = clock + TaskTime(m_Tasks[next], robot, flowsInto);
-					IEnumerator<int> task = RunTask(next, flowsInto).GetEnumerator();
-					if (task.MoveNext())
-						running.Add(task);
-					next = next + 1 == m_Tasks.Count && Loop ? 0 : next + 1;
+					if (robot.Waypoint is null && robot.FlowsInto >= 0)
+					{
+						int index = robot.FlowsInto;
+						robot.FlowsInto = -1;
+						startedEarly[index] = true;
+						Start(index);
+					}
+				}
+
+				for (int steps = 0; next < count && steps < count; steps++)
+				{
+					if (!startedEarly[next])
+					{
+						if (!CanStart(next, running.Count, ends[(next + count - 1) % count] - clock))
+							break;
+						Start(next);
+					}
+					startedEarly[next] = false;
+					next = next + 1 == count && Loop ? 0 : next + 1;
 				}
 				CurrentlyControlled = string.Join(", ", m_Robots.FindAll(r => r.Waypoint is not null).ConvertAll(r => $"{r.Entity.Tag}: {r.Waypoint!.Tag}"));
-				if (next >= m_Tasks.Count && running.Count == 0)
+				if (next >= count && running.Count == 0)
 					break;
 				yield return 0;
 			}
 		}
 
-		// A waypoint waits for everything before it, unless it overlaps the last one, or that one is flowing straight into it.
+		// A waypoint waits for everything before it, unless it overlaps the last one
 		private bool CanStart(int index, int runningCount, float lastTimeLeft)
 		{
-			RobotState robot = m_TaskRobots[index];
-			if (robot.Waypoint is not null)
+			if (m_TaskRobots[index].Waypoint is not null)
 				return false;
-			return runningCount == 0 || robot.Carrying || m_Tasks[index].OverlapFromLast > 0.0f && lastTimeLeft <= m_Tasks[index].OverlapFromLast;
+			return runningCount == 0 || m_Tasks[index].OverlapFromLast > 0.0f && lastTimeLeft <= m_Tasks[index].OverlapFromLast;
 		}
 
 		// How long RunTask will take
@@ -388,24 +417,32 @@ namespace LuckyExporter
 			robot.Waypoint = null;
 		}
 
-		// The waypoint a Continuous one flows into, or null if the robot stops here
-		private LD_PlateWaypoint? NextInMotion(int index, RobotState robot)
+		// The index of this robot's next waypoint if a Continuous one flows into it, or -1 if the robot stops here
+		private int NextInMotion(int index, RobotState robot)
 		{
 			LD_PlateWaypoint waypoint = m_Tasks[index];
 			if (!waypoint.Continuous)
-				return null;
-			int following = index + 1 < m_Tasks.Count ? index + 1 : Loop ? 0 : -1;
-			string? stop = following < 0 ? "it's the last one"
+				return -1;
+			int following = -1;
+			for (int step = 1; step < m_Tasks.Count && following < 0; step++)
+			{
+				int candidate = index + step;
+				if (candidate >= m_Tasks.Count && !Loop)
+					break;
+				candidate %= m_Tasks.Count;
+				if (m_TaskRobots[candidate] == robot)
+					following = candidate;
+			}
+			string? stop = following < 0 ? "it's the robot's last one"
 				: waypoint.GripsOnEnd || waypoint.WaitEnd > 0.0f || waypoint.Rest == LD_PlateWaypoint.RestOnEnd ? "it has a gripper move, wait or rest at its end"
-				: m_TaskRobots[following] != robot ? "the next waypoint is another robot's"
-				: waypoint.SolveRotation != m_Tasks[following].SolveRotation ? "the next waypoint changes Solve Rotation"
-				: waypoint.PoleDirection().HasValue != m_Tasks[following].PoleDirection().HasValue ? "the next waypoint turns the Elbow Pole on or off"
-				: m_Tasks[following].WaitStart > 0.0f || m_Tasks[following].Rest == LD_PlateWaypoint.RestOnStart ? "the next waypoint starts with a wait or rest"
+				: waypoint.SolveRotation != m_Tasks[following].SolveRotation ? "its next waypoint changes Solve Rotation"
+				: waypoint.PoleDirection().HasValue != m_Tasks[following].PoleDirection().HasValue ? "its next waypoint turns the Elbow Pole on or off"
+				: m_Tasks[following].WaitStart > 0.0f || m_Tasks[following].Rest == LD_PlateWaypoint.RestOnStart ? "its next waypoint starts with a wait or rest"
 				: null;
 			if (stop is null)
-				return m_Tasks[following];
+				return following;
 			Log.Warn($"[LD_PlateDirector] {waypoint.Tag} is Continuous, but the robot stops there as {stop}.");
-			return null;
+			return -1;
 		}
 
 		private float GripperGoal(LD_PlateWaypoint waypoint) => waypoint.GripperOpening > 0.0f ? 1.0f : 1.0f - Math.Clamp(CloseStrength, 0.0f, 1.0f);

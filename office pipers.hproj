@@ -12,7 +12,7 @@ Project:
   ScriptModulePath: Assets/Scripts/Binaries
   DefaultNamespace: OfficePipers
   ScriptAssemblyName: OfficePipers
-  StartScene: Scenes/TubePickPlaceNative.hscene
+  StartScene: Scenes/ConventionScene.hscene
   AutomaticallyReloadAssembly: true
   AutoSave: true
   AutoSaveInterval: 60

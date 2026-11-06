@@ -31,7 +31,7 @@ namespace LuckyExporter
 		[Units("s")]
 		[Slider(0.1f, 20.0f)]
 		[Tooltip("Time to ease from the robot's current target to this waypoint.")]
-		public float Duration = 1.2f;
+		public float Duration = 1.5f;
 
 		[DisplayName("Solve Rotation")]
 		[Tooltip("Off: the hand goes to this position at whatever rotation suits the arm, which frees it to reach further and lets the Elbow Pole move the elbow much more. Leave it on where the hand's rotation matters, such as gripping.")]
@@ -53,7 +53,7 @@ namespace LuckyExporter
 		[Units("s")]
 		[Slider(0.0f, 10.0f)]
 		[Tooltip("0: wait for every earlier waypoint to finish. Above 0: start this long before the previous waypoint finishes, without waiting for any others. More than the previous one's whole time starts them together. A robot only does one waypoint at a time, so if the previous one is this robot's, this starts when that ends: any small amount keeps this robot going while other robots finish.")]
-		public float OverlapFromLast = 1.736f;
+		public float OverlapFromLast = 1.833f;
 
 		[DisplayName("Wait Start")]
 		[Units("s")]
