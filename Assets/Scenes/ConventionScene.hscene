@@ -2547,7 +2547,7 @@ Entities:
     Children:
       - Handle: 13390526255292720163
     TransformComponent:
-      Position: [0.0616679, 0.919718, -0.0250084]
+      Position: [0.025256, 0.919718, -0.0250084]
       Rotation: [-0.136406, 1.34931, -1.97293]
       Scale: [1, 1, 1]
     ScriptComponent:
@@ -2610,6 +2610,7 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
+        1: 0
       Visible: true
   - Entity: 3354310072068136519
     Domain: Client
@@ -8269,6 +8270,7 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
+        1: 0
       Visible: true
   - Entity: 13113825566933996741
     Domain: Client
@@ -8661,6 +8663,18 @@ Entities:
           Name: StartupTime
           Type: Float
           Value: 1
+        - ID: 3274662481
+          Name: WatchWhileResting
+          Type: Bool
+          Value: true
+        - ID: 4249062951
+          Name: WatchLimit
+          Type: Float
+          Value: 45
+        - ID: 1766989356
+          Name: WatchTurnTime
+          Type: Float
+          Value: 0.3
         - ID: 2555690063
           Name: CurrentlyControlled
           Type: String
