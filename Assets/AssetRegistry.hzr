@@ -194,6 +194,9 @@ Assets:
   - Handle: 5386793035608595844
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_cap_part_3.obj
     Type: MeshSource
+  - Handle: 5717100835711342775
+    FilePath: Scripts/Client/Source/TubeRelaySequence.cs
+    Type: ScriptFile
   - Handle: 5857175528674191907
     FilePath: Materials/Right rear base to long edge - 2 cm tick 1_Material.hmaterial
     Type: Material
@@ -323,6 +326,9 @@ Assets:
   - Handle: 9583409683442581881
     FilePath: Materials/Cross to left edge - 90.5 cm tick 1_Material.hmaterial
     Type: Material
+  - Handle: 9623245711190804085
+    FilePath: ContentVault/Robots/PiperPod/MG_PiperRelay.hpodgraph
+    Type: PodGraph
   - Handle: 9771243514717365706
     FilePath: ContentVault/Robots/PiperPod/assets/link3_24.obj
     Type: MeshSource
@@ -344,6 +350,9 @@ Assets:
   - Handle: 10335604166150841874
     FilePath: Office-speaker/source/speaker.hpodgraph
     Type: PodGraph
+  - Handle: 10371825500302112138
+    FilePath: Scripts/Client/Source/TubeRoundTripDemonstrator.cs
+    Type: ScriptFile
   - Handle: 10540296953092155553
     FilePath: ContentVault/Robots/PiperPod/piper_tube_task_native_v2.xml
     Type: MujocoScene
@@ -362,6 +371,9 @@ Assets:
   - Handle: 10742683059089310438
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-scan/minwax_contact_sealed_upper.obj
     Type: MeshSource
+  - Handle: 10748875046731392053
+    FilePath: ContentVault/Robots/PiperPod/piper_tube_relay.xml
+    Type: MujocoScene
   - Handle: 11076615510312780926
     FilePath: ContentVault/Robots/PiperPod/assets/base_link.stl
     Type: MeshSource
@@ -386,6 +398,9 @@ Assets:
   - Handle: 11954152496923314992
     FilePath: Minwax-native-v2c/source/minwax-closed-assembly.hpodgraph
     Type: PodGraph
+  - Handle: 11991857691317437832
+    FilePath: Scenes/TubeRelayLoopWithOneArm.hscene
+    Type: Scene
   - Handle: 12057650915877162738
     FilePath: ContentVault/Robots/PiperPod/assets/link2_2.obj
     Type: MeshSource
@@ -473,6 +488,9 @@ Assets:
   - Handle: 14407321009630320006
     FilePath: ContentVault/Robots/PiperPod/assets/link2_3.obj
     Type: MeshSource
+  - Handle: 14442696669554243238
+    FilePath: ContentVault/Robots/PiperPod/piper_tube_relay.manifest.json
+    Type: Motion
   - Handle: 14461550903008722023
     FilePath: ContentVault/Robots/PiperPod/assets/link3_7.obj
     Type: MeshSource
@@ -506,6 +524,9 @@ Assets:
   - Handle: 15286829632370501715
     FilePath: Office-storage/source/storage.hpodgraph
     Type: PodGraph
+  - Handle: 15352735487986894851
+    FilePath: Scenes/TubeRelayLoop.hscene
+    Type: Scene
   - Handle: 15679366940986900059
     FilePath: ContentVault/Robots/PiperPod/assets/tube-task/tube_visual_1.obj
     Type: MeshSource

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
@@ -23,10 +24,20 @@ namespace OfficePipers
 		public string CommandSource => "simulation-position-actuator-ctrl";
 	}
 
+	public sealed class TubeRobotTrackExport
+	{
+		public string Id { get; init; } = "";
+		public string Name { get; init; } = "";
+		public string JointPrefix { get; init; } = "";
+		public int ActuatorOffset { get; init; }
+		public object Robot { get; init; } = new();
+		public TubeReplaySample[] Samples { get; set; } = Array.Empty<TubeReplaySample>();
+	}
+
 	public sealed class TubeEpisodeExport
 	{
-		public string Kind { get; init; } = "lucky.piper.joint-trajectory";
-		public int Version => 2;
+		public string Kind => RobotTracks is { Length: > 0 } ? "lucky.piper.multi-robot-trajectory" : "lucky.piper.joint-trajectory";
+		public int Version => RobotTracks is { Length: > 0 } ? 3 : 2;
 		public string Mode => "simulation";
 		public string ArtifactId { get; init; } = "";
 		public string SessionId { get; init; } = "";
@@ -45,21 +56,26 @@ namespace OfficePipers
 		public string CommandTimestampConvention => "postphysics-validation-samples-zero-order-hold-v1";
 		public int NominalCaptureHz => 50;
 		public TubeReplaySample[] Samples { get; set; } = Array.Empty<TubeReplaySample>();
+		[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+		public TubeRobotTrackExport[]? RobotTracks { get; set; }
 	}
 
 	public sealed class TubeActuatorQualification
 	{
 		public const string PinnedSourceSha256 = "da9c70def2b1b342b96f5455f8d384e3fe39c54450b227555c07d2795457a3cc";
 		public const string LegacyQualifiedSourceSha256 = "63a5ba5b6be49eeeb6d216594714255d61a8d50b41d4ef799fb3b8f20e519163";
+		public const string RelayPinnedSourceSha256 = "7cfa8a21c75e3d9fd428d59f911b2fc6180d618a94114669915d9d1f9281fa14";
 		public const string ValidationDescription = "verified authored position tags for pinned task asset; runtime actuator-law type not introspectable";
 		public const string RuntimeChecksDescription = "exact actuator names, ordered joint transmissions, control ranges and policy ownership";
 		public const string RuntimeTuningDescription = "native Play may override gains while retaining position-controller semantics";
 		public bool Verified { get; private init; }
 		public string SourceSha256 { get; private init; } = "";
+		public bool IsRelay => SourceSha256 == RelayPinnedSourceSha256;
+		public int ActuatorCount => IsRelay ? 14 : 7;
 
 		public static bool IsQualifiedSource(string? sha256)
 		{
-			return sha256 == PinnedSourceSha256 || sha256 == LegacyQualifiedSourceSha256;
+			return sha256 == PinnedSourceSha256 || sha256 == LegacyQualifiedSourceSha256 || sha256 == RelayPinnedSourceSha256;
 		}
 
 		public static Task<TubeActuatorQualification> VerifyAsync(string sourcePath)
@@ -87,14 +103,15 @@ namespace OfficePipers
 			using var reader = XmlReader.Create(stream, new XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit, XmlResolver = null });
 			XDocument document = XDocument.Load(reader);
 			XElement[] actuators = document.Root?.Element("actuator")?.Elements().ToArray() ?? Array.Empty<XElement>();
-			string[] expected = { "joint1", "joint2", "joint3", "joint4", "joint5", "joint6", "gripper" };
+			string[] canonical = { "joint1", "joint2", "joint3", "joint4", "joint5", "joint6", "gripper" };
+			string[] expected = hash == RelayPinnedSourceSha256 ? canonical.Concat(canonical.Select(name => "piper3_" + name)).ToArray() : canonical;
 			if (actuators.Length != expected.Length)
 			{
-				throw new InvalidDataException("Qualified task requires exactly seven position actuators.");
+				throw new InvalidDataException($"Qualified task requires exactly {expected.Length} position actuators.");
 			}
 			for (int i = 0; i < expected.Length; i++)
 			{
-				string expectedJoint = i == 6 ? "joint7" : expected[i];
+				string expectedJoint = i % 7 == 6 ? (i >= 7 ? "piper3_" : "") + "joint7" : expected[i];
 				if (actuators[i].Name != "position" || (string?)actuators[i].Attribute("name") != expected[i] || (string?)actuators[i].Attribute("joint") != expectedJoint)
 				{
 					throw new InvalidDataException("Task actuator tags/order/transmissions are not the qualified position-control recipe.");
@@ -115,9 +132,10 @@ namespace OfficePipers
 		private readonly uint[] m_ArmActuators = new uint[6];
 		private readonly float[] m_CommandMinimum = new float[6];
 		private readonly float[] m_CommandMaximum = new float[6];
-		private readonly float[] m_Controls = new float[7];
+		private float[] m_Controls = new float[7];
 		private readonly List<TubeReplaySample> m_Samples = new(MaximumSamples);
-		private readonly string[] m_JointNames = { "joint1", "joint2", "joint3", "joint4", "joint5", "joint6" };
+		private string[] m_JointNames = { "joint1", "joint2", "joint3", "joint4", "joint5", "joint6" };
+		private bool m_Configured;
 		private uint m_FirstFinger;
 		private uint m_SecondFinger;
 		private uint m_GripperActuator;
@@ -130,14 +148,21 @@ namespace OfficePipers
 		public int Count => m_Samples.Count;
 		public float MaximumObservedFingerAsymmetryMm { get; private set; }
 
-		public bool Configure(MujocoSceneComponent world, TubeActuatorQualification qualification, out string error)
+		public bool Configure(MujocoSceneComponent world, TubeActuatorQualification qualification, out string error,
+			string jointPrefix = "", int actuatorOffset = 0)
 		{
 			error = "";
-			if (!qualification.Verified || !TubeActuatorQualification.IsQualifiedSource(qualification.SourceSha256) || world.ModelNu != 7)
+			m_Configured = false;
+			bool canonicalTrack = jointPrefix == "" && actuatorOffset == 0;
+			bool returnTrack = qualification.IsRelay && jointPrefix == "piper3_" && actuatorOffset == 7;
+			if (!qualification.Verified || !TubeActuatorQualification.IsQualifiedSource(qualification.SourceSha256)
+				|| world.ModelNu != qualification.ActuatorCount || (!canonicalTrack && !returnTrack))
 			{
-				error = "Command capture requires the pinned seven-position-actuator task asset, qualified before preparation.";
+				error = "Command capture requires the pinned position-actuator task asset and its exact canonical or qualified return-arm mapping.";
 				return false;
 			}
+			m_Controls = new float[qualification.ActuatorCount];
+			m_JointNames = Enumerable.Range(1, 6).Select(index => jointPrefix + "joint" + index).ToArray();
 			float[] hardwareMinimum = { -150f, 0f, -170f, -100f, -70f, -170f };
 			float[] hardwareMaximum = { 150f, 180f, 0f, 100f, 70f, 170f };
 			for (int i = 0; i < m_JointNames.Length; i++)
@@ -145,12 +170,12 @@ namespace OfficePipers
 				uint joint = world.GetJointID(m_JointNames[i]);
 				if (joint == uint.MaxValue || world.GetJointType(joint) != 3)
 				{
-					error = "Trajectory export requires the six canonical Piper hinge joints joint1 through joint6 in the same world.";
+					error = "Trajectory export requires the six mapped Piper hinge joints joint1 through joint6 in the same world.";
 					return false;
 				}
 				m_ArmAddresses[i] = world.GetJointQposAdr(joint);
 				uint actuator = world.GetActuatorIndex(m_JointNames[i]);
-				if (actuator != (uint)i || world.GetActuatorTrnJointID(actuator) != (int)joint || world.IsActuatorClaimedByPolicy(actuator)
+				if (actuator != (uint)(actuatorOffset + i) || world.GetActuatorTrnJointID(actuator) != (int)joint || world.IsActuatorClaimedByPolicy(actuator)
 					|| !world.GetJointRange(joint, out float jointMin, out float jointMax) || !world.GetActuatorCtrlRange(actuator, out float ctrlMin, out float ctrlMax)
 					|| !float.IsFinite(jointMin) || !float.IsFinite(jointMax) || !float.IsFinite(ctrlMin) || !float.IsFinite(ctrlMax))
 				{
@@ -161,26 +186,27 @@ namespace OfficePipers
 				m_CommandMinimum[i] = MathF.Max(MathF.Max(jointMin, ctrlMin), hardwareMinimum[i] * MathF.PI / 180f);
 				m_CommandMaximum[i] = MathF.Min(MathF.Min(jointMax, ctrlMax), hardwareMaximum[i] * MathF.PI / 180f);
 			}
-			uint first = world.GetJointID("joint7"), second = world.GetJointID("joint8");
+			uint first = world.GetJointID(jointPrefix + "joint7"), second = world.GetJointID(jointPrefix + "joint8");
 			if (first == uint.MaxValue || second == uint.MaxValue || world.GetJointType(first) != 2 || world.GetJointType(second) != 2
 				|| !world.GetJointRange(first, out float firstMin, out float firstMax) || !world.GetJointRange(second, out float secondMin, out float secondMax)
 				|| !float.IsFinite(firstMin) || !float.IsFinite(firstMax) || !float.IsFinite(secondMin) || !float.IsFinite(secondMax)
 				|| firstMin >= firstMax || firstMax > 0.000001f || secondMin < -0.000001f || secondMin >= secondMax || firstMin < -0.050001f || secondMax > 0.050001f
 				|| MathF.Abs(firstMin + secondMax) > 0.000001f || MathF.Abs(firstMax + secondMin) > 0.000001f)
 			{
-				error = "Trajectory export requires canonical opposite joint7/joint8 Pika slides, open at zero and with equal travel.";
+				error = "Trajectory export requires mapped opposite joint7/joint8 Pika slides, open at zero and with equal travel.";
 				return false;
 			}
 			m_FirstFinger = world.GetJointQposAdr(first); m_SecondFinger = world.GetJointQposAdr(second); m_Travel = secondMax;
 			m_FirstMin = firstMin; m_FirstMax = firstMax; m_SecondMin = secondMin; m_SecondMax = secondMax;
-			m_GripperActuator = world.GetActuatorIndex("gripper");
-			if (m_GripperActuator != 6 || world.GetActuatorTrnJointID(m_GripperActuator) != (int)first || world.IsActuatorClaimedByPolicy(m_GripperActuator)
+			m_GripperActuator = world.GetActuatorIndex(jointPrefix + "gripper");
+			if (m_GripperActuator != (uint)(actuatorOffset + 6) || world.GetActuatorTrnJointID(m_GripperActuator) != (int)first || world.IsActuatorClaimedByPolicy(m_GripperActuator)
 				|| !world.GetActuatorCtrlRange(m_GripperActuator, out float gripperMin, out float gripperMax)
 				|| MathF.Abs(gripperMin - firstMin) > 0.000001f || MathF.Abs(gripperMax - firstMax) > 0.000001f || MaximumOpeningMm <= 0f)
 			{
 				error = "The gripper position actuator does not match the qualified limited joint7 transmission.";
 				return false;
 			}
+			m_Configured = true;
 			return true;
 		}
 
@@ -194,6 +220,11 @@ namespace OfficePipers
 		public bool Capture(MujocoSceneComponent world, ulong syncIndex, bool initial, out string error)
 		{
 			error = "";
+			if (!m_Configured)
+			{
+				error = "Configure and qualify this robot track before capturing its trajectory.";
+				return false;
+			}
 			if (m_Samples.Count >= MaximumSamples)
 			{
 				error = "Trajectory buffer reached 18,001 samples. Finish this episode; capture cannot silently discard samples.";

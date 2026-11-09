@@ -1,0 +1,1265 @@
+domain: 4
+parameters:
+  node_8_Reset:
+    kind: Bool
+    default: false
+    exposed: false
+  node_8_Store:
+    kind: Bool
+    default: false
+    exposed: false
+  node_16_Target:
+    kind: Float3
+    default:
+    - 0
+    - 0
+    - 0
+    exposed: false
+  node_16_TargetOrientation:
+    kind: Float3
+    default:
+    - 0
+    - 0
+    - 0
+    exposed: false
+  node_16_SolveOrientation:
+    kind: Bool
+    default: false
+    exposed: false
+  node_16_PoleTarget:
+    kind: Float3
+    default:
+    - 0
+    - 0
+    - 0
+    exposed: false
+  node_16_PoleWeight:
+    kind: Float
+    default: 0.0
+    exposed: false
+  node_16_HighAccuracy:
+    kind: Bool
+    default: false
+    exposed: false
+  node_16_TrackingMode:
+    kind: Bool
+    default: false
+    exposed: false
+  node_22_Reset:
+    kind: Bool
+    default: false
+    exposed: false
+  node_22_Duration:
+    kind: Float
+    default: 0.0
+    exposed: false
+  node_22_Delta:
+    kind: Float
+    default: 0.0
+    exposed: false
+nodes:
+- id: 1
+  type: PoseOutput
+  x: 2654
+  y: 923
+  collapsed_sockets: true
+- id: 2
+  type: BlendJointStates
+  x: 2369
+  y: 895
+  collapsed_sockets: true
+- id: 3
+  type: ValueGeometry
+  name: Rest Pose
+  exposed: false
+  x: 8
+  y: 914
+  collapsed_sockets: true
+- id: 4
+  type: ValueGeometry
+  name: Current Pose
+  exposed: false
+  x: 8
+  y: 1032
+  collapsed_sockets: true
+- id: 5
+  type: ValueBool
+  inputs:
+    Value:
+      kind: Bool
+      value: false
+  exposed: false
+  x: 302
+  y: 827
+  collapsed_sockets: true
+- id: 6
+  type: ValueBool
+  name: Start
+  inputs:
+    Value:
+      kind: Bool
+      value: false
+  exposed: true
+  x: 0
+  y: 796
+  desc: Pulse for one update after setting the target and duration, to capture the starting pose and restart the
+    motion timer.
+  collapsed_sockets: true
+- id: 7
+  type: Switch
+  x: 266
+  y: 945
+  collapsed_sockets: true
+- id: 8
+  type: SimulationZone
+  name: Stored Pose
+  body:
+    nodes:
+    - id: 1
+      type: GroupInput
+      x: 0
+      y: 267
+      collapsed_sockets: true
+    - id: 2
+      type: StoredMotionState
+      inputs:
+        Reset:
+          param: node_8_Reset
+        Store:
+          param: node_8_Store
+      x: 410
+      y: 195
+      collapsed_sockets: true
+    - id: 3
+      type: GroupOutput
+      x: 950
+      y: 281
+      collapsed_sockets: true
+    - id: 4
+      type: Frame
+      name: Stored Pose | State flow
+      inputs:
+        Title:
+          kind: String
+          value: Stored Pose | State flow
+        Members:
+          kind: String
+          value: 1,2,3,5
+        Width:
+          kind: Float
+          value: 1170.0
+        Height:
+          kind: Float
+          value: 543.0
+        Color:
+          kind: ColorFloat
+          value:
+          - 0.16
+          - 0.32
+          - 0.48
+          - 0.25
+        Collapsed:
+          kind: Bool
+          value: false
+      x: -40
+      y: -60
+    - id: 5
+      type: Note
+      name: Capture the starting pose
+      inputs:
+        Text:
+          kind: String
+          value: 'Store captures Source; subsequent updates keep that
+
+            snapshot for blending. Reset restores Initial. Store wins
+
+            if both arrive together. These controls come from the
+
+            parent graph.'
+        Width:
+          kind: Float
+          value: 560
+        Height:
+          kind: Float
+          value: 140.4
+        Color:
+          kind: ColorFloat
+          value:
+          - 0.86
+          - 0.78
+          - 0.3
+          - 0.28
+      x: 0
+      y: 0
+    links:
+    - from:
+        node: 1
+        pin: Geometry
+      to:
+        node: 2
+        pin: State
+    - from:
+        node: 2
+        pin: State
+      to:
+        node: 3
+        pin: Geometry
+    - from:
+        node: 1
+        pin: Source
+      to:
+        node: 2
+        pin: Initial
+    - from:
+        node: 1
+        pin: Source
+      to:
+        node: 2
+        pin: Source
+  x: 589
+  y: 886
+  collapsed_sockets: true
+- id: 9
+  type: ValueVector
+  name: Target_Position
+  inputs:
+    Value:
+      kind: Float3
+      value:
+      - 0
+      - 0
+      - 0
+  exposed: true
+  x: 1006
+  y: 176
+  parameter_aliases:
+  - TargetPosition
+  - Target Position
+  desc: Target position in world space, in metres.
+  collapsed_sockets: true
+- id: 10
+  type: ValueVector
+  name: Target_Orientation
+  inputs:
+    Value:
+      kind: Float3
+      value:
+      - 0
+      - 0
+      - 0
+  exposed: true
+  x: 995
+  y: 294
+  parameter_aliases:
+  - TargetOrientation
+  - Target Orientation
+  desc: Target orientation as world-space Euler angles in degrees.
+  collapsed_sockets: true
+- id: 11
+  type: ValueBool
+  name: Solve_Orientation
+  inputs:
+    Value:
+      kind: Bool
+      value: true
+  exposed: true
+  x: 999
+  y: 412
+  desc: Include the target orientation in the inverse-kinematics solve.
+  collapsed_sockets: true
+- id: 12
+  type: ValueVector
+  name: Pole_Target
+  inputs:
+    Value:
+      kind: Float3
+      value:
+      - 0
+      - 0
+      - 0
+  exposed: true
+  x: 1021
+  y: 530
+  desc: World-space pole position used to guide the limb bend.
+  collapsed_sockets: true
+- id: 13
+  type: ValueFloat
+  name: Pole_Weight
+  inputs:
+    Value:
+      kind: Float
+      value: 0
+  exposed: true
+  x: 1021
+  y: 648
+  desc: Influence of the pole target on the limb bend. Zero disables the pole bias.
+  collapsed_sockets: true
+- id: 14
+  type: ValueBool
+  name: High_Accuracy
+  inputs:
+    Value:
+      kind: Bool
+      value: false
+  exposed: true
+  x: 1014
+  y: 766
+  desc: Select the solver's higher-accuracy mode.
+  collapsed_sockets: true
+- id: 15
+  type: ValueBool
+  name: Tracking_Mode
+  inputs:
+    Value:
+      kind: Bool
+      value: false
+  exposed: true
+  x: 1014
+  y: 884
+  desc: Select the solver's tracking mode for a changing target.
+  collapsed_sockets: true
+- id: 16
+  type: SimulationZone
+  name: LimbIK
+  body:
+    nodes:
+    - id: 1
+      type: GroupInput
+      x: 0
+      y: 426
+      collapsed_sockets: true
+    - id: 2
+      type: LuckyIK
+      inputs:
+        Root:
+          kind: String
+          value: base_link
+        End:
+          kind: String
+          value: grasp_site
+        LegacyBehavior:
+          kind: Bool
+          value: true
+        Target:
+          param: node_16_Target
+        TargetOrientation:
+          param: node_16_TargetOrientation
+        SolveOrientation:
+          param: node_16_SolveOrientation
+        PoleTarget:
+          param: node_16_PoleTarget
+        PoleWeight:
+          param: node_16_PoleWeight
+        HighAccuracy:
+          param: node_16_HighAccuracy
+        TrackingMode:
+          param: node_16_TrackingMode
+      x: 764
+      y: 195
+      collapsed_sockets: true
+    - id: 3
+      type: GroupOutput
+      x: 1304
+      y: 440
+      collapsed_sockets: true
+    - id: 4
+      type: UnpackMotionContext
+      x: 410
+      y: 412
+      collapsed_sockets: true
+    - id: 5
+      type: Frame
+      name: LimbIK | State flow
+      inputs:
+        Title:
+          kind: String
+          value: LimbIK | State flow
+        Members:
+          kind: String
+          value: 1,2,3,4,6
+        Width:
+          kind: Float
+          value: 1524.0
+        Height:
+          kind: Float
+          value: 861.0
+        Color:
+          kind: ColorFloat
+          value:
+          - 0.16
+          - 0.32
+          - 0.48
+          - 0.25
+        Collapsed:
+          kind: Bool
+          value: false
+      x: -40
+      y: -60
+    - id: 6
+      type: Note
+      name: Solve the joint chain
+      inputs:
+        Text:
+          kind: String
+          value: 'Chain: base_link -> grasp_site.
+
+            The context supplies the robot model, input pose and
+
+            solver seed. Live target controls enter from the parent
+
+            graph. The zone retains solver state between updates.'
+        Width:
+          kind: Float
+          value: 560
+        Height:
+          kind: Float
+          value: 140.4
+        Color:
+          kind: ColorFloat
+          value:
+          - 0.86
+          - 0.78
+          - 0.3
+          - 0.28
+      x: 0
+      y: 0
+    links:
+    - from:
+        node: 1
+        pin: Geometry
+      to:
+        node: 2
+        pin: State
+    - from:
+        node: 2
+        pin: State
+      to:
+        node: 3
+        pin: Geometry
+    - from:
+        node: 1
+        pin: Source
+      to:
+        node: 4
+        pin: Context
+    - from:
+        node: 4
+        pin: Asset
+      to:
+        node: 2
+        pin: Asset
+    - from:
+        node: 4
+        pin: Source
+      to:
+        node: 2
+        pin: Source
+    - from:
+        node: 4
+        pin: Seed
+      to:
+        node: 2
+        pin: Seed
+  x: 1713
+  y: 536
+  collapsed_sockets: true
+- id: 17
+  type: PackMotionContext
+  x: 1359
+  y: 620
+  collapsed_sockets: true
+- id: 18
+  type: ValueGeometry
+  name: Asset
+  exposed: false
+  x: 1052
+  y: 1002
+  collapsed_sockets: true
+- id: 19
+  type: ValueGeometry
+  name: Current Pose
+  exposed: false
+  x: 1052
+  y: 1120
+  collapsed_sockets: true
+- id: 20
+  type: Time
+  x: 1014
+  y: 1552
+  collapsed_sockets: true
+- id: 21
+  type: ValueFloat
+  name: Duration
+  inputs:
+    Value:
+      kind: Float
+      value: 3
+  exposed: true
+  x: 995
+  y: 1670
+  desc: Motion duration in seconds.
+  collapsed_sockets: true
+- id: 22
+  type: SimulationZone
+  name: Min Jerk Curve
+  body:
+    nodes:
+    - id: 1
+      type: GroupInput
+      x: 0
+      y: 282
+      collapsed_sockets: true
+    - id: 2
+      type: TriggeredMotionTimer
+      inputs:
+        Reset:
+          param: node_22_Reset
+        Duration:
+          param: node_22_Duration
+        Delta:
+          param: node_22_Delta
+      x: 410
+      y: 195
+      collapsed_sockets: true
+    - id: 3
+      type: GroupOutput
+      x: 950
+      y: 282
+      collapsed_sockets: true
+    - id: 4
+      type: Frame
+      name: Min Jerk Curve | State flow
+      inputs:
+        Title:
+          kind: String
+          value: Min Jerk Curve | State flow
+        Members:
+          kind: String
+          value: 1,2,3,5
+        Width:
+          kind: Float
+          value: 1170.0
+        Height:
+          kind: Float
+          value: 545.0
+        Color:
+          kind: ColorFloat
+          value:
+          - 0.16
+          - 0.32
+          - 0.48
+          - 0.25
+        Collapsed:
+          kind: Bool
+          value: false
+      x: -40
+      y: -60
+    - id: 5
+      type: Note
+      name: Advance the local motion timer
+      inputs:
+        Text:
+          kind: String
+          value: 'Reset starts a new motion and captures its duration. Delta
+
+            advances elapsed time between updates. The output state
+
+            carries elapsed time and captured duration back to the
+
+            parent graph.'
+        Width:
+          kind: Float
+          value: 560
+        Height:
+          kind: Float
+          value: 140.4
+        Color:
+          kind: ColorFloat
+          value:
+          - 0.86
+          - 0.78
+          - 0.3
+          - 0.28
+      x: 0
+      y: 0
+    links:
+    - from:
+        node: 1
+        pin: Geometry
+      to:
+        node: 2
+        pin: State
+    - from:
+        node: 2
+        pin: State
+      to:
+        node: 3
+        pin: Geometry
+  x: 1283
+  y: 1583
+  collapsed_sockets: true
+- id: 23
+  type: DetailAttributeFloat
+  inputs:
+    Name:
+      kind: String
+      value: _state_time
+    Fallback:
+      kind: Float
+      value: 0.0
+  x: 1660
+  y: 1552
+  collapsed_sockets: true
+- id: 24
+  type: DetailAttributeFloat
+  inputs:
+    Name:
+      kind: String
+      value: _triggered_motion_duration
+    Fallback:
+      kind: Float
+      value: 1.0
+  x: 1660
+  y: 1670
+  collapsed_sockets: true
+- id: 25
+  type: MinJerkCurve
+  inputs:
+    Start:
+      kind: Float
+      value: 0.0
+    End:
+      kind: Float
+      value: 1.0
+    LegacyZeroDuration:
+      kind: Bool
+      value: true
+  x: 1986
+  y: 1597
+  collapsed_sockets: true
+- id: 26
+  type: Frame
+  name: Pose | Snapshot and start trigger
+  inputs:
+    Title:
+      kind: String
+      value: Pose | Snapshot and start trigger
+    Members:
+      kind: String
+      value: 3,4,5,6,7,8,30
+    Width:
+      kind: Float
+      value: 905.0
+    Height:
+      kind: Float
+      value: 570
+    Color:
+      kind: ColorFloat
+      value:
+      - 0.16
+      - 0.32
+      - 0.48
+      - 0.25
+    Collapsed:
+      kind: Bool
+      value: false
+  x: -40
+  y: 578
+- id: 27
+  type: Frame
+  name: IK | Target controls, context and solver
+  inputs:
+    Title:
+      kind: String
+      value: IK | Target controls, context and solver
+    Members:
+      kind: String
+      value: 9,10,11,12,13,14,15,16,17,18,19,31
+    Width:
+      kind: Float
+      value: 1132.8
+    Height:
+      kind: Float
+      value: 1296
+    Color:
+      kind: ColorFloat
+      value:
+      - 0.16
+      - 0.32
+      - 0.48
+      - 0.25
+    Collapsed:
+      kind: Bool
+      value: false
+  x: 955
+  y: -60
+- id: 28
+  type: Frame
+  name: Timing | Trigger, duration and easing
+  inputs:
+    Title:
+      kind: String
+      value: Timing | Trigger, duration and easing
+    Members:
+      kind: String
+      value: 20,21,22,23,24,25,32
+    Width:
+      kind: Float
+      value: 1284.2
+    Height:
+      kind: Float
+      value: 490
+    Color:
+      kind: ColorFloat
+      value:
+      - 0.16
+      - 0.32
+      - 0.48
+      - 0.25
+    Collapsed:
+      kind: Bool
+      value: false
+  x: 955
+  y: 1296
+- id: 29
+  type: Frame
+  name: Output | Blend and apply pose
+  inputs:
+    Title:
+      kind: String
+      value: Output | Blend and apply pose
+    Members:
+      kind: String
+      value: 2,1,33
+    Width:
+      kind: Float
+      value: 600.0
+    Height:
+      kind: Float
+      value: 408
+    Color:
+      kind: ColorFloat
+      value:
+      - 0.16
+      - 0.32
+      - 0.48
+      - 0.25
+    Collapsed:
+      kind: Bool
+      value: false
+  x: 2329
+  y: 659
+- id: 30
+  type: Note
+  name: Pose | Snapshot and start trigger
+  inputs:
+    Text:
+      kind: String
+      value: 'Set the target and duration, then trigger Start. This
+
+        captures the current pose for the new motion.'
+    Width:
+      kind: Float
+      value: 560
+    Height:
+      kind: Float
+      value: 102.4
+    Color:
+      kind: ColorFloat
+      value:
+      - 0.86
+      - 0.78
+      - 0.3
+      - 0.28
+  x: 0
+  y: 638
+- id: 31
+  type: Note
+  name: IK | Target controls, context and solver
+  inputs:
+    Text:
+      kind: String
+      value: 'Target positions are in world space, in metres;
+
+        orientations are Euler angles in degrees. The context
+
+        supplies the robot model and current solver seed.'
+    Width:
+      kind: Float
+      value: 560
+    Height:
+      kind: Float
+      value: 121.4
+    Color:
+      kind: ColorFloat
+      value:
+      - 0.86
+      - 0.78
+      - 0.3
+      - 0.28
+  x: 995
+  y: 0
+- id: 32
+  type: Note
+  name: Timing | Trigger, duration and easing
+  inputs:
+    Text:
+      kind: String
+      value: 'Start resets elapsed time and captures Duration. The
+
+        minimum-jerk curve produces a smooth blend factor from
+
+        zero to one. Use a positive Duration to move; zero keeps
+
+        the starting pose in this controller.'
+    Width:
+      kind: Float
+      value: 560
+    Height:
+      kind: Float
+      value: 140.4
+    Color:
+      kind: ColorFloat
+      value:
+      - 0.86
+      - 0.78
+      - 0.3
+      - 0.28
+  x: 995
+  y: 1356
+- id: 33
+  type: Note
+  name: Output | Blend and apply pose
+  inputs:
+    Text:
+      kind: String
+      value: 'Blend the captured starting pose toward the solved target
+
+        using the eased motion factor, then send the result to the
+
+        robot.'
+    Width:
+      kind: Float
+      value: 520
+    Height:
+      kind: Float
+      value: 121.4
+    Color:
+      kind: ColorFloat
+      value:
+      - 0.86
+      - 0.78
+      - 0.3
+      - 0.28
+  x: 2369
+  y: 719
+- id: 34
+  type: SimulationZone
+  name: Return arm | Piper 3 IK
+  body:
+    nodes:
+    - id: 1
+      type: GroupInput
+      x: 0
+      y: 426
+      collapsed_sockets: true
+    - id: 2
+      type: LuckyIK
+      inputs:
+        Root:
+          kind: String
+          value: piper3_base_link
+        End:
+          kind: String
+          value: piper3_grasp_site
+        LegacyBehavior:
+          kind: Bool
+          value: true
+        Target:
+          param: node_16_Target
+        TargetOrientation:
+          param: node_16_TargetOrientation
+        SolveOrientation:
+          param: node_16_SolveOrientation
+        PoleTarget:
+          param: node_16_PoleTarget
+        PoleWeight:
+          param: node_16_PoleWeight
+        HighAccuracy:
+          param: node_16_HighAccuracy
+        TrackingMode:
+          param: node_16_TrackingMode
+      x: 764
+      y: 195
+      collapsed_sockets: true
+    - id: 3
+      type: GroupOutput
+      x: 1304
+      y: 440
+      collapsed_sockets: true
+    - id: 4
+      type: UnpackMotionContext
+      x: 410
+      y: 412
+      collapsed_sockets: true
+    - id: 5
+      type: Frame
+      name: LimbIK | State flow
+      inputs:
+        Title:
+          kind: String
+          value: LimbIK | State flow
+        Members:
+          kind: String
+          value: 1,2,3,4,6
+        Width:
+          kind: Float
+          value: 1524.0
+        Height:
+          kind: Float
+          value: 861.0
+        Color:
+          kind: ColorFloat
+          value:
+          - 0.16
+          - 0.32
+          - 0.48
+          - 0.25
+        Collapsed:
+          kind: Bool
+          value: false
+      x: -40
+      y: -60
+    - id: 6
+      type: Note
+      name: Solve the joint chain
+      inputs:
+        Text:
+          kind: String
+          value: 'Chain: piper3_base_link -> piper3_grasp_site.
+
+            The shared world supplies the namespaced return arm.
+
+            This graph changes only the chain selected by ReturnArm.'
+        Width:
+          kind: Float
+          value: 560
+        Height:
+          kind: Float
+          value: 140.4
+        Color:
+          kind: ColorFloat
+          value:
+          - 0.86
+          - 0.78
+          - 0.3
+          - 0.28
+      x: 0
+      y: 0
+    links:
+    - from:
+        node: 1
+        pin: Geometry
+      to:
+        node: 2
+        pin: State
+    - from:
+        node: 2
+        pin: State
+      to:
+        node: 3
+        pin: Geometry
+    - from:
+        node: 1
+        pin: Source
+      to:
+        node: 4
+        pin: Context
+    - from:
+        node: 4
+        pin: Asset
+      to:
+        node: 2
+        pin: Asset
+    - from:
+        node: 4
+        pin: Source
+      to:
+        node: 2
+        pin: Source
+    - from:
+        node: 4
+        pin: Seed
+      to:
+        node: 2
+        pin: Seed
+  x: 1713
+  y: 1100
+  collapsed_sockets: true
+  desc: Return-arm inverse kinematics in the shared two-Piper physics model. Selected only when ReturnArm is true.
+- id: 35
+  type: ValueBool
+  name: ReturnArm
+  inputs:
+    Value:
+      kind: Bool
+      value: false
+  exposed: true
+  x: 2100
+  y: 610
+  desc: 'False: Piper 1 carries P3 to the desk cross. True: Piper 3 returns the tube from the cross to P3. Switch
+    while stationary, then trigger Start.'
+  collapsed_sockets: true
+- id: 36
+  type: Switch
+  name: Active arm pose
+  x: 2300
+  y: 1010
+  collapsed_sockets: true
+links:
+- from:
+    node: 6
+    pin: Value
+  to:
+    node: 7
+    pin: Condition
+- from:
+    node: 3
+    pin: Value
+  to:
+    node: 7
+    pin: A
+- from:
+    node: 4
+    pin: Value
+  to:
+    node: 7
+    pin: B
+- from:
+    node: 5
+    pin: Value
+  to:
+    node: 8
+    pin: '0x89df159c575513be'
+- from:
+    node: 6
+    pin: Value
+  to:
+    node: 8
+    pin: '0x443c9b2120ea7628'
+- from:
+    node: 7
+    pin: Geometry
+  to:
+    node: 8
+    pin: Source
+- from:
+    node: 8
+    pin: Geometry
+  to:
+    node: 2
+    pin: A
+- from:
+    node: 9
+    pin: Value
+  to:
+    node: 16
+    pin: '0xbd551c53c3f20a63'
+- from:
+    node: 10
+    pin: Value
+  to:
+    node: 16
+    pin: '0x1ff1b46d37ffa657'
+- from:
+    node: 11
+    pin: Value
+  to:
+    node: 16
+    pin: '0xf57a5a8d1d3a9749'
+- from:
+    node: 12
+    pin: Value
+  to:
+    node: 16
+    pin: '0xa78536cb7f66a7d9'
+- from:
+    node: 13
+    pin: Value
+  to:
+    node: 16
+    pin: '0xeab81291b650ad70'
+- from:
+    node: 14
+    pin: Value
+  to:
+    node: 16
+    pin: '0xdf902ffe8a2a9f37'
+- from:
+    node: 15
+    pin: Value
+  to:
+    node: 16
+    pin: '0x56e208a1ea8c0168'
+- from:
+    node: 8
+    pin: Geometry
+  to:
+    node: 16
+    pin: Geometry
+- from:
+    node: 18
+    pin: Value
+  to:
+    node: 17
+    pin: Asset
+- from:
+    node: 8
+    pin: Geometry
+  to:
+    node: 17
+    pin: Source
+- from:
+    node: 19
+    pin: Value
+  to:
+    node: 17
+    pin: Seed
+- from:
+    node: 17
+    pin: Context
+  to:
+    node: 16
+    pin: Source
+- from:
+    node: 36
+    pin: Geometry
+  to:
+    node: 2
+    pin: B
+- from:
+    node: 6
+    pin: Value
+  to:
+    node: 22
+    pin: '0xd43018e73a3ca8ce'
+- from:
+    node: 21
+    pin: Value
+  to:
+    node: 22
+    pin: '0xe0859e38875f07db'
+- from:
+    node: 20
+    pin: Delta
+  to:
+    node: 22
+    pin: '0x8739799133f38267'
+- from:
+    node: 22
+    pin: Geometry
+  to:
+    node: 23
+    pin: Geometry
+- from:
+    node: 22
+    pin: Geometry
+  to:
+    node: 24
+    pin: Geometry
+- from:
+    node: 23
+    pin: Value
+  to:
+    node: 25
+    pin: Time
+- from:
+    node: 24
+    pin: Value
+  to:
+    node: 25
+    pin: Duration
+- from:
+    node: 25
+    pin: Value
+  to:
+    node: 2
+    pin: Factor
+- from:
+    node: 2
+    pin: State
+  to:
+    node: 1
+    pin: Pose
+- from:
+    node: 9
+    pin: Value
+  to:
+    node: 34
+    pin: '0xbd551c53c3f20a63'
+- from:
+    node: 10
+    pin: Value
+  to:
+    node: 34
+    pin: '0x1ff1b46d37ffa657'
+- from:
+    node: 11
+    pin: Value
+  to:
+    node: 34
+    pin: '0xf57a5a8d1d3a9749'
+- from:
+    node: 12
+    pin: Value
+  to:
+    node: 34
+    pin: '0xa78536cb7f66a7d9'
+- from:
+    node: 13
+    pin: Value
+  to:
+    node: 34
+    pin: '0xeab81291b650ad70'
+- from:
+    node: 14
+    pin: Value
+  to:
+    node: 34
+    pin: '0xdf902ffe8a2a9f37'
+- from:
+    node: 15
+    pin: Value
+  to:
+    node: 34
+    pin: '0x56e208a1ea8c0168'
+- from:
+    node: 8
+    pin: Geometry
+  to:
+    node: 34
+    pin: Geometry
+- from:
+    node: 17
+    pin: Context
+  to:
+    node: 34
+    pin: Source
+- from:
+    node: 35
+    pin: Value
+  to:
+    node: 36
+    pin: Condition
+- from:
+    node: 16
+    pin: Geometry
+  to:
+    node: 36
+    pin: A
+- from:
+    node: 34
+    pin: Geometry
+  to:
+    node: 36
+    pin: B

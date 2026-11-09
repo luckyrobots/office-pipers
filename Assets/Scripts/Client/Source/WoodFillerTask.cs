@@ -78,6 +78,10 @@ namespace OfficePipers
 		public int TaskIndex;
 		[Group("Trajectory export")]
 		public bool ExportTrajectory = true;
+		[Tooltip("Two articulated arms in one world. Exports synchronized Piper 1 and Piper 3 tracks in a version 3 simulation artifact; not a single-arm hardware replay.")]
+		public bool TwoRobotRelay;
+		[Tooltip("One articulated Piper handles both legs. The trajectory has one actuator track for the complete round trip.")]
+		public bool SingleArmRoundTrip;
 		[Tooltip("Exact source XML of the combined task world. SHA-256 and its authored position-actuator tags are checked on a worker before preparation; changed assets must be requalified.")]
 		public string PositionActuatorModelSource = "";
 		[Tooltip("Independent project-owned export directory; native Recorder output paths are not guessed.")]
@@ -104,6 +108,9 @@ namespace OfficePipers
 		private ulong m_ResetSync;
 		private readonly TubeSpawnSettings m_Spawn = new TubeSpawnSettings();
 		private readonly WoodFillerTrajectory m_Trajectory = new WoodFillerTrajectory();
+		private readonly WoodFillerTrajectory m_ReturnTrajectory = new WoodFillerTrajectory();
+		private Vector3? m_RelayGoal;
+		private bool m_ReuseReturnedTube;
 		private readonly string m_SessionId = Guid.NewGuid().ToString("N");
 		private TubeEpisodeExport? m_Artifact;
 		private Task<string>? m_ExportJob;
@@ -129,6 +136,8 @@ namespace OfficePipers
 		public bool EpisodeSucceeded => m_State == State.Complete && m_EndSuccess && (!m_ExportThisEpisode || m_CaptureValid);
 		public bool RecordingCanContinue => !m_RecordEpisode || (m_OwnsNativeSession && Observer.IsRecording);
 		internal bool PreparedSourceQualified => m_Qualification.Verified;
+		internal bool CaptureValid => !m_ExportThisEpisode || m_CaptureValid;
+		internal string CaptureError => m_CaptureError;
 		public int ControlRevision { get; private set; }
 		public TubeEpisodeStage EpisodeStage => !m_RuntimeCreated ? TubeEpisodeStage.WaitingForPlay : m_State switch
 		{
@@ -143,7 +152,25 @@ namespace OfficePipers
 			_ => TubeEpisodeStage.Failed
 		};
 		public Vector3 PreparedTubeCentre => m_World == null ? m_Start : m_World.GetPosition(m_TubeBody) + m_World.GetSceneTranslation();
-		public Vector3 PreparedGoalCentre => new Vector3(m_Spawn.GoalLeft - m_Spawn.Width * 0.5f, m_DeskY + m_TubeHeight * 0.5f, m_Spawn.GoalBack - m_Spawn.Depth * 0.5f);
+		public Vector3 PreparedGoalCentre => m_RelayGoal ?? new Vector3(m_Spawn.GoalLeft - m_Spawn.Width * 0.5f, m_DeskY + m_TubeHeight * 0.5f, m_Spawn.GoalBack - m_Spawn.Depth * 0.5f);
+		public Vector3 PreparedStartCentre => m_Start;
+
+		// A relay changes its validation target, never the tube state or recording.
+		public bool BeginRelayLeg(Vector3 worldGoal, string label)
+		{
+			if ((!TwoRobotRelay && !SingleArmRoundTrip) || m_Workflow != TubeWorkflow.SimulationOnly || !EpisodeActive || !CaptureValid ||
+				!float.IsFinite(worldGoal.X) || !float.IsFinite(worldGoal.Y) || !float.IsFinite(worldGoal.Z) ||
+				MathF.Abs(worldGoal.X) > m_Spawn.Width * .5f || MathF.Abs(worldGoal.Z) > m_Spawn.Depth * .5f ||
+				MathF.Abs(worldGoal.Y - (m_DeskY + m_TubeHeight * .5f)) > .01f)
+				return false;
+			m_RelayGoal = worldGoal;
+			m_LiftObserved = false;
+			m_StableElapsed = m_PlacementDiagnosticElapsed = 0f;
+			SimulatedPlacementComplete = false;
+			GoalPosition = label;
+			PlacementCheck = "Waiting for this leg to lift, release and settle the tube.";
+			return true;
+		}
 		public float PreparedYawRadians => m_Yaw;
 		public ulong PreparedPhysicsWorldEntityId => m_WorldEntityId;
 		public EpisodeFollowerStatus FollowerStatus => EpisodeFollowers.Status(m_WorldEntityId);
@@ -197,6 +224,7 @@ namespace OfficePipers
 			}
 			m_Start = new Vector3(sample.Left - DeskWidth * 0.5f, DeskSurfaceY + TubeHeight * 0.5f + 0.001f, sample.Back - DeskDepth * 0.5f);
 			m_Yaw = sample.YawRadians;
+			m_ReuseReturnedTube = SingleArmRoundTrip && UseFixedStart && EpisodeSucceeded;
 			StartPosition = $"LEFT {sample.Left * 1000f:F0} mm / BACK {sample.Back * 1000f:F0} mm / yaw {sample.YawRadians * 180f / MathF.PI:F0} deg";
 			GoalPosition = $"Desk cross: LEFT {GoalLeft * 1000f:F0} mm / BACK {GoalBack * 1000f:F0} mm";
 			m_QualificationJob = TubeActuatorQualification.VerifyAsync(PositionActuatorModelSource);
@@ -286,16 +314,13 @@ namespace OfficePipers
 			}
 			else if (m_State == State.ResetQueued && TimeSync.IsAtSyncPoint)
 			{
-				ResetTube();
+				PrepareTube();
 			}
 			else if (m_State == State.Settling)
 			{
 				m_Elapsed += deltaTime;
 				Vector3 position = m_World!.GetPosition(m_TubeBody) + m_World.GetSceneTranslation();
-				Vector3 up = m_World.GetOrientation(m_TubeBody) * new Vector3(0f, 0f, 1f);
-				bool settled = (position - m_Start).Length() <= m_HeightTolerance * 2f && up.Y >= 0.98f
-					&& m_World.GetVelocity(m_TubeBody).Length() <= m_MaximumRestSpeed
-					&& m_World.GetAngularVelocity(m_TubeBody).Length() <= m_MaximumAngularSpeed;
+				bool settled = TubeSettledAtStart(position, m_World.GetOrientation(m_TubeBody));
 				if (m_Elapsed >= m_SettleSeconds && settled && TimeSync.IsAtSyncPoint && TimeSync.CurrentSyncIndex != m_ResetSync)
 				{
 					m_State = State.Ready;
@@ -361,8 +386,9 @@ namespace OfficePipers
 			Vector3 position = m_World.GetPosition(m_TubeBody) + m_World.GetSceneTranslation();
 			float restY = m_DeskY + m_TubeHeight * 0.5f;
 			m_LiftObserved |= position.Y >= restY + m_MinimumLift;
-			float dx = position.X - (m_Spawn.GoalLeft - m_Spawn.Width * 0.5f);
-			float dz = position.Z - (m_Spawn.GoalBack - m_Spawn.Depth * 0.5f);
+			Vector3 goal = PreparedGoalCentre;
+			float dx = position.X - goal.X;
+			float dz = position.Z - goal.Z;
 			Vector3 up = m_World.GetOrientation(m_TubeBody) * new Vector3(0f, 0f, 1f);
 			float speed = m_World.GetVelocity(m_TubeBody).Length();
 			float angularSpeed = m_World.GetAngularVelocity(m_TubeBody).Length();
@@ -391,6 +417,13 @@ namespace OfficePipers
 				m_CaptureError = error;
 				m_State = State.EndQueued;
 				Status = "Capture invalid; finishing as unsuccessful: " + error;
+			}
+			if (m_ExportThisEpisode && TwoRobotRelay && m_CaptureValid &&
+				!m_ReturnTrajectory.Capture(m_World, TimeSync.CurrentSyncIndex, initial: false, out string returnError))
+			{
+				m_EndSuccess = false; m_CaptureValid = false; m_CaptureError = returnError;
+				m_State = State.EndQueued;
+				Status = "Piper 3 capture invalid; finishing as unsuccessful: " + returnError;
 			}
 			MaximumFingerAsymmetryMm = m_Trajectory.MaximumObservedFingerAsymmetryMm;
 			if (m_State == State.EndQueued && TimeSync.IsAtSyncPoint)
@@ -454,21 +487,36 @@ namespace OfficePipers
 			}
 		}
 
-		private void ResetTube()
+		private bool TubeSettledAtStart(Vector3 position, Quaternion rotation)
+		{
+			Vector3 fromStart = position - m_Start;
+			bool atStart = m_ReuseReturnedTube
+				? fromStart.X * fromStart.X + fromStart.Z * fromStart.Z <= m_GoalTolerance * m_GoalTolerance &&
+					MathF.Abs(position.Y - (m_DeskY + m_TubeHeight * 0.5f)) <= m_HeightTolerance
+				: fromStart.Length() <= m_HeightTolerance * 2f;
+			return atStart && (rotation * new Vector3(0f, 0f, 1f)).Y >= 0.98f
+				&& m_World!.GetVelocity(m_TubeBody).Length() <= m_MaximumRestSpeed
+				&& m_World.GetAngularVelocity(m_TubeBody).Length() <= m_MaximumAngularSpeed;
+		}
+
+		private void PrepareTube()
 		{
 			if (Observer.IsEpisodeOpen || Scene.FindEntityByID(m_WorldEntityId) == null)
 			{
 				Fail("Cannot reset while an episode is open or task setup is invalid.");
 				return;
 			}
-			// Scope writes to this owner: generic body Transform setters currently broadcast to other MuJoCo instances.
-			Quaternion axis = m_World!.GetAxisHzToMj();
-			Vector3 baselineX = axis.Conjugate * Vector3.Right;
-			float baselineHeading = MathF.Atan2(-baselineX.Z, baselineX.X);
-			Quaternion worldYaw = new Quaternion(new Vector3(0f, m_Yaw - baselineHeading, 0f));
-			// The tube's authored local up is native +Z. Preserve that basis while applying the requested world heading.
-			Quaternion nativeRotation = axis * worldYaw * axis.Conjugate;
-			m_World.WeldBody(m_TubeBody, axis * (m_Start - m_World.GetSceneTranslation()), nativeRotation, persistent: false);
+			if (!m_ReuseReturnedTube)
+			{
+				// Scope writes to this owner: generic body Transform setters currently broadcast to other MuJoCo instances.
+				Quaternion axis = m_World!.GetAxisHzToMj();
+				Vector3 baselineX = axis.Conjugate * Vector3.Right;
+				float baselineHeading = MathF.Atan2(-baselineX.Z, baselineX.X);
+				Quaternion worldYaw = new Quaternion(new Vector3(0f, m_Yaw - baselineHeading, 0f));
+				// The tube's authored local up is native +Z. Preserve that basis while applying the requested world heading.
+				Quaternion nativeRotation = axis * worldYaw * axis.Conjugate;
+				m_World.WeldBody(m_TubeBody, axis * (m_Start - m_World.GetSceneTranslation()), nativeRotation, persistent: false);
+			}
 			if (StartMarkerTemplate != null && Scene.FindEntityByID(StartMarkerTemplate.ID) != null)
 			{
 				StaticMeshComponent? template = StartMarkerTemplate.GetComponent<StaticMeshComponent>();
@@ -491,6 +539,7 @@ namespace OfficePipers
 			PlacementErrorMm = PlacementHeightErrorMm = PlacementTiltDegrees = 0f;
 			PlacementSpeedMmPerSecond = PlacementAngularSpeedDegrees = 0f;
 			m_LiftObserved = false; SimulatedPlacementComplete = false;
+			m_RelayGoal = null;
 			PlacementCheck = "Awaiting pick and place. Real object pose is not tracked by this simulation check.";
 			m_State = State.Settling;
 			Status = "Simulated tube settling before this episode can begin.";
@@ -588,6 +637,17 @@ namespace OfficePipers
 				Fail(error);
 				return false;
 			}
+			if (m_Qualification.IsRelay != TwoRobotRelay)
+			{
+				Fail("The relay setting must match the qualified seven- or fourteen-actuator model.");
+				return false;
+			}
+			if (TwoRobotRelay && (!m_ReturnTrajectory.Configure(m_World!, m_Qualification, out error, "piper3_", 7) ||
+				!m_ReturnTrajectory.Begin(m_World!, TimeSync.CurrentSyncIndex, out error)))
+			{
+				Fail(error);
+				return false;
+			}
 			uint nq = m_World!.ModelNq;
 			if (nq == 0 || nq > 512)
 			{
@@ -610,8 +670,7 @@ namespace OfficePipers
 			}
 			Vector3 position = m_World.GetPosition(m_TubeBody) + m_World.GetSceneTranslation();
 			Quaternion rotation = m_World.GetOrientation(m_TubeBody);
-			if ((position - m_Start).Length() > m_HeightTolerance * 2f || (rotation * new Vector3(0f, 0f, 1f)).Y < 0.98f
-				|| m_World.GetVelocity(m_TubeBody).Length() > m_MaximumRestSpeed || m_World.GetAngularVelocity(m_TubeBody).Length() > m_MaximumAngularSpeed)
+			if (!TubeSettledAtStart(position, rotation))
 			{
 				Fail("The tube moved away from its prepared start before capture. Prepare again; no episode was opened.");
 				return false;
@@ -626,11 +685,39 @@ namespace OfficePipers
 				Desk = new { widthMm = m_Spawn.Width * 1000f, depthMm = m_Spawn.Depth * 1000f, surfaceYMetres = m_DeskY, frame = "engine-world-y-up-centred-xz-back-negative-z" },
 				TubeDimensions = new { diameterMm = m_TubeDiameter * 1000f, heightMm = m_TubeHeight * 1000f, massKg = m_TubeMass, massSource = "estimated" },
 				TubeStart = new { leftMm = (position.X + m_Spawn.Width * 0.5f) * 1000f, backMm = (position.Z + m_Spawn.Depth * 0.5f) * 1000f, yawDeg = yaw * 180f / MathF.PI, worldPositionMetres = new { x = position.X, y = position.Y, z = position.Z }, worldQuaternionXyzw = new[] { rotation.X, rotation.Y, rotation.Z, rotation.W }, source = "settled simulation body immediately before episode begin" },
-				Goal = new { leftMm = m_Spawn.GoalLeft * 1000f, backMm = m_Spawn.GoalBack * 1000f, placementToleranceMm = m_GoalTolerance * 1000f },
+				Goal = TwoRobotRelay || SingleArmRoundTrip ? (object)new {
+					leftMm = (m_Start.X + m_Spawn.Width * .5f) * 1000f,
+					backMm = (m_Start.Z + m_Spawn.Depth * .5f) * 1000f,
+					placementToleranceMm = m_GoalTolerance * 1000f,
+					description = "Final goal is P3 after both legs; one episode covers the entire round trip",
+					legs = new[] {
+						new { robotId = "piper1", fromLeftMm = (m_Start.X + m_Spawn.Width * .5f) * 1000f,
+							fromBackMm = (m_Start.Z + m_Spawn.Depth * .5f) * 1000f,
+							toLeftMm = m_Spawn.GoalLeft * 1000f, toBackMm = m_Spawn.GoalBack * 1000f },
+						new { robotId = SingleArmRoundTrip ? "piper1" : "piper3", fromLeftMm = m_Spawn.GoalLeft * 1000f, fromBackMm = m_Spawn.GoalBack * 1000f,
+							toLeftMm = (m_Start.X + m_Spawn.Width * .5f) * 1000f,
+							toBackMm = (m_Start.Z + m_Spawn.Depth * .5f) * 1000f }
+					}
+				} : new { leftMm = m_Spawn.GoalLeft * 1000f, backMm = m_Spawn.GoalBack * 1000f, placementToleranceMm = m_GoalTolerance * 1000f },
 				NativeRecording = new { requested = m_RecordEpisode, sessionLabel = NativeSessionLabel, sessionLabelSource = "operator supplied; not discovered from native Recorder", episodeOrdinal = m_RecordEpisode ? (Observer.IsRecording ? m_NativeOrdinal : 0) : (int?)null, nativeOrdinalSource = "task_owned_session_counter_not_engine_reported", taskIndex = m_PreparedTaskIndex, taskSessionId = m_SessionId },
 				InitialSimulationState = new { mujocoQpos = initialQpos, qposConvention = "native MuJoCo model order: hinges radians, slides/free translations metres, free quaternions wxyz; not a hardware command", worldEntityId = m_WorldEntityId.ToString(), syncIndex = TimeSync.CurrentSyncIndex },
 				Samples = publishStart ? Array.Empty<TubeReplaySample>() : m_Trajectory.Snapshot()
 			};
+			if (TwoRobotRelay)
+			{
+				m_Artifact.RobotTracks = new[] {
+					new TubeRobotTrackExport { Id = "piper1", Name = "Piper 1 · P3 to cross", JointPrefix = "", ActuatorOffset = 0,
+						Robot = m_Artifact.Robot,
+						Samples = publishStart ? Array.Empty<TubeReplaySample>() : m_Trajectory.Snapshot() },
+					new TubeRobotTrackExport { Id = "piper3", Name = "Piper 3 · cross to P3", JointPrefix = "piper3_", ActuatorOffset = 7,
+						Robot = new { model = "agilex.piper", jointConvention = "piper-j1-j6-degrees-v1",
+							jointNames = new[] { "piper3_joint1", "piper3_joint2", "piper3_joint3", "piper3_joint4", "piper3_joint5", "piper3_joint6" },
+							gripperConvention = "pika-opening-mm-v1", gripperReferenceGapMm = m_ReturnTrajectory.GripperReferenceGapMm,
+							gripperMaximumOpeningMm = m_ReturnTrajectory.MaximumOpeningMm, modelBaseBody = "piper3_base_link",
+							positionActuatorSourceSha256 = m_Qualification.SourceSha256, placementSource = "authored simulation mounting pose; physical calibration required before real replay" },
+						Samples = publishStart ? Array.Empty<TubeReplaySample>() : m_ReturnTrajectory.Snapshot() }
+				};
+			}
 			if (publishStart)
 			{
 				if (string.IsNullOrWhiteSpace(ExportDirectory) || !Path.IsPathFullyQualified(ExportDirectory))
@@ -668,6 +755,11 @@ namespace OfficePipers
 			if (m_ExportThisEpisode)
 			{
 				m_Artifact!.Samples = m_Trajectory.Snapshot();
+				if (TwoRobotRelay && m_Artifact.RobotTracks is { Length: 2 } tracks)
+				{
+					tracks[0].Samples = m_Trajectory.Snapshot();
+					tracks[1].Samples = m_ReturnTrajectory.Snapshot();
+				}
 				m_Artifact.Outcome = !m_CaptureValid ? "invalid-capture: " + m_CaptureError : m_Trajectory.Count < 2 ? "invalid-capture: fewer than two samples" : m_EndSuccess ? "success" : "unsuccessful";
 				m_ExportJob = WoodFillerTrajectory.PublishFinishedAsync(m_ExportDirectory, m_Artifact);
 				m_State = State.Exporting;

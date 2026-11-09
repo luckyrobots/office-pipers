@@ -1,0 +1,29 @@
+{
+  "source": "piper_tube_task_native_v2.xml",
+  "source_sha256": "da9c70def2b1b342b96f5455f8d384e3fe39c54450b227555c07d2795457a3cc",
+  "model": "piper_tube_relay.xml",
+  "sha256": "7cfa8a21c75e3d9fd428d59f911b2fc6180d618a94114669915d9d1f9281fa14",
+  "actuator_names": [
+    "joint1",
+    "joint2",
+    "joint3",
+    "joint4",
+    "joint5",
+    "joint6",
+    "gripper",
+    "piper3_joint1",
+    "piper3_joint2",
+    "piper3_joint3",
+    "piper3_joint4",
+    "piper3_joint5",
+    "piper3_joint6",
+    "piper3_gripper"
+  ],
+  "return_robot": "Piper 3 - back right",
+  "return_root": 6476866661349383801,
+  "return_model_pose": {
+    "pos": "0.976011230383 0.0344062705269 0",
+    "quat": "-0.0189022993717 0 0 0.999821335579"
+  },
+  "original_unchanged": true
+}

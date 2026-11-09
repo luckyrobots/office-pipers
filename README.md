@@ -18,7 +18,15 @@ Lucky Engine project for a measured office desk with four PiPER robots, Pika gri
 
 2. Use the current Lucky Engine development build from Lucky Robots. The tested checkout is branch `feature/plugin-sdk-pipers`, base commit `b512a9a7ee0db821c61893805cebb576f9fa4904`, **with local plugin/runtime changes**. That commit by itself is not a complete reproducibility claim. Obtain the corresponding development build/source access from Lucky Robots; engine binaries and private engine patches are not included here. The scripts require the current C# MuJoCo, motion-graph, Observer and `Hazel.Data.EpisodeFollowers` APIs.
 3. Install the .NET 9 SDK if the development build does not already provide its script-build prerequisites. Open `office pipers.hproj` in Lucky Engine, regenerate the C# project through the editor, and build scripts. Generated engine DLLs, `.csproj`/`.sln` files and build output are deliberately excluded.
-4. Open `Assets/Scenes/TubePickPlaceNative.hscene` and press **Play** for the simulation-only demonstration. The public project defaults to that scene. `Main.hscene` is the office layout; `TubePickPlace.hscene` is an older task scene.
+4. Choose a scene in `Assets/Scenes` and press **Play** for a simulation preview. The project opens the two-arm relay by default.
+
+| Scene | Demonstration |
+|---|---|
+| `TubeRelayLoop.hscene` | Piper 1 moves the tube from P3 to the center cross. The opposite arm returns it to P3. |
+| `TubeRelayLoopWithOneArm.hscene` | Piper 1 performs both legs, returning to joint zero after each placement. |
+| `TubePickPlaceNative.hscene` | Piper 1 places the tube on the center cross and returns to joint zero. |
+
+See [Relay scenes](RELAY.md) for loop settings and exports. `Main.hscene` is the office layout, and `TubePickPlace.hscene` is an older task scene.
 
 The configure script only sets clone-local source-model and export paths in the task scenes. It neither starts the editor/server nor sends robot commands. Run it before opening the project, and rerun after a pull if scene paths were replaced. Export files go to the current user's local application-data directory.
 
@@ -33,7 +41,7 @@ The configure script only sets clone-local source-model and export paths in the 
 | Radial approach pitch | 10° |
 | Forward grasp insertion | 35 mm, horizontally, with unchanged approach height |
 | Open / close position targets | 80 / 30 mm; object contact keeps the measured opening larger than the close target |
-| Episodes per Play run | 1 |
+| Episodes per Play run in `TubePickPlaceNative` | 1 |
 | Capture | 50 Hz trajectory JSON; dataset-camera rendering off |
 
 LEFT and BACK refer to the fixed desk edges used by the scene. They do not change with seating/viewpoint. Source tube coordinates and the goal are unchanged by the insertion adjustment. The insertion reference is carried through pickup, carry, placement and withdrawal.

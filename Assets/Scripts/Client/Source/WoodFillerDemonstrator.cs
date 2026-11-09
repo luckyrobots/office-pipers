@@ -9,6 +9,14 @@ namespace OfficePipers
 	{
 		[Group("Simulation demonstration")]
 		public Entity? TaskEntity;
+		[Tooltip("Optional shared MuJoCo world. Leave empty for the original single-arm driver attached to its own world.")]
+		public Entity? PhysicsWorldEntity;
+		[Tooltip("Optional motion-graph owner. A relay's two arms share one world and one graph; leave empty to use the physics-world entity.")]
+		public Entity? MotionControllerEntity;
+		[Tooltip("Empty for the original arm; piper3_ for the opposite arm in the round-trip world.")]
+		public string JointPrefix = "";
+		public string MotionInputPrefix = "";
+		public int ActuatorOffset;
 		[Tooltip("On Play, prepare a random tube start, home the simulated arm and run pick/place/home. Never commands the real robot directly. Turn off for manual demonstrations.")]
 		public bool AutoRunOnPlay = true;
 		[Tooltip("After a successful placement, return all six joints to zero, finish the recording/export, then prepare a new random start. A failure or manual Stop ends the loop.")]
@@ -22,6 +30,18 @@ namespace OfficePipers
 		public bool RecordCamerasOnPlay = false;
 		[ReadOnly] public string CaptureStatus = "Preview: trajectory export on, dataset cameras off.";
 		[ReadOnly] public string Status = "Press Play to run simulated pick/place/home episodes.";
+		[ReadOnly] public string LastGraspFailure = "";
+		[Group("Placement diagnostics · world metres")]
+		[ReadOnly] public Vector3 TubeBeforeRelease;
+		[ReadOnly] public Vector3 TubeAfterRelease;
+		[ReadOnly] public Vector3 TubeAfterReleaseSettled;
+		[ReadOnly] public Vector3 TubeAfterWithdraw;
+		[ReadOnly] public Vector3 TubeAtPlacementCheck;
+		[ReadOnly] public float BeforeReleaseErrorMm = -1f, AfterReleaseErrorMm = -1f, AfterReleaseSettledErrorMm = -1f;
+		[ReadOnly] public float AfterWithdrawErrorMm = -1f, PlacementCheckErrorMm = -1f;
+		[ReadOnly] public Vector3 MeasuredGraspReferenceInWrist;
+		[ReadOnly] public float MeasuredGraspCorrectionMm;
+		[Group("Simulation demonstration")]
 		[Tooltip("Set only after checking this approach in the merged simulation model. The controller refuses an unverified default approach.")]
 		public bool ApproachOrientationVerified = true;
 		[Tooltip("Keep the jaw-closing direction horizontal and approach radially from the base. RadialApproachPitchDegrees tilts the fingers downward when a horizontal grasp would reach the wrist limit.")]
@@ -64,6 +84,9 @@ namespace OfficePipers
 			public StepKind Kind;
 			public Vector3 Position, Rotation;
 			public float Duration, OpeningMm, PositionTolerance;
+			public float MotionSpeed;
+			public Quaternion WristRotation;
+			public bool AppliesGraspOffset;
 			public string Label;
 		}
 		private static readonly Identifier k_Position = new Identifier("Target_Position");
@@ -88,6 +111,7 @@ namespace OfficePipers
 		private double m_StartSimulationTime;
 		private long m_StartWallTimestamp;
 		private readonly TubePlayStartup m_PlayStartup = new();
+		private readonly TubeTrialOutcome m_TrialOutcome = new();
 		private WoodFillerTask? m_AutomaticBeginTask;
 		private int m_AutomaticBeginRevision;
 		private ulong m_AutomaticBeginWorld;
@@ -99,6 +123,49 @@ namespace OfficePipers
 		private uint m_HomeFirstFingerAddress, m_HomeSecondFingerAddress;
 		private int m_HomeControlRevision;
 		public bool IsBusy => m_Busy;
+		public bool HomeReady => m_HomeReady && !m_Homing;
+		public bool RelayLegComplete { get; private set; }
+		public bool RelayLegSuccessful { get; private set; }
+		public bool RelayLegFaulted { get; private set; }
+		private bool m_RelayManaged;
+		private bool m_RecordedBeforeRelease;
+		private Vector3 m_RelayPickup, m_RelayGoal;
+		private ulong PhysicsWorldId => PhysicsWorldEntity?.ID ?? ID;
+		private string Named(string name) => JointPrefix + name;
+		private MujocoSceneComponent? ResolveWorld() => PhysicsWorldEntity?.GetComponent<MujocoSceneComponent>() ?? GetComponent<MujocoSceneComponent>();
+		private RobotControllerComponent? ResolveController() => MotionControllerEntity?.GetComponent<RobotControllerComponent>()
+			?? PhysicsWorldEntity?.GetComponent<RobotControllerComponent>() ?? GetComponent<RobotControllerComponent>();
+
+		// Called by the round-trip coordinator after its task has opened this leg's goal.
+		// A leg runs the exact same pickup/release/withdraw/home queue as the original
+		// demonstration, but does not close the encompassing round-trip episode.
+		public bool StartRelayLeg(Vector3 pickupCentre, Vector3 goalCentre)
+		{
+			if (m_Busy || m_Homing || !Finite(pickupCentre) || !Finite(goalCentre)) return false;
+			m_RelayManaged = true;
+			m_PlayStartup.Cancel();
+			m_RelayPickup = pickupCentre;
+			m_RelayGoal = goalCentre;
+			RelayLegComplete = false;
+			RelayLegSuccessful = false;
+			RelayLegFaulted = false;
+			StartDemonstration(automatic: true);
+			if (!m_Busy) RelayLegComplete = true;
+			return m_Busy;
+		}
+
+		public bool HomeRelayArm()
+		{
+			if (m_Busy || m_Homing) return false;
+			m_RelayManaged = true;
+			m_PlayStartup.Cancel();
+			RelayLegFaulted = false;
+			m_Task = TaskEntity?.As<WoodFillerTask>();
+			BeginHoming();
+			return m_Homing;
+		}
+
+		private static bool Finite(Vector3 point) => float.IsFinite(point.X) && float.IsFinite(point.Y) && float.IsFinite(point.Z);
 
 		[Button("Run simulated demonstration")]
 		[Tooltip("Simulation only. No hardware connection or robot server is used. Fails the episode if the graph cannot reach a target or the physical simulated grasp fails.")]
@@ -133,9 +200,9 @@ namespace OfficePipers
 				return;
 			}
 			m_Task = TaskEntity?.As<WoodFillerTask>();
-			m_World = GetComponent<MujocoSceneComponent>();
-			m_Robot = GetComponent<RobotControllerComponent>();
-			if (m_Task == null || !m_Task.EpisodeActive || m_Task.PreparedPhysicsWorldEntityId != ID || m_World == null || m_Robot == null)
+			m_World = ResolveWorld();
+			m_Robot = ResolveController();
+			if (m_Task == null || !m_Task.EpisodeActive || m_Task.PreparedPhysicsWorldEntityId != PhysicsWorldId || m_World == null || m_Robot == null)
 			{
 				Status = "Assign TaskEntity, attach this driver to its shared Piper/tube physics world, and start a task episode first.";
 				return;
@@ -145,11 +212,11 @@ namespace OfficePipers
 				Status = "The approach orientation/limits must be verified in this model before the demonstration can run.";
 				return;
 			}
-			m_MotionSite = m_World.GetSiteID(MotionGraphSite);
-			m_ContactSite = m_World.GetSiteID(ContactSite);
-			m_Wrist = m_World.GetBodyID(WristBody);
-			m_Gripper = m_World.GetActuator(GripperActuator);
-			uint finger = m_World.GetJointID("joint7");
+			m_MotionSite = m_World.GetSiteID(Named(MotionGraphSite));
+			m_ContactSite = m_World.GetSiteID(Named(ContactSite));
+			m_Wrist = m_World.GetBodyID(Named(WristBody));
+			m_Gripper = m_World.GetActuator(Named(GripperActuator));
+			uint finger = m_World.GetJointID(Named("joint7"));
 			if (m_MotionSite == uint.MaxValue || m_ContactSite == uint.MaxValue || m_Wrist == uint.MaxValue || m_Gripper == null || finger == uint.MaxValue
 				|| !m_World.GetJointRange(finger, out float minimum, out float maximum) || !float.IsFinite(minimum) || !float.IsFinite(maximum) || minimum >= maximum || maximum > 0.000001f)
 			{
@@ -180,8 +247,8 @@ namespace OfficePipers
 			m_GraphSiteRotationInWrist = wristRotation.Conjugate * siteRotation;
 			m_PlannedPosition = motionSite;
 			m_PlannedRotation = siteRotation.EulerAngles;
-			Vector3 pick = m_Task.PreparedTubeCentre + new Vector3(0f, GraspOffsetY, 0f);
-			Vector3 place = m_Task.PreparedGoalCentre + new Vector3(0f, GraspOffsetY + 0.002f, 0f);
+			Vector3 pick = (m_RelayManaged ? m_RelayPickup : m_Task.PreparedTubeCentre) + new Vector3(0f, GraspOffsetY, 0f);
+			Vector3 place = (m_RelayManaged ? m_RelayGoal : m_Task.PreparedGoalCentre) + new Vector3(0f, GraspOffsetY + 0.002f, 0f);
 			Vector3 graspRotation = ApproachRotation(pick);
 			Vector3 placeRotation = ApproachRotation(place);
 			if (!TubeGraspGeometry.TryForwardOffsetInWrist(new Quaternion(graspRotation), GraspForwardOffsetMm, out m_GraspForwardOffsetInWrist))
@@ -190,18 +257,29 @@ namespace OfficePipers
 				return;
 			}
 			m_InitialTubeY = m_Task.PreparedTubeCentre.Y;
+			m_TrialOutcome.Reset();
+			LastGraspFailure = "";
+			m_RecordedBeforeRelease = false;
+			TubeBeforeRelease = TubeAfterRelease = TubeAfterReleaseSettled = TubeAfterWithdraw = TubeAtPlacementCheck = Vector3.Zero;
+			BeforeReleaseErrorMm = AfterReleaseErrorMm = AfterReleaseSettledErrorMm = AfterWithdrawErrorMm = PlacementCheckErrorMm = -1f;
+			MeasuredGraspReferenceInWrist = Vector3.Zero;
+			MeasuredGraspCorrectionMm = 0f;
 			float safeY = MathF.Max(contactSite.Y, MathF.Max(pick.Y, place.Y) + HoverHeight);
 			m_Queue.Clear();
 			AppendGripper(OpenMillimetres, 0.6f, $"Open jaws to {OpenMillimetres:F0} mm");
 			AppendMove(new Vector3(contactSite.X, safeY, contactSite.Z), wristRotation.EulerAngles, VerticalSpeed, "Lift clear before turning", applyGraspOffset: false);
+			bool returningToP3 = m_RelayManaged && m_Task.SingleArmRoundTrip && m_RelayGoal.Equals(m_Task.PreparedStartCentre);
+			// Coming straight from zero to the centre can switch IK branches.
+			if (returningToP3)
+				AppendMove(new Vector3(place.X, safeY, place.Z), placeRotation, TravelSpeed, "Travel via the P3 hover point");
 			AppendMove(new Vector3(pick.X, safeY, pick.Z), graspRotation, TravelSpeed, "Travel above tube");
 			AppendMove(pick, graspRotation, VerticalSpeed, "Approach tube", GraspPositionTolerance);
 			AppendGripper(CloseMillimetres, 0.9f, "Close on tube");
 			AppendMove(new Vector3(pick.X, safeY, pick.Z), graspRotation, VerticalSpeed, "Lift tube");
 			m_Queue.Enqueue(new Step { Kind = StepKind.VerifyLift, Label = "Check simulated grasp", Duration = 0.05f });
-			AppendMove(new Vector3(place.X, safeY, place.Z), placeRotation, TravelSpeed, "Carry tube to cross");
+			AppendMove(new Vector3(place.X, safeY, place.Z), placeRotation, TravelSpeed, returningToP3 ? "Carry tube to P3" : "Carry tube to cross");
 			m_Queue.Enqueue(new Step { Kind = StepKind.VerifyCarry, Label = "Confirm tube is still held before lowering", Duration = 0.05f });
-			AppendMove(place, placeRotation, VerticalSpeed, "Lower tube onto cross", GraspPositionTolerance);
+			AppendMove(place, placeRotation, VerticalSpeed, returningToP3 ? "Lower tube onto P3" : "Lower tube onto cross", GraspPositionTolerance);
 			m_Queue.Enqueue(new Step { Kind = StepKind.Wait, Duration = 0.4f, Label = "Settle before release" });
 			for (int i = 1; i <= 5; i++)
 			{
@@ -209,7 +287,7 @@ namespace OfficePipers
 			}
 			m_Queue.Enqueue(new Step { Kind = StepKind.Wait, Duration = 0.7f, Label = "Wait for tube to settle" });
 			AppendMove(new Vector3(place.X, safeY, place.Z), placeRotation, VerticalSpeed, "Withdraw jaws");
-			m_Queue.Enqueue(new Step { Kind = StepKind.VerifyPlacement, Duration = 2f, Label = "Validate placement at cross" });
+			m_Queue.Enqueue(new Step { Kind = StepKind.VerifyPlacement, Duration = 2f, Label = returningToP3 ? "Validate placement at P3" : "Validate placement at cross" });
 			m_Queue.Enqueue(new Step { Kind = StepKind.Home, Label = "Return all six joints to zero" });
 			m_Queue.Enqueue(new Step { Kind = StepKind.Finish, Duration = 2f, Label = "Finish the placement and home episode" });
 			m_Started = false;
@@ -255,6 +333,11 @@ namespace OfficePipers
 				Abort("Task episode ended; stopped the simulated demonstration.");
 				return;
 			}
+			if (!m_Task.CaptureValid)
+			{
+				Abort("Simulated trajectory capture failed: " + m_Task.CaptureError);
+				return;
+			}
 			if (m_Queue.Count == 0)
 			{
 				m_Busy = false;
@@ -269,14 +352,15 @@ namespace OfficePipers
 					StepKind.VerifyLift => "verify-lift", StepKind.VerifyCarry => "verify-carry", StepKind.VerifyPlacement => "verify-place",
 					StepKind.Home => "home", _ => "finish"
 				};
-				if (!m_Task.PublishPhase($"{phaseKind}:{++m_PhaseOrdinal}"))
+				if (m_RelayManaged && m_Task.TwoRobotRelay) phaseKind = (JointPrefix.Length == 0 ? "relay-outbound-" : "relay-return-") + phaseKind;
+				if (!m_Task.PublishPhase($"{m_TrialOutcome.PhaseKind(phaseKind)}:{++m_PhaseOrdinal}"))
 				{
 					Abort("The linked episode stopped. No further simulated task movement was issued.");
 					return;
 				}
 				m_Elapsed = 0f;
 				m_Started = true;
-				Status = step.Label;
+				Status = TrialStatus(step.Label);
 				if (step.Kind == StepKind.Move)
 				{
 					Send(step.Position, step.Rotation, step.Duration);
@@ -289,6 +373,11 @@ namespace OfficePipers
 				}
 				else if (step.Kind == StepKind.Gripper)
 				{
+					if (step.Label == "Release gently" && !m_RecordedBeforeRelease)
+					{
+						RecordTubeDiagnostic(0);
+						m_RecordedBeforeRelease = true;
+					}
 					m_Gripper!.IK = false;
                     m_GripperScriptOwned = true;
 					m_GripperStartControl = (float)m_Gripper.Value;
@@ -319,6 +408,7 @@ namespace OfficePipers
 				float angle = 2f * MathF.Acos(Math.Clamp(dot, 0f, 1f));
 				if (m_Elapsed >= step.Duration && error <= step.PositionTolerance && angle <= m_OrientationTolerance)
 				{
+					if (step.Label == "Withdraw jaws") RecordTubeDiagnostic(3);
 					CompleteStep();
 				}
 				else if (m_Elapsed > step.Duration + m_ExtraArrivalSeconds)
@@ -328,18 +418,26 @@ namespace OfficePipers
 			}
 			else if (step.Kind == StepKind.VerifyLift)
 			{
-				if (m_Task.PreparedTubeCentre.Y < m_InitialTubeY + 0.040f)
+				float height = m_Task.PreparedTubeCentre.Y;
+				if (!float.IsFinite(height))
 				{
-					Abort("The tube did not lift with the jaws. The simulated grasp failed.");
+					Abort("Cannot verify the simulated lift: tube feedback is not finite.");
+					return;
 				}
-				else
+				if (height < m_InitialTubeY + 0.040f)
 				{
-					CompleteStep();
+					RecordExpectedMiss("The simulated tube did not lift with the jaws.");
 				}
+				else if (m_RelayManaged && !RetargetRelayToMeasuredGrasp())
+				{
+					Abort("The relay lift did not provide a finite, bounded object-to-tool reference. No further relay movement was queued.");
+					return;
+				}
+				CompleteStep();
 			}
 			else if (step.Kind == StepKind.VerifyCarry)
 			{
-				uint first = m_World!.GetJointID("joint7"), second = m_World.GetJointID("joint8");
+				uint first = m_World!.GetJointID(Named("joint7")), second = m_World.GetJointID(Named("joint8"));
 				uint firstAddress = first == uint.MaxValue ? uint.MaxValue : m_World.GetJointQposAdr(first);
 				uint secondAddress = second == uint.MaxValue ? uint.MaxValue : m_World.GetJointQposAdr(second);
 				if (firstAddress == uint.MaxValue || secondAddress == uint.MaxValue ||
@@ -353,21 +451,49 @@ namespace OfficePipers
 				Vector3 expectedObjectPoint = TubeGraspGeometry.ObjectPointFromContact(contact, m_World.GetOrientation(m_Wrist), m_GraspForwardOffsetInWrist);
 				float separation = (tube - expectedObjectPoint).Length();
 				float maximumSeparation = m_Task.TubeDiameter * 0.5f + MathF.Abs(GraspOffsetY) + GraspPositionTolerance;
+				if (!float.IsFinite(tube.Y) || !float.IsFinite(opening) || !float.IsFinite(separation) || !float.IsFinite(maximumSeparation))
+				{
+					Abort("Cannot verify the simulated carry: tube, jaw or contact-site feedback is not finite.");
+					return;
+				}
 				if (!TubeGraspCheck.IsHeld(tube.Y, m_InitialTubeY, opening, CloseMillimetres, separation, maximumSeparation))
 				{
-					Abort($"The simulated tube was lost during carry. Lowering stopped: jaw opening {opening:F1} mm / close target {CloseMillimetres:F1} mm; tube-to-grasp distance {separation * 1000f:F0} mm; lift {(tube.Y - m_InitialTubeY) * 1000f:F0} mm.");
-					return;
+					RecordExpectedMiss($"The simulated tube was lost during carry: jaw opening {opening:F1} mm / close target {CloseMillimetres:F1} mm; tube-to-grasp distance {separation * 1000f:F0} mm; lift {(tube.Y - m_InitialTubeY) * 1000f:F0} mm.");
 				}
 				CompleteStep();
 			}
 			else if (step.Kind == StepKind.VerifyPlacement)
 			{
+				RecordTubeDiagnostic(4);
 				if (m_Task.SimulatedPlacementComplete) CompleteStep();
-				else if (m_Elapsed >= step.Duration) Abort("The released tube did not settle upright at the cross. Episode is unsuccessful.");
+				else if (m_Elapsed >= step.Duration)
+				{
+					RecordExpectedMiss("The released tube did not settle upright at the cross.");
+					CompleteStep();
+				}
 			}
 			else if (step.Kind == StepKind.Finish)
 			{
-				if (m_Task.SimulatedPlacementComplete)
+				var outcome = m_TrialOutcome.Resolve(m_HomeReady, m_Task.SimulatedPlacementComplete);
+				if (m_RelayManaged && outcome != TubeTrialResult.NotReady)
+				{
+					m_Busy = false;
+					m_Queue.Clear();
+					RelayLegComplete = true;
+					RelayLegSuccessful = outcome == TubeTrialResult.Successful;
+					Status = RelayLegSuccessful ? "Relay leg complete; arm at zero. The shared episode remains open."
+						: $"Missed grasp; arm returned to zero. {m_TrialOutcome.Reason}";
+					return;
+				}
+				if (outcome == TubeTrialResult.Unsuccessful)
+				{
+					m_Busy = false;
+					m_Queue.Clear();
+					m_PlayStartup.Cancel();
+					m_Task.FinishUnsuccessfully();
+					Status = $"Unsuccessful trial; arm returned to zero with jaws open. {m_TrialOutcome.Reason} No next episode will start.";
+				}
+				else if (outcome == TubeTrialResult.Successful)
 				{
 					m_Busy = false;
 					m_Queue.Clear();
@@ -382,13 +508,15 @@ namespace OfficePipers
 			}
 			else if (m_Elapsed >= step.Duration)
 			{
+				if (step.Kind == StepKind.Gripper && step.Label == "Release gently" && step.OpeningMm >= OpenMillimetres) RecordTubeDiagnostic(1);
+				if (step.Kind == StepKind.Wait && step.Label == "Wait for tube to settle") RecordTubeDiagnostic(2);
 				CompleteStep();
 			}
 		}
 
 		private void AdvancePlayStartup(float deltaTime)
 		{
-			if (m_PlayStartup.Finished)
+			if (m_RelayManaged || m_PlayStartup.Finished)
 			{
 				return;
 			}
@@ -451,15 +579,15 @@ namespace OfficePipers
 
 		private void BeginHoming()
 		{
-			if (m_Task == null || !m_Task.PreparedSourceQualified || m_Task.PreparedPhysicsWorldEntityId != ID
+			if (m_Task == null || !m_Task.PreparedSourceQualified || m_Task.PreparedPhysicsWorldEntityId != PhysicsWorldId
 				|| (m_Task.EpisodeStage != TubeEpisodeStage.Ready && m_Task.EpisodeStage != TubeEpisodeStage.Active)
 				|| !ValidSettings())
 			{
 				Abort("Homing requires this task's qualified simulation world and a ready or active episode.");
 				return;
 			}
-			m_World = GetComponent<MujocoSceneComponent>();
-			m_Robot = GetComponent<RobotControllerComponent>();
+			m_World = ResolveWorld();
+			m_Robot = ResolveController();
 			if (m_World == null || m_Robot == null)
 			{
 				Abort("The task world is missing its simulation model or motion graph.");
@@ -467,10 +595,10 @@ namespace OfficePipers
 			}
 			for (int i = 0; i < m_Arm.Length; i++)
 			{
-				string name = "joint" + (i + 1);
+				string name = Named("joint" + (i + 1));
 				uint joint = m_World.GetJointID(name), actuator = m_World.GetActuatorIndex(name);
 				m_Arm[i] = m_World.GetActuator(name);
-				if (joint == uint.MaxValue || actuator != (uint)i || m_Arm[i] == null || m_World.GetJointType(joint) != 3
+				if (joint == uint.MaxValue || actuator != (uint)(ActuatorOffset + i) || m_Arm[i] == null || m_World.GetJointType(joint) != 3
 					|| m_World.GetActuatorTrnJointID(actuator) != (int)joint || m_World.IsActuatorClaimedByPolicy(actuator)
 					|| !m_World.GetJointRange(joint, out float lo, out float hi) || lo > 0f || hi < 0f
 					|| !m_World.GetActuatorCtrlRange(actuator, out float ctrlLo, out float ctrlHi) || ctrlLo > 0f || ctrlHi < 0f
@@ -489,13 +617,14 @@ namespace OfficePipers
 					return;
 				}
 			}
-			m_Gripper = m_World.GetActuator(GripperActuator);
-			uint finger = m_World.GetJointID("joint7");
-			uint secondFinger = m_World.GetJointID("joint8");
-            uint gripperActuator = m_World.GetActuatorIndex(GripperActuator);
-            if (m_Gripper == null || !TubeHomeMotion.CanClaimGripper(GripperActuator, gripperActuator,
-                    gripperActuator == 6 ? m_World.GetActuatorTrnJointID(gripperActuator) : -1, finger, secondFinger,
-                    gripperActuator == 6 && m_World.IsActuatorClaimedByPolicy(gripperActuator), m_Gripper.IK, m_GripperScriptOwned)
+			m_Gripper = m_World.GetActuator(Named(GripperActuator));
+			uint finger = m_World.GetJointID(Named("joint7"));
+			uint secondFinger = m_World.GetJointID(Named("joint8"));
+            uint gripperActuator = m_World.GetActuatorIndex(Named(GripperActuator));
+            uint expectedGripper = (uint)(ActuatorOffset + 6);
+            if (m_Gripper == null || !TubeHomeMotion.CanClaimNamedGripper(Named(GripperActuator), JointPrefix, gripperActuator, expectedGripper,
+                    gripperActuator == expectedGripper ? m_World.GetActuatorTrnJointID(gripperActuator) : -1, finger, secondFinger,
+                    gripperActuator == expectedGripper && m_World.IsActuatorClaimedByPolicy(gripperActuator), m_Gripper.IK, m_GripperScriptOwned)
                 || m_World.GetJointType(finger) != 2 || m_World.GetJointType(secondFinger) != 2
                 || !m_World.GetJointRange(finger, out float minimum, out float maximum)
                 || !m_World.GetJointRange(secondFinger, out float otherMinimum, out float otherMaximum)
@@ -535,12 +664,12 @@ namespace OfficePipers
             m_GripperScriptOwned = true;
 			m_HomeReady = false;
 			m_Homing = true;
-			Status = "Returning all six simulated joints to zero, with jaws open. Recording continues until the arm is still.";
+			Status = TrialStatus("Returning all six simulated joints to zero, with jaws open. Recording continues until the arm is still.");
 		}
 
 		private bool AdvanceHoming(float deltaTime)
 		{
-			if (m_Task == null || m_Task.ControlRevision != m_HomeControlRevision || m_Task.PreparedPhysicsWorldEntityId != ID
+			if (m_Task == null || m_Task.ControlRevision != m_HomeControlRevision || m_Task.PreparedPhysicsWorldEntityId != PhysicsWorldId
 				|| (m_Task.EpisodeStage != TubeEpisodeStage.Ready && m_Task.EpisodeStage != TubeEpisodeStage.Active)
 				|| (m_PlayStartup.CompletedEpisodes > 0 && !m_Task.RecordingCanContinue)
 				|| !float.IsFinite(deltaTime) || deltaTime <= 0f)
@@ -569,7 +698,7 @@ namespace OfficePipers
 			{
 				m_Homing = false;
 				m_HomeReady = true;
-				Status = "All six joints are at zero and still; jaws are open.";
+				Status = TrialStatus("All six joints are at zero and still; jaws are open.");
 				return true;
 			}
 			if (m_HomeElapsed > m_HomeDuration + ExtraArrivalSeconds)
@@ -596,9 +725,50 @@ namespace OfficePipers
 			Vector3 deltaRotation = siteRotation - m_PlannedRotation;
 			float angle = MathF.Max(MathF.Abs(Mathf.WrapToPi(deltaRotation.X)), MathF.Max(MathF.Abs(Mathf.WrapToPi(deltaRotation.Y)), MathF.Abs(Mathf.WrapToPi(deltaRotation.Z))));
 			float duration = m_DurationScale * MathF.Max(0.2f, MathF.Max((target - m_PlannedPosition).Length() / speed, angle / AngularSpeed));
-			m_Queue.Enqueue(new Step { Kind = StepKind.Move, Position = target, Rotation = siteRotation, Duration = duration, PositionTolerance = tolerance ?? m_PositionTolerance, Label = label });
+			m_Queue.Enqueue(new Step { Kind = StepKind.Move, Position = target, Rotation = siteRotation, Duration = duration,
+				PositionTolerance = tolerance ?? m_PositionTolerance, Label = label, WristRotation = wristRotation,
+				MotionSpeed = speed, AppliesGraspOffset = applyGraspOffset });
 			m_PlannedPosition = target;
 			m_PlannedRotation = siteRotation;
+		}
+
+		private bool RetargetRelayToMeasuredGrasp()
+		{
+			if (!TrySiteWorldPose(m_ContactSite, out Vector3 contact, out _) ||
+				!TrySiteWorldPose(m_MotionSite, out Vector3 plannedPosition, out Quaternion plannedOrientation) ||
+				!TubeGraspGeometry.TryMeasuredReference(contact, m_Task!.PreparedTubeCentre, m_World!.GetOrientation(m_Wrist),
+					m_GraspForwardOffsetInWrist, out Vector3 measuredReference)) return false;
+			Vector3 correction = measuredReference - m_GraspForwardOffsetInWrist;
+			Step[] remaining = m_Queue.ToArray();
+			// Build the complete replacement first. If a target is invalid, the original
+			// queue is not partly changed and the caller takes the normal hard-abort path.
+			for (int i = 0; i < remaining.Length; i++)
+			{
+				Step step = remaining[i];
+				if (step.Kind != StepKind.Move) continue;
+				if (step.AppliesGraspOffset)
+					step.Position = TubeGraspGeometry.RetargetSite(step.Position, step.WristRotation, correction,
+						new Vector3(0f, GraspOffsetY, 0f));
+				if (!Finite(step.Position) || !float.IsFinite(step.MotionSpeed) || step.MotionSpeed <= 0f) return false;
+				Vector3 deltaRotation = step.Rotation - plannedOrientation.EulerAngles;
+				float angle = MathF.Max(MathF.Abs(Mathf.WrapToPi(deltaRotation.X)),
+					MathF.Max(MathF.Abs(Mathf.WrapToPi(deltaRotation.Y)), MathF.Abs(Mathf.WrapToPi(deltaRotation.Z))));
+				float revisedDuration = m_DurationScale * MathF.Max(0.2f,
+					MathF.Max((step.Position - plannedPosition).Length() / step.MotionSpeed, angle / AngularSpeed));
+				if (!float.IsFinite(revisedDuration)) return false;
+				step.Duration = MathF.Max(step.Duration, revisedDuration);
+				remaining[i] = step;
+				plannedPosition = step.Position;
+				plannedOrientation = new Quaternion(step.Rotation);
+			}
+			m_Queue.Clear();
+			foreach (Step step in remaining) m_Queue.Enqueue(step);
+			m_GraspForwardOffsetInWrist = measuredReference;
+			MeasuredGraspReferenceInWrist = measuredReference;
+			MeasuredGraspCorrectionMm = correction.Length() * 1000f;
+			m_PlannedPosition = plannedPosition;
+			m_PlannedRotation = plannedOrientation.EulerAngles;
+			return true;
 		}
 
 		private void AppendGripper(float opening, float seconds, string label)
@@ -628,6 +798,11 @@ namespace OfficePipers
 			}
 			Quaternion axis = m_World!.GetAxisHzToMj();
 			Vector3 modelPosition = axis * (contactPosition - m_World.GetSceneTranslation());
+			if (JointPrefix.Length > 0)
+			{
+				uint baseBody = m_World.GetBodyID(Named("base_link"));
+				if (baseBody != uint.MaxValue) modelPosition -= m_World.GetPosition(baseBody, hazelSpace: false);
+			}
 			float heading = MathF.Atan2(modelPosition.Y, modelPosition.X);
 			float pitch = RadialApproachPitchDegrees * (MathF.PI / 180f);
 			Quaternion modelRotation = new Quaternion(new Vector3(0f, 0f, heading)) * new Quaternion(new Vector3(0f, MathF.PI * 0.5f + pitch, 0f));
@@ -636,16 +811,50 @@ namespace OfficePipers
 
 		private void Send(Vector3 position, Vector3 rotation, float duration)
 		{
-			m_Robot!.SetInputVector3(k_Position, position);
-			m_Robot.SetInputVector3(k_Rotation, rotation * (180f / MathF.PI));
-			m_Robot.SetInputFloat(k_Duration, duration);
-			m_Robot.SetInputTrigger(k_Start);
+			if (m_RelayManaged && m_Task?.TwoRobotRelay == true) m_Robot!.SetInputBool(new Identifier("ReturnArm"), JointPrefix.Length > 0);
+			m_Robot!.SetInputVector3(MotionInputPrefix.Length == 0 ? k_Position : new Identifier(MotionInputPrefix + "Target_Position"), position);
+			m_Robot.SetInputVector3(MotionInputPrefix.Length == 0 ? k_Rotation : new Identifier(MotionInputPrefix + "Target_Orientation"), rotation * (180f / MathF.PI));
+			m_Robot.SetInputFloat(MotionInputPrefix.Length == 0 ? k_Duration : new Identifier(MotionInputPrefix + "Duration"), duration);
+			m_Robot.SetInputTrigger(MotionInputPrefix.Length == 0 ? k_Start : new Identifier(MotionInputPrefix + "Start"));
 		}
 
 		private void CompleteStep()
 		{
 			m_Queue.Dequeue();
 			m_Started = false;
+		}
+
+		private void RecordTubeDiagnostic(int stage)
+		{
+			if (m_Task == null) return;
+			Vector3 point = m_Task.PreparedTubeCentre;
+			Vector3 goal = m_RelayManaged ? m_RelayGoal : m_Task.PreparedGoalCentre;
+			if (!Finite(point) || !Finite(goal)) return;
+			float dx = point.X - goal.X, dz = point.Z - goal.Z;
+			float errorMm = MathF.Sqrt(dx * dx + dz * dz) * 1000f;
+			switch (stage)
+			{
+				case 0: TubeBeforeRelease = point; BeforeReleaseErrorMm = errorMm; break;
+				case 1: TubeAfterRelease = point; AfterReleaseErrorMm = errorMm; break;
+				case 2: TubeAfterReleaseSettled = point; AfterReleaseSettledErrorMm = errorMm; break;
+				case 3: TubeAfterWithdraw = point; AfterWithdrawErrorMm = errorMm; break;
+				case 4: TubeAtPlacementCheck = point; PlacementCheckErrorMm = errorMm; break;
+			}
+		}
+
+		private void RecordExpectedMiss(string reason)
+		{
+			m_TrialOutcome.RecordExpectedMiss(reason);
+			LastGraspFailure = m_TrialOutcome.Reason;
+			// Continue the original validated path through release, withdrawal and Home.
+			// A simulated miss does not prove the physical gripper is empty.
+			m_PlayStartup.Cancel();
+			Status = TrialStatus("Continuing the planned path and returning to zero; this trial will be unsuccessful.");
+		}
+
+		private string TrialStatus(string action)
+		{
+			return m_TrialOutcome.HasExpectedMiss ? $"Missed grasp: {m_TrialOutcome.Reason} {action}" : action;
 		}
 
 		private void Abort(string reason)
@@ -671,12 +880,18 @@ namespace OfficePipers
 				{
 					Send(position, rotation.EulerAngles, 0.2f);
 				}
-				if (m_Task != null && m_Task.EpisodeActive)
+				if (!m_RelayManaged && m_Task != null && m_Task.EpisodeActive)
 				{
 					m_Task.FinishUnsuccessfully();
 				}
 			}
-			Status = reason;
+			if (m_RelayManaged)
+			{
+				RelayLegComplete = true;
+				RelayLegSuccessful = false;
+				RelayLegFaulted = true;
+			}
+			Status = m_TrialOutcome.HasExpectedMiss ? $"{reason} Earlier task warning: {m_TrialOutcome.Reason}" : reason;
 		}
 
 		private bool ValidSettings()
@@ -689,7 +904,8 @@ namespace OfficePipers
 					return false;
 				}
 			}
-			return DurationScale >= 1f && MaximumEpisodes >= 0 && float.IsFinite(HomeToleranceDegrees) && HomeToleranceDegrees > 0f && HomeToleranceDegrees <= 2f
+			return DurationScale >= 1f && MaximumEpisodes >= 0 && ActuatorOffset >= 0 && JointPrefix != null && MotionInputPrefix != null
+				&& float.IsFinite(HomeToleranceDegrees) && HomeToleranceDegrees > 0f && HomeToleranceDegrees <= 2f
 				&& float.IsFinite(RadialApproachPitchDegrees) && MathF.Abs(RadialApproachPitchDegrees) <= 45f
 				&& float.IsFinite(GraspForwardOffsetMm) && GraspForwardOffsetMm >= 0f && GraspForwardOffsetMm <= 50f
 				&& float.IsFinite(GraspOffsetY) && float.IsFinite(GraspOrientationDegrees.X) && float.IsFinite(GraspOrientationDegrees.Y) && float.IsFinite(GraspOrientationDegrees.Z)
@@ -698,9 +914,51 @@ namespace OfficePipers
 	}
 
 	internal enum TubePlayCommand { None, Prepare, Begin, Run, Home }
+	internal enum TubeTrialResult { NotReady, Successful, Unsuccessful }
+
+	internal sealed class TubeTrialOutcome
+	{
+		public string Reason { get; private set; } = "";
+		public bool HasExpectedMiss => Reason.Length != 0;
+		public void Reset() { Reason = ""; }
+		public void RecordExpectedMiss(string reason)
+		{
+			if (!HasExpectedMiss && !string.IsNullOrWhiteSpace(reason)) Reason = reason;
+		}
+		public string PhaseKind(string kind) => HasExpectedMiss ? "missed-grasp-" + kind : kind;
+		public TubeTrialResult Resolve(bool homeReady, bool placementComplete)
+		{
+			if (!homeReady) return TubeTrialResult.NotReady;
+			if (HasExpectedMiss) return TubeTrialResult.Unsuccessful;
+			return placementComplete ? TubeTrialResult.Successful : TubeTrialResult.NotReady;
+		}
+	}
 
 	internal static class TubeGraspGeometry
 	{
+		public static bool TryMeasuredReference(Vector3 contactWorld, Vector3 objectWorld, Quaternion wristRotation,
+			Vector3 plannedReference, out Vector3 measuredReference)
+		{
+			measuredReference = Vector3.Zero;
+			if (!Finite(contactWorld) || !Finite(objectWorld) || !Finite(plannedReference) ||
+				!float.IsFinite(wristRotation.X) || !float.IsFinite(wristRotation.Y) ||
+				!float.IsFinite(wristRotation.Z) || !float.IsFinite(wristRotation.W)) return false;
+			float norm = wristRotation.X * wristRotation.X + wristRotation.Y * wristRotation.Y +
+				wristRotation.Z * wristRotation.Z + wristRotation.W * wristRotation.W;
+			if (MathF.Abs(norm - 1f) > 0.001f) return false;
+			measuredReference = wristRotation.Conjugate * (contactWorld - objectWorld);
+			// A small, measured grasp-depth/centering correction is allowed. A remote
+			// object or inconsistent transform must not turn a failed grasp into a target.
+			return Finite(measuredReference) && measuredReference.Length() <= 0.100f &&
+				(measuredReference - plannedReference).Length() <= 0.050f;
+		}
+
+		public static Vector3 RetargetSite(Vector3 originalSiteTarget, Quaternion targetWristRotation,
+			Vector3 correctionInWrist, Vector3 nominalContactOffset) =>
+			originalSiteTarget + targetWristRotation * correctionInWrist - nominalContactOffset;
+
+		private static bool Finite(Vector3 point) => float.IsFinite(point.X) && float.IsFinite(point.Y) && float.IsFinite(point.Z);
+
 		public static bool TryForwardOffsetInWrist(Quaternion graspWristRotation, float offsetMm, out Vector3 offsetInWrist)
 		{
 			offsetInWrist = Vector3.Zero;
@@ -746,6 +1004,11 @@ namespace OfficePipers
 
 	internal static class TubeHomeMotion
 	{
+        public static bool CanClaimNamedGripper(string actuatorName, string prefix, uint actuatorIndex, uint expectedIndex,
+            int transmissionJoint, uint firstJoint, uint secondJoint, bool policyOwned, bool graphOwned, bool ownedByThisDriver) =>
+            actuatorName == prefix + "gripper" && actuatorIndex == expectedIndex && firstJoint != uint.MaxValue && secondJoint != uint.MaxValue &&
+            firstJoint != secondJoint && transmissionJoint == (int)firstJoint && !policyOwned && (graphOwned || ownedByThisDriver);
+
         public static bool CanClaimGripper(string actuatorName, uint actuatorIndex, int transmissionJoint,
             uint firstJoint, uint secondJoint, bool policyOwned, bool graphOwned, bool ownedByThisDriver) =>
             actuatorName == "gripper" && actuatorIndex == 6 && firstJoint != uint.MaxValue && secondJoint != uint.MaxValue &&
