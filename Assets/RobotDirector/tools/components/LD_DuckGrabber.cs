@@ -376,7 +376,7 @@ namespace LuckyExporter
 			Vector3 jaws = GripFrame(target) * new Vector3(FingerReach, 0.0f, 0.0f);
 			foreach (Entity other in others)
 			{
-				if (other.Handle == target.Handle)
+				if (other.Id() == target.Id())
 					continue;
 				Vector3 from = other.Transform.WorldTranslation;
 				Vector3 to = GripPosition(other);
@@ -398,7 +398,7 @@ namespace LuckyExporter
 
 		private bool IsCandidate(Entity entity, Entity?[] excluded)
 		{
-			if (entity.Handle == Handle || IsUnder(entity, Box))
+			if (entity.Id() == this.Id() || IsUnder(entity, Box))
 				return false;
 			foreach (Entity? root in excluded)
 				if (IsUnder(entity, root))
@@ -427,7 +427,7 @@ namespace LuckyExporter
 			if (root is null)
 				return false;
 			for (Entity? e = entity; e is not null; e = e.Parent)
-				if (e.Handle == root.Handle)
+				if (e.Id() == root.Id())
 					return true;
 			return false;
 		}

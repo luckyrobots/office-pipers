@@ -261,7 +261,7 @@ namespace OfficePipers
 		protected override void OnUpdate(float deltaTime)
 		{
 			if ((m_State == State.QualifyingSource || m_State == State.Settling || m_State == State.Ready || m_State == State.BeginQueued || m_State == State.PublishingStart || m_State == State.ValidationBeginQueued || m_State == State.Active || m_State == State.EndQueued)
-				&& Scene.FindEntityByHandle((EntityHandle)m_WorldEntityId) == null)
+				&& EntityIdCompat.Find(m_WorldEntityId) == null)
 			{
 				Fail("The prepared physics world was removed. This episode cannot continue.");
 				return;
@@ -401,7 +401,7 @@ namespace OfficePipers
 
 		private bool Configure()
 		{
-			if (PhysicsWorld == null || Scene.FindEntityByHandle(PhysicsWorld.Handle) == null || (m_World = PhysicsWorld.GetComponent<MujocoSceneComponent>()) == null)
+			if (PhysicsWorld == null || EntityIdCompat.Find(PhysicsWorld.Id()) == null || (m_World = PhysicsWorld.GetComponent<MujocoSceneComponent>()) == null)
 			{
 				Fail("Assign the MuJoCo scene containing the free tube body, not a generated body entity.");
 				return false;
@@ -412,7 +412,7 @@ namespace OfficePipers
 				Fail("The named tube must exist and have a free joint in the assigned world.");
 				return false;
 			}
-			if (ActiveRobotBase == null || Scene.FindEntityByHandle(ActiveRobotBase.Handle) == null)
+			if (ActiveRobotBase == null || EntityIdCompat.Find(ActiveRobotBase.Id()) == null)
 			{
 				Fail("Assign the active robot base before preparing a start.");
 				return false;
@@ -437,7 +437,7 @@ namespace OfficePipers
 			m_Spawn.GoalExclusionRadius = GoalExclusionRadius; m_Spawn.MaximumBaseDistance = MaximumBaseDistance; m_Spawn.BaseExclusionRadius = BaseExclusionRadius;
 			m_Spawn.BaseCount = 0;
 			AddBase(ActiveRobotBase); AddBase(OtherRobotBase1); AddBase(OtherRobotBase2); AddBase(OtherRobotBase3);
-			m_WorldEntityId = (ulong)PhysicsWorld.Handle;
+			m_WorldEntityId = PhysicsWorld.Id();
 			m_PreparedSeed = Seed; m_PreparedOrdinal = EpisodeNumber; m_PreparedTaskIndex = TaskIndex;
 			m_DeskY = DeskSurfaceY; m_TubeHeight = TubeHeight; m_TubeDiameter = TubeDiameter; m_TubeMass = TubeMassKg;
 			m_SettleSeconds = SettleSeconds; m_MinimumLift = MinimumLift; m_GoalTolerance = GoalTolerance; m_StableSeconds = StableSeconds;
@@ -447,7 +447,7 @@ namespace OfficePipers
 
 		private void AddBase(Entity? entity)
 		{
-			if (entity != null && Scene.FindEntityByHandle(entity.Handle) != null)
+			if (entity != null && EntityIdCompat.Find(entity.Id()) != null)
 			{
 				Vector3 position = entity.Transform.WorldTranslation;
 				m_Spawn.Bases[m_Spawn.BaseCount++] = new TubeDeskPoint(position.X + DeskWidth * 0.5f, position.Z + DeskDepth * 0.5f);
@@ -456,7 +456,7 @@ namespace OfficePipers
 
 		private void ResetTube()
 		{
-			if (Observer.IsEpisodeOpen || Scene.FindEntityByHandle((EntityHandle)m_WorldEntityId) == null)
+			if (Observer.IsEpisodeOpen || EntityIdCompat.Find(m_WorldEntityId) == null)
 			{
 				Fail("Cannot reset while an episode is open or task setup is invalid.");
 				return;
@@ -469,7 +469,7 @@ namespace OfficePipers
 			// The tube's authored local up is native +Z. Preserve that basis while applying the requested world heading.
 			Quaternion nativeRotation = axis * worldYaw * axis.Conjugate;
 			m_World.WeldBody(m_TubeBody, axis * (m_Start - m_World.GetSceneTranslation()), nativeRotation, persistent: false);
-			if (StartMarkerTemplate != null && Scene.FindEntityByHandle(StartMarkerTemplate.Handle) != null)
+			if (StartMarkerTemplate != null && EntityIdCompat.Find(StartMarkerTemplate.Id()) != null)
 			{
 				StaticMeshComponent? template = StartMarkerTemplate.GetComponent<StaticMeshComponent>();
 				if (template != null)

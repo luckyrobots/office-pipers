@@ -1,0 +1,622 @@
+Assets:
+  - Handle: 250689218347405114
+    FilePath: Meshes/Default/Cube.hsmesh
+    Type: StaticMesh
+  - Handle: 259134289238189227
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_tube_part_5.obj
+    Type: MeshSource
+  - Handle: 352484246117583223
+    FilePath: Scripts/Client/Source/WoodFillerTask.cs
+    Type: ScriptFile
+  - Handle: 526694582090874723
+    FilePath: ContentVault/Robots/PiperPod/assets/link1.stl
+    Type: MeshSource
+  - Handle: 594492153730652421
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/native-v2-resource-manifest.json
+    Type: Motion
+  - Handle: 620653749277832698
+    FilePath: ContentVault/Robots/PiperPod/assets/link5_2.obj
+    Type: MeshSource
+  - Handle: 693915765403017762
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_10.obj
+    Type: MeshSource
+  - Handle: 875899281547973077
+    FilePath: ContentVault/Robots/PiperPod/piper.png
+    Type: Texture
+  - Handle: 1405127195738257702
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/editable-package/generations/d8bb0cf5cb9e6778803792434a0a5e8966003b18bebaa298f73e88f6a0f108e8/sources/minwax-native-v2e-source/minwax-open-preview.hpodgraph
+    Type: PodGraph
+  - Handle: 1448616263118686012
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_tube_part_4.obj
+    Type: MeshSource
+  - Handle: 1478037372748636434
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/parts-zup/wood_filler_cap.glb
+    Type: MeshSource
+  - Handle: 1486265577804663814
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_4.obj
+    Type: MeshSource
+  - Handle: 1531971887443159063
+    FilePath: Meshes/Default/Source/Cone.gltf
+    Type: MeshSource
+  - Handle: 1753530776980976753
+    FilePath: ContentVault/Robots/PiperPod/MINWAX-CONTACT-QUALIFICATION.json
+    Type: Motion
+  - Handle: 1760999583722172733
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_23.obj
+    Type: MeshSource
+  - Handle: 1761399664663822562
+    FilePath: Materials/Right rear base to long edge - 2 cm_Material.hmaterial
+    Type: Material
+  - Handle: 1876074234004956456
+    FilePath: Meshes/Default/Source/Octahedron.glb
+    Type: MeshSource
+  - Handle: 1959052287715013197
+    FilePath: Minwax-native-v2e/source/minwax-closed-assembly.hpodgraph
+    Type: PodGraph
+  - Handle: 2006915032179051414
+    FilePath: Meshes/Default/Source/Cylinder.gltf
+    Type: MeshSource
+  - Handle: 2194869184900406644
+    FilePath: ContentVault/Robots/PiperPod/assets/link5_4.obj
+    Type: MeshSource
+  - Handle: 2215701754515872058
+    FilePath: Materials/Right rear base to long edge - 2 cm tick 0_Material.hmaterial
+    Type: Material
+  - Handle: 2368366727832462911
+    FilePath: Meshes/Default/Source/Sphere.gltf
+    Type: MeshSource
+  - Handle: 2399306204651453751
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-scan/minwax_contact_cap.obj
+    Type: MeshSource
+  - Handle: 2420340430536552646
+    FilePath: Minwax-native-v2e/source/resources/minwax-label-metallic-roughness.png
+    Type: Texture
+  - Handle: 2421335652437922505
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_tube_part_2.obj
+    Type: MeshSource
+  - Handle: 2466370343862279360
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_0.obj
+    Type: MeshSource
+  - Handle: 2502989788228580563
+    FilePath: ContentVault/Robots/PiperPod/assets/link5.stl
+    Type: MeshSource
+  - Handle: 2514239509048153825
+    FilePath: ContentVault/Robots/PiperPod/assets/tube-task/tube_visual_2.obj
+    Type: MeshSource
+  - Handle: 2520926221525320099
+    FilePath: ContentVault/Robots/PiperPod/assets/link5_5.obj
+    Type: MeshSource
+  - Handle: 2641161077401169990
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-scan/minwax_contact_shoulder.obj
+    Type: MeshSource
+  - Handle: 2678531298207190943
+    FilePath: ContentVault/Robots/PiperPod/assets/link4_2.obj
+    Type: MeshSource
+  - Handle: 2681914507721366366
+    FilePath: Office-wall-compatible/source/wall.hpodgraph
+    Type: PodGraph
+  - Handle: 2745520658226981126
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_30.obj
+    Type: MeshSource
+  - Handle: 2821952973973948899
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_31.obj
+    Type: MeshSource
+  - Handle: 2843790049424090759
+    FilePath: Materials/Default/GroundMaterial.hmaterial
+    Type: Material
+  - Handle: 2853621063550669776
+    FilePath: Office-wall-distance/source/wall-distance.hpodgraph
+    Type: PodGraph
+  - Handle: 2894965690087613193
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_1.obj
+    Type: MeshSource
+  - Handle: 2919745299668256764
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_11.obj
+    Type: MeshSource
+  - Handle: 2930216636289633331
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_0.obj
+    Type: MeshSource
+  - Handle: 3060791943046170059
+    FilePath: Minwax-native-v2d/source/resources/minwax-label-basecolor.png
+    Type: Texture
+  - Handle: 3115946984633546091
+    FilePath: DeskMeasurements/source/desk-dimensions.hpodgraph
+    Type: PodGraph
+  - Handle: 3129850405793711231
+    FilePath: Scripts/Client/obj/OfficePipers.csproj.nuget.dgspec.json
+    Type: Motion
+  - Handle: 3150534146242320821
+    FilePath: Office-poster/source/poster.hpodgraph
+    Type: PodGraph
+  - Handle: 3361725560923802132
+    FilePath: ContentVault/Robots/PiperPod/MINWAX-NATIVE-V2-PHYSICS.json
+    Type: Motion
+  - Handle: 3368033531105313829
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_cap_part_7.obj
+    Type: MeshSource
+  - Handle: 3382132582850053708
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_tube_part_0.obj
+    Type: MeshSource
+  - Handle: 3437527711637359375
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_cap_part_10.obj
+    Type: MeshSource
+  - Handle: 3454066778424922938
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_7.obj
+    Type: MeshSource
+  - Handle: 3663669837522459598
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_11.obj
+    Type: MeshSource
+  - Handle: 3978287033080725840
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_26.obj
+    Type: MeshSource
+  - Handle: 4034737050631566671
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_29.obj
+    Type: MeshSource
+  - Handle: 4186327929764818267
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/parts-zup/wood_filler_tube.glb
+    Type: MeshSource
+  - Handle: 4362554783215104960
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/parts-yup/wood_filler_cap.glb
+    Type: MeshSource
+  - Handle: 4425065835975007075
+    FilePath: Scenes/TubePickPlaceNative.hscene
+    Type: Scene
+  - Handle: 4519480607831565884
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_17.obj
+    Type: MeshSource
+  - Handle: 4550192396066658904
+    FilePath: ContentVault/Robots/PiperPod/assets/gripper_left_link.STL
+    Type: MeshSource
+  - Handle: 4598195093466150422
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_25.obj
+    Type: MeshSource
+  - Handle: 4656501908116466724
+    FilePath: Materials/Right front base to long edge - 2 cm tick 0_Material.hmaterial
+    Type: Material
+  - Handle: 4743811808792496810
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_gray.stl
+    Type: MeshSource
+  - Handle: 5016436654895027201
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_22.obj
+    Type: MeshSource
+  - Handle: 5032321335553137395
+    FilePath: ContentVault/Robots/PiperPod/assets/gripper_base_link.STL
+    Type: MeshSource
+  - Handle: 5056179909126484047
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_15.obj
+    Type: MeshSource
+  - Handle: 5163889568028190973
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_21.obj
+    Type: MeshSource
+  - Handle: 5252809685641441340
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/editable-package/generations/d8bb0cf5cb9e6778803792434a0a5e8966003b18bebaa298f73e88f6a0f108e8/sources/minwax-native-v2e-source/minwax-closed-assembly.hpodgraph
+    Type: PodGraph
+  - Handle: 5321828790954223113
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_16.obj
+    Type: MeshSource
+  - Handle: 5386793035608595844
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_cap_part_3.obj
+    Type: MeshSource
+  - Handle: 5824439927363048790
+    FilePath: Scripts/Intermediates/Debug/OfficePipers.AssemblyInfo.cs
+    Type: ScriptFile
+  - Handle: 5857175528674191907
+    FilePath: Materials/Right rear base to long edge - 2 cm tick 1_Material.hmaterial
+    Type: Material
+  - Handle: 5878531963344192408
+    FilePath: Scripts/Client/Source/WoodFillerTrajectory.cs
+    Type: ScriptFile
+  - Handle: 5924396790781435573
+    FilePath: Office-conduit/source/conduit.hpodgraph
+    Type: PodGraph
+  - Handle: 5940163053195496448
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_5.obj
+    Type: MeshSource
+  - Handle: 6085573975625782741
+    FilePath: ContentVault/Robots/PiperPod/assets/link2.stl
+    Type: MeshSource
+  - Handle: 6093406880222789264
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_13.obj
+    Type: MeshSource
+  - Handle: 6180894646230013805
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_8.obj
+    Type: MeshSource
+  - Handle: 6456721797636705973
+    FilePath: Scenes/TubePickPlace.hscene
+    Type: Scene
+  - Handle: 6458808076156151913
+    FilePath: ContentVault/Robots/PiperPod/assets/gripper_right_link.STL
+    Type: MeshSource
+  - Handle: 6473814984732217050
+    FilePath: ContentVault/Robots/PiperPod/assets/link5_6.obj
+    Type: MeshSource
+  - Handle: 6495728850210644363
+    FilePath: Materials/Cross to left edge - 90.5 cm_Material.hmaterial
+    Type: Material
+  - Handle: 6540253994595223967
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_tube_part_3.obj
+    Type: MeshSource
+  - Handle: 6626725561023410246
+    FilePath: ContentVault/Robots/PiperPod/MINWAX-SCAN-PROVENANCE.json
+    Type: Motion
+  - Handle: 6760532695908039702
+    FilePath: ContentVault/Robots/PiperPod/assets/link4.stl
+    Type: MeshSource
+  - Handle: 6774139712511550667
+    FilePath: Minwax-native-v2e/source/minwax-open-preview.hpodgraph
+    Type: PodGraph
+  - Handle: 6806104188599745598
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_12.obj
+    Type: MeshSource
+  - Handle: 6848925520630909875
+    FilePath: ContentVault/Robots/PiperPod/assets/link7.stl
+    Type: MeshSource
+  - Handle: 6915239972613882243
+    FilePath: Materials/Cross to right edge - 49.5 cm tick 1_Material.hmaterial
+    Type: Material
+  - Handle: 6981711009250017927
+    FilePath: ContentVault/Robots/PiperPod/assets/link8.stl
+    Type: MeshSource
+  - Handle: 7135065919120127186
+    FilePath: Materials/Cross to left edge - 90.5 cm tick 0_Material.hmaterial
+    Type: Material
+  - Handle: 7292385054424024450
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_10.obj
+    Type: MeshSource
+  - Handle: 7315231908342853758
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_4.obj
+    Type: MeshSource
+  - Handle: 7466248465654415558
+    FilePath: Materials/Cross to right edge - 49.5 cm_Material.hmaterial
+    Type: Material
+  - Handle: 7610932276304020895
+    FilePath: Materials/Cross to back long edge - 35 cm tick 1_Material.hmaterial
+    Type: Material
+  - Handle: 7664065505689698019
+    FilePath: ContentVault/Robots/PiperPod/assets/link5_8.obj
+    Type: MeshSource
+  - Handle: 7837668106423190841
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_6.obj
+    Type: MeshSource
+  - Handle: 7857220418291104101
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_28.obj
+    Type: MeshSource
+  - Handle: 7915971072927694044
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_26.obj
+    Type: MeshSource
+  - Handle: 7939902007737236613
+    FilePath: Meshes/Default/Source/Torus.gltf
+    Type: MeshSource
+  - Handle: 7997192225146930648
+    FilePath: ContentVault/Robots/PiperPod/MG_Piper.hpodgraph
+    Type: PodGraph
+  - Handle: 8015385716643153388
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_18.obj
+    Type: MeshSource
+  - Handle: 8466081979020718243
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_8.obj
+    Type: MeshSource
+  - Handle: 8480801999365980528
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_cap_part_4.obj
+    Type: MeshSource
+  - Handle: 8630834807138590441
+    FilePath: ContentVault/Robots/PiperPod/assets/link5_7.obj
+    Type: MeshSource
+  - Handle: 8878184747432846606
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_17.obj
+    Type: MeshSource
+  - Handle: 9018613271823243536
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_3.obj
+    Type: MeshSource
+  - Handle: 9045350223118474113
+    FilePath: ContentVault/Robots/PiperPod/piper_mount_180.xml
+    Type: MujocoScene
+  - Handle: 9064908934462289350
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_cap_part_8.obj
+    Type: MeshSource
+  - Handle: 9222242270338635874
+    FilePath: Minwax-native-v2c/source/minwax-open-preview.hpodgraph
+    Type: PodGraph
+  - Handle: 9267719440996487417
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_23.obj
+    Type: MeshSource
+  - Handle: 9484785196988871113
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/label-artwork-source/artwork-validation.json
+    Type: Motion
+  - Handle: 9525124580414323642
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/resources/minwax-label-basecolor.png
+    Type: Texture
+  - Handle: 9583409683442581881
+    FilePath: Materials/Cross to left edge - 90.5 cm tick 1_Material.hmaterial
+    Type: Material
+  - Handle: 9771243514717365706
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_24.obj
+    Type: MeshSource
+  - Handle: 9837192455660738894
+    FilePath: ContentVault/Robots/PiperPod/piper.xml
+    Type: MujocoScene
+  - Handle: 9894541335289534682
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_5.obj
+    Type: MeshSource
+  - Handle: 10072318580666095257
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-scan/minwax-render-texture.png
+    Type: Texture
+  - Handle: 10143971762556516316
+    FilePath: Minwax-native-v2c/source/resources/minwax-label-basecolor.png
+    Type: Texture
+  - Handle: 10229424739279192852
+    FilePath: Materials/Right front base to long edge - 2 cm_Material.hmaterial
+    Type: Material
+  - Handle: 10335604166150841874
+    FilePath: Office-speaker/source/speaker.hpodgraph
+    Type: PodGraph
+  - Handle: 10540296953092155553
+    FilePath: ContentVault/Robots/PiperPod/piper_tube_task_native_v2.xml
+    Type: MujocoScene
+  - Handle: 10618586166899565660
+    FilePath: Office-wall/source/wall.hpodgraph
+    Type: PodGraph
+  - Handle: 10681518433010881281
+    FilePath: Office-lumina-shell/source/lumina-shell.hpodgraph
+    Type: PodGraph
+  - Handle: 10727199100255087241
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_19.obj
+    Type: MeshSource
+  - Handle: 10738487725456732092
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-scan/minwax_contact_body.obj
+    Type: MeshSource
+  - Handle: 10742683059089310438
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-scan/minwax_contact_sealed_upper.obj
+    Type: MeshSource
+  - Handle: 11076615510312780926
+    FilePath: ContentVault/Robots/PiperPod/assets/base_link.stl
+    Type: MeshSource
+  - Handle: 11116977230823516908
+    FilePath: Materials/Tube start guide template - hidden below floor_Material.hmaterial
+    Type: Material
+  - Handle: 11131455110904885367
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_13.obj
+    Type: MeshSource
+  - Handle: 11365720087628902523
+    FilePath: ContentVault/Robots/PiperPod/assets/link6.stl
+    Type: MeshSource
+  - Handle: 11413068095151945238
+    FilePath: Materials/Cross to right edge - 49.5 cm tick 0_Material.hmaterial
+    Type: Material
+  - Handle: 11641222755877881477
+    FilePath: Office-speaker-station/source/speaker-station.hpodgraph
+    Type: PodGraph
+  - Handle: 11919821727265326460
+    FilePath: ContentVault/Robots/PiperPod/assets/tube-task/tube_visual_0.obj
+    Type: MeshSource
+  - Handle: 11954152496923314992
+    FilePath: Minwax-native-v2c/source/minwax-closed-assembly.hpodgraph
+    Type: PodGraph
+  - Handle: 12057650915877162738
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_2.obj
+    Type: MeshSource
+  - Handle: 12075599151238991813
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_27.obj
+    Type: MeshSource
+  - Handle: 12138925381386203449
+    FilePath: ContentVault/Robots/PiperPod/assets/link4_4.obj
+    Type: MeshSource
+  - Handle: 12345523425212335016
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/editable-package/generations/d8bb0cf5cb9e6778803792434a0a5e8966003b18bebaa298f73e88f6a0f108e8/sources/minwax-native-v2e-source/resources/minwax-label-basecolor.png
+    Type: Texture
+  - Handle: 12443875567728101675
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_red.stl
+    Type: MeshSource
+  - Handle: 12495749046389925092
+    FilePath: Materials/Cross to back long edge - 35 cm_Material.hmaterial
+    Type: Material
+  - Handle: 12515445372063658252
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_28.obj
+    Type: MeshSource
+  - Handle: 12679011806724008933
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_cap_part_5.obj
+    Type: MeshSource
+  - Handle: 12945691810782398766
+    FilePath: Minwax-native-v2d/source/minwax-open-preview.hpodgraph
+    Type: PodGraph
+  - Handle: 13075887883396422420
+    FilePath: Office-computer-desk/source/computer-desk.hpodgraph
+    Type: PodGraph
+  - Handle: 13134208951518538826
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/editable-package/generations/d8bb0cf5cb9e6778803792434a0a5e8966003b18bebaa298f73e88f6a0f108e8/sources/minwax-native-v2e-source/resources/minwax-label-metallic-roughness.png
+    Type: Texture
+  - Handle: 13155140852263400311
+    FilePath: Scripts/Client/Source/WoodFillerDemonstrator.cs
+    Type: ScriptFile
+  - Handle: 13184558545043984578
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_27.obj
+    Type: MeshSource
+  - Handle: 13302819917359195193
+    FilePath: Meshes/Default/Source/Cube.gltf
+    Type: MeshSource
+  - Handle: 13352425267748844820
+    FilePath: Scripts/Client/obj/project.assets.json
+    Type: Motion
+  - Handle: 13456573925425346726
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_22.obj
+    Type: MeshSource
+  - Handle: 13519310678750187540
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_20.obj
+    Type: MeshSource
+  - Handle: 13524124451288768120
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_14.obj
+    Type: MeshSource
+  - Handle: 13622510909686208813
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_tube_part_1.obj
+    Type: MeshSource
+  - Handle: 13753908277938550211
+    FilePath: ContentVault/Robots/PiperPod/assets/link4_5.obj
+    Type: MeshSource
+  - Handle: 13780466746878147486
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-scan/minwax-tube-scan.obj
+    Type: MeshSource
+  - Handle: 13805041414551086881
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_cap_part_0.obj
+    Type: MeshSource
+  - Handle: 13846114713664776745
+    FilePath: ContentVault/Robots/PiperPod/assets/link4_3.obj
+    Type: MeshSource
+  - Handle: 13863186207550142018
+    FilePath: OfficeDesk/source/office-desk.hpodgraph
+    Type: PodGraph
+  - Handle: 13868594234013994564
+    FilePath: Scenes/Main.hscene
+    Type: Scene
+  - Handle: 13888033273458538049
+    FilePath: ContentVault/Robots/PiperPod/assets/link5_3.obj
+    Type: MeshSource
+  - Handle: 14029372073416340068
+    FilePath: Materials/Cross to back long edge - 35 cm tick 0_Material.hmaterial
+    Type: Material
+  - Handle: 14127631044621271244
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_14.obj
+    Type: MeshSource
+  - Handle: 14386195244166391887
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/minwax-assembled-yup.glb
+    Type: MeshSource
+  - Handle: 14407321009630320006
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_3.obj
+    Type: MeshSource
+  - Handle: 14461550903008722023
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_7.obj
+    Type: MeshSource
+  - Handle: 14464867727929078948
+    FilePath: Scripts/Client/Source/WoodFillerLayout.cs
+    Type: ScriptFile
+  - Handle: 14733272078956941800
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_1.obj
+    Type: MeshSource
+  - Handle: 14835661264555612749
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/resources/minwax-label-metallic-roughness.png
+    Type: Texture
+  - Handle: 14859906536399055855
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/minwax-assembled-zup.glb
+    Type: MeshSource
+  - Handle: 14896978317843989778
+    FilePath: ContentVault/Robots/PiperPod/assets/link4_6.obj
+    Type: MeshSource
+  - Handle: 14952382267400445240
+    FilePath: Minwax-native-v2d/source/minwax-closed-assembly.hpodgraph
+    Type: PodGraph
+  - Handle: 15190609544753355412
+    FilePath: Minwax-native-v2c/source/resources/minwax-label-metallic-roughness.png
+    Type: Texture
+  - Handle: 15209740281946873048
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_16.obj
+    Type: MeshSource
+  - Handle: 15272770548498173256
+    FilePath: ContentVault/Robots/PiperPod/assets/linke2_dark_gray.stl
+    Type: MeshSource
+  - Handle: 15286829632370501715
+    FilePath: Office-storage/source/storage.hpodgraph
+    Type: PodGraph
+  - Handle: 15679366940986900059
+    FilePath: ContentVault/Robots/PiperPod/assets/tube-task/tube_visual_1.obj
+    Type: MeshSource
+  - Handle: 15750766278943979757
+    FilePath: ContentVault/Robots/PiperPod/piper_tube_task.xml
+    Type: MujocoScene
+  - Handle: 15814839275352284212
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/native-material-meshes.json
+    Type: Motion
+  - Handle: 15839646625106025321
+    FilePath: Materials/Cross Z - 6 cm_Material.hmaterial
+    Type: Material
+  - Handle: 15888396518762320381
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_12.obj
+    Type: MeshSource
+  - Handle: 15921803309787374529
+    FilePath: Scripts/Intermediates/Debug/.NETCoreApp,Version=v9.0.AssemblyAttributes.cs
+    Type: ScriptFile
+  - Handle: 15982478588695492437
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_cap_part_1.obj
+    Type: MeshSource
+  - Handle: 16218160115853969461
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_cap_part_6.obj
+    Type: MeshSource
+  - Handle: 16253155042590302521
+    FilePath: ContentVault/Robots/PiperPod/scene.xml
+    Type: MujocoScene
+  - Handle: 16352959146365767066
+    FilePath: Materials/Cross X - 6 cm_Material.hmaterial
+    Type: Material
+  - Handle: 16471220951075552057
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_9.obj
+    Type: MeshSource
+  - Handle: 16653632677376176553
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_cap_part_9.obj
+    Type: MeshSource
+  - Handle: 16765950715304324569
+    FilePath: ContentVault/Robots/PiperPod/assets/link3.stl
+    Type: MeshSource
+  - Handle: 16910344939600556389
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_2.obj
+    Type: MeshSource
+  - Handle: 16953559471605514806
+    FilePath: Minwax-native-v2e/source/resources/minwax-label-basecolor.png
+    Type: Texture
+  - Handle: 17034043859418360019
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/parts-yup/wood_filler_tube.glb
+    Type: MeshSource
+  - Handle: 17047504770470549483
+    FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_cap_part_2.obj
+    Type: MeshSource
+  - Handle: 17064691536815799164
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_24.obj
+    Type: MeshSource
+  - Handle: 17079356554733158107
+    FilePath: ContentVault/Robots/PiperPod/PIKA-PROVENANCE.json
+    Type: Motion
+  - Handle: 17102084551196004276
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_9.obj
+    Type: MeshSource
+  - Handle: 17235160151817310712
+    FilePath: Meshes/Default/Cylinder.hsmesh
+    Type: StaticMesh
+  - Handle: 17406147514888267893
+    FilePath: Meshes/Default/Source/Capsule.gltf
+    Type: MeshSource
+  - Handle: 17456898388739093840
+    FilePath: Meshes/Default/Source/Plane.gltf
+    Type: MeshSource
+  - Handle: 17458008462234872272
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_15.obj
+    Type: MeshSource
+  - Handle: 17608752018747788261
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_21.obj
+    Type: MeshSource
+  - Handle: 17725697150767068270
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_19.obj
+    Type: MeshSource
+  - Handle: 17805611840143555567
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_20.obj
+    Type: MeshSource
+  - Handle: 17842738615162732136
+    FilePath: ContentVault/Robots/PiperPod/assets/link2_25.obj
+    Type: MeshSource
+  - Handle: 17911571909545315377
+    FilePath: ContentVault/WoodFillerTube/source/wood-filler-tube.hpodgraph
+    Type: PodGraph
+  - Handle: 17915948136500242631
+    FilePath: Materials/3 mm reference callout_Material.hmaterial
+    Type: Material
+  - Handle: 18049615802942961209
+    FilePath: Minwax-native-v2d/source/resources/minwax-label-metallic-roughness.png
+    Type: Texture
+  - Handle: 18104742691688337708
+    FilePath: Scripts/Intermediates/Debug/OfficePipers.sourcelink.json
+    Type: Motion
+  - Handle: 18193959768775526692
+    FilePath: Materials/Right base short edge - 3 mm reference_Material.hmaterial
+    Type: Material
+  - Handle: 18325620018606528250
+    FilePath: ContentVault/Robots/PiperPod/assets/link3_18.obj
+    Type: MeshSource
+  - Handle: 18365816825056427198
+    FilePath: Materials/Right front base to long edge - 2 cm tick 1_Material.hmaterial
+    Type: Material

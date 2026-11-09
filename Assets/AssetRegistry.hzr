@@ -1,55 +1,184 @@
 Assets:
+  - Handle: 16428312943318637
+    FilePath: LuckyExporter/Meshes/SM_link2_25.glb
+    Type: MeshSource
+  - Handle: 57133776494239696
+    FilePath: LuckyExporter/Materials/M_material_0_007.hmaterial
+    Type: Material
+  - Handle: 115602662767516497
+    FilePath: LuckyExporter/Materials/M_painted_plaster_wall.hmaterial
+    Type: Material
+  - Handle: 118997070145456487
+    FilePath: LuckyExporter/Materials/M_material_2.hmaterial
+    Type: Material
+  - Handle: 125609225351212948
+    FilePath: LuckyExporter/Meshes/SM_link3_26.hsmesh
+    Type: StaticMesh
+  - Handle: 132763139602129310
+    FilePath: LuckyExporter/Materials/M_Cross_to_back_long_edge_-_35_cm_Material.hmaterial
+    Type: Material
+  - Handle: 156391077540838294
+    FilePath: LuckyExporter/Meshes/SM_link3_2.hsmesh
+    Type: StaticMesh
+  - Handle: 172578922562140827
+    FilePath: LuckyExporter/Materials/M_material_2_006.hmaterial
+    Type: Material
   - Handle: 198524376200812809
     FilePath: Meshes/ORDNING+Dish+drainer.hsmesh
     Type: StaticMesh
+  - Handle: 224943004854490314
+    FilePath: LuckyExporter/Textures/T_Image_0.png
+    Type: Texture
   - Handle: 250689218347405114
     FilePath: Meshes/Default/Cube.hsmesh
     Type: StaticMesh
+  - Handle: 253948036154923971
+    FilePath: LuckyExporter/Meshes/SM_link3_19.glb
+    Type: MeshSource
   - Handle: 259134289238189227
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_tube_part_5.obj
     Type: MeshSource
+  - Handle: 315022895061925917
+    FilePath: LuckyExporter/Materials/M_Cross_to_left_edge_-_90_5_cm_tick_0_Material.hmaterial
+    Type: Material
   - Handle: 352484246117583223
     FilePath: Scripts/Client/Source/WoodFillerTask.cs
     Type: ScriptFile
   - Handle: 368775574012224510
     FilePath: Scripts/Binaries/OfficePipers.deps.json
     Type: Motion
+  - Handle: 424858554649044246
+    FilePath: LuckyExporter/Textures/T_Image_2.png
+    Type: Texture
+  - Handle: 455039173104322355
+    FilePath: LuckyExporter/Meshes/SM_link2_23.hsmesh
+    Type: StaticMesh
+  - Handle: 470422090366553854
+    FilePath: LuckyExporter/Meshes/SM_Dimension_140_cm.hsmesh
+    Type: StaticMesh
+  - Handle: 505151365175966495
+    FilePath: LuckyExporter/Materials/M_material_14_001.hmaterial
+    Type: Material
+  - Handle: 516560172296591723
+    FilePath: LuckyExporter/Textures/T_Image_1_003.png
+    Type: Texture
   - Handle: 526694582090874723
     FilePath: ContentVault/Robots/PiperPod/assets/link1.stl
     Type: MeshSource
+  - Handle: 562690453586638350
+    FilePath: LuckyExporter/Materials/M_Material_0_1.hmaterial
+    Type: Material
+  - Handle: 573103668334394580
+    FilePath: LuckyExporter/Meshes/SM_link3_25.glb
+    Type: MeshSource
+  - Handle: 584453515821994298
+    FilePath: LuckyExporter/Meshes/SM_link4_3.glb
+    Type: MeshSource
+  - Handle: 585214675958068597
+    FilePath: LuckyExporter/Meshes/SM_link2_16.hsmesh
+    Type: StaticMesh
   - Handle: 594492153730652421
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/native-v2-resource-manifest.json
     Type: Motion
+  - Handle: 606098713888553082
+    FilePath: LuckyExporter/Meshes/SM_SM_LD_Waypoint.glb
+    Type: MeshSource
+  - Handle: 616843504962315582
+    FilePath: LuckyExporter/Materials/M_Piper_gray_mat.hmaterial
+    Type: Material
   - Handle: 620653749277832698
     FilePath: ContentVault/Robots/PiperPod/assets/link5_2.obj
     Type: MeshSource
   - Handle: 636354898109013385
     FilePath: RobotDirector/prefabs/LuckyDirector.hprefab
     Type: Prefab
+  - Handle: 661999608780195700
+    FilePath: LuckyExporter/Meshes/SM_Mesh_0_3.hsmesh
+    Type: StaticMesh
   - Handle: 693915765403017762
     FilePath: ContentVault/Robots/PiperPod/assets/link2_10.obj
+    Type: MeshSource
+  - Handle: 700781809949497971
+    FilePath: LuckyExporter/Meshes/SM_link3_28.glb
+    Type: MeshSource
+  - Handle: 706197365942632060
+    FilePath: LuckyExporter/Meshes/SM_OSTBIT_Plate_Holder.hsmesh
+    Type: StaticMesh
+  - Handle: 717887323922134041
+    FilePath: LuckyExporter/Meshes/SM_link3_1.glb
+    Type: MeshSource
+  - Handle: 747636719433396561
+    FilePath: LuckyExporter/Meshes/SM_link3_23.glb
+    Type: MeshSource
+  - Handle: 772089721403190040
+    FilePath: LuckyExporter/Meshes/SM_SM_LD_Waypoint.hsmesh
+    Type: StaticMesh
+  - Handle: 814162934644119290
+    FilePath: LuckyExporter/Meshes/SM_link2_31.glb
+    Type: MeshSource
+  - Handle: 832614573936385963
+    FilePath: LuckyExporter/Meshes/SM_link2_13.glb
     Type: MeshSource
   - Handle: 875899281547973077
     FilePath: ContentVault/Robots/PiperPod/piper.png
     Type: Texture
+  - Handle: 897903034015343149
+    FilePath: LuckyExporter/Meshes/SM_link2_5.glb
+    Type: MeshSource
+  - Handle: 956049043279966210
+    FilePath: LuckyExporter/Meshes/SM_link3_7.glb
+    Type: MeshSource
+  - Handle: 999269825184398656
+    FilePath: Scenes/ConventionScene_old_2.hscene
+    Type: Scene
+  - Handle: 1057193263409881035
+    FilePath: LuckyExporter/Materials/M_material_1.hmaterial
+    Type: Material
+  - Handle: 1119401070021795198
+    FilePath: LuckyExporter/Materials/M_material_0_006.hmaterial
+    Type: Material
   - Handle: 1138875474485037065
     FilePath: RobotDirector/assets/events/SM_LD_Event.hsmesh
     Type: StaticMesh
+  - Handle: 1144381665816936334
+    FilePath: LuckyExporter/Meshes/SM_link2_16.glb
+    Type: MeshSource
+  - Handle: 1148499284665278368
+    FilePath: LuckyExporter/Meshes/SM_Dimension_2_cm.hsmesh
+    Type: StaticMesh
+  - Handle: 1187195091956299927
+    FilePath: LuckyExporter/Meshes/SM_260_cm_-_back_edge_to_wall.glb
+    Type: MeshSource
+  - Handle: 1229356981574880911
+    FilePath: LuckyExporter/Meshes/SM_link2_30.glb
+    Type: MeshSource
   - Handle: 1311091175272998463
     FilePath: Physics/ConvexHulls/15585416788667233467-59f5091514913dbe.hchull
     Type: ConvexHull
   - Handle: 1327880545182640371
     FilePath: Physics/ConvexHulls/198524376200812809-59f5091514913dbe.hchull
     Type: ConvexHull
+  - Handle: 1401897123384237297
+    FilePath: LuckyExporter/Meshes/SM_link3_25.hsmesh
+    Type: StaticMesh
   - Handle: 1405127195738257702
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/editable-package/generations/d8bb0cf5cb9e6778803792434a0a5e8966003b18bebaa298f73e88f6a0f108e8/sources/minwax-native-v2e-source/minwax-open-preview.hpodgraph
     Type: PodGraph
   - Handle: 1426231606741906005
     FilePath: RobotDirector/assets/events/SM_LD_Close_1.hsmesh
     Type: StaticMesh
+  - Handle: 1441920426990396606
+    FilePath: LuckyExporter/Meshes/SM_speaker-station.hsmesh
+    Type: StaticMesh
   - Handle: 1448616263118686012
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_tube_part_4.obj
     Type: MeshSource
+  - Handle: 1450394599725494258
+    FilePath: LuckyExporter/Meshes/SM_link3_19.hsmesh
+    Type: StaticMesh
+  - Handle: 1460641158831765647
+    FilePath: LuckyExporter/Meshes/SM_Mesh_0_1.hsmesh
+    Type: StaticMesh
   - Handle: 1478037372748636434
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/parts-zup/wood_filler_cap.glb
     Type: MeshSource
@@ -59,6 +188,18 @@ Assets:
   - Handle: 1531971887443159063
     FilePath: Meshes/Default/Source/Cone.gltf
     Type: MeshSource
+  - Handle: 1537268985736499395
+    FilePath: LuckyExporter/Meshes/SM_gripper_left_link.glb
+    Type: MeshSource
+  - Handle: 1585227497954062400
+    FilePath: LuckyExporter/Meshes/SM_Dimension_2_cm.glb
+    Type: MeshSource
+  - Handle: 1587085785626600515
+    FilePath: LuckyExporter/Meshes/SM_link3_5.hsmesh
+    Type: StaticMesh
+  - Handle: 1702192051968358257
+    FilePath: LuckyExporter/Meshes/SM_gripper_base_link.hsmesh
+    Type: StaticMesh
   - Handle: 1737383613157403736
     FilePath: Physics/ConvexHulls/13985921990890505022-59f5091514913dbe.hchull
     Type: ConvexHull
@@ -71,27 +212,57 @@ Assets:
   - Handle: 1761399664663822562
     FilePath: Materials/Right rear base to long edge - 2 cm_Material.hmaterial
     Type: Material
+  - Handle: 1772148864258865249
+    FilePath: LuckyExporter/Meshes/SM_Right_short_edge_gap.glb
+    Type: MeshSource
+  - Handle: 1775556245742441464
+    FilePath: LuckyExporter/Meshes/SM_link5_4.hsmesh
+    Type: StaticMesh
+  - Handle: 1782240282828263092
+    FilePath: LuckyExporter/Meshes/SM_cable_2.glb
+    Type: MeshSource
+  - Handle: 1825919231906484136
+    FilePath: LuckyExporter/Meshes/SM_wall-distance.hsmesh
+    Type: StaticMesh
   - Handle: 1876074234004956456
     FilePath: Meshes/Default/Source/Octahedron.glb
     Type: MeshSource
   - Handle: 1959052287715013197
     FilePath: Minwax-native-v2e/source/minwax-closed-assembly.hpodgraph
     Type: PodGraph
+  - Handle: 1999608239808478983
+    FilePath: LuckyExporter/Meshes/SM_link3_8.hsmesh
+    Type: StaticMesh
   - Handle: 2006915032179051414
     FilePath: Meshes/Default/Source/Cylinder.gltf
     Type: MeshSource
   - Handle: 2141200713074179594
     FilePath: Physics/ConvexHulls/198524376200812809-f21191d099a31ede.hchull
     Type: ConvexHull
+  - Handle: 2166919848045470298
+    FilePath: LuckyExporter/Meshes/SM_260_cm_-_back_edge_to_wall.hsmesh
+    Type: StaticMesh
   - Handle: 2194869184900406644
     FilePath: ContentVault/Robots/PiperPod/assets/link5_4.obj
     Type: MeshSource
   - Handle: 2215701754515872058
     FilePath: Materials/Right rear base to long edge - 2 cm tick 0_Material.hmaterial
     Type: Material
+  - Handle: 2234950965696157943
+    FilePath: LuckyExporter/Textures/T_Image_2_003.png
+    Type: Texture
   - Handle: 2262844616775230472
     FilePath: Physics/ConvexHulls/13985921990890505022-1931a1c1e22b073e.hchull
     Type: ConvexHull
+  - Handle: 2268186049387976129
+    FilePath: LuckyExporter/Materials/M_material_1_006.hmaterial
+    Type: Material
+  - Handle: 2270493598999374973
+    FilePath: LuckyExporter/Meshes/SM_link3_0.hsmesh
+    Type: StaticMesh
+  - Handle: 2313954946577699130
+    FilePath: LuckyExporter/Meshes/SM_link5_8.glb
+    Type: MeshSource
   - Handle: 2335038992456282430
     FilePath: Physics/ConvexHulls/198524376200812809-39c83b321c4789fe.hchull
     Type: ConvexHull
@@ -110,9 +281,18 @@ Assets:
   - Handle: 2421335652437922505
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_tube_part_2.obj
     Type: MeshSource
+  - Handle: 2447082030974553626
+    FilePath: LuckyExporter/Meshes/SM_link3_17.hsmesh
+    Type: StaticMesh
   - Handle: 2466370343862279360
     FilePath: ContentVault/Robots/PiperPod/assets/link2_0.obj
     Type: MeshSource
+  - Handle: 2472669903584897747
+    FilePath: LuckyExporter/Materials/M_material_2_007.hmaterial
+    Type: Material
+  - Handle: 2501047780657313262
+    FilePath: LuckyExporter/Materials/M_material_1_007.hmaterial
+    Type: Material
   - Handle: 2502989788228580563
     FilePath: ContentVault/Robots/PiperPod/assets/link5.stl
     Type: MeshSource
@@ -125,6 +305,9 @@ Assets:
   - Handle: 2532208378741349526
     FilePath: RobotDirector/tools/components/LD_Waypoint.cs
     Type: ScriptFile
+  - Handle: 2610451403075382827
+    FilePath: LuckyExporter/Materials/M_material_5_004.hmaterial
+    Type: Material
   - Handle: 2641161077401169990
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-scan/minwax_contact_shoulder.obj
     Type: MeshSource
@@ -134,18 +317,36 @@ Assets:
   - Handle: 2681914507721366366
     FilePath: Office-wall-compatible/source/wall.hpodgraph
     Type: PodGraph
+  - Handle: 2728655798866927397
+    FilePath: LuckyExporter/Materials/M_3_mm_reference_callout_Material.hmaterial
+    Type: Material
+  - Handle: 2735102926063711097
+    FilePath: LuckyExporter/Meshes/SM_link3_14.hsmesh
+    Type: StaticMesh
   - Handle: 2745520658226981126
     FilePath: ContentVault/Robots/PiperPod/assets/link2_30.obj
     Type: MeshSource
+  - Handle: 2780845489691164976
+    FilePath: LuckyExporter/Materials/M_Right_front_base_to_long_edge_-_2_cm_tick_0_Material.hmaterial
+    Type: Material
+  - Handle: 2804889660578580031
+    FilePath: LuckyExporter/Meshes/SM_link1.hsmesh
+    Type: StaticMesh
   - Handle: 2821952973973948899
     FilePath: ContentVault/Robots/PiperPod/assets/link2_31.obj
     Type: MeshSource
+  - Handle: 2828082368745548367
+    FilePath: LuckyExporter/Materials/M_Right_rear_base_to_long_edge_-_2_cm_tick_0_Material.hmaterial
+    Type: Material
   - Handle: 2843790049424090759
     FilePath: Materials/Default/GroundMaterial.hmaterial
     Type: Material
   - Handle: 2853621063550669776
     FilePath: Office-wall-distance/source/wall-distance.hpodgraph
     Type: PodGraph
+  - Handle: 2883405343729956071
+    FilePath: LuckyExporter/Meshes/SM_link3_10.hsmesh
+    Type: StaticMesh
   - Handle: 2894965690087613193
     FilePath: ContentVault/Robots/PiperPod/assets/link2_1.obj
     Type: MeshSource
@@ -155,27 +356,51 @@ Assets:
   - Handle: 2930216636289633331
     FilePath: ContentVault/Robots/PiperPod/assets/link3_0.obj
     Type: MeshSource
+  - Handle: 2981983771762223955
+    FilePath: LuckyExporter/Materials/M_Piper_red_mat.hmaterial
+    Type: Material
+  - Handle: 3051939849707428413
+    FilePath: LuckyExporter/Meshes/SM_Dimension_70_cm.hsmesh
+    Type: StaticMesh
   - Handle: 3060791943046170059
     FilePath: Minwax-native-v2d/source/resources/minwax-label-basecolor.png
     Type: Texture
+  - Handle: 3071456899242184424
+    FilePath: LuckyExporter/Meshes/SM_link3_2.glb
+    Type: MeshSource
   - Handle: 3115946984633546091
     FilePath: DeskMeasurements/source/desk-dimensions.hpodgraph
     Type: PodGraph
+  - Handle: 3117312493243790394
+    FilePath: LuckyExporter/Meshes/SM_link2_0.hsmesh
+    Type: StaticMesh
   - Handle: 3129850405793711231
     FilePath: Scripts/Client/obj/OfficePipers.csproj.nuget.dgspec.json
     Type: Motion
+  - Handle: 3136846928110008565
+    FilePath: LuckyExporter/Materials/M_material_23_001.hmaterial
+    Type: Material
   - Handle: 3142097624052703784
     FilePath: Meshes/IKEA+365++Plate.fbx
     Type: MeshSource
   - Handle: 3150534146242320821
     FilePath: Office-poster/source/poster.hpodgraph
     Type: PodGraph
+  - Handle: 3185657499106800603
+    FilePath: LuckyExporter/Meshes/SM_link3_28.hsmesh
+    Type: StaticMesh
+  - Handle: 3220634827881559136
+    FilePath: LuckyExporter/Meshes/SM_link2_15.glb
+    Type: MeshSource
   - Handle: 3361725560923802132
     FilePath: ContentVault/Robots/PiperPod/MINWAX-NATIVE-V2-PHYSICS.json
     Type: Motion
   - Handle: 3368033531105313829
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_cap_part_7.obj
     Type: MeshSource
+  - Handle: 3377713857471611298
+    FilePath: LuckyExporter/Textures/T_Image_2_002.png
+    Type: Texture
   - Handle: 3382132582850053708
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_tube_part_0.obj
     Type: MeshSource
@@ -185,24 +410,87 @@ Assets:
   - Handle: 3454066778424922938
     FilePath: ContentVault/Robots/PiperPod/assets/link2_7.obj
     Type: MeshSource
+  - Handle: 3481329071410000737
+    FilePath: LuckyExporter/Meshes/SM_link2_12.glb
+    Type: MeshSource
+  - Handle: 3485605579821225267
+    FilePath: LuckyExporter/Materials/M_material_5_005.hmaterial
+    Type: Material
+  - Handle: 3504509570569672915
+    FilePath: LuckyExporter/Meshes/SM_gripper_base_link.glb
+    Type: MeshSource
+  - Handle: 3510118784016576444
+    FilePath: LuckyExporter/Meshes/SM_link5_5.hsmesh
+    Type: StaticMesh
+  - Handle: 3641660688293882098
+    FilePath: LuckyExporter/Meshes/SM_link2_24.hsmesh
+    Type: StaticMesh
+  - Handle: 3644695773063989222
+    FilePath: LuckyExporter/Materials/M_material_1_002.hmaterial
+    Type: Material
   - Handle: 3663669837522459598
     FilePath: ContentVault/Robots/PiperPod/assets/link3_11.obj
+    Type: MeshSource
+  - Handle: 3840994267045801813
+    FilePath: LuckyExporter/Materials/M_material_3.hmaterial
+    Type: Material
+  - Handle: 3848078637091407048
+    FilePath: LuckyExporter/Materials/M_material_6.hmaterial
+    Type: Material
+  - Handle: 3897960005650324770
+    FilePath: LuckyExporter/Materials/M_Cross_to_right_edge_-_49_5_cm_tick_0_Material.hmaterial
+    Type: Material
+  - Handle: 3911525665942169528
+    FilePath: LuckyExporter/Meshes/SM_link4_2.glb
+    Type: MeshSource
+  - Handle: 3952568473760574194
+    FilePath: LuckyExporter/Meshes/SM_link2_9.glb
     Type: MeshSource
   - Handle: 3978287033080725840
     FilePath: ContentVault/Robots/PiperPod/assets/link3_26.obj
     Type: MeshSource
+  - Handle: 4033955956956487239
+    FilePath: LuckyExporter/Meshes/SM_link3_5.glb
+    Type: MeshSource
   - Handle: 4034737050631566671
     FilePath: ContentVault/Robots/PiperPod/assets/link2_29.obj
     Type: MeshSource
+  - Handle: 4082089416120937752
+    FilePath: LuckyExporter/Meshes/SM_link2_22.glb
+    Type: MeshSource
+  - Handle: 4116407039802317349
+    FilePath: LuckyExporter/Meshes/SM_link2_26.glb
+    Type: MeshSource
+  - Handle: 4149205064549548027
+    FilePath: LuckyExporter/Meshes/SM_Cube.hsmesh
+    Type: StaticMesh
+  - Handle: 4173799518844022737
+    FilePath: LuckyExporter/Meshes/SM_link3_24.hsmesh
+    Type: StaticMesh
   - Handle: 4186327929764818267
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/parts-zup/wood_filler_tube.glb
     Type: MeshSource
+  - Handle: 4207855539723210783
+    FilePath: LuckyExporter/Materials/M_material_20_001.hmaterial
+    Type: Material
+  - Handle: 4264690126045842410
+    FilePath: LuckyExporter/Meshes/SM_link3_7.hsmesh
+    Type: StaticMesh
+  - Handle: 4330808157868830198
+    FilePath: LuckyExporter/Meshes/SM_link2_22.hsmesh
+    Type: StaticMesh
   - Handle: 4362554783215104960
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/parts-yup/wood_filler_cap.glb
     Type: MeshSource
   - Handle: 4425065835975007075
     FilePath: Scenes/TubePickPlaceNative.hscene
     Type: Scene
+  - Handle: 4452912547778999107
+    FilePath: LuckyExporter/Materials/M_Piper_pika_black.hmaterial
+    Type: Material
+  - Handle: 4516120543649803450
+    FilePath: LuckyExporter/Meshes/SM_link2_10.hsmesh
+    Type: StaticMesh
   - Handle: 4516365758047234959
     FilePath: RobotDirector/assets/events/SM_LD_Open_1.glb
     Type: MeshSource
@@ -212,21 +500,39 @@ Assets:
   - Handle: 4550192396066658904
     FilePath: ContentVault/Robots/PiperPod/assets/gripper_left_link.STL
     Type: MeshSource
+  - Handle: 4553091488145725663
+    FilePath: LuckyExporter/Materials/M_Right_rear_base_to_long_edge_-_2_cm_tick_1_Material.hmaterial
+    Type: Material
   - Handle: 4598195093466150422
     FilePath: ContentVault/Robots/PiperPod/assets/link3_25.obj
     Type: MeshSource
+  - Handle: 4643213003650558847
+    FilePath: LuckyExporter/Meshes/SM_Mesh_0_4.hsmesh
+    Type: StaticMesh
+  - Handle: 4648810924047008740
+    FilePath: LuckyExporter/Materials/M_Piper_dark_gray_mat.hmaterial
+    Type: Material
   - Handle: 4655458743204400647
     FilePath: RobotDirector/assets/logo/SM_Logo.glb
     Type: MeshSource
   - Handle: 4656501908116466724
     FilePath: Materials/Right front base to long edge - 2 cm tick 0_Material.hmaterial
     Type: Material
+  - Handle: 4667949652296048523
+    FilePath: LuckyExporter/Meshes/SM_Cylinder_1.glb
+    Type: MeshSource
   - Handle: 4743811808792496810
     FilePath: ContentVault/Robots/PiperPod/assets/link2_gray.stl
     Type: MeshSource
+  - Handle: 4838968608300731135
+    FilePath: LuckyExporter/Materials/M_Material_0_001_1.hmaterial
+    Type: Material
   - Handle: 4910352822346532527
     FilePath: RobotDirector/assets/waypoint/M_CurveWaypoint.hmaterial
     Type: Material
+  - Handle: 4919715921953070404
+    FilePath: LuckyExporter/Meshes/SM_Sphere.hsmesh
+    Type: StaticMesh
   - Handle: 5016436654895027201
     FilePath: ContentVault/Robots/PiperPod/assets/link3_22.obj
     Type: MeshSource
@@ -242,6 +548,9 @@ Assets:
   - Handle: 5099749264992214455
     FilePath: Physics/ConvexHulls/198524376200812809-24ad5353e95d7cfe.hchull
     Type: ConvexHull
+  - Handle: 5133478079006087835
+    FilePath: LuckyExporter/Meshes/SM_Cube_1.hsmesh
+    Type: StaticMesh
   - Handle: 5159537631571403885
     FilePath: Physics/ConvexHulls/13985921990890505022-f21191d099a31ede.hchull
     Type: ConvexHull
@@ -251,9 +560,15 @@ Assets:
   - Handle: 5252809685641441340
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/editable-package/generations/d8bb0cf5cb9e6778803792434a0a5e8966003b18bebaa298f73e88f6a0f108e8/sources/minwax-native-v2e-source/minwax-closed-assembly.hpodgraph
     Type: PodGraph
+  - Handle: 5317415253646320547
+    FilePath: LuckyExporter/Meshes/SM_paper.hsmesh
+    Type: StaticMesh
   - Handle: 5321828790954223113
     FilePath: ContentVault/Robots/PiperPod/assets/link3_16.obj
     Type: MeshSource
+  - Handle: 5384194279280455092
+    FilePath: LuckyExporter/Materials/M_material_3_005.hmaterial
+    Type: Material
   - Handle: 5386793035608595844
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_cap_part_3.obj
     Type: MeshSource
@@ -263,6 +578,12 @@ Assets:
   - Handle: 5600224601578857925
     FilePath: RobotDirector/assets/events/SM_LD_Hidden.hsmesh
     Type: StaticMesh
+  - Handle: 5614038704976003317
+    FilePath: LuckyExporter/Meshes/SM_link3_15.hsmesh
+    Type: StaticMesh
+  - Handle: 5773637767476651960
+    FilePath: LuckyExporter/Meshes/SM_link3_20.glb
+    Type: MeshSource
   - Handle: 5824439927363048790
     FilePath: Scripts/Intermediates/Debug/OfficePipers.AssemblyInfo.cs
     Type: ScriptFile
@@ -284,18 +605,36 @@ Assets:
   - Handle: 5940163053195496448
     FilePath: ContentVault/Robots/PiperPod/assets/link3_5.obj
     Type: MeshSource
+  - Handle: 5949337236345533478
+    FilePath: LuckyExporter/Meshes/SM_link2_31.hsmesh
+    Type: StaticMesh
+  - Handle: 6010767439259824876
+    FilePath: LuckyExporter/Materials/M_Piper_light_gray_mat.hmaterial
+    Type: Material
+  - Handle: 6082606572670252004
+    FilePath: LuckyExporter/Materials/M_Right_base_short_edge_-_3_mm_reference_Material.hmaterial
+    Type: Material
   - Handle: 6085573975625782741
     FilePath: ContentVault/Robots/PiperPod/assets/link2.stl
     Type: MeshSource
   - Handle: 6093406880222789264
     FilePath: ContentVault/Robots/PiperPod/assets/link2_13.obj
     Type: MeshSource
+  - Handle: 6129890080568664940
+    FilePath: LuckyExporter/Meshes/SM_Dimension_41_cm.glb
+    Type: MeshSource
+  - Handle: 6132609302146679504
+    FilePath: LuckyExporter/Meshes/SM_link3_27.hsmesh
+    Type: StaticMesh
   - Handle: 6180894646230013805
     FilePath: ContentVault/Robots/PiperPod/assets/link3_8.obj
     Type: MeshSource
   - Handle: 6230247093814862508
     FilePath: RobotDirector/assets/curvePath/CurvePathEditorSync.cs
     Type: ScriptFile
+  - Handle: 6394852131688814671
+    FilePath: LuckyExporter/Meshes/SM_Cube_2.glb
+    Type: MeshSource
   - Handle: 6456721797636705973
     FilePath: Scenes/TubePickPlace.hscene
     Type: Scene
@@ -311,6 +650,9 @@ Assets:
   - Handle: 6540253994595223967
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_tube_part_3.obj
     Type: MeshSource
+  - Handle: 6621212797128018047
+    FilePath: LuckyExporter/Meshes/SM_link3_13.hsmesh
+    Type: StaticMesh
   - Handle: 6626725561023410246
     FilePath: ContentVault/Robots/PiperPod/MINWAX-SCAN-PROVENANCE.json
     Type: Motion
@@ -326,26 +668,62 @@ Assets:
   - Handle: 6848925520630909875
     FilePath: ContentVault/Robots/PiperPod/assets/link7.stl
     Type: MeshSource
+  - Handle: 6914956333905534310
+    FilePath: LuckyExporter/Materials/M_M_CurveWaypoint.hmaterial
+    Type: Material
   - Handle: 6915239972613882243
     FilePath: Materials/Cross to right edge - 49.5 cm tick 1_Material.hmaterial
     Type: Material
+  - Handle: 6917574534429803534
+    FilePath: Scripts/Client/Source/HideOnPlay.cs
+    Type: ScriptFile
+  - Handle: 6972665642840560114
+    FilePath: LuckyExporter/Meshes/SM_cable_1.hsmesh
+    Type: StaticMesh
+  - Handle: 6973068990124131897
+    FilePath: LuckyExporter/Meshes/SM_link2_2.glb
+    Type: MeshSource
   - Handle: 6981711009250017927
     FilePath: ContentVault/Robots/PiperPod/assets/link8.stl
     Type: MeshSource
   - Handle: 7006161624537359908
     FilePath: RobotDirector/assets/events/SM_LD_Open_1.hsmesh
     Type: StaticMesh
+  - Handle: 7011410236094032033
+    FilePath: LuckyExporter/Meshes/SM_Mesh_0_1.glb
+    Type: MeshSource
   - Handle: 7023832086426050644
     FilePath: Materials/tmp_sphere_probe_Material.hmaterial
     Type: Material
+  - Handle: 7068838015111764635
+    FilePath: LuckyExporter/Meshes/SM_link3_3.glb
+    Type: MeshSource
   - Handle: 7135065919120127186
     FilePath: Materials/Cross to left edge - 90.5 cm tick 0_Material.hmaterial
     Type: Material
+  - Handle: 7150634081504810686
+    FilePath: LuckyExporter/Meshes/SM_lumina-shell.hsmesh
+    Type: StaticMesh
+  - Handle: 7155522993199812640
+    FilePath: LuckyExporter/Materials/M_material_4_005.hmaterial
+    Type: Material
+  - Handle: 7212557201559791708
+    FilePath: LuckyExporter/Materials/M_material_3_001.hmaterial
+    Type: Material
+  - Handle: 7235423433274472010
+    FilePath: LuckyExporter/Meshes/SM_link2_29.glb
+    Type: MeshSource
+  - Handle: 7267807203599310062
+    FilePath: LuckyExporter/Meshes/SM_IKEA_365_Plate.hsmesh
+    Type: StaticMesh
   - Handle: 7292385054424024450
     FilePath: ContentVault/Robots/PiperPod/assets/link3_10.obj
     Type: MeshSource
   - Handle: 7315231908342853758
     FilePath: ContentVault/Robots/PiperPod/assets/link2_4.obj
+    Type: MeshSource
+  - Handle: 7367524597350460411
+    FilePath: LuckyExporter/Meshes/SM_link3_27.glb
     Type: MeshSource
   - Handle: 7417912304764355777
     FilePath: Physics/ConvexHulls/13985921990890505022-fc4f2a043c65a93e.hchull
@@ -359,21 +737,51 @@ Assets:
   - Handle: 7466248465654415558
     FilePath: Materials/Cross to right edge - 49.5 cm_Material.hmaterial
     Type: Material
+  - Handle: 7484919754164591331
+    FilePath: LuckyExporter/Materials/M_Cross_to_back_long_edge_-_35_cm_tick_0_Material.hmaterial
+    Type: Material
+  - Handle: 7521034085592088830
+    FilePath: Scripts/Client/Source/EntityIdCompat.cs
+    Type: ScriptFile
+  - Handle: 7576578505346300868
+    FilePath: LuckyExporter/Materials/M_painted_concrete_02.hmaterial
+    Type: Material
   - Handle: 7610932276304020895
     FilePath: Materials/Cross to back long edge - 35 cm tick 1_Material.hmaterial
     Type: Material
+  - Handle: 7631561570496438826
+    FilePath: LuckyExporter/Meshes/SM_Cylinder.hsmesh
+    Type: StaticMesh
   - Handle: 7664065505689698019
     FilePath: ContentVault/Robots/PiperPod/assets/link5_8.obj
+    Type: MeshSource
+  - Handle: 7686341935796753194
+    FilePath: LuckyExporter/Meshes/SM_link1.glb
     Type: MeshSource
   - Handle: 7707286787407899965
     FilePath: RobotDirector/tools/LuckyDirector.cs
     Type: ScriptFile
+  - Handle: 7733633239486358793
+    FilePath: LuckyExporter/Meshes/SM_OSTBIT_Plate_Holder.glb
+    Type: MeshSource
   - Handle: 7769080619584512381
     FilePath: RobotDirector/assets/events/SM_LD_Hidden.glb
     Type: MeshSource
+  - Handle: 7791926525914450833
+    FilePath: LuckyExporter/Materials/M_Material_0_003.hmaterial
+    Type: Material
+  - Handle: 7811798076954669519
+    FilePath: LuckyExporter/Materials/M_Cross_to_left_edge_-_90_5_cm_Material.hmaterial
+    Type: Material
   - Handle: 7837668106423190841
     FilePath: ContentVault/Robots/PiperPod/assets/link2_6.obj
     Type: MeshSource
+  - Handle: 7839642762303348033
+    FilePath: LuckyExporter/Meshes/SM_Cube_2.hsmesh
+    Type: StaticMesh
+  - Handle: 7849723553297545130
+    FilePath: Scenes/ConventionScene.hscene
+    Type: Scene
   - Handle: 7857220418291104101
     FilePath: ContentVault/Robots/PiperPod/assets/link3_28.obj
     Type: MeshSource
@@ -387,37 +795,112 @@ Assets:
     FilePath: ContentVault/Robots/PiperPod/MG_Piper.hpodgraph
     Type: PodGraph
   - Handle: 8001588097418319776
-    FilePath: Scenes/ConventionScene.hscene
+    FilePath: Scenes/ConventionScene_old_3.hscene
     Type: Scene
+  - Handle: 8011580643812187922
+    FilePath: LuckyExporter/Materials/M_material_8_003.hmaterial
+    Type: Material
   - Handle: 8015385716643153388
     FilePath: ContentVault/Robots/PiperPod/assets/link2_18.obj
     Type: MeshSource
   - Handle: 8097080000623581226
     FilePath: RobotDirector/assets/curvePath/CurvePath.hpodgraph
     Type: PodGraph
+  - Handle: 8120256315349403384
+    FilePath: LuckyExporter/Meshes/SM_link3_23.hsmesh
+    Type: StaticMesh
+  - Handle: 8169891072261300551
+    FilePath: LuckyExporter/Meshes/SM_link2_1.glb
+    Type: MeshSource
+  - Handle: 8172146802466232190
+    FilePath: Scripts/Client/Source/CameraDepthOfField.cs
+    Type: ScriptFile
+  - Handle: 8180088326685057479
+    FilePath: LuckyExporter/Meshes/SM_Cube.glb
+    Type: MeshSource
+  - Handle: 8183454253016072541
+    FilePath: LuckyExporter/Meshes/SM_link5_3.glb
+    Type: MeshSource
+  - Handle: 8190818638838606860
+    FilePath: LuckyExporter/Meshes/SM_link2_15.hsmesh
+    Type: StaticMesh
+  - Handle: 8255841466825525819
+    FilePath: LuckyExporter/Meshes/SM_link2_7.hsmesh
+    Type: StaticMesh
+  - Handle: 8345754552283590490
+    FilePath: LuckyExporter/Materials/M_material_4.hmaterial
+    Type: Material
+  - Handle: 8352537006723628946
+    FilePath: LuckyExporter/Meshes/SM_desk-dimensions.glb
+    Type: MeshSource
   - Handle: 8354136821058096875
     FilePath: RobotDirector/prefabs/LD_Event.hprefab
     Type: Prefab
+  - Handle: 8378826841298782961
+    FilePath: LuckyExporter/Meshes/SM_base_link.hsmesh
+    Type: StaticMesh
+  - Handle: 8435306592068756977
+    FilePath: LuckyExporter/Meshes/SM_Sphere.glb
+    Type: MeshSource
   - Handle: 8466081979020718243
     FilePath: ContentVault/Robots/PiperPod/assets/link2_8.obj
     Type: MeshSource
+  - Handle: 8472632832805643270
+    FilePath: LuckyExporter/Textures/T_painted_concrete_02_rough_png.png
+    Type: Texture
+  - Handle: 8478319739467873307
+    FilePath: LuckyExporter/Meshes/SM_Mesh_0_2.hsmesh
+    Type: StaticMesh
   - Handle: 8480801999365980528
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_cap_part_4.obj
     Type: MeshSource
+  - Handle: 8508873151677400442
+    FilePath: LuckyExporter/Materials/M_Material_0_002_1.hmaterial
+    Type: Material
+  - Handle: 8514994800534558507
+    FilePath: LuckyExporter/Textures/T_Image_2_004.png
+    Type: Texture
+  - Handle: 8585792157310673563
+    FilePath: LuckyExporter/Meshes/SM_link4_6.hsmesh
+    Type: StaticMesh
   - Handle: 8630834807138590441
     FilePath: ContentVault/Robots/PiperPod/assets/link5_7.obj
     Type: MeshSource
+  - Handle: 8665947139645343152
+    FilePath: LuckyExporter/Meshes/SM_link4_2.hsmesh
+    Type: StaticMesh
+  - Handle: 8784608048966815029
+    FilePath: LuckyExporter/Meshes/SM_link4_5.glb
+    Type: MeshSource
+  - Handle: 8851082471131686305
+    FilePath: LuckyExporter/Materials/M_Cross_to_back_long_edge_-_35_cm_tick_1_Material.hmaterial
+    Type: Material
   - Handle: 8871440724551037858
     FilePath: RobotDirector/assets/target/SM_LD_Target.hsmesh
     Type: StaticMesh
   - Handle: 8878184747432846606
     FilePath: ContentVault/Robots/PiperPod/assets/link2_17.obj
     Type: MeshSource
+  - Handle: 8974076029503186396
+    FilePath: LuckyExporter/Meshes/SM_link2_14.glb
+    Type: MeshSource
+  - Handle: 8984279668047921563
+    FilePath: LuckyExporter/Meshes/SM_link3_26.glb
+    Type: MeshSource
   - Handle: 8996897022188778477
     FilePath: RobotDirector/prefabs/LD_Goal.hprefab
     Type: Prefab
+  - Handle: 9006237879226923390
+    FilePath: LuckyExporter/Materials/M_Piper_darker_gray_mat.hmaterial
+    Type: Material
+  - Handle: 9016140583182880987
+    FilePath: LuckyExporter/Meshes/SM_link3_24.glb
+    Type: MeshSource
   - Handle: 9018613271823243536
     FilePath: ContentVault/Robots/PiperPod/assets/link3_3.obj
+    Type: MeshSource
+  - Handle: 9029273263486512024
+    FilePath: LuckyExporter/Meshes/SM_link3_15.glb
     Type: MeshSource
   - Handle: 9045350223118474113
     FilePath: ContentVault/Robots/PiperPod/piper_mount_180.xml
@@ -425,30 +908,75 @@ Assets:
   - Handle: 9064908934462289350
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_cap_part_8.obj
     Type: MeshSource
+  - Handle: 9117536531953407187
+    FilePath: LuckyExporter/Meshes/SM_Cross_to_left_short_edge.hsmesh
+    Type: StaticMesh
   - Handle: 9133740402045639558
     FilePath: RobotDirector/prefabs/LD_Path.hprefab
     Type: Prefab
+  - Handle: 9140122452354985803
+    FilePath: LuckyExporter/Meshes/SM_link3_14.glb
+    Type: MeshSource
+  - Handle: 9166028568261731941
+    FilePath: LuckyExporter/Materials/M_Material.hmaterial
+    Type: Material
+  - Handle: 9170310592190842482
+    FilePath: LuckyExporter/Materials/M_material_5.hmaterial
+    Type: Material
+  - Handle: 9212341833463429803
+    FilePath: LuckyExporter/Meshes/SM_base_link.glb
+    Type: MeshSource
   - Handle: 9222242270338635874
     FilePath: Minwax-native-v2c/source/minwax-open-preview.hpodgraph
     Type: PodGraph
+  - Handle: 9238108024313130022
+    FilePath: LuckyExporter/Meshes/SM_link2_20.hsmesh
+    Type: StaticMesh
   - Handle: 9267719440996487417
     FilePath: ContentVault/Robots/PiperPod/assets/link3_23.obj
+    Type: MeshSource
+  - Handle: 9349856545112999841
+    FilePath: LuckyExporter/Meshes/SM_link4_6.glb
     Type: MeshSource
   - Handle: 9484785196988871113
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/label-artwork-source/artwork-validation.json
     Type: Motion
+  - Handle: 9507438958496223261
+    FilePath: LuckyExporter/Meshes/SM_link3_9.glb
+    Type: MeshSource
   - Handle: 9514779209590331485
     FilePath: RobotDirector/tools/LD_PlateSimBridge.cs
     Type: ScriptFile
   - Handle: 9525124580414323642
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/resources/minwax-label-basecolor.png
     Type: Texture
+  - Handle: 9528950255904621131
+    FilePath: LuckyExporter/Meshes/SM_Cross_to_right_short_edge.glb
+    Type: MeshSource
+  - Handle: 9559215189849856833
+    FilePath: LuckyExporter/Meshes/SM_Cross_to_either_long_edge.hsmesh
+    Type: StaticMesh
+  - Handle: 9579989912011378390
+    FilePath: LuckyExporter/Meshes/SM_link3_12.hsmesh
+    Type: StaticMesh
   - Handle: 9583409683442581881
     FilePath: Materials/Cross to left edge - 90.5 cm tick 1_Material.hmaterial
     Type: Material
   - Handle: 9657434840361516696
     FilePath: RobotDirector/tools/components/LD_Event.cs
     Type: ScriptFile
+  - Handle: 9657906426338293947
+    FilePath: LuckyExporter/Materials/M_material_17_001.hmaterial
+    Type: Material
+  - Handle: 9674757541556496083
+    FilePath: LuckyExporter/Meshes/SM_link3_0.glb
+    Type: MeshSource
+  - Handle: 9687220652573737879
+    FilePath: LuckyExporter/Meshes/SM_link4_4.hsmesh
+    Type: StaticMesh
+  - Handle: 9740335424914995927
+    FilePath: LuckyExporter/Meshes/SM_Mesh_0_2.glb
+    Type: MeshSource
   - Handle: 9771243514717365706
     FilePath: ContentVault/Robots/PiperPod/assets/link3_24.obj
     Type: MeshSource
@@ -458,27 +986,96 @@ Assets:
   - Handle: 9894541335289534682
     FilePath: ContentVault/Robots/PiperPod/assets/link2_5.obj
     Type: MeshSource
+  - Handle: 9916573770536488772
+    FilePath: DeskMeasurements/source/plate-holder-position.hpodgraph
+    Type: PodGraph
+  - Handle: 9924052314064354250
+    FilePath: LuckyExporter/Textures/T_Kitchen_Equipment_Wood.png
+    Type: Texture
+  - Handle: 9979574537984336295
+    FilePath: LuckyExporter/Materials/M_Cross_to_right_edge_-_49_5_cm_tick_1_Material.hmaterial
+    Type: Material
+  - Handle: 10034969975522654141
+    FilePath: LuckyExporter/Materials/M_Default.hmaterial
+    Type: Material
+  - Handle: 10049910148758030218
+    FilePath: LuckyExporter/Meshes/SM_link2_27.hsmesh
+    Type: StaticMesh
+  - Handle: 10064931351809769693
+    FilePath: LuckyExporter/Meshes/SM_link2_4.glb
+    Type: MeshSource
   - Handle: 10072318580666095257
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-scan/minwax-render-texture.png
     Type: Texture
+  - Handle: 10091192628786217856
+    FilePath: LuckyExporter/Meshes/SM_Cylinder.glb
+    Type: MeshSource
+  - Handle: 10091558958902026027
+    FilePath: LuckyExporter/Meshes/SM_link2_13.hsmesh
+    Type: StaticMesh
+  - Handle: 10093465013325893683
+    FilePath: LuckyExporter/Meshes/SM_link2_9.hsmesh
+    Type: StaticMesh
   - Handle: 10143971762556516316
     FilePath: Minwax-native-v2c/source/resources/minwax-label-basecolor.png
     Type: Texture
   - Handle: 10229424739279192852
     FilePath: Materials/Right front base to long edge - 2 cm_Material.hmaterial
     Type: Material
+  - Handle: 10231667444279378854
+    FilePath: LuckyExporter/Meshes/SM_link2_1.hsmesh
+    Type: StaticMesh
+  - Handle: 10234037864147129628
+    FilePath: LuckyExporter/Meshes/SM_link4_5.hsmesh
+    Type: StaticMesh
+  - Handle: 10257335912097735910
+    FilePath: LuckyExporter/Meshes/SM_link3_8.glb
+    Type: MeshSource
+  - Handle: 10266222440800313315
+    FilePath: LuckyExporter/Textures/T_Image_1_004.png
+    Type: Texture
+  - Handle: 10275969637450014756
+    FilePath: LuckyExporter/Meshes/SM_link2_21.hsmesh
+    Type: StaticMesh
+  - Handle: 10329459846043857687
+    FilePath: LuckyExporter/Meshes/SM_gripper_right_link.hsmesh
+    Type: StaticMesh
   - Handle: 10335604166150841874
     FilePath: Office-speaker/source/speaker.hpodgraph
     Type: PodGraph
+  - Handle: 10365401254359065836
+    FilePath: LuckyExporter/Meshes/SM_link2_8.hsmesh
+    Type: StaticMesh
+  - Handle: 10396244328575289075
+    FilePath: LuckyExporter/Meshes/SM_link3_21.glb
+    Type: MeshSource
+  - Handle: 10415417631345084981
+    FilePath: LuckyExporter/Textures/T_Image_1_001.png
+    Type: Texture
+  - Handle: 10511099510961729844
+    FilePath: LuckyExporter/Meshes/SM_paper.glb
+    Type: MeshSource
   - Handle: 10540296953092155553
     FilePath: ContentVault/Robots/PiperPod/piper_tube_task_native_v2.xml
     Type: MujocoScene
+  - Handle: 10615090393027111957
+    FilePath: LuckyExporter/Materials/M_material_0_001.hmaterial
+    Type: Material
   - Handle: 10618586166899565660
     FilePath: Office-wall/source/wall.hpodgraph
     Type: PodGraph
+  - Handle: 10648905686463048621
+    FilePath: LuckyExporter/Meshes/SM_link2_21.glb
+    Type: MeshSource
   - Handle: 10681518433010881281
     FilePath: Office-lumina-shell/source/lumina-shell.hpodgraph
     Type: PodGraph
+  - Handle: 10711368806797467707
+    FilePath: LuckyExporter/Meshes/SM_link5_7.hsmesh
+    Type: StaticMesh
+  - Handle: 10724951002212326115
+    FilePath: LuckyExporter/Meshes/SM_link2_20.glb
+    Type: MeshSource
   - Handle: 10727199100255087241
     FilePath: ContentVault/Robots/PiperPod/assets/link3_19.obj
     Type: MeshSource
@@ -488,33 +1085,120 @@ Assets:
   - Handle: 10742683059089310438
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-scan/minwax_contact_sealed_upper.obj
     Type: MeshSource
+  - Handle: 10747447732618398404
+    FilePath: LuckyExporter/Meshes/SM_link3_22.hsmesh
+    Type: StaticMesh
+  - Handle: 10773528247442066457
+    FilePath: LuckyExporter/Meshes/SM_cable_1.glb
+    Type: MeshSource
   - Handle: 10880858306888761120
     FilePath: RobotDirector/assets/events/SM_LD_Rotate.glb
+    Type: MeshSource
+  - Handle: 10893164183868377102
+    FilePath: LuckyExporter/Textures/T_Image_1.png
+    Type: Texture
+  - Handle: 10893706857934461804
+    FilePath: LuckyExporter/Meshes/SM_Mesh_0_4.glb
+    Type: MeshSource
+  - Handle: 10899639873148882512
+    FilePath: LuckyExporter/Meshes/SM_link5_6.hsmesh
+    Type: StaticMesh
+  - Handle: 10950186243154824982
+    FilePath: LuckyExporter/Materials/M_material_16_001.hmaterial
+    Type: Material
+  - Handle: 10970836052796449500
+    FilePath: LuckyExporter/Meshes/SM_IKEA_365_Plate.glb
+    Type: MeshSource
+  - Handle: 11002333367329796271
+    FilePath: LuckyExporter/Meshes/SM_link3_16.glb
     Type: MeshSource
   - Handle: 11004246521856882623
     FilePath: RobotDirector/assets/events/SM_LD_Close_1.glb
     Type: MeshSource
+  - Handle: 11005291549092075346
+    FilePath: LuckyExporter/Textures/T_Image_0_002.png
+    Type: Texture
+  - Handle: 11013804317012245906
+    FilePath: LuckyExporter/Meshes/SM_link2_18.hsmesh
+    Type: StaticMesh
+  - Handle: 11022730228269579728
+    FilePath: LuckyExporter/Materials/M_material_4_004.hmaterial
+    Type: Material
+  - Handle: 11024958215362294333
+    FilePath: LuckyExporter/Meshes/SM_link5_6.glb
+    Type: MeshSource
+  - Handle: 11035624520795434626
+    FilePath: LuckyExporter/Meshes/SM_link3_22.glb
+    Type: MeshSource
+  - Handle: 11040877503309629270
+    FilePath: LuckyExporter/Textures/T_albumcover_webp.png
+    Type: Texture
   - Handle: 11076615510312780926
     FilePath: ContentVault/Robots/PiperPod/assets/base_link.stl
     Type: MeshSource
+  - Handle: 11081979615082836496
+    FilePath: LuckyExporter/Materials/M_material_0_002.hmaterial
+    Type: Material
+  - Handle: 11098790388136750274
+    FilePath: LuckyExporter/Meshes/SM_link2_14.hsmesh
+    Type: StaticMesh
   - Handle: 11116977230823516908
     FilePath: Materials/Tube start guide template - hidden below floor_Material.hmaterial
     Type: Material
+  - Handle: 11130477859554703063
+    FilePath: LuckyExporter/Meshes/SM_Mesh_0_3.glb
+    Type: MeshSource
   - Handle: 11131455110904885367
     FilePath: ContentVault/Robots/PiperPod/assets/link3_13.obj
     Type: MeshSource
+  - Handle: 11243449007011750301
+    FilePath: LuckyExporter/Materials/M_material_7.hmaterial
+    Type: Material
+  - Handle: 11244751831650967721
+    FilePath: LuckyExporter/Materials/M_material_7_004.hmaterial
+    Type: Material
+  - Handle: 11321704573456571200
+    FilePath: LuckyExporter/Meshes/SM_link2_4.hsmesh
+    Type: StaticMesh
   - Handle: 11365720087628902523
     FilePath: ContentVault/Robots/PiperPod/assets/link6.stl
+    Type: MeshSource
+  - Handle: 11400091002791174586
+    FilePath: LuckyExporter/Meshes/SM_link2_3.glb
+    Type: MeshSource
+  - Handle: 11400383872945972127
+    FilePath: LuckyExporter/Meshes/SM_link5_5.glb
     Type: MeshSource
   - Handle: 11413068095151945238
     FilePath: Materials/Cross to right edge - 49.5 cm tick 0_Material.hmaterial
     Type: Material
+  - Handle: 11417613499023465401
+    FilePath: LuckyExporter/Materials/M_WhitePlate.hmaterial
+    Type: Material
+  - Handle: 11513297010045857083
+    FilePath: LuckyExporter/Meshes/SM_gripper_right_link.glb
+    Type: MeshSource
   - Handle: 11641222755877881477
     FilePath: Office-speaker-station/source/speaker-station.hpodgraph
     Type: PodGraph
+  - Handle: 11744680416172332076
+    FilePath: LuckyExporter/Meshes/SM_Dimension_41_cm.hsmesh
+    Type: StaticMesh
+  - Handle: 11766297257313897529
+    FilePath: LuckyExporter/Meshes/SM_gripper_left_link.hsmesh
+    Type: StaticMesh
+  - Handle: 11768922473145916395
+    FilePath: New Material.hmaterial
+    Type: Material
+  - Handle: 11912849582548491055
+    FilePath: LuckyExporter/Meshes/SM_link2_23.glb
+    Type: MeshSource
   - Handle: 11912882688664435906
     FilePath: Materials/StainlessSteel_01.hmaterial
     Type: Material
+  - Handle: 11918652749697279987
+    FilePath: LuckyExporter/Meshes/SM_desk-dimensions.hsmesh
+    Type: StaticMesh
   - Handle: 11919821727265326460
     FilePath: ContentVault/Robots/PiperPod/assets/tube-task/tube_visual_0.obj
     Type: MeshSource
@@ -527,33 +1211,105 @@ Assets:
   - Handle: 12075599151238991813
     FilePath: ContentVault/Robots/PiperPod/assets/link2_27.obj
     Type: MeshSource
+  - Handle: 12076102555713383526
+    FilePath: LuckyExporter/Materials/M_material_15_001.hmaterial
+    Type: Material
   - Handle: 12138925381386203449
     FilePath: ContentVault/Robots/PiperPod/assets/link4_4.obj
     Type: MeshSource
+  - Handle: 12166288325866763192
+    FilePath: LuckyExporter/Materials/M_Cross_to_right_edge_-_49_5_cm_Material.hmaterial
+    Type: Material
+  - Handle: 12244741249028140711
+    FilePath: LuckyExporter/Textures/T_Image_1_002.png
+    Type: Texture
   - Handle: 12274580165014017970
     FilePath: RobotDirector/assets/events/SM_LD_Event.glb
     Type: MeshSource
+  - Handle: 12287009449882054605
+    FilePath: LuckyExporter/Meshes/SM_link2_18.glb
+    Type: MeshSource
+  - Handle: 12291547699952375533
+    FilePath: LuckyExporter/Meshes/SM_Right_short_edge_gap.hsmesh
+    Type: StaticMesh
+  - Handle: 12303990969577342131
+    FilePath: LuckyExporter/Meshes/SM_link2_6.hsmesh
+    Type: StaticMesh
+  - Handle: 12328942695578633451
+    FilePath: LuckyExporter/Meshes/SM_link2_10.glb
+    Type: MeshSource
+  - Handle: 12334739238679348733
+    FilePath: LuckyExporter/Meshes/SM_link2_30.hsmesh
+    Type: StaticMesh
   - Handle: 12345523425212335016
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/editable-package/generations/d8bb0cf5cb9e6778803792434a0a5e8966003b18bebaa298f73e88f6a0f108e8/sources/minwax-native-v2e-source/resources/minwax-label-basecolor.png
     Type: Texture
   - Handle: 12443875567728101675
     FilePath: ContentVault/Robots/PiperPod/assets/link2_red.stl
     Type: MeshSource
+  - Handle: 12459225812719799426
+    FilePath: LuckyExporter/Materials/M_Text_0_02_0_5_0_46.hmaterial
+    Type: Material
+  - Handle: 12478264040362224416
+    FilePath: LuckyExporter/Meshes/SM_cable_2.hsmesh
+    Type: StaticMesh
   - Handle: 12495749046389925092
     FilePath: Materials/Cross to back long edge - 35 cm_Material.hmaterial
     Type: Material
   - Handle: 12515445372063658252
     FilePath: ContentVault/Robots/PiperPod/assets/link2_28.obj
     Type: MeshSource
+  - Handle: 12539382368390517298
+    FilePath: LuckyExporter/Meshes/SM_lumina-shell.glb
+    Type: MeshSource
+  - Handle: 12576037132584787031
+    FilePath: LuckyExporter/Meshes/SM_link2_3.hsmesh
+    Type: StaticMesh
+  - Handle: 12595220533976451513
+    FilePath: LuckyExporter/Materials/M_material_6_004.hmaterial
+    Type: Material
+  - Handle: 12649989850263518521
+    FilePath: Materials/New Material.hmaterial
+    Type: Material
+  - Handle: 12671373935591243164
+    FilePath: LuckyExporter/Materials/M_Right_rear_base_to_long_edge_-_2_cm_Material.hmaterial
+    Type: Material
   - Handle: 12679011806724008933
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_cap_part_5.obj
+    Type: MeshSource
+  - Handle: 12696314843770998653
+    FilePath: LuckyExporter/Textures/T_Image_0_001.png
+    Type: Texture
+  - Handle: 12700364649008314151
+    FilePath: LuckyExporter/Meshes/SM_link3_3.hsmesh
+    Type: StaticMesh
+  - Handle: 12788687459018614986
+    FilePath: LuckyExporter/Materials/M_material_21_001.hmaterial
+    Type: Material
+  - Handle: 12862107555464397083
+    FilePath: Office-pipe/source/pipe.hpodgraph
+    Type: PodGraph
+  - Handle: 12874634203533896681
+    FilePath: LuckyExporter/Materials/M_material_12_001.hmaterial
+    Type: Material
+  - Handle: 12942137241320942529
+    FilePath: LuckyExporter/Meshes/SM_link2_17.glb
     Type: MeshSource
   - Handle: 12945691810782398766
     FilePath: Minwax-native-v2d/source/minwax-open-preview.hpodgraph
     Type: PodGraph
+  - Handle: 12988398178867714713
+    FilePath: LuckyExporter/Meshes/SM_link3_11.hsmesh
+    Type: StaticMesh
+  - Handle: 13014308842752548801
+    FilePath: LuckyExporter/Meshes/SM_Mesh_0.hsmesh
+    Type: StaticMesh
   - Handle: 13075887883396422420
     FilePath: Office-computer-desk/source/computer-desk.hpodgraph
     Type: PodGraph
+  - Handle: 13131541205149360805
+    FilePath: LuckyExporter/Meshes/SM_link3_10.glb
+    Type: MeshSource
   - Handle: 13134208951518538826
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/editable-package/generations/d8bb0cf5cb9e6778803792434a0a5e8966003b18bebaa298f73e88f6a0f108e8/sources/minwax-native-v2e-source/resources/minwax-label-metallic-roughness.png
     Type: Texture
@@ -563,27 +1319,66 @@ Assets:
   - Handle: 13184558545043984578
     FilePath: ContentVault/Robots/PiperPod/assets/link3_27.obj
     Type: MeshSource
+  - Handle: 13259790734630422078
+    FilePath: LuckyExporter/Textures/T_painted_concrete_02_nor_gl_png.png
+    Type: Texture
   - Handle: 13302819917359195193
     FilePath: Meshes/Default/Source/Cube.gltf
     Type: MeshSource
   - Handle: 13352425267748844820
     FilePath: Scripts/Client/obj/project.assets.json
     Type: Motion
+  - Handle: 13355914641461958459
+    FilePath: LuckyExporter/Meshes/SM_link3_18.hsmesh
+    Type: StaticMesh
+  - Handle: 13362700333883664362
+    FilePath: LuckyExporter/Materials/M_Material_0_004.hmaterial
+    Type: Material
+  - Handle: 13379613803073084004
+    FilePath: LuckyExporter/Materials/M_Piper_white_mat.hmaterial
+    Type: Material
+  - Handle: 13385849421858965172
+    FilePath: LuckyExporter/Textures/T_painted_plaster_wall_diff_png.jpg
+    Type: Texture
   - Handle: 13456573925425346726
     FilePath: ContentVault/Robots/PiperPod/assets/link2_22.obj
     Type: MeshSource
   - Handle: 13467606821949173481
     FilePath: Physics/ConvexHulls/18093876543834571054-59f5091514913dbe.hchull
     Type: ConvexHull
+  - Handle: 13515802227857852947
+    FilePath: LuckyExporter/Meshes/SM_link2_28.glb
+    Type: MeshSource
   - Handle: 13519310678750187540
     FilePath: ContentVault/Robots/PiperPod/assets/link3_20.obj
     Type: MeshSource
   - Handle: 13524124451288768120
     FilePath: ContentVault/Robots/PiperPod/assets/link2_14.obj
     Type: MeshSource
+  - Handle: 13545953097245632364
+    FilePath: LuckyExporter/Materials/M_material_7_003.hmaterial
+    Type: Material
+  - Handle: 13592619836884983079
+    FilePath: LuckyExporter/Meshes/SM_Cylinder_1.hsmesh
+    Type: StaticMesh
+  - Handle: 13604046971054958730
+    FilePath: LuckyExporter/Materials/M_material_10_001.hmaterial
+    Type: Material
+  - Handle: 13619966635314393928
+    FilePath: LuckyExporter/Meshes/SM_link3_21.hsmesh
+    Type: StaticMesh
   - Handle: 13622510909686208813
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_tube_part_1.obj
     Type: MeshSource
+  - Handle: 13624499871836292675
+    FilePath: LuckyExporter/Meshes/SM_link3_20.hsmesh
+    Type: StaticMesh
+  - Handle: 13724337033026907739
+    FilePath: LuckyExporter/Meshes/SM_office-desk.hsmesh
+    Type: StaticMesh
+  - Handle: 13741391743241915277
+    FilePath: LuckyExporter/Meshes/SM_link2_26.hsmesh
+    Type: StaticMesh
   - Handle: 13753908277938550211
     FilePath: ContentVault/Robots/PiperPod/assets/link4_5.obj
     Type: MeshSource
@@ -608,38 +1403,89 @@ Assets:
   - Handle: 13888033273458538049
     FilePath: ContentVault/Robots/PiperPod/assets/link5_3.obj
     Type: MeshSource
+  - Handle: 13941871320805882432
+    FilePath: LuckyExporter/Meshes/SM_link2_0.glb
+    Type: MeshSource
+  - Handle: 13974551033438292401
+    FilePath: LuckyExporter/Materials/M_wood.hmaterial
+    Type: Material
   - Handle: 13985921990890505022
     FilePath: Meshes/OSTBIT_Plate_Holder.hsmesh
+    Type: StaticMesh
+  - Handle: 13999834089532390571
+    FilePath: LuckyExporter/Meshes/SM_link5_3.hsmesh
     Type: StaticMesh
   - Handle: 14029372073416340068
     FilePath: Materials/Cross to back long edge - 35 cm tick 0_Material.hmaterial
     Type: Material
+  - Handle: 14038250191444358082
+    FilePath: LuckyExporter/Materials/M_material_1_001.hmaterial
+    Type: Material
   - Handle: 14127631044621271244
     FilePath: ContentVault/Robots/PiperPod/assets/link3_14.obj
     Type: MeshSource
+  - Handle: 14231500848867676231
+    FilePath: LuckyExporter/Meshes/SM_link2_24.glb
+    Type: MeshSource
+  - Handle: 14266655361904146596
+    FilePath: LuckyExporter/Meshes/SM_link3_9.hsmesh
+    Type: StaticMesh
   - Handle: 14271334554462782391
     FilePath: RobotDirector/tools/LD_RobotAction.cs
     Type: ScriptFile
+  - Handle: 14321645051385834836
+    FilePath: LuckyExporter/Materials/M_Piper_black_mat.hmaterial
+    Type: Material
+  - Handle: 14323143080637125837
+    FilePath: LuckyExporter/Meshes/SM_link5_2.hsmesh
+    Type: StaticMesh
+  - Handle: 14330449837053016024
+    FilePath: LuckyExporter/Meshes/SM_Dimension_70_cm.glb
+    Type: MeshSource
   - Handle: 14386195244166391887
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/minwax-assembled-yup.glb
     Type: MeshSource
+  - Handle: 14398274546716129396
+    FilePath: LuckyExporter/Materials/M_material_9_001.hmaterial
+    Type: Material
   - Handle: 14407321009630320006
     FilePath: ContentVault/Robots/PiperPod/assets/link2_3.obj
     Type: MeshSource
   - Handle: 14419176897155705402
     FilePath: Scripts/Client/Source/EpisodeFollowerCompat.cs
     Type: ScriptFile
+  - Handle: 14452381766432898112
+    FilePath: LuckyExporter/Meshes/SM_link2_17.hsmesh
+    Type: StaticMesh
+  - Handle: 14455110431871075508
+    FilePath: LuckyExporter/Meshes/SM_link2_28.hsmesh
+    Type: StaticMesh
   - Handle: 14461550903008722023
     FilePath: ContentVault/Robots/PiperPod/assets/link3_7.obj
     Type: MeshSource
   - Handle: 14464867727929078948
     FilePath: Scripts/Client/Source/WoodFillerLayout.cs
     Type: ScriptFile
+  - Handle: 14467285393385565068
+    FilePath: LuckyExporter/Meshes/SM_Cross_to_left_short_edge.glb
+    Type: MeshSource
   - Handle: 14585348963014830553
     FilePath: RobotDirector/tools/components/LD_DuckGrabber.cs
     Type: ScriptFile
+  - Handle: 14585383203797676603
+    FilePath: LuckyExporter/Meshes/SM_link4_3.hsmesh
+    Type: StaticMesh
+  - Handle: 14716825156752341405
+    FilePath: LuckyExporter/Meshes/SM_link3_16.hsmesh
+    Type: StaticMesh
   - Handle: 14733272078956941800
     FilePath: ContentVault/Robots/PiperPod/assets/link3_1.obj
+    Type: MeshSource
+  - Handle: 14760009504054436044
+    FilePath: LuckyExporter/Meshes/SM_link3_12.glb
+    Type: MeshSource
+  - Handle: 14810126553235458585
+    FilePath: LuckyExporter/Meshes/SM_Cross_to_either_long_edge.glb
     Type: MeshSource
   - Handle: 14824035033242602923
     FilePath: Physics/ConvexHulls/198524376200812809-1931a1c1e22b073e.hchull
@@ -659,11 +1505,20 @@ Assets:
   - Handle: 14952382267400445240
     FilePath: Minwax-native-v2d/source/minwax-closed-assembly.hpodgraph
     Type: PodGraph
+  - Handle: 14977701728790325531
+    FilePath: LuckyExporter/Meshes/SM_link2_6.glb
+    Type: MeshSource
+  - Handle: 15121269819422276741
+    FilePath: LuckyExporter/Meshes/SM_link3_4.glb
+    Type: MeshSource
   - Handle: 15190609544753355412
     FilePath: Minwax-native-v2c/source/resources/minwax-label-metallic-roughness.png
     Type: Texture
   - Handle: 15209740281946873048
     FilePath: ContentVault/Robots/PiperPod/assets/link2_16.obj
+    Type: MeshSource
+  - Handle: 15221827229164505938
+    FilePath: LuckyExporter/Meshes/SM_Mesh_0.glb
     Type: MeshSource
   - Handle: 15272770548498173256
     FilePath: ContentVault/Robots/PiperPod/assets/linke2_dark_gray.stl
@@ -671,21 +1526,48 @@ Assets:
   - Handle: 15286829632370501715
     FilePath: Office-storage/source/storage.hpodgraph
     Type: PodGraph
+  - Handle: 15340296557837981977
+    FilePath: LuckyExporter/Meshes/SM_link3_18.glb
+    Type: MeshSource
+  - Handle: 15440324362851265025
+    FilePath: LuckyExporter/Meshes/SM_link3_4.hsmesh
+    Type: StaticMesh
+  - Handle: 15519704742701186890
+    FilePath: LuckyExporter/Materials/M_material_0.hmaterial
+    Type: Material
   - Handle: 15585416788667233467
     FilePath: Meshes/IKEA+365++Plate.hsmesh
     Type: StaticMesh
+  - Handle: 15622018434603563734
+    FilePath: LuckyExporter/Meshes/SM_link3_1.hsmesh
+    Type: StaticMesh
+  - Handle: 15651058029117920390
+    FilePath: LuckyExporter/Meshes/SM_link5_4.glb
+    Type: MeshSource
   - Handle: 15679366940986900059
     FilePath: ContentVault/Robots/PiperPod/assets/tube-task/tube_visual_1.obj
     Type: MeshSource
+  - Handle: 15684269417829810098
+    FilePath: LuckyExporter/Textures/T_Image_2_001.png
+    Type: Texture
+  - Handle: 15725572936780237251
+    FilePath: LuckyExporter/Meshes/SM_link2_25.hsmesh
+    Type: StaticMesh
   - Handle: 15750766278943979757
     FilePath: ContentVault/Robots/PiperPod/piper_tube_task.xml
     Type: MujocoScene
+  - Handle: 15789685079660426038
+    FilePath: LuckyExporter/Meshes/SM_Cube_1.glb
+    Type: MeshSource
   - Handle: 15800883266158508846
     FilePath: RobotDirector/prefabs/Ld_DuckGrabber.hprefab
     Type: Prefab
   - Handle: 15814839275352284212
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/native-material-meshes.json
     Type: Motion
+  - Handle: 15826976617104387646
+    FilePath: LuckyExporter/Meshes/SM_Dimension_140_cm.glb
+    Type: MeshSource
   - Handle: 15839646625106025321
     FilePath: Materials/Cross Z - 6 cm_Material.hmaterial
     Type: Material
@@ -701,12 +1583,39 @@ Assets:
   - Handle: 15982478588695492437
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_cap_part_1.obj
     Type: MeshSource
+  - Handle: 16008896735372045974
+    FilePath: LuckyExporter/Materials/M_material_11_001.hmaterial
+    Type: Material
+  - Handle: 16013676334731112285
+    FilePath: LuckyExporter/Meshes/SM_speaker-station.glb
+    Type: MeshSource
+  - Handle: 16061704074810164859
+    FilePath: LuckyExporter/Materials/M_material_6_005.hmaterial
+    Type: Material
+  - Handle: 16102673969111885196
+    FilePath: LuckyExporter/Meshes/SM_link3_11.glb
+    Type: MeshSource
+  - Handle: 16122010746588159560
+    FilePath: LuckyExporter/Meshes/SM_link2_27.glb
+    Type: MeshSource
+  - Handle: 16168420174660077928
+    FilePath: LuckyExporter/Textures/T_painted_plaster_wall_nor_gl_png.png
+    Type: Texture
+  - Handle: 16198861958690789246
+    FilePath: LuckyExporter/Materials/M_material_3_006.hmaterial
+    Type: Material
+  - Handle: 16213834458568649200
+    FilePath: LuckyExporter/Materials/M_Piper_light_medium_gray_mat.hmaterial
+    Type: Material
   - Handle: 16218160115853969461
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_cap_part_6.obj
     Type: MeshSource
   - Handle: 16253155042590302521
     FilePath: ContentVault/Robots/PiperPod/scene.xml
     Type: MujocoScene
+  - Handle: 16318523947649912457
+    FilePath: LuckyExporter/Meshes/SM_link4_4.glb
+    Type: MeshSource
   - Handle: 16352959146365767066
     FilePath: Materials/Cross X - 6 cm_Material.hmaterial
     Type: Material
@@ -716,21 +1625,51 @@ Assets:
   - Handle: 16471220951075552057
     FilePath: ContentVault/Robots/PiperPod/assets/link3_9.obj
     Type: MeshSource
+  - Handle: 16490315604955761236
+    FilePath: LuckyExporter/Meshes/SM_link2_2.hsmesh
+    Type: StaticMesh
+  - Handle: 16517017460790166204
+    FilePath: LuckyExporter/Materials/M_Cross_X_-_6_cm_Material.hmaterial
+    Type: Material
   - Handle: 16552787454420947319
     FilePath: Meshes/Default/Sphere.hsmesh
     Type: StaticMesh
+  - Handle: 16570549417277938342
+    FilePath: LuckyExporter/Meshes/SM_link2_11.glb
+    Type: MeshSource
+  - Handle: 16577673503316099474
+    FilePath: LuckyExporter/Meshes/SM_link5_7.glb
+    Type: MeshSource
+  - Handle: 16609845514701489040
+    FilePath: LuckyExporter/Materials/M_material_18_001.hmaterial
+    Type: Material
+  - Handle: 16636499501609012328
+    FilePath: LuckyExporter/Meshes/SM_link2_19.glb
+    Type: MeshSource
   - Handle: 16653632677376176553
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/wood_filler_cap_part_9.obj
     Type: MeshSource
+  - Handle: 16750056797396131690
+    FilePath: LuckyExporter/Meshes/SM_link2_29.hsmesh
+    Type: StaticMesh
   - Handle: 16765950715304324569
     FilePath: ContentVault/Robots/PiperPod/assets/link3.stl
     Type: MeshSource
+  - Handle: 16781909569611343002
+    FilePath: LuckyExporter/Textures/T_painted_plaster_wall_rough_png.png
+    Type: Texture
+  - Handle: 16868284772454211166
+    FilePath: LuckyExporter/Materials/M_Cross_to_left_edge_-_90_5_cm_tick_1_Material.hmaterial
+    Type: Material
   - Handle: 16910344939600556389
     FilePath: ContentVault/Robots/PiperPod/assets/link3_2.obj
     Type: MeshSource
   - Handle: 16953559471605514806
     FilePath: Minwax-native-v2e/source/resources/minwax-label-basecolor.png
     Type: Texture
+  - Handle: 17013656180138728584
+    FilePath: LuckyExporter/Materials/M_Right_front_base_to_long_edge_-_2_cm_Material.hmaterial
+    Type: Material
   - Handle: 17034043859418360019
     FilePath: ContentVault/Robots/PiperPod/assets/minwax-native-v2/parts-yup/wood_filler_tube.glb
     Type: MeshSource
@@ -743,12 +1682,30 @@ Assets:
   - Handle: 17079356554733158107
     FilePath: ContentVault/Robots/PiperPod/PIKA-PROVENANCE.json
     Type: Motion
+  - Handle: 17097746691429985219
+    FilePath: Materials/New Material (01).hmaterial
+    Type: Material
   - Handle: 17102084551196004276
     FilePath: ContentVault/Robots/PiperPod/assets/link2_9.obj
     Type: MeshSource
+  - Handle: 17139763140807248226
+    FilePath: LuckyExporter/Textures/T_painted_concrete_02_diff_png.jpg
+    Type: Texture
+  - Handle: 17185953087539339610
+    FilePath: LuckyExporter/Materials/M_albumcover.hmaterial
+    Type: Material
+  - Handle: 17213762120378328471
+    FilePath: LuckyExporter/Materials/M_material_2_001.hmaterial
+    Type: Material
+  - Handle: 17233299247090442223
+    FilePath: LuckyExporter/Meshes/SM_link2_11.hsmesh
+    Type: StaticMesh
   - Handle: 17235160151817310712
     FilePath: Meshes/Default/Cylinder.hsmesh
     Type: StaticMesh
+  - Handle: 17310304065864270044
+    FilePath: LuckyExporter/Materials/M_Right_front_base_to_long_edge_-_2_cm_tick_1_Material.hmaterial
+    Type: Material
   - Handle: 17406147514888267893
     FilePath: Meshes/Default/Source/Capsule.gltf
     Type: MeshSource
@@ -758,30 +1715,60 @@ Assets:
   - Handle: 17458008462234872272
     FilePath: ContentVault/Robots/PiperPod/assets/link2_15.obj
     Type: MeshSource
+  - Handle: 17476045383544838675
+    FilePath: LuckyExporter/Meshes/SM_link3_17.glb
+    Type: MeshSource
   - Handle: 17480921100536911686
     FilePath: Physics/ConvexHulls/13985921990890505022-ef8d7fbe4738bfbe.hchull
     Type: ConvexHull
+  - Handle: 17506976920070460531
+    FilePath: LuckyExporter/Meshes/SM_link5_8.hsmesh
+    Type: StaticMesh
+  - Handle: 17543515377884386298
+    FilePath: LuckyExporter/Meshes/SM_link2_12.hsmesh
+    Type: StaticMesh
   - Handle: 17547198071456496605
     FilePath: RobotDirector/prefabs/LD_Target.hprefab
     Type: Prefab
+  - Handle: 17581263265648810884
+    FilePath: LuckyExporter/Materials/M_material_2_002.hmaterial
+    Type: Material
   - Handle: 17608752018747788261
     FilePath: ContentVault/Robots/PiperPod/assets/link3_21.obj
     Type: MeshSource
   - Handle: 17638414805821562764
     FilePath: Meshes/ORDNING+Dish+drainer.fbx
     Type: MeshSource
+  - Handle: 17647222787024991114
+    FilePath: LuckyExporter/Meshes/SM_link5_2.glb
+    Type: MeshSource
   - Handle: 17703573934312611978
     FilePath: RobotDirector/assets/waypoint/SM_LD_Waypoint.glb
+    Type: MeshSource
+  - Handle: 17709843112307593842
+    FilePath: LuckyExporter/Meshes/SM_wall-distance.glb
     Type: MeshSource
   - Handle: 17725697150767068270
     FilePath: ContentVault/Robots/PiperPod/assets/link2_19.obj
     Type: MeshSource
+  - Handle: 17792639590219634804
+    FilePath: LuckyExporter/Meshes/SM_link2_7.glb
+    Type: MeshSource
   - Handle: 17805611840143555567
     FilePath: ContentVault/Robots/PiperPod/assets/link2_20.obj
     Type: MeshSource
+  - Handle: 17822515999459039716
+    FilePath: LuckyExporter/Meshes/SM_link2_19.hsmesh
+    Type: StaticMesh
   - Handle: 17842738615162732136
     FilePath: ContentVault/Robots/PiperPod/assets/link2_25.obj
     Type: MeshSource
+  - Handle: 17883385739586114260
+    FilePath: LuckyExporter/Materials/M_material_13_001.hmaterial
+    Type: Material
+  - Handle: 17889262502763710936
+    FilePath: LuckyExporter/Textures/T_Image_0_004.png
+    Type: Texture
   - Handle: 17911571909545315377
     FilePath: ContentVault/WoodFillerTube/source/wood-filler-tube.hpodgraph
     Type: PodGraph
@@ -791,9 +1778,18 @@ Assets:
   - Handle: 17954929974685156570
     FilePath: Scripts/Binaries/OfficePipers.runtimeconfig.json
     Type: Motion
+  - Handle: 17957932830080146427
+    FilePath: LuckyExporter/Textures/T_Image_0_003.png
+    Type: Texture
+  - Handle: 18005158474281097121
+    FilePath: LuckyExporter/Materials/M_material_22_001.hmaterial
+    Type: Material
   - Handle: 18049615802942961209
     FilePath: Minwax-native-v2d/source/resources/minwax-label-metallic-roughness.png
     Type: Texture
+  - Handle: 18068772504172804857
+    FilePath: LuckyExporter/Materials/M_Cross_Z_-_6_cm_Material.hmaterial
+    Type: Material
   - Handle: 18093876543834571054
     FilePath: Meshes/paper.hsmesh
     Type: StaticMesh
@@ -806,9 +1802,27 @@ Assets:
   - Handle: 18193959768775526692
     FilePath: Materials/Right base short edge - 3 mm reference_Material.hmaterial
     Type: Material
+  - Handle: 18208307702712612775
+    FilePath: LuckyExporter/Meshes/SM_link3_13.glb
+    Type: MeshSource
+  - Handle: 18243079540475111406
+    FilePath: LuckyExporter/Materials/M_material_19_001.hmaterial
+    Type: Material
   - Handle: 18325620018606528250
     FilePath: ContentVault/Robots/PiperPod/assets/link3_18.obj
     Type: MeshSource
+  - Handle: 18326906901675236670
+    FilePath: LuckyExporter/Meshes/SM_office-desk.glb
+    Type: MeshSource
+  - Handle: 18360824805973089463
+    FilePath: LuckyExporter/Meshes/SM_link2_5.hsmesh
+    Type: StaticMesh
   - Handle: 18365816825056427198
     FilePath: Materials/Right front base to long edge - 2 cm tick 1_Material.hmaterial
     Type: Material
+  - Handle: 18392525675867746731
+    FilePath: LuckyExporter/Meshes/SM_link2_8.glb
+    Type: MeshSource
+  - Handle: 18397655177013059326
+    FilePath: LuckyExporter/Meshes/SM_Cross_to_right_short_edge.hsmesh
+    Type: StaticMesh

@@ -97,6 +97,10 @@ namespace LuckyExporter
 		[Tooltip("How quickly a watching hand follows. Less is snappier, more is lazier.")]
 		public float WatchTurnTime = 0.3f;
 
+		[DisplayName("Hide Waypoints")]
+		[Tooltip("While playing, hide every waypoint in the Task List and its Elbow Pole sphere. They show again when you stop.")]
+		public bool HideWaypoints = true;
+
 		[DisplayName("Currently Controlled")]
 		[Tooltip("While playing: the robot a waypoint is controlling, and which waypoint.")]
 		public string CurrentlyControlled = "";
@@ -172,7 +176,7 @@ namespace LuckyExporter
 		/// <summary>The hand position the director is asking the robot for right now.</summary>
 		public Vector3 CommandedPosition(Entity robot) => Find(robot)?.Target ?? Vector3.Zero;
 
-		private RobotState? Find(Entity robot) => m_Robots.Find(r => r.Entity.Handle == robot.Handle);
+		private RobotState? Find(Entity robot) => m_Robots.Find(r => r.Entity.Id() == robot.Id());
 
 		protected override void OnUpdate(float deltaTime)
 		{
@@ -222,6 +226,9 @@ namespace LuckyExporter
 
 			Entity[] entries = TaskList.Children;
 			Array.Sort(entries, (a, b) => RobotDirector.NaturalCompare(a.Tag, b.Tag));
+			if (HideWaypoints)
+				foreach (Entity entry in entries)
+					HideMeshes(entry);
 			for (int i = 0; i < entries.Length; i++)
 			{
 				if (i > 0 && entries[i].Tag == entries[i - 1].Tag)
@@ -242,6 +249,14 @@ namespace LuckyExporter
 			if (m_Tasks.Count == 0)
 				Log.Warn($"[LD_PlateDirector] No waypoints to play: parent LD_PlateWaypoints under {TaskList.Tag}.");
 			return m_Robots.Count > 0;
+		}
+
+		private static void HideMeshes(Entity entity)
+		{
+			if (entity.GetComponent<StaticMeshComponent>() is StaticMeshComponent mesh)
+				mesh.Visible = false;
+			foreach (Entity child in entity.Children)
+				HideMeshes(child);
 		}
 
 		// With the wrist on the base axis the first and fourth joints do the same thing, so the arm swings about

@@ -19,7 +19,7 @@ obj/
 *.csproj
 Win-CreateScriptProjects.bat
 CreateScriptProjects.sh
-
+.blend
 # Machine settings and credentials
 .vs/
 .vscode/

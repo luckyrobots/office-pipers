@@ -1,0 +1,28 @@
+nodes:
+  - {id: 1, type: MeshCylinder, name: Pipe, inputs: {Radius: {param: pipe_radius}, Height: {param: pipe_length}, Sides: {kind: Int32, value: 48}}, x: 40, y: 40}
+  - {id: 2, type: Transform, name: Pipe position, inputs: {Translation: {param: pipe_centre}}, x: 320, y: 40}
+  - {id: 3, type: SetMaterial, name: Pipe material, inputs: {Material: {kind: Material, value: [0.800000012, 0.800000012, 0.800000012, 1, 0, 0.400000006]}, Name: {kind: String, value: Pipe}}, x: 600, y: 40}
+links: [{from: {node: 1, pin: Geometry}, to: {node: 2, pin: Geometry}}, {from: {node: 2, pin: Geometry}, to: {node: 3, pin: Geometry}}]
+parameters:
+  pipe_radius:
+    kind: Float
+    default: 0.0161945
+    desc: Pipe radius in metres.
+    group: Pipe
+  pipe_length:
+    kind: Float
+    default: 5.274364
+    desc: Pipe length in metres, running straight up.
+    group: Pipe
+  pipe_centre:
+    kind: Float3
+    default:
+    - 0.950309
+    - 3.789648
+    - -2.9104
+    desc: Centre of the pipe in metres, from the entity's origin. Y is up.
+    group: Pipe
+outputs:
+  Geometry:
+    node: 3
+    pin: Geometry

@@ -135,7 +135,7 @@ namespace OfficePipers
 			m_Task = TaskEntity?.As<WoodFillerTask>();
 			m_World = GetComponent<MujocoSceneComponent>();
 			m_Robot = GetComponent<RobotControllerComponent>();
-			if (m_Task == null || !m_Task.EpisodeActive || m_Task.PreparedPhysicsWorldEntityId != (ulong)Handle || m_World == null || m_Robot == null)
+			if (m_Task == null || !m_Task.EpisodeActive || m_Task.PreparedPhysicsWorldEntityId != this.Id() || m_World == null || m_Robot == null)
 			{
 				Status = "Assign TaskEntity, attach this driver to its shared Piper/tube physics world, and start a task episode first.";
 				return;
@@ -395,7 +395,7 @@ namespace OfficePipers
 			WoodFillerTask? task = TaskEntity?.As<WoodFillerTask>();
 			TubePlayCommand command = m_PlayStartup.Advance(AutoRunOnPlay, task != null,
 				task?.Workflow == TubeWorkflow.SimulationOnly, task?.EpisodeStage ?? TubeEpisodeStage.WaitingForPlay,
-				(ulong)(TaskEntity?.Handle ?? 0), task?.ControlRevision ?? 0, task?.Status ?? "Assign TaskEntity to the wood-filler episode controls.", deltaTime,
+				(TaskEntity?.Id() ?? 0UL), task?.ControlRevision ?? 0, task?.Status ?? "Assign TaskEntity to the wood-filler episode controls.", deltaTime,
 				homeReady: m_HomeReady, continuous: ContinuousEpisodes, episodeSuccessful: task?.EpisodeSucceeded ?? false,
 				recordingCanContinue: task?.RecordingCanContinue ?? true, waitForPlacement: WaitForPhysicalTubePlacement,
 				placementConfirmed: m_PlacementConfirmed, maximumEpisodes: MaximumEpisodes,
@@ -451,7 +451,7 @@ namespace OfficePipers
 
 		private void BeginHoming()
 		{
-			if (m_Task == null || !m_Task.PreparedSourceQualified || m_Task.PreparedPhysicsWorldEntityId != (ulong)Handle
+			if (m_Task == null || !m_Task.PreparedSourceQualified || m_Task.PreparedPhysicsWorldEntityId != this.Id()
 				|| (m_Task.EpisodeStage != TubeEpisodeStage.Ready && m_Task.EpisodeStage != TubeEpisodeStage.Active)
 				|| !ValidSettings())
 			{
@@ -540,7 +540,7 @@ namespace OfficePipers
 
 		private bool AdvanceHoming(float deltaTime)
 		{
-			if (m_Task == null || m_Task.ControlRevision != m_HomeControlRevision || m_Task.PreparedPhysicsWorldEntityId != (ulong)Handle
+			if (m_Task == null || m_Task.ControlRevision != m_HomeControlRevision || m_Task.PreparedPhysicsWorldEntityId != this.Id()
 				|| (m_Task.EpisodeStage != TubeEpisodeStage.Ready && m_Task.EpisodeStage != TubeEpisodeStage.Active)
 				|| (m_PlayStartup.CompletedEpisodes > 0 && !m_Task.RecordingCanContinue)
 				|| !float.IsFinite(deltaTime) || deltaTime <= 0f)

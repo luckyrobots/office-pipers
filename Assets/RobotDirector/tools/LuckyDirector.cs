@@ -317,7 +317,7 @@ namespace CanTake
 		// parented under the director (the tasks are handled above, and the robot is never hidden)
 		private void SetDirectorMeshesVisible(Entity entity, bool visible)
 		{
-			if (entity.Handle == TaskList?.Handle || entity.Handle == Robot?.Handle)
+			if (entity.Id() == TaskList?.Id() || entity.Id() == Robot?.Id())
 				return;
 			StaticMeshComponent? mesh = entity.GetComponent<StaticMeshComponent>();
 			if (mesh is not null)
@@ -600,7 +600,7 @@ namespace CanTake
 				return;
 			}
 			m_HoldPending[arm] = false;
-			uint body = mujoco.GetBodyID($"lucky_body_{(ulong)target.Handle}");
+			uint body = mujoco.GetBodyID($"lucky_body_{target.Id()}");
 			if (body >= mujoco.ModelNbody || !TryGetHandMj(mujoco, arm, out Vector3 handPosition, out Quaternion handRotation)
 				|| !mujoco.GetBodyPoseMj(body, out Vector3 position, out Quaternion rotation, out Vector3 _, out Vector3 _))
 			{

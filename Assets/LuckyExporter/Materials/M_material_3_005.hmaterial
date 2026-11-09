@@ -1,0 +1,14 @@
+Material:
+  Transparent: false
+  AlbedoColor: [0.75999999, 0.779999971, 0.790000021]
+  Emission: 0
+  UVScale: [1, 1]
+  UVOffset: [0, 0]
+  UseNormalMap: false
+  Metalness: 0.100000001
+  Roughness: 0.319999993
+  AlbedoMap: 0
+  NormalMap: 0
+  MetalnessMap: 0
+  RoughnessMap: 0
+  MaterialFlags: 6
