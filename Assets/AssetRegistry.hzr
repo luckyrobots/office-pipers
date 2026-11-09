@@ -194,6 +194,9 @@ Assets:
   - Handle: 1585227497954062400
     FilePath: LuckyExporter/Meshes/SM_Dimension_2_cm.glb
     Type: MeshSource
+  - Handle: 1586576839820826285
+    FilePath: Materials/ember.hmaterial
+    Type: Material
   - Handle: 1587085785626600515
     FilePath: LuckyExporter/Meshes/SM_link3_5.hsmesh
     Type: StaticMesh
@@ -521,6 +524,9 @@ Assets:
   - Handle: 4667949652296048523
     FilePath: LuckyExporter/Meshes/SM_Cylinder_1.glb
     Type: MeshSource
+  - Handle: 4724557979222842331
+    FilePath: Meshes/Meshy_AI_can_we_gerate_al_lbum_1109233302_texture.hmesh
+    Type: Mesh
   - Handle: 4743811808792496810
     FilePath: ContentVault/Robots/PiperPod/assets/link2_gray.stl
     Type: MeshSource
@@ -611,6 +617,9 @@ Assets:
   - Handle: 6010767439259824876
     FilePath: LuckyExporter/Materials/M_Piper_light_gray_mat.hmaterial
     Type: Material
+  - Handle: 6011845087778279885
+    FilePath: Office-industrial-window-walls/source/industrial-window-walls.hpodgraph
+    Type: PodGraph
   - Handle: 6082606572670252004
     FilePath: LuckyExporter/Materials/M_Right_base_short_edge_-_3_mm_reference_Material.hmaterial
     Type: Material
@@ -752,6 +761,9 @@ Assets:
   - Handle: 7631561570496438826
     FilePath: LuckyExporter/Meshes/SM_Cylinder.hsmesh
     Type: StaticMesh
+  - Handle: 7657831523862360155
+    FilePath: Meshes/Meshy_AI_can_we_gerate_al_lbum_1109233302_texture.glb
+    Type: MeshSource
   - Handle: 7664065505689698019
     FilePath: ContentVault/Robots/PiperPod/assets/link5_8.obj
     Type: MeshSource

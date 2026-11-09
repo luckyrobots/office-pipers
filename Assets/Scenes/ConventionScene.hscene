@@ -487,7 +487,7 @@ Entities:
     TransformComponent:
       Position: [0.41, 0.93, -0.1]
       Rotation: [-0.136406, -1.34931, 1.97294]
-      Scale: [1, 1, 1]
+      Scale: [0.3, 0.3, 0.3]
     ScriptComponent:
       ScriptID: 2011178992
       ScriptName: LuckyExporter.LD_PlateWaypoint
@@ -548,6 +548,7 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
+        1: 0
       Visible: true
   - Entity: 408777118912792925
     Domain: Client
@@ -767,7 +768,7 @@ Entities:
       CastsShadows: true
       SoftShadows: false
       Falloff: 1
-      Intensity: 50
+      Intensity: 68
       Range: 15
   - Entity: 742438151748232916
     Domain: Client
@@ -835,7 +836,7 @@ Entities:
     TransformComponent:
       Position: [-0.00200187, 0.945479, 0.128445]
       Rotation: [1.5708, 1.65377, -0.198454]
-      Scale: [1, 1, 1]
+      Scale: [0.3, 0.3, 0.3]
     ScriptComponent:
       ScriptID: 2011178992
       ScriptName: LuckyExporter.LD_PlateWaypoint
@@ -896,6 +897,7 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
+        1: 0
       Visible: true
   - Entity: 848682834052465792
     Domain: Client
@@ -1378,26 +1380,6 @@ Entities:
       Scale: [1, 1, 1]
     MujocoSiteComponent:
       ID: 0
-  - Entity: 1613875071127310525
-    Domain: Client
-    TagComponent:
-      Tag: Softbox key
-    Parent: 12338562762665544382
-    Children:
-      []
-    TransformComponent:
-      Position: [0.108042, -0.303204, 9.41082]
-      Rotation: [3.28525, 0, 0]
-      Scale: [3.54541, 3.54541, 3.54541]
-    AreaLightComponent:
-      Radiance: [1, 1, 1]
-      Intensity: 5
-      Shape: 0
-      Width: 14.12
-      Height: 3.68
-      Radius: 0.5
-      Length: 1
-      TwoSided: false
   - Entity: 1667863104176755336
     Domain: Client
     TagComponent:
@@ -2006,7 +1988,7 @@ Entities:
     TransformComponent:
       Position: [-0.136354, 0.945479, -0.223868]
       Rotation: [1.5708, 1.65377, -0.198454]
-      Scale: [1, 1, 1]
+      Scale: [0.3, 0.3, 0.3]
     ScriptComponent:
       ScriptID: 2011178992
       ScriptName: LuckyExporter.LD_PlateWaypoint
@@ -2078,7 +2060,7 @@ Entities:
     TransformComponent:
       Position: [0.11712, 0.890158, -0.135908]
       Rotation: [-0.136406, 1.34931, -1.97293]
-      Scale: [1, 1, 1]
+      Scale: [0.3, 0.3, 0.3]
     ScriptComponent:
       ScriptID: 2011178992
       ScriptName: LuckyExporter.LD_PlateWaypoint
@@ -2190,7 +2172,7 @@ Entities:
     TransformComponent:
       Position: [0.11712, 0.890158, 0.0942279]
       Rotation: [0.33114, 1.36657, -1.51554]
-      Scale: [1, 1, 1]
+      Scale: [0.3, 0.3, 0.3]
     ScriptComponent:
       ScriptID: 2011178992
       ScriptName: LuckyExporter.LD_PlateWaypoint
@@ -2282,7 +2264,7 @@ Entities:
     TransformComponent:
       Position: [0.0128734, 0.890158, 0.0942279]
       Rotation: [0.33114, 1.36657, -1.51554]
-      Scale: [1, 1, 1]
+      Scale: [0.3, 0.3, 0.3]
     ScriptComponent:
       ScriptID: 2011178992
       ScriptName: LuckyExporter.LD_PlateWaypoint
@@ -2419,6 +2401,46 @@ Entities:
       DropShadow: false
       ShadowDistance: 0
       ShadowColor: [0, 0, 0, 1]
+  - Entity: 3020028246171034189
+    Domain: Client
+    TagComponent:
+      Tag: Softbox key
+    Parent: 12338562762665544382
+    Children:
+      []
+    TransformComponent:
+      Position: [-6.39806, 7.27285, -1.2689]
+      Rotation: [1.59781, -0, 0]
+      Scale: [3.54541, 3.54541, 3.54541]
+    AreaLightComponent:
+      Radiance: [0.816614, 0.880156, 0.987903]
+      Intensity: 3000
+      Shape: 0
+      Width: 0.2
+      Height: 0.19
+      Radius: 0.5
+      Length: 1
+      TwoSided: false
+  - Entity: 3036410797590279438
+    Domain: Client
+    TagComponent:
+      Tag: Softbox key
+    Parent: 12338562762665544382
+    Children:
+      []
+    TransformComponent:
+      Position: [6.90076, 7.27285, -1.2689]
+      Rotation: [1.59781, -0, 0]
+      Scale: [3.54541, 3.54541, 3.54541]
+    AreaLightComponent:
+      Radiance: [0.816614, 0.880156, 0.987903]
+      Intensity: 3000
+      Shape: 0
+      Width: 0.2
+      Height: 0.19
+      Radius: 0.5
+      Length: 1
+      TwoSided: false
   - Entity: 3043759419755722839
     Domain: Client
     TagComponent:
@@ -2635,7 +2657,7 @@ Entities:
     TransformComponent:
       Position: [0.025256, 0.919718, -0.0250084]
       Rotation: [-0.136406, 1.34931, -1.97293]
-      Scale: [1, 1, 1]
+      Scale: [0.3, 0.3, 0.3]
     ScriptComponent:
       ScriptID: 2011178992
       ScriptName: LuckyExporter.LD_PlateWaypoint
@@ -2696,6 +2718,7 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
+        1: 0
       Visible: true
   - Entity: 3354310072068136519
     Domain: Client
@@ -2869,6 +2892,13 @@ Entities:
         5: 0
         6: 0
         7: 0
+        8: 0
+        9: 0
+        10: 0
+        11: 0
+        12: 0
+        13: 0
+        14: 0
     MujocoMeshColliderComponent:
       StaticMesh: 0
       ConvexHullAsset: 0
@@ -3234,6 +3264,25 @@ Entities:
       Visible: true
     MujocoGeomComponent:
       ID: 47
+  - Entity: 4638826951168540584
+    Domain: Client
+    TagComponent:
+      Tag: Side walls with industrial windows
+    Parent: 0
+    Children:
+      []
+    TransformComponent:
+      Position: [0, 0, 0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    PodComponent:
+      Kind: 0
+      PodGraph: 6011845087778279885
+      MaterialTable:
+        0: 0
+        1: 0
+        2: 0
+        3: 0
   - Entity: 4838166421519852959
     Domain: Client
     TagComponent:
@@ -3465,11 +3514,11 @@ Entities:
       Scale: [1, 1, 1]
     SkyLightComponent:
       EnvironmentMap: 0
-      Intensity: 0.35
+      Intensity: 0.95
       Lod: 0
-      Rotation: 0
+      Rotation: 303.221
       DynamicSky: true
-      TurbidityAzimuthInclination: [2.8, 3.8, 1]
+      TurbidityAzimuthInclination: [2.28, 3.8, 1]
   - Entity: 5182520351700253512
     Domain: Client
     TagComponent:
@@ -3480,7 +3529,7 @@ Entities:
     TransformComponent:
       Position: [0.26208, 0.89016, -0.104302]
       Rotation: [0.33114, -1.36657, 1.51554]
-      Scale: [1, 1, 1]
+      Scale: [0.3, 0.3, 0.3]
     ScriptComponent:
       ScriptID: 2011178992
       ScriptName: LuckyExporter.LD_PlateWaypoint
@@ -4080,8 +4129,8 @@ Entities:
     Children:
       []
     TransformComponent:
-      Position: [1.03917, 1.55085, 1.52945]
-      Rotation: [-0.465981, 0.476663, -0.0668499]
+      Position: [1.03917, 1.45947, 1.52945]
+      Rotation: [-0.362864, 0.480274, -0.0627081]
       Scale: [1, 1, 1]
     ScriptComponent:
       ScriptID: 54645349
@@ -4103,6 +4152,10 @@ Entities:
           Name: BlurStrength
           Type: Float
           Value: 0.5
+        - ID: 1506527809
+          Name: PathTraced
+          Type: Bool
+          Value: false
     CameraComponent:
       Camera:
         ProjectionType: 0
@@ -4140,8 +4193,8 @@ Entities:
         BCCoeffP1: 0
         BCCoeffP2: 0
       Aperture:
-        ApertureFStop: 8.9
-        FocusDistanceM: 0.05
+        ApertureFStop: 10.9
+        FocusDistanceM: 1.2
       Sensor:
         VignettingExponent: 10
         VignettingCorrection: 1
@@ -4570,15 +4623,15 @@ Entities:
     Children:
       []
     TransformComponent:
-      Position: [-0.145133, 3.99063, -1.2689]
+      Position: [-0.145133, 7.27285, -1.2689]
       Rotation: [1.59781, -0, 0]
       Scale: [3.54541, 3.54541, 3.54541]
     AreaLightComponent:
-      Radiance: [0.389536, 0.479368, 0.975806]
-      Intensity: 0
+      Radiance: [0.816614, 0.880156, 0.987903]
+      Intensity: 3000
       Shape: 0
       Width: 0.2
-      Height: 0.39
+      Height: 0.19
       Radius: 0.5
       Length: 1
       TwoSided: false
@@ -4834,7 +4887,7 @@ Entities:
     TransformComponent:
       Position: [0.27277, 1.125, -0.1]
       Rotation: [0.417568, -1.50893, 1.23231]
-      Scale: [1, 1, 1]
+      Scale: [0.3, 0.3, 0.3]
     ScriptComponent:
       ScriptID: 2011178992
       ScriptName: LuckyExporter.LD_PlateWaypoint
@@ -5279,7 +5332,7 @@ Entities:
     TransformComponent:
       Position: [0.11712, 0.890158, -0.0197952]
       Rotation: [0.33114, 1.36657, -1.51554]
-      Scale: [1, 1, 1]
+      Scale: [0.3, 0.3, 0.3]
     ScriptComponent:
       ScriptID: 2011178992
       ScriptName: LuckyExporter.LD_PlateWaypoint
@@ -5493,7 +5546,7 @@ Entities:
     TransformComponent:
       Position: [0.3688, 0.91407, 0.0554031]
       Rotation: [-1.13382, -1.4833, 2.9622]
-      Scale: [1, 1, 1]
+      Scale: [0.3, 0.3, 0.3]
     ScriptComponent:
       ScriptID: 2011178992
       ScriptName: LuckyExporter.LD_PlateWaypoint
@@ -5969,6 +6022,45 @@ Entities:
       Visible: true
     MujocoGeomComponent:
       ID: 11
+  - Entity: 8990030447164078915
+    Domain: Client
+    TagComponent:
+      Tag: Directional Light
+    Parent: 12338562762665544382
+    Children:
+      []
+    TransformComponent:
+      Position: [0, 3.26602, 0]
+      Rotation: [1.21824, 1.49051, 0.10472]
+      Scale: [1, 1, 1]
+    DirectionalLightComponent:
+      Intensity: 1.7
+      Radiance: [1, 0.911388, 0.560484]
+      CastShadows: true
+      SoftShadows: true
+      LightSize: 42.2
+      ShadowAmount: 1
+      Photometric: false
+  - Entity: 9003140068306292320
+    Domain: Client
+    TagComponent:
+      Tag: ember
+    Parent: 11627479693520113729
+    Children:
+      []
+    TransformComponent:
+      Position: [0, 0.680842, 0.0763538]
+      Rotation: [0, -0, 0]
+      Scale: [1.60874, 1.60874, 0.266122]
+    MeshTagComponent:
+      EntityID: 18200197178120833285
+    SubmeshComponent:
+      AssetID: 4724557979222842331
+      SubmeshIndex: 0
+      MaterialTable:
+        0: 1586576839820826285
+        1: 0
+      Visible: true
   - Entity: 9015109270909120595
     Domain: Client
     TagComponent:
@@ -6350,7 +6442,7 @@ Entities:
     TransformComponent:
       Position: [0.28208, 0.89016, 0.0527131]
       Rotation: [-1.8317, -1.4718, 3.6573]
-      Scale: [1, 1, 1]
+      Scale: [0.3, 0.3, 0.3]
     ScriptComponent:
       ScriptID: 2011178992
       ScriptName: LuckyExporter.LD_PlateWaypoint
@@ -6650,7 +6742,7 @@ Entities:
     TransformComponent:
       Position: [0.27277, 1.125, 0.0405]
       Rotation: [0.417568, -1.50893, 1.23231]
-      Scale: [1, 1, 1]
+      Scale: [0.3, 0.3, 0.3]
     ScriptComponent:
       ScriptID: 2011178992
       ScriptName: LuckyExporter.LD_PlateWaypoint
@@ -7145,7 +7237,7 @@ Entities:
     TransformComponent:
       Position: [0.26608, 0.89016, 0.0587304]
       Rotation: [0.0864285, -1.62985, 1.76172]
-      Scale: [1, 1, 1]
+      Scale: [0.3, 0.3, 0.3]
     ScriptComponent:
       ScriptID: 2011178992
       ScriptName: LuckyExporter.LD_PlateWaypoint
@@ -7497,6 +7589,19 @@ Entities:
       Visible: true
     MujocoGeomComponent:
       ID: 57
+  - Entity: 11627479693520113729
+    Domain: Client
+    TagComponent:
+      Tag: Meshy_AI_can_we_gerate_al_lbum_1109233302_texture
+    Parent: 0
+    Children:
+      - Handle: 9003140068306292320
+    TransformComponent:
+      Position: [0, 2.81639, -2.95585]
+      Rotation: [0, 0, 0]
+      Scale: [1.24266, 1.24266, 1.24266]
+    MeshComponent:
+      AssetID: 4724557979222842331
   - Entity: 11656617042153881091
     Domain: Client
     TagComponent:
@@ -7800,12 +7905,14 @@ Entities:
     Parent: 0
     Children:
       - Handle: 13934112874514398253
-      - Handle: 696499001387688551
       - Handle: 4913816243586394043
       - Handle: 2384663304029776291
       - Handle: 6530854090986359912
       - Handle: 5150732005203304006
-      - Handle: 1613875071127310525
+      - Handle: 8990030447164078915
+      - Handle: 696499001387688551
+      - Handle: 3020028246171034189
+      - Handle: 3036410797590279438
     TransformComponent:
       Position: [0, 0, 0]
       Rotation: [0, 0, 0]
@@ -8279,7 +8386,7 @@ Entities:
     TransformComponent:
       Position: [0.11712, 0.890158, -0.0250084]
       Rotation: [-0.136406, 1.34931, -1.97293]
-      Scale: [1, 1, 1]
+      Scale: [0.3, 0.3, 0.3]
     ScriptComponent:
       ScriptID: 2011178992
       ScriptName: LuckyExporter.LD_PlateWaypoint
@@ -8437,7 +8544,7 @@ Entities:
     TransformComponent:
       Position: [0.36638, 0.89016, -0.131]
       Rotation: [0.33114, -1.36657, 1.51554]
-      Scale: [1, 1, 1]
+      Scale: [0.3, 0.3, 0.3]
     ScriptComponent:
       ScriptID: 2011178992
       ScriptName: LuckyExporter.LD_PlateWaypoint
@@ -8766,7 +8873,6 @@ Entities:
       AssetID: 13985921990890505022
       MaterialTable:
         0: 0
-        1: 0
       Visible: true
     MujocoMeshColliderComponent:
       StaticMesh: 13985921990890505022
@@ -8947,7 +9053,7 @@ Entities:
       CastsShadows: true
       SoftShadows: true
       Falloff: 1
-      Intensity: 100
+      Intensity: 400
       Range: 76.3
   - Entity: 14000934426644050662
     Domain: Client
@@ -9412,7 +9518,7 @@ Entities:
     TransformComponent:
       Position: [0.126427, 1.08533, -0.0668346]
       Rotation: [0.417568, 1.50893, -1.23231]
-      Scale: [1, 1, 1]
+      Scale: [0.3, 0.3, 0.3]
     ScriptComponent:
       ScriptID: 2011178992
       ScriptName: LuckyExporter.LD_PlateWaypoint
@@ -9473,6 +9579,7 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
+        1: 0
       Visible: true
   - Entity: 14983545259072935749
     Domain: Client
@@ -9654,7 +9761,7 @@ Entities:
     TransformComponent:
       Position: [0.28208, 0.89016, 0.0908464]
       Rotation: [-0.136406, -1.34931, 1.97294]
-      Scale: [1, 1, 1]
+      Scale: [0.3, 0.3, 0.3]
     ScriptComponent:
       ScriptID: 2011178992
       ScriptName: LuckyExporter.LD_PlateWaypoint
@@ -9746,7 +9853,7 @@ Entities:
     TransformComponent:
       Position: [0.442601, 1.08656, 0.242927]
       Rotation: [-0.136406, -1.34931, 1.97294]
-      Scale: [1, 1, 1]
+      Scale: [0.3, 0.3, 0.3]
     ScriptComponent:
       ScriptID: 2011178992
       ScriptName: LuckyExporter.LD_PlateWaypoint
@@ -9807,7 +9914,6 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
-        1: 0
       Visible: true
   - Entity: 15373849006636681021
     Domain: Client
@@ -11066,7 +11172,7 @@ Entities:
     TransformComponent:
       Position: [0.27277, 1.0853, 0.07799]
       Rotation: [0.417568, -1.50893, 1.23231]
-      Scale: [1, 1, 1]
+      Scale: [0.3, 0.3, 0.3]
     ScriptComponent:
       ScriptID: 2011178992
       ScriptName: LuckyExporter.LD_PlateWaypoint
@@ -11138,7 +11244,7 @@ Entities:
     TransformComponent:
       Position: [0.126427, 1.08533, 0.04082]
       Rotation: [0.417568, 1.50893, -1.23231]
-      Scale: [1, 1, 1]
+      Scale: [0.3, 0.3, 0.3]
     ScriptComponent:
       ScriptID: 2011178992
       ScriptName: LuckyExporter.LD_PlateWaypoint
@@ -11199,6 +11305,7 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
+        1: 0
       Visible: true
   - Entity: 17663836012139420924
     Domain: Client

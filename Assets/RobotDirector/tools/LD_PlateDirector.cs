@@ -112,7 +112,9 @@ namespace LuckyExporter
 		private const float RadPerDeg = MathF.PI / 180.0f;
 		private const float DegPerRad = 180.0f / MathF.PI;
 		private const float CarriedAhead = 0.08f; // how far along the fingers the middle of something held tends to be
-		private const float WatchMaxSpeed = 60.0f * RadPerDeg; // radians per second
+		private const float WatchMaxSpeed = 45.0f * RadPerDeg; // radians per second
+		private const float WatchMaxAccel = 90.0f * RadPerDeg; // radians per second squared, so the arm never jerks into or out of a turn
+		private const float WatchNearBase = 0.25f; // closer than this across to the base, the direction to what it watches swings fast, so the watch fades out
 		private const float HeldOpening = 0.5f; // a gripper closed further than this counts as carrying
 		private const float WatchMaxUp = 25.0f * RadPerDeg; // the shoulder's end stop is about 42 degrees up from rest
 		private const float WatchMaxDown = 20.0f * RadPerDeg; // keeps the hand about 100 mm above the table
@@ -138,6 +140,10 @@ namespace LuckyExporter
 			public int FlowsInto = -1; // the waypoint to start as soon as the current one ends
 			public float LookYaw; // radians about the base's vertical axis, added to the target while it watches
 			public float LookPitch; // radians the arm tips down about its shoulder, added to the target while it watches
+			public float LookYawSpeed; // radians per second, so a watch eases in and out instead of starting at full speed
+			public float LookPitchSpeed;
+			public Vector3 LookPoint; // what it watches, smoothed, so switching between carried things glides
+			public bool HasLookPoint;
 			public float Opening = 1.0f; // 0 closed .. 1 open
 			public float OpeningFrom = 1.0f;
 			public float OpeningTo = 1.0f;
@@ -606,6 +612,9 @@ namespace LuckyExporter
 			robot.PoleWeight = 0.0f; // the graph's ease covers the change
 			robot.LookYaw = 0.0f;
 			robot.LookPitch = 0.0f;
+			robot.LookYawSpeed = 0.0f;
+			robot.LookPitchSpeed = 0.0f;
+			robot.HasLookPoint = false;
 			robot.Controller.SetInputBool(RobotInput.LeftArm_Tracking_Mode.ForArm(0, true), false);
 			WriteTarget(robot);
 			robot.Controller.SetInputFloat(RobotInput.Duration.ID(), MathF.Max(time, 0.01f));
@@ -630,24 +639,62 @@ namespace LuckyExporter
 		{
 			float wantedYaw = 0.0f;
 			float wantedPitch = 0.0f;
+			float turnTime = MathF.Max(WatchTurnTime, 0.05f);
 			if (WatchWhileResting && robot.AtRest && FindCarried(robot) is Vector3 carried)
 			{
+				// Glide the watched point, so a switch to another carried thing, or a jump in one, doesn't snap the goal
+				if (robot.HasLookPoint)
+					robot.LookPoint += (carried - robot.LookPoint) * (1.0f - MathF.Exp(-deltaTime / turnTime));
+				else
+					robot.LookPoint = carried;
+				robot.HasLookPoint = true;
+				Vector3 point = robot.LookPoint;
+
 				float limit = WatchLimit * RadPerDeg;
 				Vector3 origin = robot.Entity.Transform.WorldTranslation;
 				Vector3 fingers = robot.TargetRotation * new Vector3(1.0f, 0.0f, 0.0f);
 				// The hand rests on a line out from the base, so facing something from the base also faces it from the hand. About +Y, angles run from +X away from +Z.
-				float off = MathF.Atan2(fingers.Z, fingers.X) - MathF.Atan2(carried.Z - origin.Z, carried.X - origin.X);
+				float off = MathF.Atan2(fingers.Z, fingers.X) - MathF.Atan2(point.Z - origin.Z, point.X - origin.X);
 				wantedYaw = Math.Clamp(MathF.Atan2(MathF.Sin(off), MathF.Cos(off)), -limit, limit);
-				// Seen from where the hand is now, as tipping moves it. Tipping down lowers it, which asks for less tip, so this settles.
-				WatchingPose(robot, out Vector3 hand, out _);
-				float across = new Vector3(carried.X - hand.X, 0.0f, carried.Z - hand.Z).Length();
-				float down = MathF.Atan2(hand.Y - carried.Y, MathF.Max(across, 0.01f));
-				wantedPitch = Math.Clamp(down + MathF.Asin(Math.Clamp(fingers.Y, -1.0f, 1.0f)), -MathF.Min(limit, WatchMaxUp), MathF.Min(limit, WatchMaxDown));
+				// Worked out afresh each update from the hand turned but untipped, rather than from the tip it has now,
+				// which fed back on itself and chattered when something passed close. Tipping down lowers the hand, which asks for less tip.
+				float fingersUp = MathF.Asin(Math.Clamp(fingers.Y, -1.0f, 1.0f));
+				float pitch = 0.0f;
+				for (int i = 0; i < 4; i++)
+				{
+					WatchingPose(robot, wantedYaw, pitch, out Vector3 hand, out _);
+					float across = new Vector3(point.X - hand.X, 0.0f, point.Z - hand.Z).Length();
+					float down = MathF.Atan2(hand.Y - point.Y, MathF.Max(across, 0.05f));
+					pitch = Math.Clamp(0.5f * (pitch + down + fingersUp), -MathF.Min(limit, WatchMaxUp), MathF.Min(limit, WatchMaxDown));
+				}
+				wantedPitch = pitch;
+				// Fade out as it nears the base, where the direction to it swings round quickly
+				float fromBase = new Vector3(point.X - origin.X, 0.0f, point.Z - origin.Z).Length();
+				float fade = Math.Clamp((fromBase - WatchNearBase * 0.5f) / (WatchNearBase * 0.5f), 0.0f, 1.0f);
+				fade = fade * fade * (3.0f - 2.0f * fade);
+				wantedYaw *= fade;
+				wantedPitch *= fade;
 			}
-			float blend = 1.0f - MathF.Exp(-deltaTime / MathF.Max(WatchTurnTime, 0.01f));
-			float maxStep = WatchMaxSpeed * deltaTime;
-			robot.LookYaw += Math.Clamp((wantedYaw - robot.LookYaw) * blend, -maxStep, maxStep);
-			robot.LookPitch += Math.Clamp((wantedPitch - robot.LookPitch) * blend, -maxStep, maxStep);
+			else
+				robot.HasLookPoint = false;
+			robot.LookYaw = EaseAngle(robot.LookYaw, wantedYaw, ref robot.LookYawSpeed, turnTime, deltaTime);
+			robot.LookPitch = EaseAngle(robot.LookPitch, wantedPitch, ref robot.LookPitchSpeed, turnTime, deltaTime);
+		}
+
+		// A critically damped spring with capped speed and acceleration, so a watch starts and stops gently
+		private static float EaseAngle(float current, float wanted, ref float speed, float turnTime, float deltaTime)
+		{
+			float omega = 2.0f / turnTime;
+			int steps = Math.Clamp((int)MathF.Ceiling(deltaTime * 240.0f), 1, 32);
+			float dt = deltaTime / steps;
+			for (int i = 0; i < steps; i++)
+			{
+				float accel = omega * omega * (wanted - current) - 2.0f * omega * speed;
+				speed += Math.Clamp(accel, -WatchMaxAccel, WatchMaxAccel) * dt;
+				speed = Math.Clamp(speed, -WatchMaxSpeed, WatchMaxSpeed);
+				current += speed * dt;
+			}
+			return current;
 		}
 
 		// The middle of what the nearest other robot is carrying, or null
@@ -675,7 +722,7 @@ namespace LuckyExporter
 		private static void WriteTarget(RobotState robot)
 		{
 			robot.Controller.SetInputBool(RobotInput.LeftArm_Solve_Orientation.ForArm(0, true), robot.SolveRotation);
-			WatchingPose(robot, out Vector3 position, out Quaternion rotation);
+			WatchingPose(robot, robot.LookYaw, robot.LookPitch, out Vector3 position, out Quaternion rotation);
 			robot.Controller.SetInputVector3(RobotInput.LeftArm_Target_Position.ForArm(0, true), position);
 			robot.Controller.SetInputVector3(RobotInput.LeftArm_Target_Orientation.ForArm(0, true), rotation.EulerAngles * DegPerRad);
 			Vector3 armMiddle = (robot.Shoulder + robot.Target) * 0.5f;
@@ -684,11 +731,11 @@ namespace LuckyExporter
 		}
 
 		// The target with the watching turn added: the whole arm tips about its shoulder, then turns about its base
-		private static void WatchingPose(RobotState robot, out Vector3 position, out Quaternion rotation)
+		private static void WatchingPose(RobotState robot, float yaw, float pitch, out Vector3 position, out Quaternion rotation)
 		{
 			position = robot.Target;
 			rotation = robot.TargetRotation;
-			if (robot.LookYaw == 0.0f && robot.LookPitch == 0.0f)
+			if (yaw == 0.0f && pitch == 0.0f)
 				return;
 			Vector3 reach = position - robot.Shoulder;
 			// The shoulder's axis is square to the plane the wrist is in, not the hand, and any other axis has to move the wrist
@@ -697,11 +744,11 @@ namespace LuckyExporter
 			if (ahead.Length() > 0.001f)
 			{
 				// Up cross ahead, which tips the arm down
-				Quaternion tip = FromRotationVector(new Vector3(ahead.Z, 0.0f, -ahead.X).Normalized() * robot.LookPitch);
+				Quaternion tip = FromRotationVector(new Vector3(ahead.Z, 0.0f, -ahead.X).Normalized() * pitch);
 				position = robot.Shoulder + tip * reach;
 				rotation = tip * rotation;
 			}
-			Quaternion turn = FromRotationVector(new Vector3(0.0f, robot.LookYaw, 0.0f));
+			Quaternion turn = FromRotationVector(new Vector3(0.0f, yaw, 0.0f));
 			position = robot.Shoulder + turn * (position - robot.Shoulder);
 			rotation = (turn * rotation).Normalized();
 		}

@@ -7,6 +7,8 @@ namespace OfficePipers
 	/// Depth of field while playing, focused on Focus Target: each frame the focus distance is set to the
 	/// target's depth in front of this camera, so it stays sharp as either moves. Without a target it holds
 	/// Focus Distance. The renderer's own depth-of-field settings are put back when you stop.
+	/// This is the viewport's post blur. The path tracer instead blurs through the camera's physical lens
+	/// (CameraComponent Aperture F-Stop and Focus Distance), which scripts can't set, so set those to match.
 	/// </summary>
 	public class CameraDepthOfField : Entity
 	{
@@ -28,6 +30,10 @@ namespace OfficePipers
 		[Slider(0.0f, 3.0f)]
 		[Tooltip("How quickly things blur away from the focus. 0.5 softens the wall and the nearest arms a little; 1.5 is strong.")]
 		public float BlurStrength = 0.5f;
+
+		[DisplayName("Path Traced")]
+		[Tooltip("Turn on when the viewport is path traced. The path tracer blurs through this camera's own lens (its Aperture F-Stop and Focus Distance), so this blur is switched off rather than blurring twice. Recordings never get this blur: a path-traced recording uses the lens, a rasterized one is sharp.")]
+		public bool PathTraced = false;
 
 		private bool m_WasEnabled;
 		private float m_WasFocus;
@@ -52,8 +58,8 @@ namespace OfficePipers
 
 		private void Apply()
 		{
-			SceneRenderer.DepthOfField.IsEnabled = Enabled;
-			if (!Enabled)
+			SceneRenderer.DepthOfField.IsEnabled = Enabled && !PathTraced;
+			if (!Enabled || PathTraced)
 				return;
 			SceneRenderer.DepthOfField.FocusDistance = MathF.Max(TargetDepth() ?? FocusDistance, 0.05f);
 			SceneRenderer.DepthOfField.BlurSize = BlurStrength;
