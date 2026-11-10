@@ -635,6 +635,9 @@ Assets:
   - Handle: 6132609302146679504
     FilePath: LuckyExporter/Meshes/SM_link3_27.hsmesh
     Type: StaticMesh
+  - Handle: 6175377487744609261
+    FilePath: Scenes/ConvenionScene-TwoArm.hscene
+    Type: Scene
   - Handle: 6180894646230013805
     FilePath: ContentVault/Robots/PiperPod/assets/link3_8.obj
     Type: MeshSource

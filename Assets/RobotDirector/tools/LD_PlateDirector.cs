@@ -75,6 +75,10 @@ namespace LuckyExporter
 		[Tooltip("Moves every resting hand from where the settings above put it, relative to each robot so all of them move alike: X further ahead, Y up, Z sideways towards the middle of the robots. It's read on Play.")]
 		public Vector3 RestOffset = Vector3.Zero;
 
+		[DisplayName("Rest Towards Work")]
+		[Tooltip("Rest facing the middle of all the waypoints instead of the middle of the robots. Turn on when the robots are all on one side, such as two arms side by side, where the middle of the robots is beside them rather than in front. It's read on Play.")]
+		public bool RestTowardsWork = false;
+
 		[DisplayName("Startup Time")]
 		[Units("s")]
 		[Slider(0.5f, 10.0f)]
@@ -228,7 +232,6 @@ namespace LuckyExporter
 				else
 					Log.Warn($"[LD_PlateDirector] {entity.Tag} isn't a single-arm robot with a RobotController, so it's skipped.");
 			}
-			SetRestPoses();
 
 			Entity[] entries = TaskList.Children;
 			Array.Sort(entries, (a, b) => RobotDirector.NaturalCompare(a.Tag, b.Tag));
@@ -254,6 +257,7 @@ namespace LuckyExporter
 			}
 			if (m_Tasks.Count == 0)
 				Log.Warn($"[LD_PlateDirector] No waypoints to play: parent LD_PlateWaypoints under {TaskList.Tag}.");
+			SetRestPoses();
 			return m_Robots.Count > 0;
 		}
 
@@ -280,13 +284,22 @@ namespace LuckyExporter
 			return MathF.Sqrt(wrist.X * wrist.X + wrist.Z * wrist.Z);
 		}
 
-		// Each robot rests facing ahead, along its X axis on the side the other robots are, turned towards them by up to Rest Turn, its hand tipped down a little, then moved by Rest Offset
+		// Each robot rests facing ahead, along its X axis on the side the other robots are (or the waypoints, with Rest Towards Work), turned towards them by up to Rest Turn, its hand tipped down a little, then moved by Rest Offset
 		private void SetRestPoses()
 		{
 			Vector3 middle = Vector3.Zero;
-			foreach (RobotState robot in m_Robots)
-				middle += robot.Entity.Transform.WorldTranslation;
-			middle *= 1.0f / MathF.Max(m_Robots.Count, 1);
+			if (RestTowardsWork && m_Tasks.Count > 0)
+			{
+				foreach (LD_PlateWaypoint waypoint in m_Tasks)
+					middle += waypoint.HandPosition();
+				middle *= 1.0f / m_Tasks.Count;
+			}
+			else
+			{
+				foreach (RobotState robot in m_Robots)
+					middle += robot.Entity.Transform.WorldTranslation;
+				middle *= 1.0f / MathF.Max(m_Robots.Count, 1);
+			}
 
 			foreach (RobotState robot in m_Robots)
 			{
