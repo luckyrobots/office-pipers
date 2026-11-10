@@ -548,7 +548,6 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
-        1: 0
       Visible: true
   - Entity: 408777118912792925
     Domain: Client
@@ -897,7 +896,6 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
-        1: 0
       Visible: true
   - Entity: 848682834052465792
     Domain: Client
@@ -2718,7 +2716,6 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
-        1: 0
       Visible: true
   - Entity: 3354310072068136519
     Domain: Client
@@ -2768,7 +2765,6 @@ Entities:
       AssetID: 7839642762303348033
       MaterialTable:
         0: 115602662767516497
-        1: 0
       Visible: true
   - Entity: 3601267003147244567
     Domain: Client
@@ -2885,20 +2881,6 @@ Entities:
           Vec: [-1.15054, 1.00174, -1.055]
       MaterialTable:
         0: 0
-        1: 0
-        2: 0
-        3: 0
-        4: 0
-        5: 0
-        6: 0
-        7: 0
-        8: 0
-        9: 0
-        10: 0
-        11: 0
-        12: 0
-        13: 0
-        14: 0
     MujocoMeshColliderComponent:
       StaticMesh: 0
       ConvexHullAsset: 0
@@ -3280,9 +3262,6 @@ Entities:
       PodGraph: 6011845087778279885
       MaterialTable:
         0: 0
-        1: 0
-        2: 0
-        3: 0
   - Entity: 4838166421519852959
     Domain: Client
     TagComponent:
@@ -5189,7 +5168,6 @@ Entities:
       AssetID: 5133478079006087835
       MaterialTable:
         0: 7576578505346300868
-        1: 0
       Visible: true
   - Entity: 7012857217214014181
     Domain: Client
@@ -5906,11 +5884,6 @@ Entities:
       PodGraph: 15286829632370501715
       MaterialTable:
         0: 0
-        1: 0
-        2: 0
-        3: 0
-        4: 0
-        5: 0
   - Entity: 8662721294064971276
     Domain: Client
     TagComponent:
@@ -6059,7 +6032,6 @@ Entities:
       SubmeshIndex: 0
       MaterialTable:
         0: 1586576839820826285
-        1: 0
       Visible: true
   - Entity: 9015109270909120595
     Domain: Client
@@ -8834,6 +8806,10 @@ Entities:
           Name: RestOffset
           Type: Vector3
           Value: [0, 0, 0]
+        - ID: 3384776986
+          Name: RestTowardsWork
+          Type: Bool
+          Value: false
         - ID: 3384240227
           Name: StartupTime
           Type: Float
@@ -9317,7 +9293,6 @@ Entities:
         5: 2610451403075382827
         6: 12595220533976451513
         7: 13545953097245632364
-        8: 0
       Visible: true
   - Entity: 14549129034838942149
     Domain: Client
@@ -9579,7 +9554,6 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
-        1: 0
       Visible: true
   - Entity: 14983545259072935749
     Domain: Client
@@ -11305,7 +11279,6 @@ Entities:
       AssetID: 5559630666313415891
       MaterialTable:
         0: 4910352822346532527
-        1: 0
       Visible: true
   - Entity: 17663836012139420924
     Domain: Client

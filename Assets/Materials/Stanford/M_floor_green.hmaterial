@@ -1,0 +1,24 @@
+Material:
+  Transparent: false
+  AlbedoColor: [0.2086, 0.2542, 0.1022]
+  Emission: 0
+  EmissionRadiance: [0, 0, 0]
+  UVScale: [1, 1]
+  UVOffset: [0, 0]
+  AlphaMaskEnabled: false
+  AlphaFactor: 1
+  AlphaCutoff: 0.5
+  NirReflectivity: 0.800000012
+  Retroreflective: 0
+  NirInterfaceF0: 0.0399999991
+  NirTransmission: 0
+  NirAttenuation: 0
+  NirContinuation: 0
+  UseNormalMap: false
+  Metalness: 0
+  Roughness: 0.6
+  AlbedoMap: 0
+  MetalnessMap: 0
+  NormalMap: 0
+  RoughnessMap: 0
+  MaterialFlags: 6

@@ -1,0 +1,236 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.1.20",
+    "version": "2.0"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0,
+        1
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "tongue_groove_pliers_l"
+    },
+    {
+      "mesh": 1,
+      "name": "tongue_groove_pliers_r"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "tongue_groove_pliers",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Vert.103",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0
+        }
+      ]
+    },
+    {
+      "name": "Vert.001",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 4,
+            "NORMAL": 5,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/jpeg",
+      "name": "tongue_groove_pliers_nor_gl",
+      "uri": "textures/tongue_groove_pliers_nor_gl_4k.jpg"
+    },
+    {
+      "mimeType": "image/jpeg",
+      "name": "tongue_groove_pliers_diff",
+      "uri": "textures/tongue_groove_pliers_diff_4k.jpg"
+    },
+    {
+      "mimeType": "image/jpeg",
+      "name": "tongue_groove_pliers_metal-tongue_groove_pliers_rough",
+      "uri": "textures/tongue_groove_pliers_arm_4k.jpg"
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 968,
+      "max": [
+        0.018440688028931618,
+        0.008402785286307335,
+        0.18351560831069946
+      ],
+      "min": [
+        -0.021051980555057526,
+        -0.00544240977615118,
+        -0.04726490378379822
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 968,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 968,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 3468,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5126,
+      "count": 1384,
+      "max": [
+        0.03831229731440544,
+        0.008422746323049068,
+        0.19428111612796783
+      ],
+      "min": [
+        -0.02419673465192318,
+        -0.005402789451181889,
+        -0.05013394355773926
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5126,
+      "count": 1384,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5126,
+      "count": 1384,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5123,
+      "count": 4614,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 11616,
+      "byteOffset": 0,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 11616,
+      "byteOffset": 11616,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 7744,
+      "byteOffset": 23232,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 6936,
+      "byteOffset": 30976,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 16608,
+      "byteOffset": 37912,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 16608,
+      "byteOffset": 54520,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 11072,
+      "byteOffset": 71128,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 9228,
+      "byteOffset": 82200,
+      "target": 34963
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 91428,
+      "uri": "tongue_groove_pliers.bin"
+    }
+  ]
+}
