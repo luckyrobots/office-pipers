@@ -10,13 +10,33 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import gen_props, gen_table as gt
 
+SETTINGS = os.path.join(HERE, "props_settings.json")
+DEFAULTS = {"count": 10, "prop_seed": 1, "tumble": 0.0, "spawn_height_offset": 0.02, "margin": 0.07,
+            "exclude_tags": ["waterbottle"]}
+
+
+def load_settings():
+    """props_settings.json beside this script; edit it (the watcher picks changes up) or override on the command line."""
+    out = dict(DEFAULTS)
+    try:
+        out.update(json.load(open(SETTINGS, encoding="utf-8")))
+    except FileNotFoundError:
+        json.dump(DEFAULTS, open(SETTINGS, "w", encoding="utf-8"), indent=2)
+    except Exception as ex:
+        print("props_settings.json unreadable, using defaults:", ex)
+    return out
+
+
+cfg = load_settings()
 ap = argparse.ArgumentParser()
-ap.add_argument("--count", type=int, default=10)
-ap.add_argument("--prop-seed", type=int, default=1)
-ap.add_argument("--tumble", type=float, default=0.0)
-ap.add_argument("--drop", type=float, default=0.15)
-ap.add_argument("--margin", type=float, default=0.07)
-ap.add_argument("--watch", action="store_true", help="keep running and re-lay the props whenever the table seed changes")
+ap.add_argument("--count", type=int, default=int(cfg["count"]))
+ap.add_argument("--prop-seed", type=int, default=int(cfg["prop_seed"]))
+ap.add_argument("--tumble", type=float, default=float(cfg["tumble"]))
+ap.add_argument("--drop", "--spawn-height-offset", dest="drop", type=float, default=float(cfg["spawn_height_offset"]),
+                help="metres between the table top and the LOWEST point of each prop when it spawns")
+ap.add_argument("--margin", type=float, default=float(cfg["margin"]))
+ap.add_argument("--watch", action="store_true", help="keep running and re-lay the props whenever the table or props_settings.json changes")
+ap.add_argument("--auto-seed", action="store_true", help="with --watch: pick a new random table seed every time Play stops, so the next Play has a fresh table")
 a = ap.parse_args()
 
 URL = "http://127.0.0.1:19331/mcp"
@@ -45,7 +65,22 @@ def call(name, args):
         return c
 
 
-ctx = call("authoring_state", {})["native"]["context_id"]
+def fresh_ctx(timeout=30):
+    """The authoring context changes after every Play/Stop (and while the scene reloads), so ask again each time."""
+    import time
+    t0 = time.time()
+    while time.time() - t0 < timeout:
+        try:
+            c = call("authoring_state", {})["native"].get("context_id")
+            if c:
+                return c
+        except Exception:
+            pass
+        time.sleep(0.5)
+    return None
+
+
+ctx = fresh_ctx(5 if a.watch else 30)
 if not ctx:
     if a.watch:
         import time
@@ -55,7 +90,10 @@ if not ctx:
 
 
 def scene(req):
-    return call("scene_authoring", {"context_id": ctx, "request": req})["native"]
+    c = fresh_ctx()
+    if not c:
+        raise RuntimeError("editor has no editable scene")
+    return call("scene_authoring", {"context_id": c, "request": req})["native"]
 
 
 if a.watch:
@@ -63,16 +101,31 @@ if a.watch:
     import subprocess, time
     child = [sys.executable, os.path.abspath(__file__)] + [x for x in sys.argv[1:] if x != "--watch"]
     last = None
+    prev_mode = None
+    import random
     print("Watching the procedural-table seed. Leave this window open; Ctrl+C to stop.")
     while True:
         try:
-            if call("harness/get_scene_state_mode", {}).get("name") == "Edit":
+            mode_now = call("harness/get_scene_state_mode", {}).get("name")
+            just_stopped = a.auto_seed and mode_now == "Edit" and prev_mode in ("Play", "Preparing")
+            if mode_now != "Preparing":
+                prev_mode = mode_now
+            if mode_now == "Edit":
                 txt = call("search_entities", {"namePattern": "procedural-table"})
                 txt = txt.get("result", "") if isinstance(txt, dict) else txt
                 tid = dict((n, u) for n, u in re.findall(r"(procedural-table(?:-collider)?) \(UUID: (\d+)\)", txt)).get("procedural-table")
                 if tid:
                     snap = scene({"schema_version": 1, "action": "inspect", "entities": [tid]})
+                    if just_stopped:
+                        new_seed = random.randint(1, 100000)
+                        r = scene({"schema_version": 1, "action": "edit", "expected": snap["stamp"],
+                                   "preconditions": [{"entity_id": tid, "fingerprint": snap["entities"][0]["fingerprint"]}],
+                                   "edits": [{"op": "set_parameter", "entity_id": tid, "name": "seed",
+                                              "value": {"kind": "Int32", "value": new_seed}}]})
+                        print(time.strftime("%H:%M:%S"), "Play stopped -> new seed", new_seed, r.get("code"), r.get("message", ""))
+                        snap = scene({"schema_version": 1, "action": "inspect", "entities": [tid]})
                     sig = json.dumps(sorted((o["node_id"], o["value"]["value"]) for o in snap["entities"][0]["pod"]["parameter_overrides"]))
+                    sig += str(os.path.getmtime(SETTINGS) if os.path.exists(SETTINGS) else 0)
                     if sig != last:
                         print(time.strftime("%H:%M:%S"), "table changed ->", sig)
                         subprocess.run(child, check=False)
@@ -129,42 +182,6 @@ prop_ids = list(base)
 place = [dict(prop=int(vals[f"prop{i}"]), x=vals[f"x{i}"], z=vals[f"z{i}"], yaw=vals[f"yaw{i}"],
               tx=vals[f"tilt_x{i}"], tz=vals[f"tilt_z{i}"]) for i in range(a.count)]
 
-RADII = {"baseball": 0.05, "elephant": 0.065, "lubricant": 0.085, "cat_statue": 0.15, "apple": 0.055,
-         "gnome": 0.13, "waterbottle": 0.09, "bucket": 0.13, "tongue": 0.13, "pliers": 0.1}
-
-
-def radius(p):
-    tg = base[prop_ids[p["prop"] % len(prop_ids)]]["tag"]
-    return next((r for k, r in RADII.items() if k in tg), 0.1)
-
-
-lim_x, lim_z = vals["W"] / 2 - 0.02, vals["D"] / 2 - 0.02
-if vals["top_round"] > 0.5:
-    lim_x = lim_z = vals["top_r"] * 0.9 - 0.02
-for p in place:
-    p["r"] = radius(p)
-for it in range(600):
-    moved = 0.0
-    for i in range(len(place)):
-        for j in range(i + 1, len(place)):
-            A, B = place[i], place[j]
-            dx, dz = B["x"] - A["x"], B["z"] - A["z"]
-            d = math.hypot(dx, dz) or 1e-6
-            gap = A["r"] + B["r"] + 0.01 - d
-            if gap > 0:
-                A["x"] -= dx / d * gap / 2
-                A["z"] -= dz / d * gap / 2
-                B["x"] += dx / d * gap / 2
-                B["z"] += dz / d * gap / 2
-                moved += gap
-    for p in place:
-        r = min(p["r"], 0.9 * min(lim_x, lim_z))
-        p["x"] = max(-lim_x + r, min(lim_x - r, p["x"]))
-        p["z"] = max(-lim_z + r, min(lim_z - r, p["z"]))
-    if moved < 1e-5:
-        break
-
-
 def qmul(a, b):
     aw, ax, ay, az = a
     bw, bx, by, bz = b
@@ -187,18 +204,131 @@ def euler_from_q(q):
             math.atan2(2*(x*y + w*z), w*w + x*x - y*y - z*z)]
 
 
+bounds = json.load(open(os.path.join(HERE, "props_bounds.json")))
+
+
+def rotate(q, v):
+    w, x, y, z = q
+    cx, cy, cz = y * v[2] - z * v[1], z * v[0] - x * v[2], x * v[1] - y * v[0]
+    dx, dy, dz = y * cz - z * cy, z * cx - x * cz, x * cy - y * cx
+    return (v[0] + 2 * (w * cx + dx), v[1] + 2 * (w * cy + dy), v[2] + 2 * (w * cz + dz))
+
+
+def corners(pid):
+    lo, hi = bounds[pid]["min"], bounds[pid]["max"]
+    return [(x, y, z) for x in (lo[0], hi[0]) for y in (lo[1], hi[1]) for z in (lo[2], hi[2])]
+
+
+def tilted(p):
+    pid = prop_ids[p["prop"] % len(prop_ids)]
+    q = qmul(qaxis((0, 0, 1), p["tz"]), qmul(qaxis((1, 0, 0), p["tx"]), q_from_euler(base[pid]["rot"])))
+    return pid, [rotate(q, v) for v in corners(pid)]
+
+
+def centre_and_radius(p):
+    """Horizontal centre of the prop's box relative to its origin (some meshes have a far-off pivot) and a yaw-proof radius around it."""
+    pid, pts = tilted(p)
+    cx = (min(c[0] for c in pts) + max(c[0] for c in pts)) / 2
+    cz = (min(c[2] for c in pts) + max(c[2] for c in pts)) / 2
+    return (cx, cz), max(math.hypot(c[0] - cx, c[2] - cz) for c in pts) + 0.01
+
+
+def radius(p):
+    p["c"], r = centre_and_radius(p)
+    return r
+
+
+ROUND = vals["top_round"] > 0.5
+lim_x, lim_z = vals["W"] / 2 - 0.02, vals["D"] / 2 - 0.02
+lim_r = vals["top_r"] - 0.02
+for p in place:
+    p["r"] = radius(p)
+
+
+def inside_clamp(p):
+    if ROUND:
+        d = math.hypot(p["x"], p["z"])
+        room = max(0.0, lim_r - p["r"])
+        if d > room:
+            k = room / d if d else 0.0
+            p["x"] *= k
+            p["z"] *= k
+    else:
+        rx, rz = min(p["r"], lim_x), min(p["r"], lim_z)
+        p["x"] = max(-lim_x + rx, min(lim_x - rx, p["x"]))
+        p["z"] = max(-lim_z + rz, min(lim_z - rz, p["z"]))
+
+
+def relax(items):
+    for _ in range(800):
+        moved = 0.0
+        for i in range(len(items)):
+            for j in range(i + 1, len(items)):
+                A, B = items[i], items[j]
+                dx, dz = B["x"] - A["x"], B["z"] - A["z"]
+                d = math.hypot(dx, dz) or 1e-6
+                gap = A["r"] + B["r"] + 0.01 - d
+                if gap > 0:
+                    A["x"] -= dx / d * gap / 2
+                    A["z"] -= dz / d * gap / 2
+                    B["x"] += dx / d * gap / 2
+                    B["z"] += dz / d * gap / 2
+                    moved += gap
+        for p in items:
+            inside_clamp(p)
+        if moved < 1e-5:
+            return True
+    return False
+
+
+def overlap(items):
+    worst, who = 0.0, None
+    for i in range(len(items)):
+        tot = 0.0
+        for j in range(len(items)):
+            if i != j:
+                d = math.hypot(items[i]["x"] - items[j]["x"], items[i]["z"] - items[j]["z"])
+                tot += max(0.0, items[i]["r"] + items[j]["r"] - d)
+        if tot > worst + 1e-9:
+            worst, who = tot, i
+    return worst, who
+
+
+# squeeze them in; if they cannot all fit without overlapping, send the biggest offender back home instead
+excluded = [p for p in place if base[prop_ids[p["prop"] % len(prop_ids)]]["tag"] in cfg.get("exclude_tags", [])]
+placed = [p for p in place if p not in excluded]
+parked = list(excluded)
+while True:
+    relax(placed)
+    worst, who = overlap(placed)
+    if worst < 0.003 or not placed:
+        break
+    parked.append(placed.pop(who))
+place = placed
+if parked:
+    print("left at home (excluded or did not fit):", ", ".join(base[prop_ids[p["prop"] % len(prop_ids)]]["tag"] for p in parked))
+
+
 ops = []
 for p in place:
     pid = prop_ids[p["prop"] % len(prop_ids)]
     q = qmul(qaxis((0, 1, 0), p["yaw"]),
              qmul(qmul(qaxis((0, 0, 1), p["tz"]), qaxis((1, 0, 0), p["tx"])), q_from_euler(base[pid]["rot"])))
     e = euler_from_q(q)
-    wp = [pos[0] + p["x"], pos[1] + vals["surf_y"], pos[2] + p["z"]]
+    lowest = min(rotate(q, v)[1] for v in corners(pid))
+    ox, _, oz = rotate(qaxis((0, 1, 0), p["yaw"]), (p["c"][0], 0.0, p["c"][1]))
+    wp = [pos[0] + p["x"] - ox, pos[1] + vals["H"] + a.drop - lowest, pos[2] + p["z"] - oz]
     ops.append({"entityID": pid, "componentName": "TransformComponent", "propertyName": "Translation",
                 "value": " ".join(f"{v:.6g}" for v in wp)})
     ops.append({"entityID": pid, "componentName": "TransformComponent", "propertyName": "Rotation",
                 "value": " ".join(f"{v:.6g}" for v in e)})
+for p in parked:
+    pid = prop_ids[p["prop"] % len(prop_ids)]
+    ops.append({"entityID": pid, "componentName": "TransformComponent", "propertyName": "Translation",
+                "value": " ".join(f"{v:.6g}" for v in base[pid]["home"])})
+    ops.append({"entityID": pid, "componentName": "TransformComponent", "propertyName": "Rotation",
+                "value": " ".join(f"{v:.6g}" for v in base[pid]["rot"])})
 res = call("batch_set_entity_property", {"operations": ops})
 print(f"table seed {int(vals['seed'])} top {vals['W']:.2f} x {vals['D']:.2f} round={int(vals['top_round'])}; "
-      f"{len(place)} props:", res.get("result", res) if isinstance(res, dict) else res)
+      f"{len(place)} on the table, {len(parked)} left at home:", res.get("result", res) if isinstance(res, dict) else res)
 print("Edits are live and unsaved - press Ctrl+S in the editor to keep them.")

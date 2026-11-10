@@ -23,7 +23,8 @@ def build():
     lit("shuffle_type", "Int32", 0, "Same as the table's shuffle_type.", group="Table match", mn=0, mx=1000)
     lit("shuffle_dimensions", "Int32", 0, "Same as the table's shuffle_dimensions.", group="Table match", mn=0, mx=1000)
     lit("rail_height", "Float", 0.06, "Height of the collision rim above the table top (metres).", group="Collider", mn=0.01, mx=0.3)
-    lit("rail_thickness", "Float", 0.02, "Thickness of the collision rim (metres).", group="Collider", mn=0.005, mx=0.1)
+    lit("rail_thickness", "Float", 0.03, "Thickness of the collision rim (metres).", group="Collider", mn=0.01, mx=0.1)
+    lit("rail_gap", "Float", 0.012, "Gap between the table edge and the rim. Keep it above ~1 cm so physics treats the rim and the top as separate shapes (no ramp).", group="Collider", mn=0.011, mx=0.05)
 
     ex("ts", "seed + shuffle_type*7919")
     ex("ds", "seed + shuffle_dimensions*7919")
@@ -55,15 +56,16 @@ def build():
     ex("rect_on", "1 - top_round")
 
     SEG = 20
-    ex("rail_y", "H + rail_height/2")
-    ex("long_len", "W")
-    ex("short_len", "max(0.05, D - 2*rail_thickness)")
-    ex("zrail", "D/2 - rail_thickness/2")
-    ex("xrail", "W/2 - rail_thickness/2")
+    ex("rail_full", "top_t + rail_height")
+    ex("rail_y", "H - top_t + rail_full/2")
+    ex("long_len", "W + 2*(rail_gap + rail_thickness)")
+    ex("short_len", "D")
+    ex("zrail", "D/2 + rail_gap + rail_thickness/2")
+    ex("xrail", "W/2 + rail_gap + rail_thickness/2")
     ex("nzrail", "-zrail")
     ex("nxrail", "-xrail")
-    ex("ring_r", "top_r - rail_thickness/2")
-    ex("seg_len", f"2*top_r*sin({math.pi / SEG:.6f})*1.06")
+    ex("ring_r", "top_r + rail_gap + rail_thickness/2")
+    ex("seg_len", f"2*ring_r*sin({math.pi / SEG:.6f})*1.08")
     gt.SECTION[0] = "Collision pieces"
     top_rect = N("MeshCube", "Collider top", {"SizeX": P("W"), "SizeY": P("top_t"), "SizeZ": P("D")})
     top_rect_t = place(top_rect, (0, "top_y", 0), "Collider top position")
@@ -71,13 +73,13 @@ def build():
     top_rnd_t = place(top_rnd, (0, "top_y", 0), "Collider top round position")
     top = variant("top_round", top_rect_t, top_rnd_t, "Round top?")
 
-    long_c = N("MeshCube", "Rail long", {"SizeX": P("long_len"), "SizeY": P("rail_height"), "SizeZ": P("rail_thickness")})
-    short_c = N("MeshCube", "Rail short", {"SizeX": P("rail_thickness"), "SizeY": P("rail_height"), "SizeZ": P("short_len")})
+    long_c = N("MeshCube", "Rail long", {"SizeX": P("long_len"), "SizeY": P("rail_full"), "SizeZ": P("rail_thickness")})
+    short_c = N("MeshCube", "Rail short", {"SizeX": P("rail_thickness"), "SizeY": P("rail_full"), "SizeZ": P("short_len")})
     rails = [place(long_c, (0, "rail_y", "zrail"), "Rail front"), place(long_c, (0, "rail_y", "nzrail"), "Rail back"),
              place(short_c, ("xrail", "rail_y", 0), "Rail right"), place(short_c, ("nxrail", "rail_y", 0), "Rail left")]
     rect_rim = gate(join_all(rails, "Rect rim"), "rect_on", "Rectangular rim")
 
-    seg_c = N("MeshCube", "Ring segment", {"SizeX": P("seg_len"), "SizeY": P("rail_height"), "SizeZ": P("rail_thickness")})
+    seg_c = N("MeshCube", "Ring segment", {"SizeX": P("seg_len"), "SizeY": P("rail_full"), "SizeZ": P("rail_thickness")})
     segs = []
     for k in range(SEG):
         ex(f"sx{k}", f"ring_r*cos({2 * math.pi * k / SEG:.6f})")

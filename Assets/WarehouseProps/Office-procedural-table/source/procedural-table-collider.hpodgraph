@@ -11,8 +11,8 @@ nodes:
   - {id: 6, type: Transform, name: "Collider top round position", x: 340, y: 170}
   - {id: 7, type: Compare, name: "top_round Greater 0.5", inputs: {A: {param: top_round}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 6830}
   - {id: 8, type: Switch, name: "Round top?", x: 640, y: 40}
-  - {id: 9, type: MeshCube, name: "Rail long", inputs: {SizeX: {param: long_len}, SizeY: {param: rail_height}, SizeZ: {param: rail_thickness}}, x: 40, y: 560}
-  - {id: 10, type: MeshCube, name: "Rail short", inputs: {SizeX: {param: rail_thickness}, SizeY: {param: rail_height}, SizeZ: {param: short_len}}, x: 40, y: 690}
+  - {id: 9, type: MeshCube, name: "Rail long", inputs: {SizeX: {param: long_len}, SizeY: {param: rail_full}, SizeZ: {param: rail_thickness}}, x: 40, y: 560}
+  - {id: 10, type: MeshCube, name: "Rail short", inputs: {SizeX: {param: rail_thickness}, SizeY: {param: rail_full}, SizeZ: {param: short_len}}, x: 40, y: 690}
   - {id: 11, type: CombineXYZ, name: "Rail front translation", inputs: {X: {kind: Float, value: 0}, Y: {param: rail_y}, Z: {param: zrail}}, x: 40, y: 820}
   - {id: 12, type: Transform, name: "Rail front", x: 340, y: 300}
   - {id: 13, type: CombineXYZ, name: "Rail back translation", inputs: {X: {kind: Float, value: 0}, Y: {param: rail_y}, Z: {param: nzrail}}, x: 40, y: 950}
@@ -26,7 +26,7 @@ nodes:
   - {id: 21, type: JoinGeometry, name: "Rect rim", x: 940, y: 40}
   - {id: 22, type: Compare, name: "rect_on Greater 0.5", inputs: {A: {param: rect_on}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 6960}
   - {id: 23, type: Switch, name: "Rectangular rim", x: 1240, y: 40}
-  - {id: 24, type: MeshCube, name: "Ring segment", inputs: {SizeX: {param: seg_len}, SizeY: {param: rail_height}, SizeZ: {param: rail_thickness}}, x: 40, y: 1340}
+  - {id: 24, type: MeshCube, name: "Ring segment", inputs: {SizeX: {param: seg_len}, SizeY: {param: rail_full}, SizeZ: {param: rail_thickness}}, x: 40, y: 1340}
   - {id: 25, type: CombineXYZ, name: "Ring 1 position", inputs: {X: {param: sx0}, Y: {param: rail_y}, Z: {param: sz0}}, x: 40, y: 1470}
   - {id: 26, type: CombineXYZ, name: "Ring 1 rotation", inputs: {X: {kind: Float, value: 0}, Y: {param: sa0}, Z: {kind: Float, value: 0}}, x: 40, y: 1600}
   - {id: 27, type: Transform, name: "Ring 1 segment", x: 340, y: 820}
@@ -245,7 +245,8 @@ parameters:
   shuffle_type: {kind: Int32, default: 0, group: "Table match", min: 0, max: 1000, desc: "Same as the table's shuffle_type."}
   shuffle_dimensions: {kind: Int32, default: 0, group: "Table match", min: 0, max: 1000, desc: "Same as the table's shuffle_dimensions."}
   rail_height: {kind: Float, default: 0.06, group: "Collider", min: 0.01, max: 0.3, desc: "Height of the collision rim above the table top (metres)."}
-  rail_thickness: {kind: Float, default: 0.02, group: "Collider", min: 0.005, max: 0.1, desc: "Thickness of the collision rim (metres)."}
+  rail_thickness: {kind: Float, default: 0.03, group: "Collider", min: 0.01, max: 0.1, desc: "Thickness of the collision rim (metres)."}
+  rail_gap: {kind: Float, default: 0.012, group: "Collider", min: 0.011, max: 0.05, desc: "Gap between the table edge and the rim. Keep it above ~1 cm so physics treats the rim and the top as separate shapes (no ramp)."}
   ts: {kind: Float, expr: "seed + shuffle_type*7919"}
   ds: {kind: Float, expr: "seed + shuffle_dimensions*7919"}
   r_type: {kind: Float, expr: "sin(ts*12.9898+78.233)*43758.5453 - floor(sin(ts*12.9898+78.233)*43758.5453)"}
@@ -271,15 +272,16 @@ parameters:
   ped_round: {kind: Float, expr: "floor(r_pedround + 0.65)"}
   top_round: {kind: Float, expr: "is2*ped_round"}
   rect_on: {kind: Float, expr: "1 - top_round"}
-  rail_y: {kind: Float, expr: "H + rail_height/2"}
-  long_len: {kind: Float, expr: "W"}
-  short_len: {kind: Float, expr: "max(0.05, D - 2*rail_thickness)"}
-  zrail: {kind: Float, expr: "D/2 - rail_thickness/2"}
-  xrail: {kind: Float, expr: "W/2 - rail_thickness/2"}
+  rail_full: {kind: Float, expr: "top_t + rail_height"}
+  rail_y: {kind: Float, expr: "H - top_t + rail_full/2"}
+  long_len: {kind: Float, expr: "W + 2*(rail_gap + rail_thickness)"}
+  short_len: {kind: Float, expr: "D"}
+  zrail: {kind: Float, expr: "D/2 + rail_gap + rail_thickness/2"}
+  xrail: {kind: Float, expr: "W/2 + rail_gap + rail_thickness/2"}
   nzrail: {kind: Float, expr: "-zrail"}
   nxrail: {kind: Float, expr: "-xrail"}
-  ring_r: {kind: Float, expr: "top_r - rail_thickness/2"}
-  seg_len: {kind: Float, expr: "2*top_r*sin(0.157080)*1.06"}
+  ring_r: {kind: Float, expr: "top_r + rail_gap + rail_thickness/2"}
+  seg_len: {kind: Float, expr: "2*ring_r*sin(0.157080)*1.08"}
   sx0: {kind: Float, expr: "ring_r*cos(0.000000)"}
   sz0: {kind: Float, expr: "ring_r*sin(0.000000)"}
   sa0: {kind: Float, expr: "1.570796"}
