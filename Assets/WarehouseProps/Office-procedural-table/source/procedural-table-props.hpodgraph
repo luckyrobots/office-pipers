@@ -1,0 +1,361 @@
+# Procedural table. Change `seed` for a different table (type, size, finish, details).
+# table_type forces a type; shuffle_type / shuffle_dimensions / shuffle_materials re-roll one aspect only.
+# bevel / bevel_variation / bevel_segments control the rounded edges on every part.
+# All randomness is derived from `seed` by the derived (expr) parameters at the end of this file.
+nodes:
+  - {id: 1, type: MeshCube, name: "Table top", inputs: {SizeX: {param: W}, SizeY: {param: top_t}, SizeZ: {param: D}}, x: 40, y: 40}
+  - {id: 2, type: CombineXYZ, name: "Table top position translation", inputs: {X: {kind: Float, value: 0}, Y: {param: top_y}, Z: {kind: Float, value: 0}}, x: 40, y: 170}
+  - {id: 3, type: Transform, name: "Table top position", x: 340, y: 40}
+  - {id: 4, type: MeshCylinder, name: "Table top round", inputs: {Sides: {kind: Int32, value: 64}, Radius: {param: top_r}, Height: {param: top_t}}, x: 40, y: 300}
+  - {id: 5, type: CombineXYZ, name: "Table top round position translation", inputs: {X: {kind: Float, value: 0}, Y: {param: top_y}, Z: {kind: Float, value: 0}}, x: 40, y: 430}
+  - {id: 6, type: Transform, name: "Table top round position", x: 340, y: 170}
+  - {id: 7, type: Compare, name: "top_round Greater 0.5", inputs: {A: {param: top_round}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 720}
+  - {id: 8, type: Switch, name: "Round top?", x: 640, y: 40}
+  - {id: 9, type: MeshCube, name: "Prop 1 marker", inputs: {SizeX: {kind: Float, value: 0.14}, SizeY: {kind: Float, value: 0.02}, SizeZ: {kind: Float, value: 0.06}}, x: 40, y: 2310}
+  - {id: 10, type: CombineXYZ, name: "Prop 1 position", inputs: {X: {param: x0}, Y: {param: surf_y}, Z: {param: z0}}, x: 40, y: 2440}
+  - {id: 11, type: CombineXYZ, name: "Prop 1 rotation", inputs: {X: {param: tilt_x0}, Y: {param: yaw0}, Z: {param: tilt_z0}}, x: 40, y: 2570}
+  - {id: 12, type: Transform, name: "Prop 1 placement", x: 340, y: 2310}
+  - {id: 13, type: Compare, name: "act0 Greater 0.5", inputs: {A: {param: act0}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 850}
+  - {id: 14, type: Switch, name: "Show prop 1", x: 640, y: 2310}
+  - {id: 15, type: MeshCube, name: "Prop 2 marker", inputs: {SizeX: {kind: Float, value: 0.14}, SizeY: {kind: Float, value: 0.02}, SizeZ: {kind: Float, value: 0.06}}, x: 40, y: 2700}
+  - {id: 16, type: CombineXYZ, name: "Prop 2 position", inputs: {X: {param: x1}, Y: {param: surf_y}, Z: {param: z1}}, x: 40, y: 2830}
+  - {id: 17, type: CombineXYZ, name: "Prop 2 rotation", inputs: {X: {param: tilt_x1}, Y: {param: yaw1}, Z: {param: tilt_z1}}, x: 40, y: 2960}
+  - {id: 18, type: Transform, name: "Prop 2 placement", x: 340, y: 2440}
+  - {id: 19, type: Compare, name: "act1 Greater 0.5", inputs: {A: {param: act1}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 980}
+  - {id: 20, type: Switch, name: "Show prop 2", x: 640, y: 2440}
+  - {id: 21, type: MeshCube, name: "Prop 3 marker", inputs: {SizeX: {kind: Float, value: 0.14}, SizeY: {kind: Float, value: 0.02}, SizeZ: {kind: Float, value: 0.06}}, x: 40, y: 3090}
+  - {id: 22, type: CombineXYZ, name: "Prop 3 position", inputs: {X: {param: x2}, Y: {param: surf_y}, Z: {param: z2}}, x: 40, y: 3220}
+  - {id: 23, type: CombineXYZ, name: "Prop 3 rotation", inputs: {X: {param: tilt_x2}, Y: {param: yaw2}, Z: {param: tilt_z2}}, x: 40, y: 3350}
+  - {id: 24, type: Transform, name: "Prop 3 placement", x: 340, y: 2570}
+  - {id: 25, type: Compare, name: "act2 Greater 0.5", inputs: {A: {param: act2}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 1110}
+  - {id: 26, type: Switch, name: "Show prop 3", x: 640, y: 2570}
+  - {id: 27, type: MeshCube, name: "Prop 4 marker", inputs: {SizeX: {kind: Float, value: 0.14}, SizeY: {kind: Float, value: 0.02}, SizeZ: {kind: Float, value: 0.06}}, x: 40, y: 3480}
+  - {id: 28, type: CombineXYZ, name: "Prop 4 position", inputs: {X: {param: x3}, Y: {param: surf_y}, Z: {param: z3}}, x: 40, y: 3610}
+  - {id: 29, type: CombineXYZ, name: "Prop 4 rotation", inputs: {X: {param: tilt_x3}, Y: {param: yaw3}, Z: {param: tilt_z3}}, x: 40, y: 3740}
+  - {id: 30, type: Transform, name: "Prop 4 placement", x: 340, y: 2700}
+  - {id: 31, type: Compare, name: "act3 Greater 0.5", inputs: {A: {param: act3}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 1240}
+  - {id: 32, type: Switch, name: "Show prop 4", x: 640, y: 2700}
+  - {id: 33, type: MeshCube, name: "Prop 5 marker", inputs: {SizeX: {kind: Float, value: 0.14}, SizeY: {kind: Float, value: 0.02}, SizeZ: {kind: Float, value: 0.06}}, x: 40, y: 3870}
+  - {id: 34, type: CombineXYZ, name: "Prop 5 position", inputs: {X: {param: x4}, Y: {param: surf_y}, Z: {param: z4}}, x: 40, y: 4000}
+  - {id: 35, type: CombineXYZ, name: "Prop 5 rotation", inputs: {X: {param: tilt_x4}, Y: {param: yaw4}, Z: {param: tilt_z4}}, x: 40, y: 4130}
+  - {id: 36, type: Transform, name: "Prop 5 placement", x: 340, y: 2830}
+  - {id: 37, type: Compare, name: "act4 Greater 0.5", inputs: {A: {param: act4}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 1370}
+  - {id: 38, type: Switch, name: "Show prop 5", x: 640, y: 2830}
+  - {id: 39, type: MeshCube, name: "Prop 6 marker", inputs: {SizeX: {kind: Float, value: 0.14}, SizeY: {kind: Float, value: 0.02}, SizeZ: {kind: Float, value: 0.06}}, x: 40, y: 4260}
+  - {id: 40, type: CombineXYZ, name: "Prop 6 position", inputs: {X: {param: x5}, Y: {param: surf_y}, Z: {param: z5}}, x: 40, y: 4390}
+  - {id: 41, type: CombineXYZ, name: "Prop 6 rotation", inputs: {X: {param: tilt_x5}, Y: {param: yaw5}, Z: {param: tilt_z5}}, x: 40, y: 4520}
+  - {id: 42, type: Transform, name: "Prop 6 placement", x: 340, y: 2960}
+  - {id: 43, type: Compare, name: "act5 Greater 0.5", inputs: {A: {param: act5}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 1500}
+  - {id: 44, type: Switch, name: "Show prop 6", x: 640, y: 2960}
+  - {id: 45, type: MeshCube, name: "Prop 7 marker", inputs: {SizeX: {kind: Float, value: 0.14}, SizeY: {kind: Float, value: 0.02}, SizeZ: {kind: Float, value: 0.06}}, x: 40, y: 4650}
+  - {id: 46, type: CombineXYZ, name: "Prop 7 position", inputs: {X: {param: x6}, Y: {param: surf_y}, Z: {param: z6}}, x: 40, y: 4780}
+  - {id: 47, type: CombineXYZ, name: "Prop 7 rotation", inputs: {X: {param: tilt_x6}, Y: {param: yaw6}, Z: {param: tilt_z6}}, x: 40, y: 4910}
+  - {id: 48, type: Transform, name: "Prop 7 placement", x: 340, y: 3090}
+  - {id: 49, type: Compare, name: "act6 Greater 0.5", inputs: {A: {param: act6}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 1630}
+  - {id: 50, type: Switch, name: "Show prop 7", x: 640, y: 3090}
+  - {id: 51, type: MeshCube, name: "Prop 8 marker", inputs: {SizeX: {kind: Float, value: 0.14}, SizeY: {kind: Float, value: 0.02}, SizeZ: {kind: Float, value: 0.06}}, x: 40, y: 5040}
+  - {id: 52, type: CombineXYZ, name: "Prop 8 position", inputs: {X: {param: x7}, Y: {param: surf_y}, Z: {param: z7}}, x: 40, y: 5170}
+  - {id: 53, type: CombineXYZ, name: "Prop 8 rotation", inputs: {X: {param: tilt_x7}, Y: {param: yaw7}, Z: {param: tilt_z7}}, x: 40, y: 5300}
+  - {id: 54, type: Transform, name: "Prop 8 placement", x: 340, y: 3220}
+  - {id: 55, type: Compare, name: "act7 Greater 0.5", inputs: {A: {param: act7}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 1760}
+  - {id: 56, type: Switch, name: "Show prop 8", x: 640, y: 3220}
+  - {id: 57, type: MeshCube, name: "Prop 9 marker", inputs: {SizeX: {kind: Float, value: 0.14}, SizeY: {kind: Float, value: 0.02}, SizeZ: {kind: Float, value: 0.06}}, x: 40, y: 5430}
+  - {id: 58, type: CombineXYZ, name: "Prop 9 position", inputs: {X: {param: x8}, Y: {param: surf_y}, Z: {param: z8}}, x: 40, y: 5560}
+  - {id: 59, type: CombineXYZ, name: "Prop 9 rotation", inputs: {X: {param: tilt_x8}, Y: {param: yaw8}, Z: {param: tilt_z8}}, x: 40, y: 5690}
+  - {id: 60, type: Transform, name: "Prop 9 placement", x: 340, y: 3350}
+  - {id: 61, type: Compare, name: "act8 Greater 0.5", inputs: {A: {param: act8}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 1890}
+  - {id: 62, type: Switch, name: "Show prop 9", x: 640, y: 3350}
+  - {id: 63, type: MeshCube, name: "Prop 10 marker", inputs: {SizeX: {kind: Float, value: 0.14}, SizeY: {kind: Float, value: 0.02}, SizeZ: {kind: Float, value: 0.06}}, x: 40, y: 5820}
+  - {id: 64, type: CombineXYZ, name: "Prop 10 position", inputs: {X: {param: x9}, Y: {param: surf_y}, Z: {param: z9}}, x: 40, y: 5950}
+  - {id: 65, type: CombineXYZ, name: "Prop 10 rotation", inputs: {X: {param: tilt_x9}, Y: {param: yaw9}, Z: {param: tilt_z9}}, x: 40, y: 6080}
+  - {id: 66, type: Transform, name: "Prop 10 placement", x: 340, y: 3480}
+  - {id: 67, type: Compare, name: "act9 Greater 0.5", inputs: {A: {param: act9}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 2020}
+  - {id: 68, type: Switch, name: "Show prop 10", x: 640, y: 3480}
+  - {id: 69, type: JoinGeometry, name: "Props and top", x: 940, y: 6370}
+  - {id: 70, type: JoinGeometry, name: "Props and top", x: 940, y: 6500}
+  - {id: 71, type: JoinGeometry, name: "Props and top", x: 940, y: 6630}
+  - {id: 72, type: JoinGeometry, name: "Props and top", x: 940, y: 6760}
+  - {id: 73, type: JoinGeometry, name: "Props and top", x: 940, y: 6890}
+  - {id: 74, type: JoinGeometry, name: "Props and top", x: 1240, y: 6370}
+  - {id: 75, type: JoinGeometry, name: "Props and top", x: 1240, y: 6500}
+  - {id: 76, type: JoinGeometry, name: "Props and top", x: 1240, y: 6630}
+  - {id: 77, type: JoinGeometry, name: "Props and top", x: 1540, y: 6370}
+  - {id: 78, type: JoinGeometry, name: "Props and top", x: 1840, y: 6370}
+links:
+  - {from: {node: 1, pin: Geometry}, to: {node: 3, pin: Geometry}}
+  - {from: {node: 2, pin: Vector}, to: {node: 3, pin: Translation}}
+  - {from: {node: 4, pin: Geometry}, to: {node: 6, pin: Geometry}}
+  - {from: {node: 5, pin: Vector}, to: {node: 6, pin: Translation}}
+  - {from: {node: 7, pin: Result}, to: {node: 8, pin: Condition}}
+  - {from: {node: 3, pin: Geometry}, to: {node: 8, pin: A}}
+  - {from: {node: 6, pin: Geometry}, to: {node: 8, pin: B}}
+  - {from: {node: 9, pin: Geometry}, to: {node: 12, pin: Geometry}}
+  - {from: {node: 10, pin: Vector}, to: {node: 12, pin: Translation}}
+  - {from: {node: 11, pin: Vector}, to: {node: 12, pin: Rotation}}
+  - {from: {node: 13, pin: Result}, to: {node: 14, pin: Condition}}
+  - {from: {node: 12, pin: Geometry}, to: {node: 14, pin: B}}
+  - {from: {node: 15, pin: Geometry}, to: {node: 18, pin: Geometry}}
+  - {from: {node: 16, pin: Vector}, to: {node: 18, pin: Translation}}
+  - {from: {node: 17, pin: Vector}, to: {node: 18, pin: Rotation}}
+  - {from: {node: 19, pin: Result}, to: {node: 20, pin: Condition}}
+  - {from: {node: 18, pin: Geometry}, to: {node: 20, pin: B}}
+  - {from: {node: 21, pin: Geometry}, to: {node: 24, pin: Geometry}}
+  - {from: {node: 22, pin: Vector}, to: {node: 24, pin: Translation}}
+  - {from: {node: 23, pin: Vector}, to: {node: 24, pin: Rotation}}
+  - {from: {node: 25, pin: Result}, to: {node: 26, pin: Condition}}
+  - {from: {node: 24, pin: Geometry}, to: {node: 26, pin: B}}
+  - {from: {node: 27, pin: Geometry}, to: {node: 30, pin: Geometry}}
+  - {from: {node: 28, pin: Vector}, to: {node: 30, pin: Translation}}
+  - {from: {node: 29, pin: Vector}, to: {node: 30, pin: Rotation}}
+  - {from: {node: 31, pin: Result}, to: {node: 32, pin: Condition}}
+  - {from: {node: 30, pin: Geometry}, to: {node: 32, pin: B}}
+  - {from: {node: 33, pin: Geometry}, to: {node: 36, pin: Geometry}}
+  - {from: {node: 34, pin: Vector}, to: {node: 36, pin: Translation}}
+  - {from: {node: 35, pin: Vector}, to: {node: 36, pin: Rotation}}
+  - {from: {node: 37, pin: Result}, to: {node: 38, pin: Condition}}
+  - {from: {node: 36, pin: Geometry}, to: {node: 38, pin: B}}
+  - {from: {node: 39, pin: Geometry}, to: {node: 42, pin: Geometry}}
+  - {from: {node: 40, pin: Vector}, to: {node: 42, pin: Translation}}
+  - {from: {node: 41, pin: Vector}, to: {node: 42, pin: Rotation}}
+  - {from: {node: 43, pin: Result}, to: {node: 44, pin: Condition}}
+  - {from: {node: 42, pin: Geometry}, to: {node: 44, pin: B}}
+  - {from: {node: 45, pin: Geometry}, to: {node: 48, pin: Geometry}}
+  - {from: {node: 46, pin: Vector}, to: {node: 48, pin: Translation}}
+  - {from: {node: 47, pin: Vector}, to: {node: 48, pin: Rotation}}
+  - {from: {node: 49, pin: Result}, to: {node: 50, pin: Condition}}
+  - {from: {node: 48, pin: Geometry}, to: {node: 50, pin: B}}
+  - {from: {node: 51, pin: Geometry}, to: {node: 54, pin: Geometry}}
+  - {from: {node: 52, pin: Vector}, to: {node: 54, pin: Translation}}
+  - {from: {node: 53, pin: Vector}, to: {node: 54, pin: Rotation}}
+  - {from: {node: 55, pin: Result}, to: {node: 56, pin: Condition}}
+  - {from: {node: 54, pin: Geometry}, to: {node: 56, pin: B}}
+  - {from: {node: 57, pin: Geometry}, to: {node: 60, pin: Geometry}}
+  - {from: {node: 58, pin: Vector}, to: {node: 60, pin: Translation}}
+  - {from: {node: 59, pin: Vector}, to: {node: 60, pin: Rotation}}
+  - {from: {node: 61, pin: Result}, to: {node: 62, pin: Condition}}
+  - {from: {node: 60, pin: Geometry}, to: {node: 62, pin: B}}
+  - {from: {node: 63, pin: Geometry}, to: {node: 66, pin: Geometry}}
+  - {from: {node: 64, pin: Vector}, to: {node: 66, pin: Translation}}
+  - {from: {node: 65, pin: Vector}, to: {node: 66, pin: Rotation}}
+  - {from: {node: 67, pin: Result}, to: {node: 68, pin: Condition}}
+  - {from: {node: 66, pin: Geometry}, to: {node: 68, pin: B}}
+  - {from: {node: 8, pin: Geometry}, to: {node: 69, pin: A}}
+  - {from: {node: 14, pin: Geometry}, to: {node: 69, pin: B}}
+  - {from: {node: 20, pin: Geometry}, to: {node: 70, pin: A}}
+  - {from: {node: 26, pin: Geometry}, to: {node: 70, pin: B}}
+  - {from: {node: 32, pin: Geometry}, to: {node: 71, pin: A}}
+  - {from: {node: 38, pin: Geometry}, to: {node: 71, pin: B}}
+  - {from: {node: 44, pin: Geometry}, to: {node: 72, pin: A}}
+  - {from: {node: 50, pin: Geometry}, to: {node: 72, pin: B}}
+  - {from: {node: 56, pin: Geometry}, to: {node: 73, pin: A}}
+  - {from: {node: 62, pin: Geometry}, to: {node: 73, pin: B}}
+  - {from: {node: 69, pin: Geometry}, to: {node: 74, pin: A}}
+  - {from: {node: 70, pin: Geometry}, to: {node: 74, pin: B}}
+  - {from: {node: 71, pin: Geometry}, to: {node: 75, pin: A}}
+  - {from: {node: 72, pin: Geometry}, to: {node: 75, pin: B}}
+  - {from: {node: 73, pin: Geometry}, to: {node: 76, pin: A}}
+  - {from: {node: 68, pin: Geometry}, to: {node: 76, pin: B}}
+  - {from: {node: 74, pin: Geometry}, to: {node: 77, pin: A}}
+  - {from: {node: 75, pin: Geometry}, to: {node: 77, pin: B}}
+  - {from: {node: 77, pin: Geometry}, to: {node: 78, pin: A}}
+  - {from: {node: 76, pin: Geometry}, to: {node: 78, pin: B}}
+parameters:
+  seed: {kind: Int32, default: 7, group: "Table match", min: 0, max: 1000000, desc: "Table seed. Use the SAME value as the procedural table so the top size matches."}
+  table_type: {kind: Int32, default: 0, group: "Table match", options: ["Random (from seed)", "Four-leg table", "Trestle table", "Pedestal table", "Bench", "Bench with drawers"], desc: "Same as the table's table_type."}
+  shuffle_type: {kind: Int32, default: 0, group: "Table match", min: 0, max: 1000, desc: "Same as the table's shuffle_type."}
+  shuffle_dimensions: {kind: Int32, default: 0, group: "Table match", min: 0, max: 1000, desc: "Same as the table's shuffle_dimensions."}
+  prop_seed: {kind: Int32, default: 1, group: "Props", min: 0, max: 1000000, desc: "Re-rolls where the props go and how they are turned."}
+  prop_count: {kind: Int32, default: 6, group: "Props", min: 1, max: 10, desc: "How many props to place (1 to 10)."}
+  edge_margin: {kind: Float, default: 0.07, group: "Props", min: 0, max: 0.3, desc: "Keep props this far from the table edge (metres)."}
+  drop_height: {kind: Float, default: 0.12, group: "Props", min: 0, max: 0.5, desc: "Height above the table top where props start; physics drops them."}
+  tumble: {kind: Float, default: 0, group: "Props", min: 0, max: 1, desc: "0 keeps props upright with only a random turn; 1 gives fully random orientations."}
+  ts: {kind: Float, expr: "seed + shuffle_type*7919"}
+  ds: {kind: Float, expr: "seed + shuffle_dimensions*7919"}
+  r_type: {kind: Float, expr: "sin(ts*12.9898+78.233)*43758.5453 - floor(sin(ts*12.9898+78.233)*43758.5453)"}
+  type_i: {kind: Float, expr: "min(1,table_type)*(table_type-1) + (1-min(1,table_type))*floor(r_type*5)"}
+  is0: {kind: Float, expr: "max(0, 1 - abs(type_i - 0))"}
+  is1: {kind: Float, expr: "max(0, 1 - abs(type_i - 1))"}
+  is2: {kind: Float, expr: "max(0, 1 - abs(type_i - 2))"}
+  is3: {kind: Float, expr: "max(0, 1 - abs(type_i - 3))"}
+  is4: {kind: Float, expr: "max(0, 1 - abs(type_i - 4))"}
+  r_pedround: {kind: Float, expr: "sin(ts*12.9898+625.864)*43758.5453 - floor(sin(ts*12.9898+625.864)*43758.5453)"}
+  r_w: {kind: Float, expr: "sin(ds*12.9898+1329.96)*43758.5453 - floor(sin(ds*12.9898+1329.96)*43758.5453)"}
+  r_d: {kind: Float, expr: "sin(ds*12.9898+1408.19)*43758.5453 - floor(sin(ds*12.9898+1408.19)*43758.5453)"}
+  r_h: {kind: Float, expr: "sin(ds*12.9898+1486.43)*43758.5453 - floor(sin(ds*12.9898+1486.43)*43758.5453)"}
+  r_topt: {kind: Float, expr: "sin(ds*12.9898+1564.66)*43758.5453 - floor(sin(ds*12.9898+1564.66)*43758.5453)"}
+  r_bev: {kind: Float, expr: "sin(ds*12.9898+1642.89)*43758.5453 - floor(sin(ds*12.9898+1642.89)*43758.5453)"}
+  W: {kind: Float, expr: "(is0*0.9 + is1*1.4 + is2*0.7 + is3*1.2 + is4*1) + r_w*(is0*1.1 + is1*1 + is2*0.6 + is3*1 + is4*1)"}
+  D_raw: {kind: Float, expr: "(is0*0.55 + is1*0.65 + is2*0.7 + is3*0.55 + is4*0.5) + r_d*(is0*0.45 + is1*0.3 + is2*0.6 + is3*0.25 + is4*0.25)"}
+  D: {kind: Float, expr: "is2*W + (1-is2)*D_raw"}
+  H: {kind: Float, expr: "(is0*0.7 + is1*0.72 + is2*0.7 + is3*0.8 + is4*0.8) + r_h*(is0*0.08 + is1*0.06 + is2*0.06 + is3*0.15 + is4*0.12)"}
+  top_t: {kind: Float, expr: "(is0*0.02 + is1*0.03 + is2*0.025 + is3*0.04 + is4*0.03) + r_topt*(is0*0.03 + is1*0.03 + is2*0.025 + is3*0.05 + is4*0.03)"}
+  top_y: {kind: Float, expr: "H - top_t/2"}
+  top_r: {kind: Float, expr: "W/2"}
+  ped_round: {kind: Float, expr: "floor(r_pedround + 0.65)"}
+  top_round: {kind: Float, expr: "is2*ped_round"}
+  hx: {kind: Float, expr: "max(0.02, (1-top_round)*(W/2-edge_margin) + top_round*(top_r*0.7071-edge_margin))"}
+  hz: {kind: Float, expr: "max(0.02, (1-top_round)*(D/2-edge_margin) + top_round*(top_r*0.7071-edge_margin))"}
+  cols: {kind: Float, expr: "min(prop_count, max(1, floor(sqrt(prop_count*hx/hz) + 0.5)))"}
+  rows: {kind: Float, expr: "ceil(prop_count/cols)"}
+  cells: {kind: Float, expr: "cols*rows"}
+  cw: {kind: Float, expr: "2*hx/cols"}
+  ch_: {kind: Float, expr: "2*hz/rows"}
+  r_celloff: {kind: Float, expr: "sin(prop_seed*12.9898+1721.13)*43758.5453 - floor(sin(prop_seed*12.9898+1721.13)*43758.5453)"}
+  r_propbase: {kind: Float, expr: "sin(prop_seed*12.9898+1799.36)*43758.5453 - floor(sin(prop_seed*12.9898+1799.36)*43758.5453)"}
+  cell_off: {kind: Float, expr: "floor(r_celloff*cells)"}
+  prop_base: {kind: Float, expr: "floor(r_propbase*10)"}
+  surf_y: {kind: Float, expr: "H + drop_height"}
+  act0: {kind: Float, expr: "min(1, max(0, prop_count - 0))"}
+  cell0: {kind: Float, expr: "(0+cell_off) - cells*floor((0+cell_off)/cells)"}
+  col0: {kind: Float, expr: "cell0 - cols*floor(cell0/cols)"}
+  row0: {kind: Float, expr: "floor(cell0/cols)"}
+  r_s0_jx: {kind: Float, expr: "sin(prop_seed*12.9898+1877.59)*43758.5453 - floor(sin(prop_seed*12.9898+1877.59)*43758.5453)"}
+  r_s0_jz: {kind: Float, expr: "sin(prop_seed*12.9898+1955.83)*43758.5453 - floor(sin(prop_seed*12.9898+1955.83)*43758.5453)"}
+  r_s0_yaw: {kind: Float, expr: "sin(prop_seed*12.9898+2034.06)*43758.5453 - floor(sin(prop_seed*12.9898+2034.06)*43758.5453)"}
+  r_s0_rx: {kind: Float, expr: "sin(prop_seed*12.9898+2112.29)*43758.5453 - floor(sin(prop_seed*12.9898+2112.29)*43758.5453)"}
+  r_s0_rz: {kind: Float, expr: "sin(prop_seed*12.9898+2190.52)*43758.5453 - floor(sin(prop_seed*12.9898+2190.52)*43758.5453)"}
+  x0: {kind: Float, expr: "-hx + (col0+0.5)*cw + (r_s0_jx-0.5)*0.7*cw"}
+  z0: {kind: Float, expr: "-hz + (row0+0.5)*ch_ + (r_s0_jz-0.5)*0.7*ch_"}
+  yaw0: {kind: Float, expr: "r_s0_yaw*6.2832"}
+  tilt_x0: {kind: Float, expr: "tumble*(r_s0_rx-0.5)*6.2832"}
+  tilt_z0: {kind: Float, expr: "tumble*(r_s0_rz-0.5)*3.1416"}
+  prop0: {kind: Float, expr: "(0+prop_base) - 10*floor((0+prop_base)/10)"}
+  act1: {kind: Float, expr: "min(1, max(0, prop_count - 1))"}
+  cell1: {kind: Float, expr: "(1+cell_off) - cells*floor((1+cell_off)/cells)"}
+  col1: {kind: Float, expr: "cell1 - cols*floor(cell1/cols)"}
+  row1: {kind: Float, expr: "floor(cell1/cols)"}
+  r_s1_jx: {kind: Float, expr: "sin(prop_seed*12.9898+2268.76)*43758.5453 - floor(sin(prop_seed*12.9898+2268.76)*43758.5453)"}
+  r_s1_jz: {kind: Float, expr: "sin(prop_seed*12.9898+2346.99)*43758.5453 - floor(sin(prop_seed*12.9898+2346.99)*43758.5453)"}
+  r_s1_yaw: {kind: Float, expr: "sin(prop_seed*12.9898+2425.22)*43758.5453 - floor(sin(prop_seed*12.9898+2425.22)*43758.5453)"}
+  r_s1_rx: {kind: Float, expr: "sin(prop_seed*12.9898+2503.46)*43758.5453 - floor(sin(prop_seed*12.9898+2503.46)*43758.5453)"}
+  r_s1_rz: {kind: Float, expr: "sin(prop_seed*12.9898+2581.69)*43758.5453 - floor(sin(prop_seed*12.9898+2581.69)*43758.5453)"}
+  x1: {kind: Float, expr: "-hx + (col1+0.5)*cw + (r_s1_jx-0.5)*0.7*cw"}
+  z1: {kind: Float, expr: "-hz + (row1+0.5)*ch_ + (r_s1_jz-0.5)*0.7*ch_"}
+  yaw1: {kind: Float, expr: "r_s1_yaw*6.2832"}
+  tilt_x1: {kind: Float, expr: "tumble*(r_s1_rx-0.5)*6.2832"}
+  tilt_z1: {kind: Float, expr: "tumble*(r_s1_rz-0.5)*3.1416"}
+  prop1: {kind: Float, expr: "(1+prop_base) - 10*floor((1+prop_base)/10)"}
+  act2: {kind: Float, expr: "min(1, max(0, prop_count - 2))"}
+  cell2: {kind: Float, expr: "(2+cell_off) - cells*floor((2+cell_off)/cells)"}
+  col2: {kind: Float, expr: "cell2 - cols*floor(cell2/cols)"}
+  row2: {kind: Float, expr: "floor(cell2/cols)"}
+  r_s2_jx: {kind: Float, expr: "sin(prop_seed*12.9898+2659.92)*43758.5453 - floor(sin(prop_seed*12.9898+2659.92)*43758.5453)"}
+  r_s2_jz: {kind: Float, expr: "sin(prop_seed*12.9898+2738.16)*43758.5453 - floor(sin(prop_seed*12.9898+2738.16)*43758.5453)"}
+  r_s2_yaw: {kind: Float, expr: "sin(prop_seed*12.9898+2816.39)*43758.5453 - floor(sin(prop_seed*12.9898+2816.39)*43758.5453)"}
+  r_s2_rx: {kind: Float, expr: "sin(prop_seed*12.9898+2894.62)*43758.5453 - floor(sin(prop_seed*12.9898+2894.62)*43758.5453)"}
+  r_s2_rz: {kind: Float, expr: "sin(prop_seed*12.9898+2972.85)*43758.5453 - floor(sin(prop_seed*12.9898+2972.85)*43758.5453)"}
+  x2: {kind: Float, expr: "-hx + (col2+0.5)*cw + (r_s2_jx-0.5)*0.7*cw"}
+  z2: {kind: Float, expr: "-hz + (row2+0.5)*ch_ + (r_s2_jz-0.5)*0.7*ch_"}
+  yaw2: {kind: Float, expr: "r_s2_yaw*6.2832"}
+  tilt_x2: {kind: Float, expr: "tumble*(r_s2_rx-0.5)*6.2832"}
+  tilt_z2: {kind: Float, expr: "tumble*(r_s2_rz-0.5)*3.1416"}
+  prop2: {kind: Float, expr: "(2+prop_base) - 10*floor((2+prop_base)/10)"}
+  act3: {kind: Float, expr: "min(1, max(0, prop_count - 3))"}
+  cell3: {kind: Float, expr: "(3+cell_off) - cells*floor((3+cell_off)/cells)"}
+  col3: {kind: Float, expr: "cell3 - cols*floor(cell3/cols)"}
+  row3: {kind: Float, expr: "floor(cell3/cols)"}
+  r_s3_jx: {kind: Float, expr: "sin(prop_seed*12.9898+3051.09)*43758.5453 - floor(sin(prop_seed*12.9898+3051.09)*43758.5453)"}
+  r_s3_jz: {kind: Float, expr: "sin(prop_seed*12.9898+3129.32)*43758.5453 - floor(sin(prop_seed*12.9898+3129.32)*43758.5453)"}
+  r_s3_yaw: {kind: Float, expr: "sin(prop_seed*12.9898+3207.55)*43758.5453 - floor(sin(prop_seed*12.9898+3207.55)*43758.5453)"}
+  r_s3_rx: {kind: Float, expr: "sin(prop_seed*12.9898+3285.79)*43758.5453 - floor(sin(prop_seed*12.9898+3285.79)*43758.5453)"}
+  r_s3_rz: {kind: Float, expr: "sin(prop_seed*12.9898+3364.02)*43758.5453 - floor(sin(prop_seed*12.9898+3364.02)*43758.5453)"}
+  x3: {kind: Float, expr: "-hx + (col3+0.5)*cw + (r_s3_jx-0.5)*0.7*cw"}
+  z3: {kind: Float, expr: "-hz + (row3+0.5)*ch_ + (r_s3_jz-0.5)*0.7*ch_"}
+  yaw3: {kind: Float, expr: "r_s3_yaw*6.2832"}
+  tilt_x3: {kind: Float, expr: "tumble*(r_s3_rx-0.5)*6.2832"}
+  tilt_z3: {kind: Float, expr: "tumble*(r_s3_rz-0.5)*3.1416"}
+  prop3: {kind: Float, expr: "(3+prop_base) - 10*floor((3+prop_base)/10)"}
+  act4: {kind: Float, expr: "min(1, max(0, prop_count - 4))"}
+  cell4: {kind: Float, expr: "(4+cell_off) - cells*floor((4+cell_off)/cells)"}
+  col4: {kind: Float, expr: "cell4 - cols*floor(cell4/cols)"}
+  row4: {kind: Float, expr: "floor(cell4/cols)"}
+  r_s4_jx: {kind: Float, expr: "sin(prop_seed*12.9898+3442.25)*43758.5453 - floor(sin(prop_seed*12.9898+3442.25)*43758.5453)"}
+  r_s4_jz: {kind: Float, expr: "sin(prop_seed*12.9898+3520.49)*43758.5453 - floor(sin(prop_seed*12.9898+3520.49)*43758.5453)"}
+  r_s4_yaw: {kind: Float, expr: "sin(prop_seed*12.9898+3598.72)*43758.5453 - floor(sin(prop_seed*12.9898+3598.72)*43758.5453)"}
+  r_s4_rx: {kind: Float, expr: "sin(prop_seed*12.9898+3676.95)*43758.5453 - floor(sin(prop_seed*12.9898+3676.95)*43758.5453)"}
+  r_s4_rz: {kind: Float, expr: "sin(prop_seed*12.9898+3755.18)*43758.5453 - floor(sin(prop_seed*12.9898+3755.18)*43758.5453)"}
+  x4: {kind: Float, expr: "-hx + (col4+0.5)*cw + (r_s4_jx-0.5)*0.7*cw"}
+  z4: {kind: Float, expr: "-hz + (row4+0.5)*ch_ + (r_s4_jz-0.5)*0.7*ch_"}
+  yaw4: {kind: Float, expr: "r_s4_yaw*6.2832"}
+  tilt_x4: {kind: Float, expr: "tumble*(r_s4_rx-0.5)*6.2832"}
+  tilt_z4: {kind: Float, expr: "tumble*(r_s4_rz-0.5)*3.1416"}
+  prop4: {kind: Float, expr: "(4+prop_base) - 10*floor((4+prop_base)/10)"}
+  act5: {kind: Float, expr: "min(1, max(0, prop_count - 5))"}
+  cell5: {kind: Float, expr: "(5+cell_off) - cells*floor((5+cell_off)/cells)"}
+  col5: {kind: Float, expr: "cell5 - cols*floor(cell5/cols)"}
+  row5: {kind: Float, expr: "floor(cell5/cols)"}
+  r_s5_jx: {kind: Float, expr: "sin(prop_seed*12.9898+3833.42)*43758.5453 - floor(sin(prop_seed*12.9898+3833.42)*43758.5453)"}
+  r_s5_jz: {kind: Float, expr: "sin(prop_seed*12.9898+3911.65)*43758.5453 - floor(sin(prop_seed*12.9898+3911.65)*43758.5453)"}
+  r_s5_yaw: {kind: Float, expr: "sin(prop_seed*12.9898+3989.88)*43758.5453 - floor(sin(prop_seed*12.9898+3989.88)*43758.5453)"}
+  r_s5_rx: {kind: Float, expr: "sin(prop_seed*12.9898+4068.12)*43758.5453 - floor(sin(prop_seed*12.9898+4068.12)*43758.5453)"}
+  r_s5_rz: {kind: Float, expr: "sin(prop_seed*12.9898+4146.35)*43758.5453 - floor(sin(prop_seed*12.9898+4146.35)*43758.5453)"}
+  x5: {kind: Float, expr: "-hx + (col5+0.5)*cw + (r_s5_jx-0.5)*0.7*cw"}
+  z5: {kind: Float, expr: "-hz + (row5+0.5)*ch_ + (r_s5_jz-0.5)*0.7*ch_"}
+  yaw5: {kind: Float, expr: "r_s5_yaw*6.2832"}
+  tilt_x5: {kind: Float, expr: "tumble*(r_s5_rx-0.5)*6.2832"}
+  tilt_z5: {kind: Float, expr: "tumble*(r_s5_rz-0.5)*3.1416"}
+  prop5: {kind: Float, expr: "(5+prop_base) - 10*floor((5+prop_base)/10)"}
+  act6: {kind: Float, expr: "min(1, max(0, prop_count - 6))"}
+  cell6: {kind: Float, expr: "(6+cell_off) - cells*floor((6+cell_off)/cells)"}
+  col6: {kind: Float, expr: "cell6 - cols*floor(cell6/cols)"}
+  row6: {kind: Float, expr: "floor(cell6/cols)"}
+  r_s6_jx: {kind: Float, expr: "sin(prop_seed*12.9898+4224.58)*43758.5453 - floor(sin(prop_seed*12.9898+4224.58)*43758.5453)"}
+  r_s6_jz: {kind: Float, expr: "sin(prop_seed*12.9898+4302.82)*43758.5453 - floor(sin(prop_seed*12.9898+4302.82)*43758.5453)"}
+  r_s6_yaw: {kind: Float, expr: "sin(prop_seed*12.9898+4381.05)*43758.5453 - floor(sin(prop_seed*12.9898+4381.05)*43758.5453)"}
+  r_s6_rx: {kind: Float, expr: "sin(prop_seed*12.9898+4459.28)*43758.5453 - floor(sin(prop_seed*12.9898+4459.28)*43758.5453)"}
+  r_s6_rz: {kind: Float, expr: "sin(prop_seed*12.9898+4537.51)*43758.5453 - floor(sin(prop_seed*12.9898+4537.51)*43758.5453)"}
+  x6: {kind: Float, expr: "-hx + (col6+0.5)*cw + (r_s6_jx-0.5)*0.7*cw"}
+  z6: {kind: Float, expr: "-hz + (row6+0.5)*ch_ + (r_s6_jz-0.5)*0.7*ch_"}
+  yaw6: {kind: Float, expr: "r_s6_yaw*6.2832"}
+  tilt_x6: {kind: Float, expr: "tumble*(r_s6_rx-0.5)*6.2832"}
+  tilt_z6: {kind: Float, expr: "tumble*(r_s6_rz-0.5)*3.1416"}
+  prop6: {kind: Float, expr: "(6+prop_base) - 10*floor((6+prop_base)/10)"}
+  act7: {kind: Float, expr: "min(1, max(0, prop_count - 7))"}
+  cell7: {kind: Float, expr: "(7+cell_off) - cells*floor((7+cell_off)/cells)"}
+  col7: {kind: Float, expr: "cell7 - cols*floor(cell7/cols)"}
+  row7: {kind: Float, expr: "floor(cell7/cols)"}
+  r_s7_jx: {kind: Float, expr: "sin(prop_seed*12.9898+4615.75)*43758.5453 - floor(sin(prop_seed*12.9898+4615.75)*43758.5453)"}
+  r_s7_jz: {kind: Float, expr: "sin(prop_seed*12.9898+4693.98)*43758.5453 - floor(sin(prop_seed*12.9898+4693.98)*43758.5453)"}
+  r_s7_yaw: {kind: Float, expr: "sin(prop_seed*12.9898+4772.21)*43758.5453 - floor(sin(prop_seed*12.9898+4772.21)*43758.5453)"}
+  r_s7_rx: {kind: Float, expr: "sin(prop_seed*12.9898+4850.45)*43758.5453 - floor(sin(prop_seed*12.9898+4850.45)*43758.5453)"}
+  r_s7_rz: {kind: Float, expr: "sin(prop_seed*12.9898+4928.68)*43758.5453 - floor(sin(prop_seed*12.9898+4928.68)*43758.5453)"}
+  x7: {kind: Float, expr: "-hx + (col7+0.5)*cw + (r_s7_jx-0.5)*0.7*cw"}
+  z7: {kind: Float, expr: "-hz + (row7+0.5)*ch_ + (r_s7_jz-0.5)*0.7*ch_"}
+  yaw7: {kind: Float, expr: "r_s7_yaw*6.2832"}
+  tilt_x7: {kind: Float, expr: "tumble*(r_s7_rx-0.5)*6.2832"}
+  tilt_z7: {kind: Float, expr: "tumble*(r_s7_rz-0.5)*3.1416"}
+  prop7: {kind: Float, expr: "(7+prop_base) - 10*floor((7+prop_base)/10)"}
+  act8: {kind: Float, expr: "min(1, max(0, prop_count - 8))"}
+  cell8: {kind: Float, expr: "(8+cell_off) - cells*floor((8+cell_off)/cells)"}
+  col8: {kind: Float, expr: "cell8 - cols*floor(cell8/cols)"}
+  row8: {kind: Float, expr: "floor(cell8/cols)"}
+  r_s8_jx: {kind: Float, expr: "sin(prop_seed*12.9898+5006.91)*43758.5453 - floor(sin(prop_seed*12.9898+5006.91)*43758.5453)"}
+  r_s8_jz: {kind: Float, expr: "sin(prop_seed*12.9898+5085.15)*43758.5453 - floor(sin(prop_seed*12.9898+5085.15)*43758.5453)"}
+  r_s8_yaw: {kind: Float, expr: "sin(prop_seed*12.9898+5163.38)*43758.5453 - floor(sin(prop_seed*12.9898+5163.38)*43758.5453)"}
+  r_s8_rx: {kind: Float, expr: "sin(prop_seed*12.9898+5241.61)*43758.5453 - floor(sin(prop_seed*12.9898+5241.61)*43758.5453)"}
+  r_s8_rz: {kind: Float, expr: "sin(prop_seed*12.9898+5319.84)*43758.5453 - floor(sin(prop_seed*12.9898+5319.84)*43758.5453)"}
+  x8: {kind: Float, expr: "-hx + (col8+0.5)*cw + (r_s8_jx-0.5)*0.7*cw"}
+  z8: {kind: Float, expr: "-hz + (row8+0.5)*ch_ + (r_s8_jz-0.5)*0.7*ch_"}
+  yaw8: {kind: Float, expr: "r_s8_yaw*6.2832"}
+  tilt_x8: {kind: Float, expr: "tumble*(r_s8_rx-0.5)*6.2832"}
+  tilt_z8: {kind: Float, expr: "tumble*(r_s8_rz-0.5)*3.1416"}
+  prop8: {kind: Float, expr: "(8+prop_base) - 10*floor((8+prop_base)/10)"}
+  act9: {kind: Float, expr: "min(1, max(0, prop_count - 9))"}
+  cell9: {kind: Float, expr: "(9+cell_off) - cells*floor((9+cell_off)/cells)"}
+  col9: {kind: Float, expr: "cell9 - cols*floor(cell9/cols)"}
+  row9: {kind: Float, expr: "floor(cell9/cols)"}
+  r_s9_jx: {kind: Float, expr: "sin(prop_seed*12.9898+5398.08)*43758.5453 - floor(sin(prop_seed*12.9898+5398.08)*43758.5453)"}
+  r_s9_jz: {kind: Float, expr: "sin(prop_seed*12.9898+5476.31)*43758.5453 - floor(sin(prop_seed*12.9898+5476.31)*43758.5453)"}
+  r_s9_yaw: {kind: Float, expr: "sin(prop_seed*12.9898+5554.54)*43758.5453 - floor(sin(prop_seed*12.9898+5554.54)*43758.5453)"}
+  r_s9_rx: {kind: Float, expr: "sin(prop_seed*12.9898+5632.78)*43758.5453 - floor(sin(prop_seed*12.9898+5632.78)*43758.5453)"}
+  r_s9_rz: {kind: Float, expr: "sin(prop_seed*12.9898+5711.01)*43758.5453 - floor(sin(prop_seed*12.9898+5711.01)*43758.5453)"}
+  x9: {kind: Float, expr: "-hx + (col9+0.5)*cw + (r_s9_jx-0.5)*0.7*cw"}
+  z9: {kind: Float, expr: "-hz + (row9+0.5)*ch_ + (r_s9_jz-0.5)*0.7*ch_"}
+  yaw9: {kind: Float, expr: "r_s9_yaw*6.2832"}
+  tilt_x9: {kind: Float, expr: "tumble*(r_s9_rx-0.5)*6.2832"}
+  tilt_z9: {kind: Float, expr: "tumble*(r_s9_rz-0.5)*3.1416"}
+  prop9: {kind: Float, expr: "(9+prop_base) - 10*floor((9+prop_base)/10)"}
+outputs:
+  Geometry:
+    node: 78
+    pin: Geometry

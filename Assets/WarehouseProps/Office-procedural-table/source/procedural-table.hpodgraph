@@ -1,0 +1,999 @@
+# Procedural table. Change `seed` for a different table (type, size, finish, details).
+# table_type forces a type; shuffle_type / shuffle_dimensions / shuffle_materials re-roll one aspect only.
+# bevel / bevel_variation / bevel_segments control the rounded edges on every part.
+# All randomness is derived from `seed` by the derived (expr) parameters at the end of this file.
+nodes:
+  - {id: 1, type: ValueMaterial, name: "Light oak", inputs: {Value: {kind: Material, value: [0.5841, 0.3916, 0.1878, 1, 0, 0.55]}}, x: 40, y: 40}
+  - {id: 2, type: ValueMaterial, name: "Natural birch", inputs: {Value: {kind: Material, value: [0.7682, 0.624, 0.3712, 1, 0, 0.5]}}, x: 40, y: 170}
+  - {id: 3, type: ValueMaterial, name: "Walnut", inputs: {Value: {kind: Material, value: [0.1119, 0.0437, 0.0194, 1, 0, 0.5]}}, x: 40, y: 300}
+  - {id: 4, type: ValueMaterial, name: "Dark ash", inputs: {Value: {kind: Material, value: [0.0423, 0.0232, 0.0144, 1, 0, 0.5]}}, x: 40, y: 430}
+  - {id: 5, type: ValueMaterial, name: "Pine", inputs: {Value: {kind: Material, value: [0.6939, 0.4735, 0.1946, 1, 0, 0.6]}}, x: 40, y: 560}
+  - {id: 6, type: ValueMaterial, name: "White laminate", inputs: {Value: {kind: Material, value: [0.807, 0.8228, 0.8308, 1, 0, 0.38]}}, x: 40, y: 690}
+  - {id: 7, type: ValueMaterial, name: "Black laminate", inputs: {Value: {kind: Material, value: [0.011, 0.0123, 0.0137, 1, 0, 0.4]}}, x: 40, y: 820}
+  - {id: 8, type: ValueMaterial, name: "Concrete grey", inputs: {Value: {kind: Material, value: [0.2542, 0.2623, 0.2664, 1, 0, 0.85]}}, x: 40, y: 950}
+  - {id: 9, type: ValueMaterial, name: "Grey laminate", inputs: {Value: {kind: Material, value: [0.3864, 0.4072, 0.4233, 1, 0, 0.4]}}, x: 40, y: 1080}
+  - {id: 10, type: ValueMaterial, name: "Cherry", inputs: {Value: {kind: Material, value: [0.2623, 0.0685, 0.0284, 1, 0, 0.5]}}, x: 40, y: 1210}
+  - {id: 11, type: ValueMaterial, name: "Sage paint", inputs: {Value: {kind: Material, value: [0.2747, 0.3763, 0.2623, 1, 0, 0.55]}}, x: 40, y: 1340}
+  - {id: 12, type: ValueMaterial, name: "Navy paint", inputs: {Value: {kind: Material, value: [0.0176, 0.0423, 0.1119, 1, 0, 0.5]}}, x: 40, y: 1470}
+  - {id: 13, type: ValueMaterial, name: "Mustard paint", inputs: {Value: {kind: Material, value: [0.6376, 0.3613, 0.0423, 1, 0, 0.55]}}, x: 40, y: 1600}
+  - {id: 14, type: ValueMaterial, name: "Terracotta paint", inputs: {Value: {kind: Material, value: [0.4621, 0.0976, 0.0437, 1, 0, 0.6]}}, x: 40, y: 1730}
+  - {id: 15, type: ValueMaterial, name: "Off-white paint", inputs: {Value: {kind: Material, value: [0.8632, 0.8308, 0.7605, 1, 0, 0.5]}}, x: 40, y: 1860}
+  - {id: 16, type: ValueMaterial, name: "Charcoal paint", inputs: {Value: {kind: Material, value: [0.0452, 0.0513, 0.0578, 1, 0, 0.5]}}, x: 40, y: 1990}
+  - {id: 17, type: ValueMaterial, name: "Black powder coat", inputs: {Value: {kind: Material, value: [0.0116, 0.013, 0.0144, 1, 0.6, 0.45]}}, x: 40, y: 2120}
+  - {id: 18, type: ValueMaterial, name: "White powder coat", inputs: {Value: {kind: Material, value: [0.7605, 0.7758, 0.7835, 1, 0.2, 0.4]}}, x: 40, y: 2250}
+  - {id: 19, type: ValueMaterial, name: "Raw steel", inputs: {Value: {kind: Material, value: [0.2664, 0.2831, 0.3005, 1, 0.9, 0.4]}}, x: 40, y: 2380}
+  - {id: 20, type: ValueMaterial, name: "Brushed aluminium", inputs: {Value: {kind: Material, value: [0.552, 0.5711, 0.5906, 1, 1, 0.35]}}, x: 40, y: 2510}
+  - {id: 21, type: ValueMaterial, name: "Brass", inputs: {Value: {kind: Material, value: [0.5711, 0.3613, 0.0685, 1, 1, 0.3]}}, x: 40, y: 2640}
+  - {id: 22, type: ValueMaterial, name: "Copper", inputs: {Value: {kind: Material, value: [0.4793, 0.159, 0.0802, 1, 1, 0.35]}}, x: 40, y: 2770}
+  - {id: 23, type: Compare, name: "idx_top Equal 1", inputs: {A: {param: idx_top}, B: {kind: Float, value: 1}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 3060}
+  - {id: 24, type: SelectMaterial, name: "Top finish 1", x: 340, y: 40}
+  - {id: 25, type: Compare, name: "idx_top Equal 2", inputs: {A: {param: idx_top}, B: {kind: Float, value: 2}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 3190}
+  - {id: 26, type: SelectMaterial, name: "Top finish 2", x: 640, y: 40}
+  - {id: 27, type: Compare, name: "idx_top Equal 3", inputs: {A: {param: idx_top}, B: {kind: Float, value: 3}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 3320}
+  - {id: 28, type: SelectMaterial, name: "Top finish 3", x: 940, y: 40}
+  - {id: 29, type: Compare, name: "idx_top Equal 4", inputs: {A: {param: idx_top}, B: {kind: Float, value: 4}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 3450}
+  - {id: 30, type: SelectMaterial, name: "Top finish 4", x: 1240, y: 40}
+  - {id: 31, type: Compare, name: "idx_top Equal 5", inputs: {A: {param: idx_top}, B: {kind: Float, value: 5}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 3580}
+  - {id: 32, type: SelectMaterial, name: "Top finish 5", x: 1540, y: 40}
+  - {id: 33, type: Compare, name: "idx_top Equal 6", inputs: {A: {param: idx_top}, B: {kind: Float, value: 6}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 3710}
+  - {id: 34, type: SelectMaterial, name: "Top finish 6", x: 1840, y: 40}
+  - {id: 35, type: Compare, name: "idx_top Equal 7", inputs: {A: {param: idx_top}, B: {kind: Float, value: 7}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 3840}
+  - {id: 36, type: SelectMaterial, name: "Top finish 7", x: 2140, y: 40}
+  - {id: 37, type: Compare, name: "idx_top Equal 8", inputs: {A: {param: idx_top}, B: {kind: Float, value: 8}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 3970}
+  - {id: 38, type: SelectMaterial, name: "Top finish 8", x: 2440, y: 40}
+  - {id: 39, type: Compare, name: "idx_top Equal 9", inputs: {A: {param: idx_top}, B: {kind: Float, value: 9}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 4100}
+  - {id: 40, type: SelectMaterial, name: "Top finish 9", x: 2740, y: 40}
+  - {id: 41, type: Compare, name: "idx_frame Equal 1", inputs: {A: {param: idx_frame}, B: {kind: Float, value: 1}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 4230}
+  - {id: 42, type: SelectMaterial, name: "Frame finish 1", x: 340, y: 170}
+  - {id: 43, type: Compare, name: "idx_frame Equal 2", inputs: {A: {param: idx_frame}, B: {kind: Float, value: 2}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 4360}
+  - {id: 44, type: SelectMaterial, name: "Frame finish 2", x: 640, y: 170}
+  - {id: 45, type: Compare, name: "idx_frame Equal 3", inputs: {A: {param: idx_frame}, B: {kind: Float, value: 3}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 4490}
+  - {id: 46, type: SelectMaterial, name: "Frame finish 3", x: 940, y: 170}
+  - {id: 47, type: Compare, name: "idx_frame Equal 4", inputs: {A: {param: idx_frame}, B: {kind: Float, value: 4}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 4620}
+  - {id: 48, type: SelectMaterial, name: "Frame finish 4", x: 1240, y: 170}
+  - {id: 49, type: Compare, name: "idx_frame Equal 5", inputs: {A: {param: idx_frame}, B: {kind: Float, value: 5}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 4750}
+  - {id: 50, type: SelectMaterial, name: "Frame finish 5", x: 1540, y: 170}
+  - {id: 51, type: Compare, name: "idx_frame Equal 6", inputs: {A: {param: idx_frame}, B: {kind: Float, value: 6}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 4880}
+  - {id: 52, type: SelectMaterial, name: "Frame finish 6", x: 1840, y: 170}
+  - {id: 53, type: Compare, name: "idx_frame Equal 7", inputs: {A: {param: idx_frame}, B: {kind: Float, value: 7}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 5010}
+  - {id: 54, type: SelectMaterial, name: "Frame finish 7", x: 2140, y: 170}
+  - {id: 55, type: Compare, name: "idx_frame Equal 8", inputs: {A: {param: idx_frame}, B: {kind: Float, value: 8}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 5140}
+  - {id: 56, type: SelectMaterial, name: "Frame finish 8", x: 2440, y: 170}
+  - {id: 57, type: Compare, name: "idx_frame Equal 9", inputs: {A: {param: idx_frame}, B: {kind: Float, value: 9}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 5270}
+  - {id: 58, type: SelectMaterial, name: "Frame finish 9", x: 2740, y: 170}
+  - {id: 59, type: Compare, name: "idx_frame Equal 10", inputs: {A: {param: idx_frame}, B: {kind: Float, value: 10}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 5400}
+  - {id: 60, type: SelectMaterial, name: "Frame finish 10", x: 3040, y: 40}
+  - {id: 61, type: Compare, name: "idx_frame Equal 11", inputs: {A: {param: idx_frame}, B: {kind: Float, value: 11}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 5530}
+  - {id: 62, type: SelectMaterial, name: "Frame finish 11", x: 3340, y: 40}
+  - {id: 63, type: Compare, name: "idx_frame Equal 12", inputs: {A: {param: idx_frame}, B: {kind: Float, value: 12}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 5660}
+  - {id: 64, type: SelectMaterial, name: "Frame finish 12", x: 3640, y: 40}
+  - {id: 65, type: Compare, name: "idx_frame Equal 13", inputs: {A: {param: idx_frame}, B: {kind: Float, value: 13}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 5790}
+  - {id: 66, type: SelectMaterial, name: "Frame finish 13", x: 3940, y: 40}
+  - {id: 67, type: Compare, name: "idx_frame Equal 14", inputs: {A: {param: idx_frame}, B: {kind: Float, value: 14}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 5920}
+  - {id: 68, type: SelectMaterial, name: "Frame finish 14", x: 4240, y: 40}
+  - {id: 69, type: Compare, name: "same_frame Greater 0.5", inputs: {A: {param: same_frame}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 6050}
+  - {id: 70, type: SelectMaterial, name: "Frame matches top", x: 4540, y: 40}
+  - {id: 71, type: Compare, name: "idx_acc Equal 1", inputs: {A: {param: idx_acc}, B: {kind: Float, value: 1}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 6180}
+  - {id: 72, type: SelectMaterial, name: "Accent finish 1", x: 340, y: 300}
+  - {id: 73, type: Compare, name: "idx_acc Equal 2", inputs: {A: {param: idx_acc}, B: {kind: Float, value: 2}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 6310}
+  - {id: 74, type: SelectMaterial, name: "Accent finish 2", x: 640, y: 300}
+  - {id: 75, type: Compare, name: "idx_acc Equal 3", inputs: {A: {param: idx_acc}, B: {kind: Float, value: 3}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 6440}
+  - {id: 76, type: SelectMaterial, name: "Accent finish 3", x: 940, y: 300}
+  - {id: 77, type: Compare, name: "idx_acc Equal 4", inputs: {A: {param: idx_acc}, B: {kind: Float, value: 4}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 6570}
+  - {id: 78, type: SelectMaterial, name: "Accent finish 4", x: 1240, y: 300}
+  - {id: 79, type: Compare, name: "idx_acc Equal 5", inputs: {A: {param: idx_acc}, B: {kind: Float, value: 5}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 6700}
+  - {id: 80, type: SelectMaterial, name: "Accent finish 5", x: 1540, y: 300}
+  - {id: 81, type: Compare, name: "idx_acc Equal 6", inputs: {A: {param: idx_acc}, B: {kind: Float, value: 6}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 6830}
+  - {id: 82, type: SelectMaterial, name: "Accent finish 6", x: 1840, y: 300}
+  - {id: 83, type: Compare, name: "idx_acc Equal 7", inputs: {A: {param: idx_acc}, B: {kind: Float, value: 7}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 6960}
+  - {id: 84, type: SelectMaterial, name: "Accent finish 7", x: 2140, y: 300}
+  - {id: 85, type: Compare, name: "idx_acc Equal 8", inputs: {A: {param: idx_acc}, B: {kind: Float, value: 8}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 7090}
+  - {id: 86, type: SelectMaterial, name: "Accent finish 8", x: 2440, y: 300}
+  - {id: 87, type: Compare, name: "idx_acc Equal 9", inputs: {A: {param: idx_acc}, B: {kind: Float, value: 9}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 7220}
+  - {id: 88, type: SelectMaterial, name: "Accent finish 9", x: 2740, y: 300}
+  - {id: 89, type: Compare, name: "idx_acc Equal 10", inputs: {A: {param: idx_acc}, B: {kind: Float, value: 10}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 7350}
+  - {id: 90, type: SelectMaterial, name: "Accent finish 10", x: 3040, y: 170}
+  - {id: 91, type: Compare, name: "idx_acc Equal 11", inputs: {A: {param: idx_acc}, B: {kind: Float, value: 11}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 7480}
+  - {id: 92, type: SelectMaterial, name: "Accent finish 11", x: 3340, y: 170}
+  - {id: 93, type: Compare, name: "idx_acc Equal 12", inputs: {A: {param: idx_acc}, B: {kind: Float, value: 12}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 7610}
+  - {id: 94, type: SelectMaterial, name: "Accent finish 12", x: 3640, y: 170}
+  - {id: 95, type: Compare, name: "idx_acc Equal 13", inputs: {A: {param: idx_acc}, B: {kind: Float, value: 13}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 7740}
+  - {id: 96, type: SelectMaterial, name: "Accent finish 13", x: 3940, y: 170}
+  - {id: 97, type: Compare, name: "idx_acc Equal 14", inputs: {A: {param: idx_acc}, B: {kind: Float, value: 14}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 7870}
+  - {id: 98, type: SelectMaterial, name: "Accent finish 14", x: 4240, y: 170}
+  - {id: 99, type: Compare, name: "same_acc Greater 0.5", inputs: {A: {param: same_acc}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 8000}
+  - {id: 100, type: SelectMaterial, name: "Accent matches frame", x: 4840, y: 40}
+  - {id: 101, type: Compare, name: "idx_metal Equal 1", inputs: {A: {param: idx_metal}, B: {kind: Float, value: 1}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 8130}
+  - {id: 102, type: SelectMaterial, name: "Hardware finish 1", x: 340, y: 430}
+  - {id: 103, type: Compare, name: "idx_metal Equal 2", inputs: {A: {param: idx_metal}, B: {kind: Float, value: 2}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 8260}
+  - {id: 104, type: SelectMaterial, name: "Hardware finish 2", x: 640, y: 430}
+  - {id: 105, type: Compare, name: "idx_metal Equal 3", inputs: {A: {param: idx_metal}, B: {kind: Float, value: 3}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 8390}
+  - {id: 106, type: SelectMaterial, name: "Hardware finish 3", x: 940, y: 430}
+  - {id: 107, type: Compare, name: "idx_metal Equal 4", inputs: {A: {param: idx_metal}, B: {kind: Float, value: 4}, Operation: {kind: Menu, value: Equal}}, x: 40, y: 8520}
+  - {id: 108, type: SelectMaterial, name: "Hardware finish 4", x: 1240, y: 430}
+  - {id: 109, type: MeshCube, name: "Table top", inputs: {SizeX: {param: W}, SizeY: {param: top_t}, SizeZ: {param: D}}, x: 40, y: 12060}
+  - {id: 110, type: BevelEdge, name: "Table top bevel", inputs: {Offset: {param: bv_table_top}, Segments: {param: bevel_segments}}, x: 340, y: 12060}
+  - {id: 111, type: CombineXYZ, name: "Table top position translation", inputs: {X: {kind: Float, value: 0}, Y: {param: top_y}, Z: {kind: Float, value: 0}}, x: 40, y: 12190}
+  - {id: 112, type: Transform, name: "Table top position", x: 640, y: 12060}
+  - {id: 113, type: SetMaterial, name: "Table top finish", inputs: {Name: {kind: String, value: "Table top"}}, x: 3040, y: 12060}
+  - {id: 114, type: SetMeshName, name: "Table top", inputs: {Name: {kind: String, value: "Table top"}}, x: 3340, y: 12060}
+  - {id: 115, type: MeshCylinder, name: "Table top round", inputs: {Sides: {kind: Int32, value: 64}, Radius: {param: top_r}, Height: {param: top_t}}, x: 40, y: 12320}
+  - {id: 116, type: BevelEdge, name: "Table top round bevel", inputs: {Offset: {param: bv_table_top_round}, Segments: {param: bevel_segments}}, x: 340, y: 12190}
+  - {id: 117, type: CombineXYZ, name: "Table top round position translation", inputs: {X: {kind: Float, value: 0}, Y: {param: top_y}, Z: {kind: Float, value: 0}}, x: 40, y: 12450}
+  - {id: 118, type: Transform, name: "Table top round position", x: 640, y: 12190}
+  - {id: 119, type: SetMaterial, name: "Table top round finish", inputs: {Name: {kind: String, value: "Table top round"}}, x: 3040, y: 12190}
+  - {id: 120, type: SetMeshName, name: "Table top round", inputs: {Name: {kind: String, value: "Table top round"}}, x: 3340, y: 12190}
+  - {id: 121, type: Compare, name: "top_round Greater 0.5", inputs: {A: {param: top_round}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 8650}
+  - {id: 122, type: Switch, name: "Round top?", x: 3640, y: 12060}
+  - {id: 123, type: MeshCube, name: "Leg", inputs: {SizeX: {param: leg_w}, SizeY: {param: leg_h}, SizeZ: {param: leg_w}}, x: 40, y: 12740}
+  - {id: 124, type: BevelEdge, name: "Leg bevel", inputs: {Offset: {param: bv_leg}, Segments: {param: bevel_segments}}, x: 340, y: 12740}
+  - {id: 125, type: SetMaterial, name: "Leg finish", inputs: {Name: {kind: String, value: "Leg"}}, x: 4840, y: 12740}
+  - {id: 126, type: SetMeshName, name: "Leg", inputs: {Name: {kind: String, value: "Leg"}}, x: 5140, y: 12740}
+  - {id: 127, type: MeshCylinder, name: "Leg round", inputs: {Sides: {kind: Int32, value: 24}, Radius: {param: leg_r}, Height: {param: leg_h}}, x: 40, y: 12870}
+  - {id: 128, type: BevelEdge, name: "Leg round bevel", inputs: {Offset: {param: bv_leg_round}, Segments: {param: bevel_segments}}, x: 340, y: 12870}
+  - {id: 129, type: SetMaterial, name: "Leg round finish", inputs: {Name: {kind: String, value: "Leg round"}}, x: 4840, y: 12870}
+  - {id: 130, type: SetMeshName, name: "Leg round", inputs: {Name: {kind: String, value: "Leg round"}}, x: 5140, y: 12870}
+  - {id: 131, type: Compare, name: "leg_round Greater 0.5", inputs: {A: {param: leg_round}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 8780}
+  - {id: 132, type: Switch, name: "Round legs?", x: 5440, y: 12740}
+  - {id: 133, type: CombineXYZ, name: "Leg front left translation", inputs: {X: {param: nlx}, Y: {param: leg_y}, Z: {param: lz}}, x: 40, y: 13000}
+  - {id: 134, type: Transform, name: "Leg front left", x: 5740, y: 12740}
+  - {id: 135, type: CombineXYZ, name: "Leg front right translation", inputs: {X: {param: lx}, Y: {param: leg_y}, Z: {param: lz}}, x: 40, y: 13130}
+  - {id: 136, type: Transform, name: "Leg front right", x: 5740, y: 12870}
+  - {id: 137, type: CombineXYZ, name: "Leg back left translation", inputs: {X: {param: nlx}, Y: {param: leg_y}, Z: {param: nlz}}, x: 40, y: 13260}
+  - {id: 138, type: Transform, name: "Leg back left", x: 5740, y: 13000}
+  - {id: 139, type: CombineXYZ, name: "Leg back right translation", inputs: {X: {param: lx}, Y: {param: leg_y}, Z: {param: nlz}}, x: 40, y: 13390}
+  - {id: 140, type: Transform, name: "Leg back right", x: 5740, y: 13130}
+  - {id: 141, type: MeshCube, name: "Apron rail long", inputs: {SizeX: {param: len_x}, SizeY: {param: apron_h}, SizeZ: {param: apron_t}}, x: 40, y: 13520}
+  - {id: 142, type: BevelEdge, name: "Apron rail long bevel", inputs: {Offset: {param: bv_apron_rail_long}, Segments: {param: bevel_segments}}, x: 340, y: 13000}
+  - {id: 143, type: SetMaterial, name: "Apron rail long finish", inputs: {Name: {kind: String, value: "Apron rail long"}}, x: 4840, y: 13000}
+  - {id: 144, type: SetMeshName, name: "Apron rail long", inputs: {Name: {kind: String, value: "Apron rail long"}}, x: 5140, y: 13000}
+  - {id: 145, type: MeshCube, name: "Apron rail short", inputs: {SizeX: {param: apron_t}, SizeY: {param: apron_h}, SizeZ: {param: len_z}}, x: 40, y: 13650}
+  - {id: 146, type: BevelEdge, name: "Apron rail short bevel", inputs: {Offset: {param: bv_apron_rail_short}, Segments: {param: bevel_segments}}, x: 340, y: 13130}
+  - {id: 147, type: SetMaterial, name: "Apron rail short finish", inputs: {Name: {kind: String, value: "Apron rail short"}}, x: 4840, y: 13130}
+  - {id: 148, type: SetMeshName, name: "Apron rail short", inputs: {Name: {kind: String, value: "Apron rail short"}}, x: 5140, y: 13130}
+  - {id: 149, type: CombineXYZ, name: "Apron rail front translation", inputs: {X: {kind: Float, value: 0}, Y: {param: apron_y}, Z: {param: lz}}, x: 40, y: 13780}
+  - {id: 150, type: Transform, name: "Apron rail front", x: 5440, y: 12870}
+  - {id: 151, type: CombineXYZ, name: "Apron rail back translation", inputs: {X: {kind: Float, value: 0}, Y: {param: apron_y}, Z: {param: nlz}}, x: 40, y: 13910}
+  - {id: 152, type: Transform, name: "Apron rail back", x: 5440, y: 13000}
+  - {id: 153, type: CombineXYZ, name: "Apron rail left translation", inputs: {X: {param: nlx}, Y: {param: apron_y}, Z: {kind: Float, value: 0}}, x: 40, y: 14040}
+  - {id: 154, type: Transform, name: "Apron rail left", x: 5440, y: 13130}
+  - {id: 155, type: CombineXYZ, name: "Apron rail right translation", inputs: {X: {param: lx}, Y: {param: apron_y}, Z: {kind: Float, value: 0}}, x: 40, y: 14170}
+  - {id: 156, type: Transform, name: "Apron rail right", x: 5440, y: 13260}
+  - {id: 157, type: JoinGeometry, name: "Apron", x: 5740, y: 13260}
+  - {id: 158, type: JoinGeometry, name: "Apron", x: 5740, y: 13390}
+  - {id: 159, type: JoinGeometry, name: "Apron", x: 6040, y: 12740}
+  - {id: 160, type: Compare, name: "apron_on Greater 0.5", inputs: {A: {param: apron_on}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 8910}
+  - {id: 161, type: Switch, name: "Show apron", x: 6340, y: 12740}
+  - {id: 162, type: MeshCube, name: "Lower rail long", inputs: {SizeX: {param: len_x}, SizeY: {param: rail_h}, SizeZ: {param: rail_t}}, x: 40, y: 14300}
+  - {id: 163, type: BevelEdge, name: "Lower rail long bevel", inputs: {Offset: {param: bv_lower_rail_long}, Segments: {param: bevel_segments}}, x: 340, y: 13260}
+  - {id: 164, type: SetMaterial, name: "Lower rail long finish", inputs: {Name: {kind: String, value: "Lower rail long"}}, x: 4840, y: 13260}
+  - {id: 165, type: SetMeshName, name: "Lower rail long", inputs: {Name: {kind: String, value: "Lower rail long"}}, x: 5140, y: 13260}
+  - {id: 166, type: MeshCube, name: "Lower rail short", inputs: {SizeX: {param: rail_t}, SizeY: {param: rail_h}, SizeZ: {param: len_z}}, x: 40, y: 14430}
+  - {id: 167, type: BevelEdge, name: "Lower rail short bevel", inputs: {Offset: {param: bv_lower_rail_short}, Segments: {param: bevel_segments}}, x: 340, y: 13390}
+  - {id: 168, type: SetMaterial, name: "Lower rail short finish", inputs: {Name: {kind: String, value: "Lower rail short"}}, x: 4840, y: 13390}
+  - {id: 169, type: SetMeshName, name: "Lower rail short", inputs: {Name: {kind: String, value: "Lower rail short"}}, x: 5140, y: 13390}
+  - {id: 170, type: CombineXYZ, name: "Lower rail front translation", inputs: {X: {kind: Float, value: 0}, Y: {param: low_y}, Z: {param: lz}}, x: 40, y: 14560}
+  - {id: 171, type: Transform, name: "Lower rail front", x: 5440, y: 13390}
+  - {id: 172, type: CombineXYZ, name: "Lower rail back translation", inputs: {X: {kind: Float, value: 0}, Y: {param: low_y}, Z: {param: nlz}}, x: 40, y: 14690}
+  - {id: 173, type: Transform, name: "Lower rail back", x: 5440, y: 13520}
+  - {id: 174, type: CombineXYZ, name: "Lower rail left translation", inputs: {X: {param: nlx}, Y: {param: low_y}, Z: {kind: Float, value: 0}}, x: 40, y: 14820}
+  - {id: 175, type: Transform, name: "Lower rail left", x: 5440, y: 13650}
+  - {id: 176, type: CombineXYZ, name: "Lower rail right translation", inputs: {X: {param: lx}, Y: {param: low_y}, Z: {kind: Float, value: 0}}, x: 40, y: 14950}
+  - {id: 177, type: Transform, name: "Lower rail right", x: 5440, y: 13780}
+  - {id: 178, type: JoinGeometry, name: "Lower rails", x: 5740, y: 13520}
+  - {id: 179, type: JoinGeometry, name: "Lower rails", x: 5740, y: 13650}
+  - {id: 180, type: JoinGeometry, name: "Lower rails", x: 6040, y: 12870}
+  - {id: 181, type: Compare, name: "rails_on Greater 0.5", inputs: {A: {param: rails_on}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 9040}
+  - {id: 182, type: Switch, name: "Show lower rails", x: 6340, y: 12870}
+  - {id: 183, type: MeshCube, name: "Lower shelf", inputs: {SizeX: {param: len_x}, SizeY: {param: shelf_t}, SizeZ: {param: len_z}}, x: 40, y: 15080}
+  - {id: 184, type: BevelEdge, name: "Lower shelf bevel", inputs: {Offset: {param: bv_lower_shelf}, Segments: {param: bevel_segments}}, x: 340, y: 13520}
+  - {id: 185, type: CombineXYZ, name: "Lower shelf position translation", inputs: {X: {kind: Float, value: 0}, Y: {param: low_y}, Z: {kind: Float, value: 0}}, x: 40, y: 15210}
+  - {id: 186, type: Transform, name: "Lower shelf position", x: 640, y: 12740}
+  - {id: 187, type: SetMaterial, name: "Lower shelf finish", inputs: {Name: {kind: String, value: "Lower shelf"}}, x: 5140, y: 13520}
+  - {id: 188, type: SetMeshName, name: "Lower shelf", inputs: {Name: {kind: String, value: "Lower shelf"}}, x: 5440, y: 13910}
+  - {id: 189, type: Compare, name: "shelf_on Greater 0.5", inputs: {A: {param: shelf_on}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 9170}
+  - {id: 190, type: Switch, name: "Show lower shelf", x: 5740, y: 13780}
+  - {id: 191, type: JoinGeometry, name: "Four-leg parts", x: 6040, y: 13000}
+  - {id: 192, type: JoinGeometry, name: "Four-leg parts", x: 6040, y: 13130}
+  - {id: 193, type: JoinGeometry, name: "Four-leg parts", x: 6640, y: 12740}
+  - {id: 194, type: JoinGeometry, name: "Four-leg parts", x: 6340, y: 13000}
+  - {id: 195, type: JoinGeometry, name: "Four-leg parts", x: 6940, y: 12740}
+  - {id: 196, type: JoinGeometry, name: "Four-leg parts", x: 7240, y: 12740}
+  - {id: 197, type: Compare, name: "legs_on Greater 0.5", inputs: {A: {param: legs_on}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 9300}
+  - {id: 198, type: Switch, name: "Four-leg or bench", x: 7540, y: 12740}
+  - {id: 199, type: MeshCube, name: "Trestle end", inputs: {SizeX: {param: end_t}, SizeY: {param: leg_h}, SizeZ: {param: end_d}}, x: 40, y: 15500}
+  - {id: 200, type: BevelEdge, name: "Trestle end bevel", inputs: {Offset: {param: bv_trestle_end}, Segments: {param: bevel_segments}}, x: 340, y: 15500}
+  - {id: 201, type: SetMaterial, name: "Trestle end finish", inputs: {Name: {kind: String, value: "Trestle end"}}, x: 4840, y: 15500}
+  - {id: 202, type: SetMeshName, name: "Trestle end", inputs: {Name: {kind: String, value: "Trestle end"}}, x: 5140, y: 15500}
+  - {id: 203, type: CombineXYZ, name: "Trestle end right translation", inputs: {X: {param: end_x}, Y: {param: leg_y}, Z: {kind: Float, value: 0}}, x: 40, y: 15630}
+  - {id: 204, type: Transform, name: "Trestle end right", x: 5440, y: 15500}
+  - {id: 205, type: CombineXYZ, name: "Trestle end left translation", inputs: {X: {param: nend_x}, Y: {param: leg_y}, Z: {kind: Float, value: 0}}, x: 40, y: 15760}
+  - {id: 206, type: Transform, name: "Trestle end left", x: 5440, y: 15630}
+  - {id: 207, type: MeshCube, name: "Trestle beam", inputs: {SizeX: {param: beam_len}, SizeY: {param: beam_h}, SizeZ: {param: beam_t}}, x: 40, y: 15890}
+  - {id: 208, type: BevelEdge, name: "Trestle beam bevel", inputs: {Offset: {param: bv_trestle_beam}, Segments: {param: bevel_segments}}, x: 340, y: 15630}
+  - {id: 209, type: CombineXYZ, name: "Trestle beam position translation", inputs: {X: {kind: Float, value: 0}, Y: {param: beam_y}, Z: {kind: Float, value: 0}}, x: 40, y: 16020}
+  - {id: 210, type: Transform, name: "Trestle beam position", x: 640, y: 15500}
+  - {id: 211, type: SetMaterial, name: "Trestle beam finish", inputs: {Name: {kind: String, value: "Trestle beam"}}, x: 5140, y: 15630}
+  - {id: 212, type: SetMeshName, name: "Trestle beam", inputs: {Name: {kind: String, value: "Trestle beam"}}, x: 5440, y: 15760}
+  - {id: 213, type: MeshCube, name: "Trestle foot", inputs: {SizeX: {param: foot_w}, SizeY: {param: foot_h}, SizeZ: {param: foot_d}}, x: 40, y: 16150}
+  - {id: 214, type: BevelEdge, name: "Trestle foot bevel", inputs: {Offset: {param: bv_trestle_foot}, Segments: {param: bevel_segments}}, x: 340, y: 15760}
+  - {id: 215, type: SetMaterial, name: "Trestle foot finish", inputs: {Name: {kind: String, value: "Trestle foot"}}, x: 4840, y: 15630}
+  - {id: 216, type: SetMeshName, name: "Trestle foot", inputs: {Name: {kind: String, value: "Trestle foot"}}, x: 5140, y: 15760}
+  - {id: 217, type: CombineXYZ, name: "Foot right translation", inputs: {X: {param: end_x}, Y: {param: foot_y}, Z: {kind: Float, value: 0}}, x: 40, y: 16280}
+  - {id: 218, type: Transform, name: "Foot right", x: 5440, y: 15890}
+  - {id: 219, type: CombineXYZ, name: "Foot left translation", inputs: {X: {param: nend_x}, Y: {param: foot_y}, Z: {kind: Float, value: 0}}, x: 40, y: 16410}
+  - {id: 220, type: Transform, name: "Foot left", x: 5440, y: 16020}
+  - {id: 221, type: JoinGeometry, name: "Feet", x: 5740, y: 15500}
+  - {id: 222, type: Compare, name: "foot_on Greater 0.5", inputs: {A: {param: foot_on}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 9430}
+  - {id: 223, type: Switch, name: "Show feet", x: 6040, y: 15500}
+  - {id: 224, type: JoinGeometry, name: "Trestle parts", x: 5740, y: 15630}
+  - {id: 225, type: JoinGeometry, name: "Trestle parts", x: 6340, y: 15500}
+  - {id: 226, type: JoinGeometry, name: "Trestle parts", x: 6640, y: 15500}
+  - {id: 227, type: Compare, name: "is1 Greater 0.5", inputs: {A: {param: is1}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 9560}
+  - {id: 228, type: Switch, name: "Trestle", x: 6940, y: 15500}
+  - {id: 229, type: MeshCylinder, name: "Column round", inputs: {Sides: {kind: Int32, value: 32}, Radius: {param: col_r}, Height: {param: col_h}}, x: 40, y: 16700}
+  - {id: 230, type: BevelEdge, name: "Column round bevel", inputs: {Offset: {param: bv_column_round}, Segments: {param: bevel_segments}}, x: 340, y: 16700}
+  - {id: 231, type: SetMaterial, name: "Column round finish", inputs: {Name: {kind: String, value: "Column round"}}, x: 4840, y: 16700}
+  - {id: 232, type: SetMeshName, name: "Column round", inputs: {Name: {kind: String, value: "Column round"}}, x: 5140, y: 16700}
+  - {id: 233, type: MeshCube, name: "Column square", inputs: {SizeX: {param: col_w}, SizeY: {param: col_h}, SizeZ: {param: col_w}}, x: 40, y: 16830}
+  - {id: 234, type: BevelEdge, name: "Column square bevel", inputs: {Offset: {param: bv_column_square}, Segments: {param: bevel_segments}}, x: 340, y: 16830}
+  - {id: 235, type: SetMaterial, name: "Column square finish", inputs: {Name: {kind: String, value: "Column square"}}, x: 4840, y: 16830}
+  - {id: 236, type: SetMeshName, name: "Column square", inputs: {Name: {kind: String, value: "Column square"}}, x: 5140, y: 16830}
+  - {id: 237, type: Compare, name: "col_sq Greater 0.5", inputs: {A: {param: col_sq}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 9690}
+  - {id: 238, type: Switch, name: "Square column?", x: 5440, y: 16700}
+  - {id: 239, type: CombineXYZ, name: "Column position translation", inputs: {X: {kind: Float, value: 0}, Y: {param: col_y}, Z: {kind: Float, value: 0}}, x: 40, y: 16960}
+  - {id: 240, type: Transform, name: "Column position", x: 5740, y: 16700}
+  - {id: 241, type: MeshCylinder, name: "Base round", inputs: {Sides: {kind: Int32, value: 48}, Radius: {param: base_r}, Height: {param: base_t}}, x: 40, y: 17090}
+  - {id: 242, type: BevelEdge, name: "Base round bevel", inputs: {Offset: {param: bv_base_round}, Segments: {param: bevel_segments}}, x: 340, y: 16960}
+  - {id: 243, type: SetMaterial, name: "Base round finish", inputs: {Name: {kind: String, value: "Base round"}}, x: 4840, y: 16960}
+  - {id: 244, type: SetMeshName, name: "Base round", inputs: {Name: {kind: String, value: "Base round"}}, x: 5140, y: 16960}
+  - {id: 245, type: MeshCube, name: "Base square", inputs: {SizeX: {param: base_w}, SizeY: {param: base_t}, SizeZ: {param: base_w}}, x: 40, y: 17220}
+  - {id: 246, type: BevelEdge, name: "Base square bevel", inputs: {Offset: {param: bv_base_square}, Segments: {param: bevel_segments}}, x: 340, y: 17090}
+  - {id: 247, type: SetMaterial, name: "Base square finish", inputs: {Name: {kind: String, value: "Base square"}}, x: 4840, y: 17090}
+  - {id: 248, type: SetMeshName, name: "Base square", inputs: {Name: {kind: String, value: "Base square"}}, x: 5140, y: 17090}
+  - {id: 249, type: Compare, name: "base_sq Greater 0.5", inputs: {A: {param: base_sq}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 9820}
+  - {id: 250, type: Switch, name: "Square base?", x: 5440, y: 16830}
+  - {id: 251, type: CombineXYZ, name: "Base position translation", inputs: {X: {kind: Float, value: 0}, Y: {param: base_y}, Z: {kind: Float, value: 0}}, x: 40, y: 17350}
+  - {id: 252, type: Transform, name: "Base position", x: 5740, y: 16830}
+  - {id: 253, type: JoinGeometry, name: "Pedestal parts", x: 6040, y: 16700}
+  - {id: 254, type: Compare, name: "is2 Greater 0.5", inputs: {A: {param: is2}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 9950}
+  - {id: 255, type: Switch, name: "Pedestal", x: 6340, y: 16700}
+  - {id: 256, type: MeshCube, name: "Cabinet body", inputs: {SizeX: {param: Wc}, SizeY: {param: ch}, SizeZ: {param: Dc}}, x: 40, y: 17640}
+  - {id: 257, type: BevelEdge, name: "Cabinet body bevel", inputs: {Offset: {param: bv_cabinet_body}, Segments: {param: bevel_segments}}, x: 340, y: 17640}
+  - {id: 258, type: CombineXYZ, name: "Cabinet body position translation", inputs: {X: {param: xc}, Y: {param: cab_y}, Z: {kind: Float, value: 0}}, x: 40, y: 17770}
+  - {id: 259, type: Transform, name: "Cabinet body position", x: 640, y: 17640}
+  - {id: 260, type: SetMaterial, name: "Cabinet body finish", inputs: {Name: {kind: String, value: "Cabinet body"}}, x: 4840, y: 17640}
+  - {id: 261, type: SetMeshName, name: "Cabinet body", inputs: {Name: {kind: String, value: "Cabinet body"}}, x: 5140, y: 17640}
+  - {id: 262, type: MeshCube, name: "Cabinet plinth", inputs: {SizeX: {param: plinth_w}, SizeY: {param: plinth_h}, SizeZ: {param: plinth_d}}, x: 40, y: 17900}
+  - {id: 263, type: BevelEdge, name: "Cabinet plinth bevel", inputs: {Offset: {param: bv_cabinet_plinth}, Segments: {param: bevel_segments}}, x: 340, y: 17770}
+  - {id: 264, type: CombineXYZ, name: "Cabinet plinth position translation", inputs: {X: {param: xc}, Y: {param: plinth_y}, Z: {kind: Float, value: 0}}, x: 40, y: 18030}
+  - {id: 265, type: Transform, name: "Cabinet plinth position", x: 640, y: 17770}
+  - {id: 266, type: SetMaterial, name: "Cabinet plinth finish", inputs: {Name: {kind: String, value: "Cabinet plinth"}}, x: 4840, y: 17770}
+  - {id: 267, type: SetMeshName, name: "Cabinet plinth", inputs: {Name: {kind: String, value: "Cabinet plinth"}}, x: 5140, y: 17770}
+  - {id: 268, type: MeshCube, name: "Cabinet end panel", inputs: {SizeX: {param: ep_t}, SizeY: {param: leg_h}, SizeZ: {param: Dc}}, x: 40, y: 18160}
+  - {id: 269, type: BevelEdge, name: "Cabinet end panel bevel", inputs: {Offset: {param: bv_cabinet_end_panel}, Segments: {param: bevel_segments}}, x: 340, y: 17900}
+  - {id: 270, type: CombineXYZ, name: "Cabinet end panel position translation", inputs: {X: {param: ep_x}, Y: {param: leg_y}, Z: {kind: Float, value: 0}}, x: 40, y: 18290}
+  - {id: 271, type: Transform, name: "Cabinet end panel position", x: 640, y: 17900}
+  - {id: 272, type: SetMaterial, name: "Cabinet end panel finish", inputs: {Name: {kind: String, value: "Cabinet end panel"}}, x: 4840, y: 17900}
+  - {id: 273, type: SetMeshName, name: "Cabinet end panel", inputs: {Name: {kind: String, value: "Cabinet end panel"}}, x: 5140, y: 17900}
+  - {id: 274, type: Compare, name: "has_ep Greater 0.5", inputs: {A: {param: has_ep}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 10080}
+  - {id: 275, type: Switch, name: "Show end panel", x: 5440, y: 17640}
+  - {id: 276, type: MeshCube, name: "Drawer front", inputs: {SizeX: {param: fw}, SizeY: {param: fh}, SizeZ: {param: ft}}, x: 40, y: 18420}
+  - {id: 277, type: BevelEdge, name: "Drawer front bevel", inputs: {Offset: {param: bv_drawer_front}, Segments: {param: bevel_segments}}, x: 340, y: 18030}
+  - {id: 278, type: SetMaterial, name: "Drawer front finish", inputs: {Name: {kind: String, value: "Drawer front"}}, x: 5140, y: 18030}
+  - {id: 279, type: SetMeshName, name: "Drawer front", inputs: {Name: {kind: String, value: "Drawer front"}}, x: 5440, y: 17770}
+  - {id: 280, type: MeshCube, name: "Drawer handle", inputs: {SizeX: {param: hx}, SizeY: {param: hy}, SizeZ: {param: hd}}, x: 40, y: 18550}
+  - {id: 281, type: BevelEdge, name: "Drawer handle bevel", inputs: {Offset: {param: bv_drawer_handle}, Segments: {param: bevel_segments}}, x: 340, y: 18160}
+  - {id: 282, type: CombineXYZ, name: "Drawer handle position translation", inputs: {X: {kind: Float, value: 0}, Y: {param: hoff}, Z: {param: hz}}, x: 40, y: 18680}
+  - {id: 283, type: Transform, name: "Drawer handle position", x: 640, y: 18030}
+  - {id: 284, type: SetMaterial, name: "Drawer handle finish", inputs: {Name: {kind: String, value: "Drawer handle"}}, x: 1540, y: 17640}
+  - {id: 285, type: SetMeshName, name: "Drawer handle", inputs: {Name: {kind: String, value: "Drawer handle"}}, x: 1840, y: 17640}
+  - {id: 286, type: JoinGeometry, name: "Drawer", x: 5740, y: 17640}
+  - {id: 287, type: CombineXYZ, name: "Drawer 1.1 translation", inputs: {X: {param: dx0}, Y: {param: dy0}, Z: {param: fz}}, x: 40, y: 18810}
+  - {id: 288, type: Transform, name: "Drawer 1.1", x: 6040, y: 17640}
+  - {id: 289, type: Compare, name: "act_0_0 Greater 0.5", inputs: {A: {param: act_0_0}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 10210}
+  - {id: 290, type: Switch, name: "Show drawer 1.1", x: 6340, y: 17640}
+  - {id: 291, type: CombineXYZ, name: "Drawer 1.2 translation", inputs: {X: {param: dx0}, Y: {param: dy1}, Z: {param: fz}}, x: 40, y: 18940}
+  - {id: 292, type: Transform, name: "Drawer 1.2", x: 6040, y: 17770}
+  - {id: 293, type: Compare, name: "act_0_1 Greater 0.5", inputs: {A: {param: act_0_1}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 10340}
+  - {id: 294, type: Switch, name: "Show drawer 1.2", x: 6340, y: 17770}
+  - {id: 295, type: CombineXYZ, name: "Drawer 1.3 translation", inputs: {X: {param: dx0}, Y: {param: dy2}, Z: {param: fz}}, x: 40, y: 19070}
+  - {id: 296, type: Transform, name: "Drawer 1.3", x: 6040, y: 17900}
+  - {id: 297, type: Compare, name: "act_0_2 Greater 0.5", inputs: {A: {param: act_0_2}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 10470}
+  - {id: 298, type: Switch, name: "Show drawer 1.3", x: 6340, y: 17900}
+  - {id: 299, type: CombineXYZ, name: "Drawer 1.4 translation", inputs: {X: {param: dx0}, Y: {param: dy3}, Z: {param: fz}}, x: 40, y: 19200}
+  - {id: 300, type: Transform, name: "Drawer 1.4", x: 6040, y: 18030}
+  - {id: 301, type: Compare, name: "act_0_3 Greater 0.5", inputs: {A: {param: act_0_3}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 10600}
+  - {id: 302, type: Switch, name: "Show drawer 1.4", x: 6340, y: 18030}
+  - {id: 303, type: CombineXYZ, name: "Drawer 2.1 translation", inputs: {X: {param: dx1}, Y: {param: dy0}, Z: {param: fz}}, x: 40, y: 19330}
+  - {id: 304, type: Transform, name: "Drawer 2.1", x: 6040, y: 18160}
+  - {id: 305, type: Compare, name: "act_1_0 Greater 0.5", inputs: {A: {param: act_1_0}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 10730}
+  - {id: 306, type: Switch, name: "Show drawer 2.1", x: 6340, y: 18160}
+  - {id: 307, type: CombineXYZ, name: "Drawer 2.2 translation", inputs: {X: {param: dx1}, Y: {param: dy1}, Z: {param: fz}}, x: 40, y: 19460}
+  - {id: 308, type: Transform, name: "Drawer 2.2", x: 6040, y: 18290}
+  - {id: 309, type: Compare, name: "act_1_1 Greater 0.5", inputs: {A: {param: act_1_1}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 10860}
+  - {id: 310, type: Switch, name: "Show drawer 2.2", x: 6340, y: 18290}
+  - {id: 311, type: CombineXYZ, name: "Drawer 2.3 translation", inputs: {X: {param: dx1}, Y: {param: dy2}, Z: {param: fz}}, x: 40, y: 19590}
+  - {id: 312, type: Transform, name: "Drawer 2.3", x: 6040, y: 18420}
+  - {id: 313, type: Compare, name: "act_1_2 Greater 0.5", inputs: {A: {param: act_1_2}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 10990}
+  - {id: 314, type: Switch, name: "Show drawer 2.3", x: 6340, y: 18420}
+  - {id: 315, type: CombineXYZ, name: "Drawer 2.4 translation", inputs: {X: {param: dx1}, Y: {param: dy3}, Z: {param: fz}}, x: 40, y: 19720}
+  - {id: 316, type: Transform, name: "Drawer 2.4", x: 6040, y: 18550}
+  - {id: 317, type: Compare, name: "act_1_3 Greater 0.5", inputs: {A: {param: act_1_3}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 11120}
+  - {id: 318, type: Switch, name: "Show drawer 2.4", x: 6340, y: 18550}
+  - {id: 319, type: CombineXYZ, name: "Drawer 3.1 translation", inputs: {X: {param: dx2}, Y: {param: dy0}, Z: {param: fz}}, x: 40, y: 19850}
+  - {id: 320, type: Transform, name: "Drawer 3.1", x: 6040, y: 18680}
+  - {id: 321, type: Compare, name: "act_2_0 Greater 0.5", inputs: {A: {param: act_2_0}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 11250}
+  - {id: 322, type: Switch, name: "Show drawer 3.1", x: 6340, y: 18680}
+  - {id: 323, type: CombineXYZ, name: "Drawer 3.2 translation", inputs: {X: {param: dx2}, Y: {param: dy1}, Z: {param: fz}}, x: 40, y: 19980}
+  - {id: 324, type: Transform, name: "Drawer 3.2", x: 6040, y: 18810}
+  - {id: 325, type: Compare, name: "act_2_1 Greater 0.5", inputs: {A: {param: act_2_1}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 11380}
+  - {id: 326, type: Switch, name: "Show drawer 3.2", x: 6340, y: 18810}
+  - {id: 327, type: CombineXYZ, name: "Drawer 3.3 translation", inputs: {X: {param: dx2}, Y: {param: dy2}, Z: {param: fz}}, x: 40, y: 20110}
+  - {id: 328, type: Transform, name: "Drawer 3.3", x: 6040, y: 18940}
+  - {id: 329, type: Compare, name: "act_2_2 Greater 0.5", inputs: {A: {param: act_2_2}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 11510}
+  - {id: 330, type: Switch, name: "Show drawer 3.3", x: 6340, y: 18940}
+  - {id: 331, type: CombineXYZ, name: "Drawer 3.4 translation", inputs: {X: {param: dx2}, Y: {param: dy3}, Z: {param: fz}}, x: 40, y: 20240}
+  - {id: 332, type: Transform, name: "Drawer 3.4", x: 6040, y: 19070}
+  - {id: 333, type: Compare, name: "act_2_3 Greater 0.5", inputs: {A: {param: act_2_3}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 11640}
+  - {id: 334, type: Switch, name: "Show drawer 3.4", x: 6340, y: 19070}
+  - {id: 335, type: JoinGeometry, name: "Drawers", x: 6640, y: 17640}
+  - {id: 336, type: JoinGeometry, name: "Drawers", x: 6640, y: 17770}
+  - {id: 337, type: JoinGeometry, name: "Drawers", x: 6640, y: 17900}
+  - {id: 338, type: JoinGeometry, name: "Drawers", x: 6640, y: 18030}
+  - {id: 339, type: JoinGeometry, name: "Drawers", x: 6640, y: 18160}
+  - {id: 340, type: JoinGeometry, name: "Drawers", x: 6640, y: 18290}
+  - {id: 341, type: JoinGeometry, name: "Drawers", x: 6940, y: 17640}
+  - {id: 342, type: JoinGeometry, name: "Drawers", x: 6940, y: 17770}
+  - {id: 343, type: JoinGeometry, name: "Drawers", x: 6940, y: 17900}
+  - {id: 344, type: JoinGeometry, name: "Drawers", x: 7240, y: 17640}
+  - {id: 345, type: JoinGeometry, name: "Drawers", x: 7540, y: 17640}
+  - {id: 346, type: JoinGeometry, name: "Drawer bench parts", x: 5440, y: 17900}
+  - {id: 347, type: JoinGeometry, name: "Drawer bench parts", x: 7840, y: 17640}
+  - {id: 348, type: JoinGeometry, name: "Drawer bench parts", x: 8140, y: 17640}
+  - {id: 349, type: Compare, name: "is4 Greater 0.5", inputs: {A: {param: is4}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 11770}
+  - {id: 350, type: Switch, name: "Bench with drawers", x: 8440, y: 17640}
+  - {id: 351, type: JoinGeometry, name: "Assemble table", x: 7840, y: 20530}
+  - {id: 352, type: JoinGeometry, name: "Assemble table", x: 7240, y: 20530}
+  - {id: 353, type: JoinGeometry, name: "Assemble table", x: 8140, y: 20530}
+  - {id: 354, type: JoinGeometry, name: "Assemble table", x: 8740, y: 20530}
+links:
+  - {from: {node: 23, pin: Result}, to: {node: 24, pin: Condition}}
+  - {from: {node: 1, pin: Value}, to: {node: 24, pin: A}}
+  - {from: {node: 2, pin: Value}, to: {node: 24, pin: B}}
+  - {from: {node: 25, pin: Result}, to: {node: 26, pin: Condition}}
+  - {from: {node: 24, pin: Result}, to: {node: 26, pin: A}}
+  - {from: {node: 3, pin: Value}, to: {node: 26, pin: B}}
+  - {from: {node: 27, pin: Result}, to: {node: 28, pin: Condition}}
+  - {from: {node: 26, pin: Result}, to: {node: 28, pin: A}}
+  - {from: {node: 4, pin: Value}, to: {node: 28, pin: B}}
+  - {from: {node: 29, pin: Result}, to: {node: 30, pin: Condition}}
+  - {from: {node: 28, pin: Result}, to: {node: 30, pin: A}}
+  - {from: {node: 5, pin: Value}, to: {node: 30, pin: B}}
+  - {from: {node: 31, pin: Result}, to: {node: 32, pin: Condition}}
+  - {from: {node: 30, pin: Result}, to: {node: 32, pin: A}}
+  - {from: {node: 6, pin: Value}, to: {node: 32, pin: B}}
+  - {from: {node: 33, pin: Result}, to: {node: 34, pin: Condition}}
+  - {from: {node: 32, pin: Result}, to: {node: 34, pin: A}}
+  - {from: {node: 7, pin: Value}, to: {node: 34, pin: B}}
+  - {from: {node: 35, pin: Result}, to: {node: 36, pin: Condition}}
+  - {from: {node: 34, pin: Result}, to: {node: 36, pin: A}}
+  - {from: {node: 8, pin: Value}, to: {node: 36, pin: B}}
+  - {from: {node: 37, pin: Result}, to: {node: 38, pin: Condition}}
+  - {from: {node: 36, pin: Result}, to: {node: 38, pin: A}}
+  - {from: {node: 9, pin: Value}, to: {node: 38, pin: B}}
+  - {from: {node: 39, pin: Result}, to: {node: 40, pin: Condition}}
+  - {from: {node: 38, pin: Result}, to: {node: 40, pin: A}}
+  - {from: {node: 10, pin: Value}, to: {node: 40, pin: B}}
+  - {from: {node: 41, pin: Result}, to: {node: 42, pin: Condition}}
+  - {from: {node: 1, pin: Value}, to: {node: 42, pin: A}}
+  - {from: {node: 2, pin: Value}, to: {node: 42, pin: B}}
+  - {from: {node: 43, pin: Result}, to: {node: 44, pin: Condition}}
+  - {from: {node: 42, pin: Result}, to: {node: 44, pin: A}}
+  - {from: {node: 3, pin: Value}, to: {node: 44, pin: B}}
+  - {from: {node: 45, pin: Result}, to: {node: 46, pin: Condition}}
+  - {from: {node: 44, pin: Result}, to: {node: 46, pin: A}}
+  - {from: {node: 4, pin: Value}, to: {node: 46, pin: B}}
+  - {from: {node: 47, pin: Result}, to: {node: 48, pin: Condition}}
+  - {from: {node: 46, pin: Result}, to: {node: 48, pin: A}}
+  - {from: {node: 5, pin: Value}, to: {node: 48, pin: B}}
+  - {from: {node: 49, pin: Result}, to: {node: 50, pin: Condition}}
+  - {from: {node: 48, pin: Result}, to: {node: 50, pin: A}}
+  - {from: {node: 10, pin: Value}, to: {node: 50, pin: B}}
+  - {from: {node: 51, pin: Result}, to: {node: 52, pin: Condition}}
+  - {from: {node: 50, pin: Result}, to: {node: 52, pin: A}}
+  - {from: {node: 17, pin: Value}, to: {node: 52, pin: B}}
+  - {from: {node: 53, pin: Result}, to: {node: 54, pin: Condition}}
+  - {from: {node: 52, pin: Result}, to: {node: 54, pin: A}}
+  - {from: {node: 17, pin: Value}, to: {node: 54, pin: B}}
+  - {from: {node: 55, pin: Result}, to: {node: 56, pin: Condition}}
+  - {from: {node: 54, pin: Result}, to: {node: 56, pin: A}}
+  - {from: {node: 18, pin: Value}, to: {node: 56, pin: B}}
+  - {from: {node: 57, pin: Result}, to: {node: 58, pin: Condition}}
+  - {from: {node: 56, pin: Result}, to: {node: 58, pin: A}}
+  - {from: {node: 19, pin: Value}, to: {node: 58, pin: B}}
+  - {from: {node: 59, pin: Result}, to: {node: 60, pin: Condition}}
+  - {from: {node: 58, pin: Result}, to: {node: 60, pin: A}}
+  - {from: {node: 20, pin: Value}, to: {node: 60, pin: B}}
+  - {from: {node: 61, pin: Result}, to: {node: 62, pin: Condition}}
+  - {from: {node: 60, pin: Result}, to: {node: 62, pin: A}}
+  - {from: {node: 11, pin: Value}, to: {node: 62, pin: B}}
+  - {from: {node: 63, pin: Result}, to: {node: 64, pin: Condition}}
+  - {from: {node: 62, pin: Result}, to: {node: 64, pin: A}}
+  - {from: {node: 12, pin: Value}, to: {node: 64, pin: B}}
+  - {from: {node: 65, pin: Result}, to: {node: 66, pin: Condition}}
+  - {from: {node: 64, pin: Result}, to: {node: 66, pin: A}}
+  - {from: {node: 15, pin: Value}, to: {node: 66, pin: B}}
+  - {from: {node: 67, pin: Result}, to: {node: 68, pin: Condition}}
+  - {from: {node: 66, pin: Result}, to: {node: 68, pin: A}}
+  - {from: {node: 16, pin: Value}, to: {node: 68, pin: B}}
+  - {from: {node: 69, pin: Result}, to: {node: 70, pin: Condition}}
+  - {from: {node: 68, pin: Result}, to: {node: 70, pin: A}}
+  - {from: {node: 40, pin: Result}, to: {node: 70, pin: B}}
+  - {from: {node: 71, pin: Result}, to: {node: 72, pin: Condition}}
+  - {from: {node: 1, pin: Value}, to: {node: 72, pin: A}}
+  - {from: {node: 2, pin: Value}, to: {node: 72, pin: B}}
+  - {from: {node: 73, pin: Result}, to: {node: 74, pin: Condition}}
+  - {from: {node: 72, pin: Result}, to: {node: 74, pin: A}}
+  - {from: {node: 3, pin: Value}, to: {node: 74, pin: B}}
+  - {from: {node: 75, pin: Result}, to: {node: 76, pin: Condition}}
+  - {from: {node: 74, pin: Result}, to: {node: 76, pin: A}}
+  - {from: {node: 4, pin: Value}, to: {node: 76, pin: B}}
+  - {from: {node: 77, pin: Result}, to: {node: 78, pin: Condition}}
+  - {from: {node: 76, pin: Result}, to: {node: 78, pin: A}}
+  - {from: {node: 5, pin: Value}, to: {node: 78, pin: B}}
+  - {from: {node: 79, pin: Result}, to: {node: 80, pin: Condition}}
+  - {from: {node: 78, pin: Result}, to: {node: 80, pin: A}}
+  - {from: {node: 6, pin: Value}, to: {node: 80, pin: B}}
+  - {from: {node: 81, pin: Result}, to: {node: 82, pin: Condition}}
+  - {from: {node: 80, pin: Result}, to: {node: 82, pin: A}}
+  - {from: {node: 10, pin: Value}, to: {node: 82, pin: B}}
+  - {from: {node: 83, pin: Result}, to: {node: 84, pin: Condition}}
+  - {from: {node: 82, pin: Result}, to: {node: 84, pin: A}}
+  - {from: {node: 11, pin: Value}, to: {node: 84, pin: B}}
+  - {from: {node: 85, pin: Result}, to: {node: 86, pin: Condition}}
+  - {from: {node: 84, pin: Result}, to: {node: 86, pin: A}}
+  - {from: {node: 12, pin: Value}, to: {node: 86, pin: B}}
+  - {from: {node: 87, pin: Result}, to: {node: 88, pin: Condition}}
+  - {from: {node: 86, pin: Result}, to: {node: 88, pin: A}}
+  - {from: {node: 13, pin: Value}, to: {node: 88, pin: B}}
+  - {from: {node: 89, pin: Result}, to: {node: 90, pin: Condition}}
+  - {from: {node: 88, pin: Result}, to: {node: 90, pin: A}}
+  - {from: {node: 14, pin: Value}, to: {node: 90, pin: B}}
+  - {from: {node: 91, pin: Result}, to: {node: 92, pin: Condition}}
+  - {from: {node: 90, pin: Result}, to: {node: 92, pin: A}}
+  - {from: {node: 15, pin: Value}, to: {node: 92, pin: B}}
+  - {from: {node: 93, pin: Result}, to: {node: 94, pin: Condition}}
+  - {from: {node: 92, pin: Result}, to: {node: 94, pin: A}}
+  - {from: {node: 16, pin: Value}, to: {node: 94, pin: B}}
+  - {from: {node: 95, pin: Result}, to: {node: 96, pin: Condition}}
+  - {from: {node: 94, pin: Result}, to: {node: 96, pin: A}}
+  - {from: {node: 17, pin: Value}, to: {node: 96, pin: B}}
+  - {from: {node: 97, pin: Result}, to: {node: 98, pin: Condition}}
+  - {from: {node: 96, pin: Result}, to: {node: 98, pin: A}}
+  - {from: {node: 18, pin: Value}, to: {node: 98, pin: B}}
+  - {from: {node: 99, pin: Result}, to: {node: 100, pin: Condition}}
+  - {from: {node: 98, pin: Result}, to: {node: 100, pin: A}}
+  - {from: {node: 70, pin: Result}, to: {node: 100, pin: B}}
+  - {from: {node: 101, pin: Result}, to: {node: 102, pin: Condition}}
+  - {from: {node: 17, pin: Value}, to: {node: 102, pin: A}}
+  - {from: {node: 19, pin: Value}, to: {node: 102, pin: B}}
+  - {from: {node: 103, pin: Result}, to: {node: 104, pin: Condition}}
+  - {from: {node: 102, pin: Result}, to: {node: 104, pin: A}}
+  - {from: {node: 20, pin: Value}, to: {node: 104, pin: B}}
+  - {from: {node: 105, pin: Result}, to: {node: 106, pin: Condition}}
+  - {from: {node: 104, pin: Result}, to: {node: 106, pin: A}}
+  - {from: {node: 21, pin: Value}, to: {node: 106, pin: B}}
+  - {from: {node: 107, pin: Result}, to: {node: 108, pin: Condition}}
+  - {from: {node: 106, pin: Result}, to: {node: 108, pin: A}}
+  - {from: {node: 22, pin: Value}, to: {node: 108, pin: B}}
+  - {from: {node: 109, pin: Geometry}, to: {node: 110, pin: Geometry}}
+  - {from: {node: 110, pin: Geometry}, to: {node: 112, pin: Geometry}}
+  - {from: {node: 111, pin: Vector}, to: {node: 112, pin: Translation}}
+  - {from: {node: 112, pin: Geometry}, to: {node: 113, pin: Geometry}}
+  - {from: {node: 40, pin: Result}, to: {node: 113, pin: Material}}
+  - {from: {node: 113, pin: Geometry}, to: {node: 114, pin: Geometry}}
+  - {from: {node: 115, pin: Geometry}, to: {node: 116, pin: Geometry}}
+  - {from: {node: 116, pin: Geometry}, to: {node: 118, pin: Geometry}}
+  - {from: {node: 117, pin: Vector}, to: {node: 118, pin: Translation}}
+  - {from: {node: 118, pin: Geometry}, to: {node: 119, pin: Geometry}}
+  - {from: {node: 40, pin: Result}, to: {node: 119, pin: Material}}
+  - {from: {node: 119, pin: Geometry}, to: {node: 120, pin: Geometry}}
+  - {from: {node: 121, pin: Result}, to: {node: 122, pin: Condition}}
+  - {from: {node: 114, pin: Geometry}, to: {node: 122, pin: A}}
+  - {from: {node: 120, pin: Geometry}, to: {node: 122, pin: B}}
+  - {from: {node: 123, pin: Geometry}, to: {node: 124, pin: Geometry}}
+  - {from: {node: 124, pin: Geometry}, to: {node: 125, pin: Geometry}}
+  - {from: {node: 70, pin: Result}, to: {node: 125, pin: Material}}
+  - {from: {node: 125, pin: Geometry}, to: {node: 126, pin: Geometry}}
+  - {from: {node: 127, pin: Geometry}, to: {node: 128, pin: Geometry}}
+  - {from: {node: 128, pin: Geometry}, to: {node: 129, pin: Geometry}}
+  - {from: {node: 70, pin: Result}, to: {node: 129, pin: Material}}
+  - {from: {node: 129, pin: Geometry}, to: {node: 130, pin: Geometry}}
+  - {from: {node: 131, pin: Result}, to: {node: 132, pin: Condition}}
+  - {from: {node: 126, pin: Geometry}, to: {node: 132, pin: A}}
+  - {from: {node: 130, pin: Geometry}, to: {node: 132, pin: B}}
+  - {from: {node: 132, pin: Geometry}, to: {node: 134, pin: Geometry}}
+  - {from: {node: 133, pin: Vector}, to: {node: 134, pin: Translation}}
+  - {from: {node: 132, pin: Geometry}, to: {node: 136, pin: Geometry}}
+  - {from: {node: 135, pin: Vector}, to: {node: 136, pin: Translation}}
+  - {from: {node: 132, pin: Geometry}, to: {node: 138, pin: Geometry}}
+  - {from: {node: 137, pin: Vector}, to: {node: 138, pin: Translation}}
+  - {from: {node: 132, pin: Geometry}, to: {node: 140, pin: Geometry}}
+  - {from: {node: 139, pin: Vector}, to: {node: 140, pin: Translation}}
+  - {from: {node: 141, pin: Geometry}, to: {node: 142, pin: Geometry}}
+  - {from: {node: 142, pin: Geometry}, to: {node: 143, pin: Geometry}}
+  - {from: {node: 70, pin: Result}, to: {node: 143, pin: Material}}
+  - {from: {node: 143, pin: Geometry}, to: {node: 144, pin: Geometry}}
+  - {from: {node: 145, pin: Geometry}, to: {node: 146, pin: Geometry}}
+  - {from: {node: 146, pin: Geometry}, to: {node: 147, pin: Geometry}}
+  - {from: {node: 70, pin: Result}, to: {node: 147, pin: Material}}
+  - {from: {node: 147, pin: Geometry}, to: {node: 148, pin: Geometry}}
+  - {from: {node: 144, pin: Geometry}, to: {node: 150, pin: Geometry}}
+  - {from: {node: 149, pin: Vector}, to: {node: 150, pin: Translation}}
+  - {from: {node: 144, pin: Geometry}, to: {node: 152, pin: Geometry}}
+  - {from: {node: 151, pin: Vector}, to: {node: 152, pin: Translation}}
+  - {from: {node: 148, pin: Geometry}, to: {node: 154, pin: Geometry}}
+  - {from: {node: 153, pin: Vector}, to: {node: 154, pin: Translation}}
+  - {from: {node: 148, pin: Geometry}, to: {node: 156, pin: Geometry}}
+  - {from: {node: 155, pin: Vector}, to: {node: 156, pin: Translation}}
+  - {from: {node: 150, pin: Geometry}, to: {node: 157, pin: A}}
+  - {from: {node: 152, pin: Geometry}, to: {node: 157, pin: B}}
+  - {from: {node: 154, pin: Geometry}, to: {node: 158, pin: A}}
+  - {from: {node: 156, pin: Geometry}, to: {node: 158, pin: B}}
+  - {from: {node: 157, pin: Geometry}, to: {node: 159, pin: A}}
+  - {from: {node: 158, pin: Geometry}, to: {node: 159, pin: B}}
+  - {from: {node: 160, pin: Result}, to: {node: 161, pin: Condition}}
+  - {from: {node: 159, pin: Geometry}, to: {node: 161, pin: B}}
+  - {from: {node: 162, pin: Geometry}, to: {node: 163, pin: Geometry}}
+  - {from: {node: 163, pin: Geometry}, to: {node: 164, pin: Geometry}}
+  - {from: {node: 70, pin: Result}, to: {node: 164, pin: Material}}
+  - {from: {node: 164, pin: Geometry}, to: {node: 165, pin: Geometry}}
+  - {from: {node: 166, pin: Geometry}, to: {node: 167, pin: Geometry}}
+  - {from: {node: 167, pin: Geometry}, to: {node: 168, pin: Geometry}}
+  - {from: {node: 70, pin: Result}, to: {node: 168, pin: Material}}
+  - {from: {node: 168, pin: Geometry}, to: {node: 169, pin: Geometry}}
+  - {from: {node: 165, pin: Geometry}, to: {node: 171, pin: Geometry}}
+  - {from: {node: 170, pin: Vector}, to: {node: 171, pin: Translation}}
+  - {from: {node: 165, pin: Geometry}, to: {node: 173, pin: Geometry}}
+  - {from: {node: 172, pin: Vector}, to: {node: 173, pin: Translation}}
+  - {from: {node: 169, pin: Geometry}, to: {node: 175, pin: Geometry}}
+  - {from: {node: 174, pin: Vector}, to: {node: 175, pin: Translation}}
+  - {from: {node: 169, pin: Geometry}, to: {node: 177, pin: Geometry}}
+  - {from: {node: 176, pin: Vector}, to: {node: 177, pin: Translation}}
+  - {from: {node: 171, pin: Geometry}, to: {node: 178, pin: A}}
+  - {from: {node: 173, pin: Geometry}, to: {node: 178, pin: B}}
+  - {from: {node: 175, pin: Geometry}, to: {node: 179, pin: A}}
+  - {from: {node: 177, pin: Geometry}, to: {node: 179, pin: B}}
+  - {from: {node: 178, pin: Geometry}, to: {node: 180, pin: A}}
+  - {from: {node: 179, pin: Geometry}, to: {node: 180, pin: B}}
+  - {from: {node: 181, pin: Result}, to: {node: 182, pin: Condition}}
+  - {from: {node: 180, pin: Geometry}, to: {node: 182, pin: B}}
+  - {from: {node: 183, pin: Geometry}, to: {node: 184, pin: Geometry}}
+  - {from: {node: 184, pin: Geometry}, to: {node: 186, pin: Geometry}}
+  - {from: {node: 185, pin: Vector}, to: {node: 186, pin: Translation}}
+  - {from: {node: 186, pin: Geometry}, to: {node: 187, pin: Geometry}}
+  - {from: {node: 100, pin: Result}, to: {node: 187, pin: Material}}
+  - {from: {node: 187, pin: Geometry}, to: {node: 188, pin: Geometry}}
+  - {from: {node: 189, pin: Result}, to: {node: 190, pin: Condition}}
+  - {from: {node: 188, pin: Geometry}, to: {node: 190, pin: B}}
+  - {from: {node: 134, pin: Geometry}, to: {node: 191, pin: A}}
+  - {from: {node: 136, pin: Geometry}, to: {node: 191, pin: B}}
+  - {from: {node: 138, pin: Geometry}, to: {node: 192, pin: A}}
+  - {from: {node: 140, pin: Geometry}, to: {node: 192, pin: B}}
+  - {from: {node: 161, pin: Geometry}, to: {node: 193, pin: A}}
+  - {from: {node: 182, pin: Geometry}, to: {node: 193, pin: B}}
+  - {from: {node: 191, pin: Geometry}, to: {node: 194, pin: A}}
+  - {from: {node: 192, pin: Geometry}, to: {node: 194, pin: B}}
+  - {from: {node: 193, pin: Geometry}, to: {node: 195, pin: A}}
+  - {from: {node: 190, pin: Geometry}, to: {node: 195, pin: B}}
+  - {from: {node: 194, pin: Geometry}, to: {node: 196, pin: A}}
+  - {from: {node: 195, pin: Geometry}, to: {node: 196, pin: B}}
+  - {from: {node: 197, pin: Result}, to: {node: 198, pin: Condition}}
+  - {from: {node: 196, pin: Geometry}, to: {node: 198, pin: B}}
+  - {from: {node: 199, pin: Geometry}, to: {node: 200, pin: Geometry}}
+  - {from: {node: 200, pin: Geometry}, to: {node: 201, pin: Geometry}}
+  - {from: {node: 70, pin: Result}, to: {node: 201, pin: Material}}
+  - {from: {node: 201, pin: Geometry}, to: {node: 202, pin: Geometry}}
+  - {from: {node: 202, pin: Geometry}, to: {node: 204, pin: Geometry}}
+  - {from: {node: 203, pin: Vector}, to: {node: 204, pin: Translation}}
+  - {from: {node: 202, pin: Geometry}, to: {node: 206, pin: Geometry}}
+  - {from: {node: 205, pin: Vector}, to: {node: 206, pin: Translation}}
+  - {from: {node: 207, pin: Geometry}, to: {node: 208, pin: Geometry}}
+  - {from: {node: 208, pin: Geometry}, to: {node: 210, pin: Geometry}}
+  - {from: {node: 209, pin: Vector}, to: {node: 210, pin: Translation}}
+  - {from: {node: 210, pin: Geometry}, to: {node: 211, pin: Geometry}}
+  - {from: {node: 100, pin: Result}, to: {node: 211, pin: Material}}
+  - {from: {node: 211, pin: Geometry}, to: {node: 212, pin: Geometry}}
+  - {from: {node: 213, pin: Geometry}, to: {node: 214, pin: Geometry}}
+  - {from: {node: 214, pin: Geometry}, to: {node: 215, pin: Geometry}}
+  - {from: {node: 70, pin: Result}, to: {node: 215, pin: Material}}
+  - {from: {node: 215, pin: Geometry}, to: {node: 216, pin: Geometry}}
+  - {from: {node: 216, pin: Geometry}, to: {node: 218, pin: Geometry}}
+  - {from: {node: 217, pin: Vector}, to: {node: 218, pin: Translation}}
+  - {from: {node: 216, pin: Geometry}, to: {node: 220, pin: Geometry}}
+  - {from: {node: 219, pin: Vector}, to: {node: 220, pin: Translation}}
+  - {from: {node: 218, pin: Geometry}, to: {node: 221, pin: A}}
+  - {from: {node: 220, pin: Geometry}, to: {node: 221, pin: B}}
+  - {from: {node: 222, pin: Result}, to: {node: 223, pin: Condition}}
+  - {from: {node: 221, pin: Geometry}, to: {node: 223, pin: B}}
+  - {from: {node: 204, pin: Geometry}, to: {node: 224, pin: A}}
+  - {from: {node: 206, pin: Geometry}, to: {node: 224, pin: B}}
+  - {from: {node: 212, pin: Geometry}, to: {node: 225, pin: A}}
+  - {from: {node: 223, pin: Geometry}, to: {node: 225, pin: B}}
+  - {from: {node: 224, pin: Geometry}, to: {node: 226, pin: A}}
+  - {from: {node: 225, pin: Geometry}, to: {node: 226, pin: B}}
+  - {from: {node: 227, pin: Result}, to: {node: 228, pin: Condition}}
+  - {from: {node: 226, pin: Geometry}, to: {node: 228, pin: B}}
+  - {from: {node: 229, pin: Geometry}, to: {node: 230, pin: Geometry}}
+  - {from: {node: 230, pin: Geometry}, to: {node: 231, pin: Geometry}}
+  - {from: {node: 70, pin: Result}, to: {node: 231, pin: Material}}
+  - {from: {node: 231, pin: Geometry}, to: {node: 232, pin: Geometry}}
+  - {from: {node: 233, pin: Geometry}, to: {node: 234, pin: Geometry}}
+  - {from: {node: 234, pin: Geometry}, to: {node: 235, pin: Geometry}}
+  - {from: {node: 70, pin: Result}, to: {node: 235, pin: Material}}
+  - {from: {node: 235, pin: Geometry}, to: {node: 236, pin: Geometry}}
+  - {from: {node: 237, pin: Result}, to: {node: 238, pin: Condition}}
+  - {from: {node: 232, pin: Geometry}, to: {node: 238, pin: A}}
+  - {from: {node: 236, pin: Geometry}, to: {node: 238, pin: B}}
+  - {from: {node: 238, pin: Geometry}, to: {node: 240, pin: Geometry}}
+  - {from: {node: 239, pin: Vector}, to: {node: 240, pin: Translation}}
+  - {from: {node: 241, pin: Geometry}, to: {node: 242, pin: Geometry}}
+  - {from: {node: 242, pin: Geometry}, to: {node: 243, pin: Geometry}}
+  - {from: {node: 70, pin: Result}, to: {node: 243, pin: Material}}
+  - {from: {node: 243, pin: Geometry}, to: {node: 244, pin: Geometry}}
+  - {from: {node: 245, pin: Geometry}, to: {node: 246, pin: Geometry}}
+  - {from: {node: 246, pin: Geometry}, to: {node: 247, pin: Geometry}}
+  - {from: {node: 70, pin: Result}, to: {node: 247, pin: Material}}
+  - {from: {node: 247, pin: Geometry}, to: {node: 248, pin: Geometry}}
+  - {from: {node: 249, pin: Result}, to: {node: 250, pin: Condition}}
+  - {from: {node: 244, pin: Geometry}, to: {node: 250, pin: A}}
+  - {from: {node: 248, pin: Geometry}, to: {node: 250, pin: B}}
+  - {from: {node: 250, pin: Geometry}, to: {node: 252, pin: Geometry}}
+  - {from: {node: 251, pin: Vector}, to: {node: 252, pin: Translation}}
+  - {from: {node: 240, pin: Geometry}, to: {node: 253, pin: A}}
+  - {from: {node: 252, pin: Geometry}, to: {node: 253, pin: B}}
+  - {from: {node: 254, pin: Result}, to: {node: 255, pin: Condition}}
+  - {from: {node: 253, pin: Geometry}, to: {node: 255, pin: B}}
+  - {from: {node: 256, pin: Geometry}, to: {node: 257, pin: Geometry}}
+  - {from: {node: 257, pin: Geometry}, to: {node: 259, pin: Geometry}}
+  - {from: {node: 258, pin: Vector}, to: {node: 259, pin: Translation}}
+  - {from: {node: 259, pin: Geometry}, to: {node: 260, pin: Geometry}}
+  - {from: {node: 70, pin: Result}, to: {node: 260, pin: Material}}
+  - {from: {node: 260, pin: Geometry}, to: {node: 261, pin: Geometry}}
+  - {from: {node: 262, pin: Geometry}, to: {node: 263, pin: Geometry}}
+  - {from: {node: 263, pin: Geometry}, to: {node: 265, pin: Geometry}}
+  - {from: {node: 264, pin: Vector}, to: {node: 265, pin: Translation}}
+  - {from: {node: 265, pin: Geometry}, to: {node: 266, pin: Geometry}}
+  - {from: {node: 70, pin: Result}, to: {node: 266, pin: Material}}
+  - {from: {node: 266, pin: Geometry}, to: {node: 267, pin: Geometry}}
+  - {from: {node: 268, pin: Geometry}, to: {node: 269, pin: Geometry}}
+  - {from: {node: 269, pin: Geometry}, to: {node: 271, pin: Geometry}}
+  - {from: {node: 270, pin: Vector}, to: {node: 271, pin: Translation}}
+  - {from: {node: 271, pin: Geometry}, to: {node: 272, pin: Geometry}}
+  - {from: {node: 70, pin: Result}, to: {node: 272, pin: Material}}
+  - {from: {node: 272, pin: Geometry}, to: {node: 273, pin: Geometry}}
+  - {from: {node: 274, pin: Result}, to: {node: 275, pin: Condition}}
+  - {from: {node: 273, pin: Geometry}, to: {node: 275, pin: B}}
+  - {from: {node: 276, pin: Geometry}, to: {node: 277, pin: Geometry}}
+  - {from: {node: 277, pin: Geometry}, to: {node: 278, pin: Geometry}}
+  - {from: {node: 100, pin: Result}, to: {node: 278, pin: Material}}
+  - {from: {node: 278, pin: Geometry}, to: {node: 279, pin: Geometry}}
+  - {from: {node: 280, pin: Geometry}, to: {node: 281, pin: Geometry}}
+  - {from: {node: 281, pin: Geometry}, to: {node: 283, pin: Geometry}}
+  - {from: {node: 282, pin: Vector}, to: {node: 283, pin: Translation}}
+  - {from: {node: 283, pin: Geometry}, to: {node: 284, pin: Geometry}}
+  - {from: {node: 108, pin: Result}, to: {node: 284, pin: Material}}
+  - {from: {node: 284, pin: Geometry}, to: {node: 285, pin: Geometry}}
+  - {from: {node: 279, pin: Geometry}, to: {node: 286, pin: A}}
+  - {from: {node: 285, pin: Geometry}, to: {node: 286, pin: B}}
+  - {from: {node: 286, pin: Geometry}, to: {node: 288, pin: Geometry}}
+  - {from: {node: 287, pin: Vector}, to: {node: 288, pin: Translation}}
+  - {from: {node: 289, pin: Result}, to: {node: 290, pin: Condition}}
+  - {from: {node: 288, pin: Geometry}, to: {node: 290, pin: B}}
+  - {from: {node: 286, pin: Geometry}, to: {node: 292, pin: Geometry}}
+  - {from: {node: 291, pin: Vector}, to: {node: 292, pin: Translation}}
+  - {from: {node: 293, pin: Result}, to: {node: 294, pin: Condition}}
+  - {from: {node: 292, pin: Geometry}, to: {node: 294, pin: B}}
+  - {from: {node: 286, pin: Geometry}, to: {node: 296, pin: Geometry}}
+  - {from: {node: 295, pin: Vector}, to: {node: 296, pin: Translation}}
+  - {from: {node: 297, pin: Result}, to: {node: 298, pin: Condition}}
+  - {from: {node: 296, pin: Geometry}, to: {node: 298, pin: B}}
+  - {from: {node: 286, pin: Geometry}, to: {node: 300, pin: Geometry}}
+  - {from: {node: 299, pin: Vector}, to: {node: 300, pin: Translation}}
+  - {from: {node: 301, pin: Result}, to: {node: 302, pin: Condition}}
+  - {from: {node: 300, pin: Geometry}, to: {node: 302, pin: B}}
+  - {from: {node: 286, pin: Geometry}, to: {node: 304, pin: Geometry}}
+  - {from: {node: 303, pin: Vector}, to: {node: 304, pin: Translation}}
+  - {from: {node: 305, pin: Result}, to: {node: 306, pin: Condition}}
+  - {from: {node: 304, pin: Geometry}, to: {node: 306, pin: B}}
+  - {from: {node: 286, pin: Geometry}, to: {node: 308, pin: Geometry}}
+  - {from: {node: 307, pin: Vector}, to: {node: 308, pin: Translation}}
+  - {from: {node: 309, pin: Result}, to: {node: 310, pin: Condition}}
+  - {from: {node: 308, pin: Geometry}, to: {node: 310, pin: B}}
+  - {from: {node: 286, pin: Geometry}, to: {node: 312, pin: Geometry}}
+  - {from: {node: 311, pin: Vector}, to: {node: 312, pin: Translation}}
+  - {from: {node: 313, pin: Result}, to: {node: 314, pin: Condition}}
+  - {from: {node: 312, pin: Geometry}, to: {node: 314, pin: B}}
+  - {from: {node: 286, pin: Geometry}, to: {node: 316, pin: Geometry}}
+  - {from: {node: 315, pin: Vector}, to: {node: 316, pin: Translation}}
+  - {from: {node: 317, pin: Result}, to: {node: 318, pin: Condition}}
+  - {from: {node: 316, pin: Geometry}, to: {node: 318, pin: B}}
+  - {from: {node: 286, pin: Geometry}, to: {node: 320, pin: Geometry}}
+  - {from: {node: 319, pin: Vector}, to: {node: 320, pin: Translation}}
+  - {from: {node: 321, pin: Result}, to: {node: 322, pin: Condition}}
+  - {from: {node: 320, pin: Geometry}, to: {node: 322, pin: B}}
+  - {from: {node: 286, pin: Geometry}, to: {node: 324, pin: Geometry}}
+  - {from: {node: 323, pin: Vector}, to: {node: 324, pin: Translation}}
+  - {from: {node: 325, pin: Result}, to: {node: 326, pin: Condition}}
+  - {from: {node: 324, pin: Geometry}, to: {node: 326, pin: B}}
+  - {from: {node: 286, pin: Geometry}, to: {node: 328, pin: Geometry}}
+  - {from: {node: 327, pin: Vector}, to: {node: 328, pin: Translation}}
+  - {from: {node: 329, pin: Result}, to: {node: 330, pin: Condition}}
+  - {from: {node: 328, pin: Geometry}, to: {node: 330, pin: B}}
+  - {from: {node: 286, pin: Geometry}, to: {node: 332, pin: Geometry}}
+  - {from: {node: 331, pin: Vector}, to: {node: 332, pin: Translation}}
+  - {from: {node: 333, pin: Result}, to: {node: 334, pin: Condition}}
+  - {from: {node: 332, pin: Geometry}, to: {node: 334, pin: B}}
+  - {from: {node: 290, pin: Geometry}, to: {node: 335, pin: A}}
+  - {from: {node: 294, pin: Geometry}, to: {node: 335, pin: B}}
+  - {from: {node: 298, pin: Geometry}, to: {node: 336, pin: A}}
+  - {from: {node: 302, pin: Geometry}, to: {node: 336, pin: B}}
+  - {from: {node: 306, pin: Geometry}, to: {node: 337, pin: A}}
+  - {from: {node: 310, pin: Geometry}, to: {node: 337, pin: B}}
+  - {from: {node: 314, pin: Geometry}, to: {node: 338, pin: A}}
+  - {from: {node: 318, pin: Geometry}, to: {node: 338, pin: B}}
+  - {from: {node: 322, pin: Geometry}, to: {node: 339, pin: A}}
+  - {from: {node: 326, pin: Geometry}, to: {node: 339, pin: B}}
+  - {from: {node: 330, pin: Geometry}, to: {node: 340, pin: A}}
+  - {from: {node: 334, pin: Geometry}, to: {node: 340, pin: B}}
+  - {from: {node: 335, pin: Geometry}, to: {node: 341, pin: A}}
+  - {from: {node: 336, pin: Geometry}, to: {node: 341, pin: B}}
+  - {from: {node: 337, pin: Geometry}, to: {node: 342, pin: A}}
+  - {from: {node: 338, pin: Geometry}, to: {node: 342, pin: B}}
+  - {from: {node: 339, pin: Geometry}, to: {node: 343, pin: A}}
+  - {from: {node: 340, pin: Geometry}, to: {node: 343, pin: B}}
+  - {from: {node: 341, pin: Geometry}, to: {node: 344, pin: A}}
+  - {from: {node: 342, pin: Geometry}, to: {node: 344, pin: B}}
+  - {from: {node: 344, pin: Geometry}, to: {node: 345, pin: A}}
+  - {from: {node: 343, pin: Geometry}, to: {node: 345, pin: B}}
+  - {from: {node: 261, pin: Geometry}, to: {node: 346, pin: A}}
+  - {from: {node: 267, pin: Geometry}, to: {node: 346, pin: B}}
+  - {from: {node: 275, pin: Geometry}, to: {node: 347, pin: A}}
+  - {from: {node: 345, pin: Geometry}, to: {node: 347, pin: B}}
+  - {from: {node: 346, pin: Geometry}, to: {node: 348, pin: A}}
+  - {from: {node: 347, pin: Geometry}, to: {node: 348, pin: B}}
+  - {from: {node: 349, pin: Result}, to: {node: 350, pin: Condition}}
+  - {from: {node: 348, pin: Geometry}, to: {node: 350, pin: B}}
+  - {from: {node: 122, pin: Geometry}, to: {node: 351, pin: A}}
+  - {from: {node: 198, pin: Geometry}, to: {node: 351, pin: B}}
+  - {from: {node: 228, pin: Geometry}, to: {node: 352, pin: A}}
+  - {from: {node: 255, pin: Geometry}, to: {node: 352, pin: B}}
+  - {from: {node: 351, pin: Geometry}, to: {node: 353, pin: A}}
+  - {from: {node: 352, pin: Geometry}, to: {node: 353, pin: B}}
+  - {from: {node: 353, pin: Geometry}, to: {node: 354, pin: A}}
+  - {from: {node: 350, pin: Geometry}, to: {node: 354, pin: B}}
+parameters:
+  seed: {kind: Int32, default: 7, group: "Random", min: 0, max: 1000000, desc: "Master random seed (0 to 1,000,000). Each seed gives a different table: type, size, finish and details."}
+  table_type: {kind: Int32, default: 0, group: "Random", options: ["Random (from seed)", "Four-leg table", "Trestle table", "Pedestal table", "Bench", "Bench with drawers"], desc: "Pick a type, or leave on Random to let the seed decide."}
+  shuffle_type: {kind: Int32, default: 0, group: "Random", min: 0, max: 1000, desc: "Change this number to re-roll only the table type and its structure (leg shape, aprons, shelves, drawer layout)."}
+  shuffle_dimensions: {kind: Int32, default: 0, group: "Random", min: 0, max: 1000, desc: "Change this number to re-roll only the dimensions (width, depth, height, thicknesses)."}
+  shuffle_materials: {kind: Int32, default: 0, group: "Random", min: 0, max: 1000, desc: "Change this number to re-roll only the materials and finishes."}
+  bevel: {kind: Float, default: 0.006, group: "Edges", min: 0, max: 0.03, desc: "Edge bevel width in metres. Clamped on thin parts. 0 gives sharp edges."}
+  bevel_variation: {kind: Float, default: 0.5, group: "Edges", min: 0, max: 1, desc: "How much the seed varies the bevel width: 0 is always exactly 'bevel', 1 ranges from none to double."}
+  bevel_segments: {kind: Int32, default: 3, group: "Edges", min: 1, max: 6, desc: "Segments per bevel: 1 is a flat chamfer, more is a rounder edge."}
+  ts: {kind: Float, expr: "seed + shuffle_type*7919"}
+  ds: {kind: Float, expr: "seed + shuffle_dimensions*7919"}
+  ms: {kind: Float, expr: "seed + shuffle_materials*7919"}
+  r_type: {kind: Float, expr: "sin(ts*12.9898+78.233)*43758.5453 - floor(sin(ts*12.9898+78.233)*43758.5453)"}
+  type_i: {kind: Float, expr: "min(1,table_type)*(table_type-1) + (1-min(1,table_type))*floor(r_type*5)"}
+  is0: {kind: Float, expr: "max(0, 1 - abs(type_i - 0))"}
+  is1: {kind: Float, expr: "max(0, 1 - abs(type_i - 1))"}
+  is2: {kind: Float, expr: "max(0, 1 - abs(type_i - 2))"}
+  is3: {kind: Float, expr: "max(0, 1 - abs(type_i - 3))"}
+  is4: {kind: Float, expr: "max(0, 1 - abs(type_i - 4))"}
+  legs_on: {kind: Float, expr: "is0 + is3"}
+  r_legshape: {kind: Float, expr: "sin(ts*12.9898+156.466)*43758.5453 - floor(sin(ts*12.9898+156.466)*43758.5453)"}
+  r_apron: {kind: Float, expr: "sin(ts*12.9898+234.699)*43758.5453 - floor(sin(ts*12.9898+234.699)*43758.5453)"}
+  r_shelf: {kind: Float, expr: "sin(ts*12.9898+312.932)*43758.5453 - floor(sin(ts*12.9898+312.932)*43758.5453)"}
+  r_rails: {kind: Float, expr: "sin(ts*12.9898+391.165)*43758.5453 - floor(sin(ts*12.9898+391.165)*43758.5453)"}
+  r_lowy: {kind: Float, expr: "sin(ts*12.9898+469.398)*43758.5453 - floor(sin(ts*12.9898+469.398)*43758.5453)"}
+  r_foot: {kind: Float, expr: "sin(ts*12.9898+547.631)*43758.5453 - floor(sin(ts*12.9898+547.631)*43758.5453)"}
+  r_pedround: {kind: Float, expr: "sin(ts*12.9898+625.864)*43758.5453 - floor(sin(ts*12.9898+625.864)*43758.5453)"}
+  r_colsq: {kind: Float, expr: "sin(ts*12.9898+704.097)*43758.5453 - floor(sin(ts*12.9898+704.097)*43758.5453)"}
+  r_basesq: {kind: Float, expr: "sin(ts*12.9898+782.33)*43758.5453 - floor(sin(ts*12.9898+782.33)*43758.5453)"}
+  r_full: {kind: Float, expr: "sin(ts*12.9898+860.563)*43758.5453 - floor(sin(ts*12.9898+860.563)*43758.5453)"}
+  r_side: {kind: Float, expr: "sin(ts*12.9898+938.796)*43758.5453 - floor(sin(ts*12.9898+938.796)*43758.5453)"}
+  r_nc: {kind: Float, expr: "sin(ts*12.9898+1017.03)*43758.5453 - floor(sin(ts*12.9898+1017.03)*43758.5453)"}
+  r_nr: {kind: Float, expr: "sin(ts*12.9898+1095.26)*43758.5453 - floor(sin(ts*12.9898+1095.26)*43758.5453)"}
+  r_hvert: {kind: Float, expr: "sin(ts*12.9898+1173.5)*43758.5453 - floor(sin(ts*12.9898+1173.5)*43758.5453)"}
+  r_htop: {kind: Float, expr: "sin(ts*12.9898+1251.73)*43758.5453 - floor(sin(ts*12.9898+1251.73)*43758.5453)"}
+  r_w: {kind: Float, expr: "sin(ds*12.9898+1329.96)*43758.5453 - floor(sin(ds*12.9898+1329.96)*43758.5453)"}
+  r_d: {kind: Float, expr: "sin(ds*12.9898+1408.19)*43758.5453 - floor(sin(ds*12.9898+1408.19)*43758.5453)"}
+  r_h: {kind: Float, expr: "sin(ds*12.9898+1486.43)*43758.5453 - floor(sin(ds*12.9898+1486.43)*43758.5453)"}
+  r_topt: {kind: Float, expr: "sin(ds*12.9898+1564.66)*43758.5453 - floor(sin(ds*12.9898+1564.66)*43758.5453)"}
+  r_bev: {kind: Float, expr: "sin(ds*12.9898+1642.89)*43758.5453 - floor(sin(ds*12.9898+1642.89)*43758.5453)"}
+  W: {kind: Float, expr: "(is0*0.9 + is1*1.4 + is2*0.7 + is3*1.2 + is4*1) + r_w*(is0*1.1 + is1*1 + is2*0.6 + is3*1 + is4*1)"}
+  D_raw: {kind: Float, expr: "(is0*0.55 + is1*0.65 + is2*0.7 + is3*0.55 + is4*0.5) + r_d*(is0*0.45 + is1*0.3 + is2*0.6 + is3*0.25 + is4*0.25)"}
+  D: {kind: Float, expr: "is2*W + (1-is2)*D_raw"}
+  H: {kind: Float, expr: "(is0*0.7 + is1*0.72 + is2*0.7 + is3*0.8 + is4*0.8) + r_h*(is0*0.08 + is1*0.06 + is2*0.06 + is3*0.15 + is4*0.12)"}
+  top_t: {kind: Float, expr: "(is0*0.02 + is1*0.03 + is2*0.025 + is3*0.04 + is4*0.03) + r_topt*(is0*0.03 + is1*0.03 + is2*0.025 + is3*0.05 + is4*0.03)"}
+  top_y: {kind: Float, expr: "H - top_t/2"}
+  leg_h: {kind: Float, expr: "max(0.1, H - top_t)"}
+  leg_y: {kind: Float, expr: "leg_h/2"}
+  top_r: {kind: Float, expr: "W/2"}
+  ped_round: {kind: Float, expr: "floor(r_pedround + 0.65)"}
+  top_round: {kind: Float, expr: "is2*ped_round"}
+  bevel_eff: {kind: Float, expr: "max(0, bevel*(1 + (r_bev*2 - 1)*bevel_variation))"}
+  r_legw: {kind: Float, expr: "sin(ds*12.9898+1721.13)*43758.5453 - floor(sin(ds*12.9898+1721.13)*43758.5453)"}
+  r_inset: {kind: Float, expr: "sin(ds*12.9898+1799.36)*43758.5453 - floor(sin(ds*12.9898+1799.36)*43758.5453)"}
+  r_apronh: {kind: Float, expr: "sin(ds*12.9898+1877.59)*43758.5453 - floor(sin(ds*12.9898+1877.59)*43758.5453)"}
+  r_apront: {kind: Float, expr: "sin(ds*12.9898+1955.83)*43758.5453 - floor(sin(ds*12.9898+1955.83)*43758.5453)"}
+  r_railh: {kind: Float, expr: "sin(ds*12.9898+2034.06)*43758.5453 - floor(sin(ds*12.9898+2034.06)*43758.5453)"}
+  r_railt: {kind: Float, expr: "sin(ds*12.9898+2112.29)*43758.5453 - floor(sin(ds*12.9898+2112.29)*43758.5453)"}
+  r_shelft: {kind: Float, expr: "sin(ds*12.9898+2190.52)*43758.5453 - floor(sin(ds*12.9898+2190.52)*43758.5453)"}
+  leg_w: {kind: Float, expr: "(is0*0.035 + is1*0.035 + is2*0.035 + is3*0.07 + is4*0.035) + r_legw*(is0*0.04 + is1*0.04 + is2*0.04 + is3*0.05 + is4*0.04)"}
+  leg_r: {kind: Float, expr: "leg_w/2"}
+  inset: {kind: Float, expr: "(is0*0.02 + is1*0.02 + is2*0.02 + is3*0.02 + is4*0.02) + r_inset*(is0*0.1 + is1*0.1 + is2*0.1 + is3*0.06 + is4*0.1)"}
+  lx: {kind: Float, expr: "max(0.05, W/2 - inset - leg_w/2)"}
+  lz: {kind: Float, expr: "max(0.05, D/2 - inset - leg_w/2)"}
+  nlx: {kind: Float, expr: "-lx"}
+  nlz: {kind: Float, expr: "-lz"}
+  len_x: {kind: Float, expr: "max(0.05, 2*lx - leg_w + 0.01)"}
+  len_z: {kind: Float, expr: "max(0.05, 2*lz - leg_w + 0.01)"}
+  leg_round: {kind: Float, expr: "floor(r_legshape + is0*0.45 + is3*0.15)"}
+  apron_on: {kind: Float, expr: "floor(r_apron + is0*0.6 + is3*0.5)"}
+  apron_h: {kind: Float, expr: "0.06 + r_apronh*0.05"}
+  apron_t: {kind: Float, expr: "0.018 + r_apront*0.012"}
+  apron_y: {kind: Float, expr: "H - top_t - apron_h/2"}
+  shelf_on: {kind: Float, expr: "floor(r_shelf + is0*0.2 + is3*0.7)"}
+  rails_raw: {kind: Float, expr: "floor(r_rails + is0*0.35 + is3*0.3)"}
+  rails_on: {kind: Float, expr: "rails_raw*(1-shelf_on)"}
+  low_y: {kind: Float, expr: "leg_h*(0.12 + 0.16*r_lowy)"}
+  rail_h: {kind: Float, expr: "0.03 + r_railh*0.02"}
+  rail_t: {kind: Float, expr: "0.02 + r_railt*0.01"}
+  shelf_t: {kind: Float, expr: "0.02 + r_shelft*0.015"}
+  r_endt: {kind: Float, expr: "sin(ds*12.9898+2268.76)*43758.5453 - floor(sin(ds*12.9898+2268.76)*43758.5453)"}
+  r_endinset: {kind: Float, expr: "sin(ds*12.9898+2346.99)*43758.5453 - floor(sin(ds*12.9898+2346.99)*43758.5453)"}
+  r_enddz: {kind: Float, expr: "sin(ds*12.9898+2425.22)*43758.5453 - floor(sin(ds*12.9898+2425.22)*43758.5453)"}
+  r_beamh: {kind: Float, expr: "sin(ds*12.9898+2503.46)*43758.5453 - floor(sin(ds*12.9898+2503.46)*43758.5453)"}
+  r_beamt: {kind: Float, expr: "sin(ds*12.9898+2581.69)*43758.5453 - floor(sin(ds*12.9898+2581.69)*43758.5453)"}
+  r_drop: {kind: Float, expr: "sin(ds*12.9898+2659.92)*43758.5453 - floor(sin(ds*12.9898+2659.92)*43758.5453)"}
+  r_footh: {kind: Float, expr: "sin(ds*12.9898+2738.16)*43758.5453 - floor(sin(ds*12.9898+2738.16)*43758.5453)"}
+  end_t: {kind: Float, expr: "0.03 + r_endt*0.03"}
+  end_inset: {kind: Float, expr: "0.06 + r_endinset*0.19"}
+  end_x: {kind: Float, expr: "max(0.1, W/2 - end_inset - end_t/2)"}
+  nend_x: {kind: Float, expr: "-end_x"}
+  end_dz: {kind: Float, expr: "0.04 + r_enddz*0.1"}
+  end_d: {kind: Float, expr: "max(0.2, D - 2*end_dz)"}
+  beam_h: {kind: Float, expr: "0.06 + r_beamh*0.08"}
+  beam_t: {kind: Float, expr: "0.04 + r_beamt*0.04"}
+  beam_len: {kind: Float, expr: "max(0.1, 2*end_x - end_t + 0.01)"}
+  beam_y: {kind: Float, expr: "leg_h - beam_h/2 - r_drop*0.3*leg_h"}
+  foot_on: {kind: Float, expr: "floor(r_foot + 0.55*is1)"}
+  foot_h: {kind: Float, expr: "0.04 + r_footh*0.03"}
+  foot_w: {kind: Float, expr: "end_t + 0.06"}
+  foot_d: {kind: Float, expr: "min(D - 0.02, end_d + 0.12)"}
+  foot_y: {kind: Float, expr: "foot_h/2"}
+  r_colr: {kind: Float, expr: "sin(ds*12.9898+2816.39)*43758.5453 - floor(sin(ds*12.9898+2816.39)*43758.5453)"}
+  r_baset: {kind: Float, expr: "sin(ds*12.9898+2894.62)*43758.5453 - floor(sin(ds*12.9898+2894.62)*43758.5453)"}
+  r_baser: {kind: Float, expr: "sin(ds*12.9898+2972.85)*43758.5453 - floor(sin(ds*12.9898+2972.85)*43758.5453)"}
+  col_r: {kind: Float, expr: "0.035 + r_colr*0.05"}
+  col_w: {kind: Float, expr: "2*col_r"}
+  col_sq: {kind: Float, expr: "floor(r_colsq + 0.35)"}
+  base_t: {kind: Float, expr: "0.03 + r_baset*0.04"}
+  base_r: {kind: Float, expr: "min(W/2 - 0.02, W*(0.28 + r_baser*0.14))"}
+  base_w: {kind: Float, expr: "2*base_r"}
+  base_sq: {kind: Float, expr: "floor(r_basesq + 0.3)"}
+  col_h: {kind: Float, expr: "max(0.1, H - top_t - base_t)"}
+  col_y: {kind: Float, expr: "base_t + col_h/2"}
+  base_y: {kind: Float, expr: "base_t/2"}
+  r_ovx: {kind: Float, expr: "sin(ds*12.9898+3051.09)*43758.5453 - floor(sin(ds*12.9898+3051.09)*43758.5453)"}
+  r_ovz: {kind: Float, expr: "sin(ds*12.9898+3129.32)*43758.5453 - floor(sin(ds*12.9898+3129.32)*43758.5453)"}
+  r_frac: {kind: Float, expr: "sin(ds*12.9898+3207.55)*43758.5453 - floor(sin(ds*12.9898+3207.55)*43758.5453)"}
+  r_plinth: {kind: Float, expr: "sin(ds*12.9898+3285.79)*43758.5453 - floor(sin(ds*12.9898+3285.79)*43758.5453)"}
+  r_plin: {kind: Float, expr: "sin(ds*12.9898+3364.02)*43758.5453 - floor(sin(ds*12.9898+3364.02)*43758.5453)"}
+  r_ept: {kind: Float, expr: "sin(ds*12.9898+3442.25)*43758.5453 - floor(sin(ds*12.9898+3442.25)*43758.5453)"}
+  r_ft: {kind: Float, expr: "sin(ds*12.9898+3520.49)*43758.5453 - floor(sin(ds*12.9898+3520.49)*43758.5453)"}
+  r_hl: {kind: Float, expr: "sin(ds*12.9898+3598.72)*43758.5453 - floor(sin(ds*12.9898+3598.72)*43758.5453)"}
+  r_ht: {kind: Float, expr: "sin(ds*12.9898+3676.95)*43758.5453 - floor(sin(ds*12.9898+3676.95)*43758.5453)"}
+  r_hd: {kind: Float, expr: "sin(ds*12.9898+3755.18)*43758.5453 - floor(sin(ds*12.9898+3755.18)*43758.5453)"}
+  ov_x: {kind: Float, expr: "0 + r_ovx*0.05"}
+  ov_z: {kind: Float, expr: "0 + r_ovz*0.04"}
+  full: {kind: Float, expr: "floor(r_full + 0.55*is4)"}
+  side: {kind: Float, expr: "2*floor(r_side+0.5)-1"}
+  frac: {kind: Float, expr: "0.38 + r_frac*0.27"}
+  ep_t: {kind: Float, expr: "0.03 + r_ept*0.02"}
+  Wc: {kind: Float, expr: "full*(W - 2*ov_x) + (1-full)*min(W*frac, W - 2*ov_x - ep_t - 0.3)"}
+  xc: {kind: Float, expr: "(1-full)*side*(W/2 - ov_x - Wc/2)"}
+  Dc: {kind: Float, expr: "max(0.2, D - 2*ov_z)"}
+  plinth_h: {kind: Float, expr: "0.04 + r_plinth*0.06"}
+  plin_in: {kind: Float, expr: "0.015 + r_plin*0.025"}
+  ch: {kind: Float, expr: "max(0.2, H - top_t - plinth_h)"}
+  cab_y: {kind: Float, expr: "plinth_h + ch/2"}
+  plinth_y: {kind: Float, expr: "plinth_h/2"}
+  plinth_w: {kind: Float, expr: "max(0.1, Wc - 2*plin_in)"}
+  plinth_d: {kind: Float, expr: "max(0.1, Dc - 2*plin_in)"}
+  has_ep: {kind: Float, expr: "1-full"}
+  ep_x: {kind: Float, expr: "-side*(W/2 - ov_x - ep_t/2)"}
+  nc: {kind: Float, expr: "1 + floor(r_nc*min(3, max(1, floor(Wc/0.3))))"}
+  nr: {kind: Float, expr: "1 + floor(r_nr*min(4, max(1, floor(ch/0.16))))"}
+  cw: {kind: Float, expr: "(Wc - 0.024)/nc"}
+  chh: {kind: Float, expr: "(ch - 0.024)/nr"}
+  fw: {kind: Float, expr: "max(0.05, cw - 0.006)"}
+  fh: {kind: Float, expr: "max(0.05, chh - 0.006)"}
+  ft: {kind: Float, expr: "0.016 + r_ft*0.01"}
+  fz: {kind: Float, expr: "Dc/2 + ft/2 - 0.003"}
+  dx0: {kind: Float, expr: "xc - Wc/2 + 0.012 + (0+0.5)*cw"}
+  ac0: {kind: Float, expr: "max(0, min(1, nc - 0))"}
+  dx1: {kind: Float, expr: "xc - Wc/2 + 0.012 + (1+0.5)*cw"}
+  ac1: {kind: Float, expr: "max(0, min(1, nc - 1))"}
+  dx2: {kind: Float, expr: "xc - Wc/2 + 0.012 + (2+0.5)*cw"}
+  ac2: {kind: Float, expr: "max(0, min(1, nc - 2))"}
+  dy0: {kind: Float, expr: "plinth_h + 0.012 + (0+0.5)*chh"}
+  ar0: {kind: Float, expr: "max(0, min(1, nr - 0))"}
+  dy1: {kind: Float, expr: "plinth_h + 0.012 + (1+0.5)*chh"}
+  ar1: {kind: Float, expr: "max(0, min(1, nr - 1))"}
+  dy2: {kind: Float, expr: "plinth_h + 0.012 + (2+0.5)*chh"}
+  ar2: {kind: Float, expr: "max(0, min(1, nr - 2))"}
+  dy3: {kind: Float, expr: "plinth_h + 0.012 + (3+0.5)*chh"}
+  ar3: {kind: Float, expr: "max(0, min(1, nr - 3))"}
+  act_0_0: {kind: Float, expr: "ac0*ar0"}
+  act_0_1: {kind: Float, expr: "ac0*ar1"}
+  act_0_2: {kind: Float, expr: "ac0*ar2"}
+  act_0_3: {kind: Float, expr: "ac0*ar3"}
+  act_1_0: {kind: Float, expr: "ac1*ar0"}
+  act_1_1: {kind: Float, expr: "ac1*ar1"}
+  act_1_2: {kind: Float, expr: "ac1*ar2"}
+  act_1_3: {kind: Float, expr: "ac1*ar3"}
+  act_2_0: {kind: Float, expr: "ac2*ar0"}
+  act_2_1: {kind: Float, expr: "ac2*ar1"}
+  act_2_2: {kind: Float, expr: "ac2*ar2"}
+  act_2_3: {kind: Float, expr: "ac2*ar3"}
+  hl: {kind: Float, expr: "0.08 + r_hl*0.1"}
+  ht: {kind: Float, expr: "0.01 + r_ht*0.006"}
+  hd: {kind: Float, expr: "0.018 + r_hd*0.012"}
+  hvert: {kind: Float, expr: "floor(r_hvert + 0.3)"}
+  htop: {kind: Float, expr: "floor(r_htop + 0.4)"}
+  hl_eff: {kind: Float, expr: "min(hl, min(0.5*fw, 0.6*fh))"}
+  hx: {kind: Float, expr: "hl_eff*(1-hvert) + ht*hvert"}
+  hy: {kind: Float, expr: "ht*(1-hvert) + hl_eff*hvert"}
+  hz: {kind: Float, expr: "ft/2 + hd/2 - 0.002"}
+  hoff: {kind: Float, expr: "htop*(1-hvert)*(fh/2 - 0.04)"}
+  r_mtop: {kind: Float, expr: "sin(ms*12.9898+3833.42)*43758.5453 - floor(sin(ms*12.9898+3833.42)*43758.5453)"}
+  r_mframe: {kind: Float, expr: "sin(ms*12.9898+3911.65)*43758.5453 - floor(sin(ms*12.9898+3911.65)*43758.5453)"}
+  r_msame: {kind: Float, expr: "sin(ms*12.9898+3989.88)*43758.5453 - floor(sin(ms*12.9898+3989.88)*43758.5453)"}
+  r_macc: {kind: Float, expr: "sin(ms*12.9898+4068.12)*43758.5453 - floor(sin(ms*12.9898+4068.12)*43758.5453)"}
+  r_msameacc: {kind: Float, expr: "sin(ms*12.9898+4146.35)*43758.5453 - floor(sin(ms*12.9898+4146.35)*43758.5453)"}
+  r_mmetal: {kind: Float, expr: "sin(ms*12.9898+4224.58)*43758.5453 - floor(sin(ms*12.9898+4224.58)*43758.5453)"}
+  idx_top: {kind: Float, expr: "floor(r_mtop*10)"}
+  idx_frame: {kind: Float, expr: "floor(r_mframe*15)"}
+  same_frame: {kind: Float, expr: "floor(r_msame + 0.25)"}
+  idx_acc: {kind: Float, expr: "floor(r_macc*15)"}
+  same_acc: {kind: Float, expr: "floor(r_msameacc + 0.3)"}
+  idx_metal: {kind: Float, expr: "floor(r_mmetal*5)"}
+  bv_table_top: {kind: Float, expr: "max(0, min(bevel_eff, 0.4*min(min(W,top_t),D)))"}
+  bv_table_top_round: {kind: Float, expr: "max(0, min(bevel_eff, 0.4*min(top_r,top_t)))"}
+  bv_leg: {kind: Float, expr: "max(0, min(bevel_eff, 0.4*min(min(leg_w,leg_h),leg_w)))"}
+  bv_leg_round: {kind: Float, expr: "max(0, min(bevel_eff, 0.4*min(leg_r,leg_h)))"}
+  bv_apron_rail_long: {kind: Float, expr: "max(0, min(bevel_eff, 0.4*min(min(len_x,apron_h),apron_t)))"}
+  bv_apron_rail_short: {kind: Float, expr: "max(0, min(bevel_eff, 0.4*min(min(apron_t,apron_h),len_z)))"}
+  bv_lower_rail_long: {kind: Float, expr: "max(0, min(bevel_eff, 0.4*min(min(len_x,rail_h),rail_t)))"}
+  bv_lower_rail_short: {kind: Float, expr: "max(0, min(bevel_eff, 0.4*min(min(rail_t,rail_h),len_z)))"}
+  bv_lower_shelf: {kind: Float, expr: "max(0, min(bevel_eff, 0.4*min(min(len_x,shelf_t),len_z)))"}
+  bv_trestle_end: {kind: Float, expr: "max(0, min(bevel_eff, 0.4*min(min(end_t,leg_h),end_d)))"}
+  bv_trestle_beam: {kind: Float, expr: "max(0, min(bevel_eff, 0.4*min(min(beam_len,beam_h),beam_t)))"}
+  bv_trestle_foot: {kind: Float, expr: "max(0, min(bevel_eff, 0.4*min(min(foot_w,foot_h),foot_d)))"}
+  bv_column_round: {kind: Float, expr: "max(0, min(bevel_eff, 0.4*min(col_r,col_h)))"}
+  bv_column_square: {kind: Float, expr: "max(0, min(bevel_eff, 0.4*min(min(col_w,col_h),col_w)))"}
+  bv_base_round: {kind: Float, expr: "max(0, min(bevel_eff, 0.4*min(base_r,base_t)))"}
+  bv_base_square: {kind: Float, expr: "max(0, min(bevel_eff, 0.4*min(min(base_w,base_t),base_w)))"}
+  bv_cabinet_body: {kind: Float, expr: "max(0, min(bevel_eff, 0.4*min(min(Wc,ch),Dc)))"}
+  bv_cabinet_plinth: {kind: Float, expr: "max(0, min(bevel_eff, 0.4*min(min(plinth_w,plinth_h),plinth_d)))"}
+  bv_cabinet_end_panel: {kind: Float, expr: "max(0, min(bevel_eff, 0.4*min(min(ep_t,leg_h),Dc)))"}
+  bv_drawer_front: {kind: Float, expr: "max(0, min(bevel_eff, 0.4*min(min(fw,fh),ft)))"}
+  bv_drawer_handle: {kind: Float, expr: "max(0, min(bevel_eff, 0.4*min(min(hx,hy),hd)))"}
+outputs:
+  Geometry:
+    node: 354
+    pin: Geometry

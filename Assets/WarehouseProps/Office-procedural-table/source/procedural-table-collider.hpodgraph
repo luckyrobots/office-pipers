@@ -1,0 +1,346 @@
+# Procedural table. Change `seed` for a different table (type, size, finish, details).
+# table_type forces a type; shuffle_type / shuffle_dimensions / shuffle_materials re-roll one aspect only.
+# bevel / bevel_variation / bevel_segments control the rounded edges on every part.
+# All randomness is derived from `seed` by the derived (expr) parameters at the end of this file.
+nodes:
+  - {id: 1, type: MeshCube, name: "Collider top", inputs: {SizeX: {param: W}, SizeY: {param: top_t}, SizeZ: {param: D}}, x: 40, y: 40}
+  - {id: 2, type: CombineXYZ, name: "Collider top position translation", inputs: {X: {kind: Float, value: 0}, Y: {param: top_y}, Z: {kind: Float, value: 0}}, x: 40, y: 170}
+  - {id: 3, type: Transform, name: "Collider top position", x: 340, y: 40}
+  - {id: 4, type: MeshCylinder, name: "Collider top round", inputs: {Sides: {kind: Int32, value: 64}, Radius: {param: top_r}, Height: {param: top_t}}, x: 40, y: 300}
+  - {id: 5, type: CombineXYZ, name: "Collider top round position translation", inputs: {X: {kind: Float, value: 0}, Y: {param: top_y}, Z: {kind: Float, value: 0}}, x: 40, y: 430}
+  - {id: 6, type: Transform, name: "Collider top round position", x: 340, y: 170}
+  - {id: 7, type: Compare, name: "top_round Greater 0.5", inputs: {A: {param: top_round}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 6830}
+  - {id: 8, type: Switch, name: "Round top?", x: 640, y: 40}
+  - {id: 9, type: MeshCube, name: "Rail long", inputs: {SizeX: {param: long_len}, SizeY: {param: rail_height}, SizeZ: {param: rail_thickness}}, x: 40, y: 560}
+  - {id: 10, type: MeshCube, name: "Rail short", inputs: {SizeX: {param: rail_thickness}, SizeY: {param: rail_height}, SizeZ: {param: short_len}}, x: 40, y: 690}
+  - {id: 11, type: CombineXYZ, name: "Rail front translation", inputs: {X: {kind: Float, value: 0}, Y: {param: rail_y}, Z: {param: zrail}}, x: 40, y: 820}
+  - {id: 12, type: Transform, name: "Rail front", x: 340, y: 300}
+  - {id: 13, type: CombineXYZ, name: "Rail back translation", inputs: {X: {kind: Float, value: 0}, Y: {param: rail_y}, Z: {param: nzrail}}, x: 40, y: 950}
+  - {id: 14, type: Transform, name: "Rail back", x: 340, y: 430}
+  - {id: 15, type: CombineXYZ, name: "Rail right translation", inputs: {X: {param: xrail}, Y: {param: rail_y}, Z: {kind: Float, value: 0}}, x: 40, y: 1080}
+  - {id: 16, type: Transform, name: "Rail right", x: 340, y: 560}
+  - {id: 17, type: CombineXYZ, name: "Rail left translation", inputs: {X: {param: nxrail}, Y: {param: rail_y}, Z: {kind: Float, value: 0}}, x: 40, y: 1210}
+  - {id: 18, type: Transform, name: "Rail left", x: 340, y: 690}
+  - {id: 19, type: JoinGeometry, name: "Rect rim", x: 640, y: 170}
+  - {id: 20, type: JoinGeometry, name: "Rect rim", x: 640, y: 300}
+  - {id: 21, type: JoinGeometry, name: "Rect rim", x: 940, y: 40}
+  - {id: 22, type: Compare, name: "rect_on Greater 0.5", inputs: {A: {param: rect_on}, B: {kind: Float, value: 0.5}, Operation: {kind: Menu, value: Greater}}, x: 40, y: 6960}
+  - {id: 23, type: Switch, name: "Rectangular rim", x: 1240, y: 40}
+  - {id: 24, type: MeshCube, name: "Ring segment", inputs: {SizeX: {param: seg_len}, SizeY: {param: rail_height}, SizeZ: {param: rail_thickness}}, x: 40, y: 1340}
+  - {id: 25, type: CombineXYZ, name: "Ring 1 position", inputs: {X: {param: sx0}, Y: {param: rail_y}, Z: {param: sz0}}, x: 40, y: 1470}
+  - {id: 26, type: CombineXYZ, name: "Ring 1 rotation", inputs: {X: {kind: Float, value: 0}, Y: {param: sa0}, Z: {kind: Float, value: 0}}, x: 40, y: 1600}
+  - {id: 27, type: Transform, name: "Ring 1 segment", x: 340, y: 820}
+  - {id: 28, type: CombineXYZ, name: "Ring 2 position", inputs: {X: {param: sx1}, Y: {param: rail_y}, Z: {param: sz1}}, x: 40, y: 1730}
+  - {id: 29, type: CombineXYZ, name: "Ring 2 rotation", inputs: {X: {kind: Float, value: 0}, Y: {param: sa1}, Z: {kind: Float, value: 0}}, x: 40, y: 1860}
+  - {id: 30, type: Transform, name: "Ring 2 segment", x: 340, y: 950}
+  - {id: 31, type: CombineXYZ, name: "Ring 3 position", inputs: {X: {param: sx2}, Y: {param: rail_y}, Z: {param: sz2}}, x: 40, y: 1990}
+  - {id: 32, type: CombineXYZ, name: "Ring 3 rotation", inputs: {X: {kind: Float, value: 0}, Y: {param: sa2}, Z: {kind: Float, value: 0}}, x: 40, y: 2120}
+  - {id: 33, type: Transform, name: "Ring 3 segment", x: 340, y: 1080}
+  - {id: 34, type: CombineXYZ, name: "Ring 4 position", inputs: {X: {param: sx3}, Y: {param: rail_y}, Z: {param: sz3}}, x: 40, y: 2250}
+  - {id: 35, type: CombineXYZ, name: "Ring 4 rotation", inputs: {X: {kind: Float, value: 0}, Y: {param: sa3}, Z: {kind: Float, value: 0}}, x: 40, y: 2380}
+  - {id: 36, type: Transform, name: "Ring 4 segment", x: 340, y: 1210}
+  - {id: 37, type: CombineXYZ, name: "Ring 5 position", inputs: {X: {param: sx4}, Y: {param: rail_y}, Z: {param: sz4}}, x: 40, y: 2510}
+  - {id: 38, type: CombineXYZ, name: "Ring 5 rotation", inputs: {X: {kind: Float, value: 0}, Y: {param: sa4}, Z: {kind: Float, value: 0}}, x: 40, y: 2640}
+  - {id: 39, type: Transform, name: "Ring 5 segment", x: 340, y: 1340}
+  - {id: 40, type: CombineXYZ, name: "Ring 6 position", inputs: {X: {param: sx5}, Y: {param: rail_y}, Z: {param: sz5}}, x: 40, y: 2770}
+  - {id: 41, type: CombineXYZ, name: "Ring 6 rotation", inputs: {X: {kind: Float, value: 0}, Y: {param: sa5}, Z: {kind: Float, value: 0}}, x: 40, y: 2900}
+  - {id: 42, type: Transform, name: "Ring 6 segment", x: 340, y: 1470}
+  - {id: 43, type: CombineXYZ, name: "Ring 7 position", inputs: {X: {param: sx6}, Y: {param: rail_y}, Z: {param: sz6}}, x: 40, y: 3030}
+  - {id: 44, type: CombineXYZ, name: "Ring 7 rotation", inputs: {X: {kind: Float, value: 0}, Y: {param: sa6}, Z: {kind: Float, value: 0}}, x: 40, y: 3160}
+  - {id: 45, type: Transform, name: "Ring 7 segment", x: 340, y: 1600}
+  - {id: 46, type: CombineXYZ, name: "Ring 8 position", inputs: {X: {param: sx7}, Y: {param: rail_y}, Z: {param: sz7}}, x: 40, y: 3290}
+  - {id: 47, type: CombineXYZ, name: "Ring 8 rotation", inputs: {X: {kind: Float, value: 0}, Y: {param: sa7}, Z: {kind: Float, value: 0}}, x: 40, y: 3420}
+  - {id: 48, type: Transform, name: "Ring 8 segment", x: 340, y: 1730}
+  - {id: 49, type: CombineXYZ, name: "Ring 9 position", inputs: {X: {param: sx8}, Y: {param: rail_y}, Z: {param: sz8}}, x: 40, y: 3550}
+  - {id: 50, type: CombineXYZ, name: "Ring 9 rotation", inputs: {X: {kind: Float, value: 0}, Y: {param: sa8}, Z: {kind: Float, value: 0}}, x: 40, y: 3680}
+  - {id: 51, type: Transform, name: "Ring 9 segment", x: 340, y: 1860}
+  - {id: 52, type: CombineXYZ, name: "Ring 10 position", inputs: {X: {param: sx9}, Y: {param: rail_y}, Z: {param: sz9}}, x: 40, y: 3810}
+  - {id: 53, type: CombineXYZ, name: "Ring 10 rotation", inputs: {X: {kind: Float, value: 0}, Y: {param: sa9}, Z: {kind: Float, value: 0}}, x: 40, y: 3940}
+  - {id: 54, type: Transform, name: "Ring 10 segment", x: 340, y: 1990}
+  - {id: 55, type: CombineXYZ, name: "Ring 11 position", inputs: {X: {param: sx10}, Y: {param: rail_y}, Z: {param: sz10}}, x: 40, y: 4070}
+  - {id: 56, type: CombineXYZ, name: "Ring 11 rotation", inputs: {X: {kind: Float, value: 0}, Y: {param: sa10}, Z: {kind: Float, value: 0}}, x: 40, y: 4200}
+  - {id: 57, type: Transform, name: "Ring 11 segment", x: 340, y: 2120}
+  - {id: 58, type: CombineXYZ, name: "Ring 12 position", inputs: {X: {param: sx11}, Y: {param: rail_y}, Z: {param: sz11}}, x: 40, y: 4330}
+  - {id: 59, type: CombineXYZ, name: "Ring 12 rotation", inputs: {X: {kind: Float, value: 0}, Y: {param: sa11}, Z: {kind: Float, value: 0}}, x: 40, y: 4460}
+  - {id: 60, type: Transform, name: "Ring 12 segment", x: 340, y: 2250}
+  - {id: 61, type: CombineXYZ, name: "Ring 13 position", inputs: {X: {param: sx12}, Y: {param: rail_y}, Z: {param: sz12}}, x: 40, y: 4590}
+  - {id: 62, type: CombineXYZ, name: "Ring 13 rotation", inputs: {X: {kind: Float, value: 0}, Y: {param: sa12}, Z: {kind: Float, value: 0}}, x: 40, y: 4720}
+  - {id: 63, type: Transform, name: "Ring 13 segment", x: 340, y: 2380}
+  - {id: 64, type: CombineXYZ, name: "Ring 14 position", inputs: {X: {param: sx13}, Y: {param: rail_y}, Z: {param: sz13}}, x: 40, y: 4850}
+  - {id: 65, type: CombineXYZ, name: "Ring 14 rotation", inputs: {X: {kind: Float, value: 0}, Y: {param: sa13}, Z: {kind: Float, value: 0}}, x: 40, y: 4980}
+  - {id: 66, type: Transform, name: "Ring 14 segment", x: 340, y: 2510}
+  - {id: 67, type: CombineXYZ, name: "Ring 15 position", inputs: {X: {param: sx14}, Y: {param: rail_y}, Z: {param: sz14}}, x: 40, y: 5110}
+  - {id: 68, type: CombineXYZ, name: "Ring 15 rotation", inputs: {X: {kind: Float, value: 0}, Y: {param: sa14}, Z: {kind: Float, value: 0}}, x: 40, y: 5240}
+  - {id: 69, type: Transform, name: "Ring 15 segment", x: 340, y: 2640}
+  - {id: 70, type: CombineXYZ, name: "Ring 16 position", inputs: {X: {param: sx15}, Y: {param: rail_y}, Z: {param: sz15}}, x: 40, y: 5370}
+  - {id: 71, type: CombineXYZ, name: "Ring 16 rotation", inputs: {X: {kind: Float, value: 0}, Y: {param: sa15}, Z: {kind: Float, value: 0}}, x: 40, y: 5500}
+  - {id: 72, type: Transform, name: "Ring 16 segment", x: 340, y: 2770}
+  - {id: 73, type: CombineXYZ, name: "Ring 17 position", inputs: {X: {param: sx16}, Y: {param: rail_y}, Z: {param: sz16}}, x: 40, y: 5630}
+  - {id: 74, type: CombineXYZ, name: "Ring 17 rotation", inputs: {X: {kind: Float, value: 0}, Y: {param: sa16}, Z: {kind: Float, value: 0}}, x: 40, y: 5760}
+  - {id: 75, type: Transform, name: "Ring 17 segment", x: 340, y: 2900}
+  - {id: 76, type: CombineXYZ, name: "Ring 18 position", inputs: {X: {param: sx17}, Y: {param: rail_y}, Z: {param: sz17}}, x: 40, y: 5890}
+  - {id: 77, type: CombineXYZ, name: "Ring 18 rotation", inputs: {X: {kind: Float, value: 0}, Y: {param: sa17}, Z: {kind: Float, value: 0}}, x: 40, y: 6020}
+  - {id: 78, type: Transform, name: "Ring 18 segment", x: 340, y: 3030}
+  - {id: 79, type: CombineXYZ, name: "Ring 19 position", inputs: {X: {param: sx18}, Y: {param: rail_y}, Z: {param: sz18}}, x: 40, y: 6150}
+  - {id: 80, type: CombineXYZ, name: "Ring 19 rotation", inputs: {X: {kind: Float, value: 0}, Y: {param: sa18}, Z: {kind: Float, value: 0}}, x: 40, y: 6280}
+  - {id: 81, type: Transform, name: "Ring 19 segment", x: 340, y: 3160}
+  - {id: 82, type: CombineXYZ, name: "Ring 20 position", inputs: {X: {param: sx19}, Y: {param: rail_y}, Z: {param: sz19}}, x: 40, y: 6410}
+  - {id: 83, type: CombineXYZ, name: "Ring 20 rotation", inputs: {X: {kind: Float, value: 0}, Y: {param: sa19}, Z: {kind: Float, value: 0}}, x: 40, y: 6540}
+  - {id: 84, type: Transform, name: "Ring 20 segment", x: 340, y: 3290}
+  - {id: 85, type: JoinGeometry, name: "Round rim", x: 640, y: 430}
+  - {id: 86, type: JoinGeometry, name: "Round rim", x: 640, y: 560}
+  - {id: 87, type: JoinGeometry, name: "Round rim", x: 640, y: 690}
+  - {id: 88, type: JoinGeometry, name: "Round rim", x: 640, y: 820}
+  - {id: 89, type: JoinGeometry, name: "Round rim", x: 640, y: 950}
+  - {id: 90, type: JoinGeometry, name: "Round rim", x: 640, y: 1080}
+  - {id: 91, type: JoinGeometry, name: "Round rim", x: 640, y: 1210}
+  - {id: 92, type: JoinGeometry, name: "Round rim", x: 640, y: 1340}
+  - {id: 93, type: JoinGeometry, name: "Round rim", x: 640, y: 1470}
+  - {id: 94, type: JoinGeometry, name: "Round rim", x: 640, y: 1600}
+  - {id: 95, type: JoinGeometry, name: "Round rim", x: 940, y: 170}
+  - {id: 96, type: JoinGeometry, name: "Round rim", x: 940, y: 300}
+  - {id: 97, type: JoinGeometry, name: "Round rim", x: 940, y: 430}
+  - {id: 98, type: JoinGeometry, name: "Round rim", x: 940, y: 560}
+  - {id: 99, type: JoinGeometry, name: "Round rim", x: 940, y: 690}
+  - {id: 100, type: JoinGeometry, name: "Round rim", x: 1240, y: 170}
+  - {id: 101, type: JoinGeometry, name: "Round rim", x: 1240, y: 300}
+  - {id: 102, type: JoinGeometry, name: "Round rim", x: 1540, y: 40}
+  - {id: 103, type: JoinGeometry, name: "Round rim", x: 1840, y: 40}
+  - {id: 104, type: Switch, name: "Round rim", x: 2140, y: 40}
+  - {id: 105, type: JoinGeometry, name: "Collision shapes", x: 1540, y: 7250}
+  - {id: 106, type: JoinGeometry, name: "Collision shapes", x: 2440, y: 7250}
+  - {id: 107, type: SetMeshOutputRole, name: "Collision only", inputs: {Role: {kind: Menu, value: collision}}, x: 2740, y: 7250}
+links:
+  - {from: {node: 1, pin: Geometry}, to: {node: 3, pin: Geometry}}
+  - {from: {node: 2, pin: Vector}, to: {node: 3, pin: Translation}}
+  - {from: {node: 4, pin: Geometry}, to: {node: 6, pin: Geometry}}
+  - {from: {node: 5, pin: Vector}, to: {node: 6, pin: Translation}}
+  - {from: {node: 7, pin: Result}, to: {node: 8, pin: Condition}}
+  - {from: {node: 3, pin: Geometry}, to: {node: 8, pin: A}}
+  - {from: {node: 6, pin: Geometry}, to: {node: 8, pin: B}}
+  - {from: {node: 9, pin: Geometry}, to: {node: 12, pin: Geometry}}
+  - {from: {node: 11, pin: Vector}, to: {node: 12, pin: Translation}}
+  - {from: {node: 9, pin: Geometry}, to: {node: 14, pin: Geometry}}
+  - {from: {node: 13, pin: Vector}, to: {node: 14, pin: Translation}}
+  - {from: {node: 10, pin: Geometry}, to: {node: 16, pin: Geometry}}
+  - {from: {node: 15, pin: Vector}, to: {node: 16, pin: Translation}}
+  - {from: {node: 10, pin: Geometry}, to: {node: 18, pin: Geometry}}
+  - {from: {node: 17, pin: Vector}, to: {node: 18, pin: Translation}}
+  - {from: {node: 12, pin: Geometry}, to: {node: 19, pin: A}}
+  - {from: {node: 14, pin: Geometry}, to: {node: 19, pin: B}}
+  - {from: {node: 16, pin: Geometry}, to: {node: 20, pin: A}}
+  - {from: {node: 18, pin: Geometry}, to: {node: 20, pin: B}}
+  - {from: {node: 19, pin: Geometry}, to: {node: 21, pin: A}}
+  - {from: {node: 20, pin: Geometry}, to: {node: 21, pin: B}}
+  - {from: {node: 22, pin: Result}, to: {node: 23, pin: Condition}}
+  - {from: {node: 21, pin: Geometry}, to: {node: 23, pin: B}}
+  - {from: {node: 24, pin: Geometry}, to: {node: 27, pin: Geometry}}
+  - {from: {node: 25, pin: Vector}, to: {node: 27, pin: Translation}}
+  - {from: {node: 26, pin: Vector}, to: {node: 27, pin: Rotation}}
+  - {from: {node: 24, pin: Geometry}, to: {node: 30, pin: Geometry}}
+  - {from: {node: 28, pin: Vector}, to: {node: 30, pin: Translation}}
+  - {from: {node: 29, pin: Vector}, to: {node: 30, pin: Rotation}}
+  - {from: {node: 24, pin: Geometry}, to: {node: 33, pin: Geometry}}
+  - {from: {node: 31, pin: Vector}, to: {node: 33, pin: Translation}}
+  - {from: {node: 32, pin: Vector}, to: {node: 33, pin: Rotation}}
+  - {from: {node: 24, pin: Geometry}, to: {node: 36, pin: Geometry}}
+  - {from: {node: 34, pin: Vector}, to: {node: 36, pin: Translation}}
+  - {from: {node: 35, pin: Vector}, to: {node: 36, pin: Rotation}}
+  - {from: {node: 24, pin: Geometry}, to: {node: 39, pin: Geometry}}
+  - {from: {node: 37, pin: Vector}, to: {node: 39, pin: Translation}}
+  - {from: {node: 38, pin: Vector}, to: {node: 39, pin: Rotation}}
+  - {from: {node: 24, pin: Geometry}, to: {node: 42, pin: Geometry}}
+  - {from: {node: 40, pin: Vector}, to: {node: 42, pin: Translation}}
+  - {from: {node: 41, pin: Vector}, to: {node: 42, pin: Rotation}}
+  - {from: {node: 24, pin: Geometry}, to: {node: 45, pin: Geometry}}
+  - {from: {node: 43, pin: Vector}, to: {node: 45, pin: Translation}}
+  - {from: {node: 44, pin: Vector}, to: {node: 45, pin: Rotation}}
+  - {from: {node: 24, pin: Geometry}, to: {node: 48, pin: Geometry}}
+  - {from: {node: 46, pin: Vector}, to: {node: 48, pin: Translation}}
+  - {from: {node: 47, pin: Vector}, to: {node: 48, pin: Rotation}}
+  - {from: {node: 24, pin: Geometry}, to: {node: 51, pin: Geometry}}
+  - {from: {node: 49, pin: Vector}, to: {node: 51, pin: Translation}}
+  - {from: {node: 50, pin: Vector}, to: {node: 51, pin: Rotation}}
+  - {from: {node: 24, pin: Geometry}, to: {node: 54, pin: Geometry}}
+  - {from: {node: 52, pin: Vector}, to: {node: 54, pin: Translation}}
+  - {from: {node: 53, pin: Vector}, to: {node: 54, pin: Rotation}}
+  - {from: {node: 24, pin: Geometry}, to: {node: 57, pin: Geometry}}
+  - {from: {node: 55, pin: Vector}, to: {node: 57, pin: Translation}}
+  - {from: {node: 56, pin: Vector}, to: {node: 57, pin: Rotation}}
+  - {from: {node: 24, pin: Geometry}, to: {node: 60, pin: Geometry}}
+  - {from: {node: 58, pin: Vector}, to: {node: 60, pin: Translation}}
+  - {from: {node: 59, pin: Vector}, to: {node: 60, pin: Rotation}}
+  - {from: {node: 24, pin: Geometry}, to: {node: 63, pin: Geometry}}
+  - {from: {node: 61, pin: Vector}, to: {node: 63, pin: Translation}}
+  - {from: {node: 62, pin: Vector}, to: {node: 63, pin: Rotation}}
+  - {from: {node: 24, pin: Geometry}, to: {node: 66, pin: Geometry}}
+  - {from: {node: 64, pin: Vector}, to: {node: 66, pin: Translation}}
+  - {from: {node: 65, pin: Vector}, to: {node: 66, pin: Rotation}}
+  - {from: {node: 24, pin: Geometry}, to: {node: 69, pin: Geometry}}
+  - {from: {node: 67, pin: Vector}, to: {node: 69, pin: Translation}}
+  - {from: {node: 68, pin: Vector}, to: {node: 69, pin: Rotation}}
+  - {from: {node: 24, pin: Geometry}, to: {node: 72, pin: Geometry}}
+  - {from: {node: 70, pin: Vector}, to: {node: 72, pin: Translation}}
+  - {from: {node: 71, pin: Vector}, to: {node: 72, pin: Rotation}}
+  - {from: {node: 24, pin: Geometry}, to: {node: 75, pin: Geometry}}
+  - {from: {node: 73, pin: Vector}, to: {node: 75, pin: Translation}}
+  - {from: {node: 74, pin: Vector}, to: {node: 75, pin: Rotation}}
+  - {from: {node: 24, pin: Geometry}, to: {node: 78, pin: Geometry}}
+  - {from: {node: 76, pin: Vector}, to: {node: 78, pin: Translation}}
+  - {from: {node: 77, pin: Vector}, to: {node: 78, pin: Rotation}}
+  - {from: {node: 24, pin: Geometry}, to: {node: 81, pin: Geometry}}
+  - {from: {node: 79, pin: Vector}, to: {node: 81, pin: Translation}}
+  - {from: {node: 80, pin: Vector}, to: {node: 81, pin: Rotation}}
+  - {from: {node: 24, pin: Geometry}, to: {node: 84, pin: Geometry}}
+  - {from: {node: 82, pin: Vector}, to: {node: 84, pin: Translation}}
+  - {from: {node: 83, pin: Vector}, to: {node: 84, pin: Rotation}}
+  - {from: {node: 27, pin: Geometry}, to: {node: 85, pin: A}}
+  - {from: {node: 30, pin: Geometry}, to: {node: 85, pin: B}}
+  - {from: {node: 33, pin: Geometry}, to: {node: 86, pin: A}}
+  - {from: {node: 36, pin: Geometry}, to: {node: 86, pin: B}}
+  - {from: {node: 39, pin: Geometry}, to: {node: 87, pin: A}}
+  - {from: {node: 42, pin: Geometry}, to: {node: 87, pin: B}}
+  - {from: {node: 45, pin: Geometry}, to: {node: 88, pin: A}}
+  - {from: {node: 48, pin: Geometry}, to: {node: 88, pin: B}}
+  - {from: {node: 51, pin: Geometry}, to: {node: 89, pin: A}}
+  - {from: {node: 54, pin: Geometry}, to: {node: 89, pin: B}}
+  - {from: {node: 57, pin: Geometry}, to: {node: 90, pin: A}}
+  - {from: {node: 60, pin: Geometry}, to: {node: 90, pin: B}}
+  - {from: {node: 63, pin: Geometry}, to: {node: 91, pin: A}}
+  - {from: {node: 66, pin: Geometry}, to: {node: 91, pin: B}}
+  - {from: {node: 69, pin: Geometry}, to: {node: 92, pin: A}}
+  - {from: {node: 72, pin: Geometry}, to: {node: 92, pin: B}}
+  - {from: {node: 75, pin: Geometry}, to: {node: 93, pin: A}}
+  - {from: {node: 78, pin: Geometry}, to: {node: 93, pin: B}}
+  - {from: {node: 81, pin: Geometry}, to: {node: 94, pin: A}}
+  - {from: {node: 84, pin: Geometry}, to: {node: 94, pin: B}}
+  - {from: {node: 85, pin: Geometry}, to: {node: 95, pin: A}}
+  - {from: {node: 86, pin: Geometry}, to: {node: 95, pin: B}}
+  - {from: {node: 87, pin: Geometry}, to: {node: 96, pin: A}}
+  - {from: {node: 88, pin: Geometry}, to: {node: 96, pin: B}}
+  - {from: {node: 89, pin: Geometry}, to: {node: 97, pin: A}}
+  - {from: {node: 90, pin: Geometry}, to: {node: 97, pin: B}}
+  - {from: {node: 91, pin: Geometry}, to: {node: 98, pin: A}}
+  - {from: {node: 92, pin: Geometry}, to: {node: 98, pin: B}}
+  - {from: {node: 93, pin: Geometry}, to: {node: 99, pin: A}}
+  - {from: {node: 94, pin: Geometry}, to: {node: 99, pin: B}}
+  - {from: {node: 95, pin: Geometry}, to: {node: 100, pin: A}}
+  - {from: {node: 96, pin: Geometry}, to: {node: 100, pin: B}}
+  - {from: {node: 97, pin: Geometry}, to: {node: 101, pin: A}}
+  - {from: {node: 98, pin: Geometry}, to: {node: 101, pin: B}}
+  - {from: {node: 100, pin: Geometry}, to: {node: 102, pin: A}}
+  - {from: {node: 101, pin: Geometry}, to: {node: 102, pin: B}}
+  - {from: {node: 102, pin: Geometry}, to: {node: 103, pin: A}}
+  - {from: {node: 99, pin: Geometry}, to: {node: 103, pin: B}}
+  - {from: {node: 7, pin: Result}, to: {node: 104, pin: Condition}}
+  - {from: {node: 103, pin: Geometry}, to: {node: 104, pin: B}}
+  - {from: {node: 8, pin: Geometry}, to: {node: 105, pin: A}}
+  - {from: {node: 23, pin: Geometry}, to: {node: 105, pin: B}}
+  - {from: {node: 105, pin: Geometry}, to: {node: 106, pin: A}}
+  - {from: {node: 104, pin: Geometry}, to: {node: 106, pin: B}}
+  - {from: {node: 106, pin: Geometry}, to: {node: 107, pin: Geometry}}
+parameters:
+  seed: {kind: Int32, default: 7, group: "Table match", min: 0, max: 1000000, desc: "Table seed. Use the SAME value as the procedural table so the top size matches."}
+  table_type: {kind: Int32, default: 0, group: "Table match", options: ["Random (from seed)", "Four-leg table", "Trestle table", "Pedestal table", "Bench", "Bench with drawers"], desc: "Same as the table's table_type."}
+  shuffle_type: {kind: Int32, default: 0, group: "Table match", min: 0, max: 1000, desc: "Same as the table's shuffle_type."}
+  shuffle_dimensions: {kind: Int32, default: 0, group: "Table match", min: 0, max: 1000, desc: "Same as the table's shuffle_dimensions."}
+  rail_height: {kind: Float, default: 0.06, group: "Collider", min: 0.01, max: 0.3, desc: "Height of the collision rim above the table top (metres)."}
+  rail_thickness: {kind: Float, default: 0.02, group: "Collider", min: 0.005, max: 0.1, desc: "Thickness of the collision rim (metres)."}
+  ts: {kind: Float, expr: "seed + shuffle_type*7919"}
+  ds: {kind: Float, expr: "seed + shuffle_dimensions*7919"}
+  r_type: {kind: Float, expr: "sin(ts*12.9898+78.233)*43758.5453 - floor(sin(ts*12.9898+78.233)*43758.5453)"}
+  type_i: {kind: Float, expr: "min(1,table_type)*(table_type-1) + (1-min(1,table_type))*floor(r_type*5)"}
+  is0: {kind: Float, expr: "max(0, 1 - abs(type_i - 0))"}
+  is1: {kind: Float, expr: "max(0, 1 - abs(type_i - 1))"}
+  is2: {kind: Float, expr: "max(0, 1 - abs(type_i - 2))"}
+  is3: {kind: Float, expr: "max(0, 1 - abs(type_i - 3))"}
+  is4: {kind: Float, expr: "max(0, 1 - abs(type_i - 4))"}
+  r_pedround: {kind: Float, expr: "sin(ts*12.9898+625.864)*43758.5453 - floor(sin(ts*12.9898+625.864)*43758.5453)"}
+  r_w: {kind: Float, expr: "sin(ds*12.9898+1329.96)*43758.5453 - floor(sin(ds*12.9898+1329.96)*43758.5453)"}
+  r_d: {kind: Float, expr: "sin(ds*12.9898+1408.19)*43758.5453 - floor(sin(ds*12.9898+1408.19)*43758.5453)"}
+  r_h: {kind: Float, expr: "sin(ds*12.9898+1486.43)*43758.5453 - floor(sin(ds*12.9898+1486.43)*43758.5453)"}
+  r_topt: {kind: Float, expr: "sin(ds*12.9898+1564.66)*43758.5453 - floor(sin(ds*12.9898+1564.66)*43758.5453)"}
+  r_bev: {kind: Float, expr: "sin(ds*12.9898+1642.89)*43758.5453 - floor(sin(ds*12.9898+1642.89)*43758.5453)"}
+  W: {kind: Float, expr: "(is0*0.9 + is1*1.4 + is2*0.7 + is3*1.2 + is4*1) + r_w*(is0*1.1 + is1*1 + is2*0.6 + is3*1 + is4*1)"}
+  D_raw: {kind: Float, expr: "(is0*0.55 + is1*0.65 + is2*0.7 + is3*0.55 + is4*0.5) + r_d*(is0*0.45 + is1*0.3 + is2*0.6 + is3*0.25 + is4*0.25)"}
+  D: {kind: Float, expr: "is2*W + (1-is2)*D_raw"}
+  H: {kind: Float, expr: "(is0*0.7 + is1*0.72 + is2*0.7 + is3*0.8 + is4*0.8) + r_h*(is0*0.08 + is1*0.06 + is2*0.06 + is3*0.15 + is4*0.12)"}
+  top_t: {kind: Float, expr: "(is0*0.02 + is1*0.03 + is2*0.025 + is3*0.04 + is4*0.03) + r_topt*(is0*0.03 + is1*0.03 + is2*0.025 + is3*0.05 + is4*0.03)"}
+  top_y: {kind: Float, expr: "H - top_t/2"}
+  top_r: {kind: Float, expr: "W/2"}
+  ped_round: {kind: Float, expr: "floor(r_pedround + 0.65)"}
+  top_round: {kind: Float, expr: "is2*ped_round"}
+  rect_on: {kind: Float, expr: "1 - top_round"}
+  rail_y: {kind: Float, expr: "H + rail_height/2"}
+  long_len: {kind: Float, expr: "W"}
+  short_len: {kind: Float, expr: "max(0.05, D - 2*rail_thickness)"}
+  zrail: {kind: Float, expr: "D/2 - rail_thickness/2"}
+  xrail: {kind: Float, expr: "W/2 - rail_thickness/2"}
+  nzrail: {kind: Float, expr: "-zrail"}
+  nxrail: {kind: Float, expr: "-xrail"}
+  ring_r: {kind: Float, expr: "top_r - rail_thickness/2"}
+  seg_len: {kind: Float, expr: "2*top_r*sin(0.157080)*1.06"}
+  sx0: {kind: Float, expr: "ring_r*cos(0.000000)"}
+  sz0: {kind: Float, expr: "ring_r*sin(0.000000)"}
+  sa0: {kind: Float, expr: "1.570796"}
+  sx1: {kind: Float, expr: "ring_r*cos(0.314159)"}
+  sz1: {kind: Float, expr: "ring_r*sin(0.314159)"}
+  sa1: {kind: Float, expr: "1.256637"}
+  sx2: {kind: Float, expr: "ring_r*cos(0.628319)"}
+  sz2: {kind: Float, expr: "ring_r*sin(0.628319)"}
+  sa2: {kind: Float, expr: "0.942478"}
+  sx3: {kind: Float, expr: "ring_r*cos(0.942478)"}
+  sz3: {kind: Float, expr: "ring_r*sin(0.942478)"}
+  sa3: {kind: Float, expr: "0.628319"}
+  sx4: {kind: Float, expr: "ring_r*cos(1.256637)"}
+  sz4: {kind: Float, expr: "ring_r*sin(1.256637)"}
+  sa4: {kind: Float, expr: "0.314159"}
+  sx5: {kind: Float, expr: "ring_r*cos(1.570796)"}
+  sz5: {kind: Float, expr: "ring_r*sin(1.570796)"}
+  sa5: {kind: Float, expr: "0.000000"}
+  sx6: {kind: Float, expr: "ring_r*cos(1.884956)"}
+  sz6: {kind: Float, expr: "ring_r*sin(1.884956)"}
+  sa6: {kind: Float, expr: "-0.314159"}
+  sx7: {kind: Float, expr: "ring_r*cos(2.199115)"}
+  sz7: {kind: Float, expr: "ring_r*sin(2.199115)"}
+  sa7: {kind: Float, expr: "-0.628319"}
+  sx8: {kind: Float, expr: "ring_r*cos(2.513274)"}
+  sz8: {kind: Float, expr: "ring_r*sin(2.513274)"}
+  sa8: {kind: Float, expr: "-0.942478"}
+  sx9: {kind: Float, expr: "ring_r*cos(2.827433)"}
+  sz9: {kind: Float, expr: "ring_r*sin(2.827433)"}
+  sa9: {kind: Float, expr: "-1.256637"}
+  sx10: {kind: Float, expr: "ring_r*cos(3.141593)"}
+  sz10: {kind: Float, expr: "ring_r*sin(3.141593)"}
+  sa10: {kind: Float, expr: "-1.570796"}
+  sx11: {kind: Float, expr: "ring_r*cos(3.455752)"}
+  sz11: {kind: Float, expr: "ring_r*sin(3.455752)"}
+  sa11: {kind: Float, expr: "-1.884956"}
+  sx12: {kind: Float, expr: "ring_r*cos(3.769911)"}
+  sz12: {kind: Float, expr: "ring_r*sin(3.769911)"}
+  sa12: {kind: Float, expr: "-2.199115"}
+  sx13: {kind: Float, expr: "ring_r*cos(4.084070)"}
+  sz13: {kind: Float, expr: "ring_r*sin(4.084070)"}
+  sa13: {kind: Float, expr: "-2.513274"}
+  sx14: {kind: Float, expr: "ring_r*cos(4.398230)"}
+  sz14: {kind: Float, expr: "ring_r*sin(4.398230)"}
+  sa14: {kind: Float, expr: "-2.827433"}
+  sx15: {kind: Float, expr: "ring_r*cos(4.712389)"}
+  sz15: {kind: Float, expr: "ring_r*sin(4.712389)"}
+  sa15: {kind: Float, expr: "-3.141593"}
+  sx16: {kind: Float, expr: "ring_r*cos(5.026548)"}
+  sz16: {kind: Float, expr: "ring_r*sin(5.026548)"}
+  sa16: {kind: Float, expr: "-3.455752"}
+  sx17: {kind: Float, expr: "ring_r*cos(5.340708)"}
+  sz17: {kind: Float, expr: "ring_r*sin(5.340708)"}
+  sa17: {kind: Float, expr: "-3.769911"}
+  sx18: {kind: Float, expr: "ring_r*cos(5.654867)"}
+  sz18: {kind: Float, expr: "ring_r*sin(5.654867)"}
+  sa18: {kind: Float, expr: "-4.084070"}
+  sx19: {kind: Float, expr: "ring_r*cos(5.969026)"}
+  sz19: {kind: Float, expr: "ring_r*sin(5.969026)"}
+  sa19: {kind: Float, expr: "-4.398230"}
+outputs:
+  Geometry:
+    node: 107
+    pin: Geometry
