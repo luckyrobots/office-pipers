@@ -570,7 +570,7 @@ Entities:
     Children:
       []
     TransformComponent:
-      Position: [-1.34933, 0.893852, -0.123415]
+      Position: [-1.12892, 0.721365, -0.0853106]
       Rotation: [0, -1.15735, 0]
       Scale: [1, 1, 1]
     StaticMeshComponent:
@@ -771,7 +771,7 @@ Entities:
     Children:
       []
     TransformComponent:
-      Position: [-0.822883, 0.888452, -0.401625]
+      Position: [-0.49974, 0.715965, -0.598545]
       Rotation: [3.14159, 1.56232, 3.14159]
       Scale: [0.508038, 0.508038, 0.508038]
     StaticMeshComponent:
@@ -877,6 +877,26 @@ Entities:
       Visible: true
     MujocoGeomComponent:
       ID: 25
+  - Entity: 3217273274944062226
+    Domain: Client
+    TagComponent:
+      Tag: ember
+    Parent: 11627479693520113729
+    Children:
+      []
+    TransformComponent:
+      Position: [2.67026, -1.07048, 0.0308285]
+      Rotation: [0, -0, 0]
+      Scale: [0.455369, 0.455369, 0.0753284]
+    MeshTagComponent:
+      EntityID: 18200197178120833285
+    SubmeshComponent:
+      AssetID: 4724557979222842331
+      SubmeshIndex: 0
+      MaterialTable:
+        0: 1586576839820826285
+        1: 0
+      Visible: true
   - Entity: 3565239230702673633
     Domain: Client
     TagComponent:
@@ -1178,13 +1198,17 @@ Entities:
     Children:
       []
     TransformComponent:
-      Position: [0.895589, 0.859452, -4.80213]
+      Position: [1.45544, 0.676568, -4.80213]
       Rotation: [0, -0, 0]
       Scale: [2.69533, 2.69533, 2.69533]
     StaticMeshComponent:
       AssetID: 8950442275579669784
       MaterialTable:
         0: 0
+        1: 0
+        2: 0
+        3: 0
+        4: 0
       Visible: true
   - Entity: 5766978708723865653
     Domain: Client
@@ -1283,7 +1307,7 @@ Entities:
     Children:
       []
     TransformComponent:
-      Position: [-0.204579, 0.901465, -0.351155]
+      Position: [-0.424989, 0.728978, -0.341005]
       Rotation: [1.60172, -0.592335, -3.14159]
       Scale: [1, 1, 1]
     StaticMeshComponent:
@@ -1393,7 +1417,7 @@ Entities:
     Children:
       []
     TransformComponent:
-      Position: [-0.53181, 0.888452, -0.207123]
+      Position: [-0.79663, 0.715965, -0.325745]
       Rotation: [0, -0.551318, 0]
       Scale: [1, 1, 1]
     StaticMeshComponent:
@@ -1670,13 +1694,13 @@ Entities:
       ParamOverrides:
         - Node: 108
           Float: false
-          V: 395
+          V: 75891
         - Node: 110
           Float: false
-          V: 50
+          V: 84
         - Node: 111
           Float: false
-          V: 169
+          V: 202
         - Node: 109
           Float: false
           V: 0
@@ -1684,7 +1708,7 @@ Entities:
         0: 0
     MujocoMeshColliderComponent:
       StaticMesh: 0
-      ConvexHullAsset: 4108268861386505009
+      ConvexHullAsset: 15317660197948129560
       SourceFromPodGraph: true
       Density: 500
       Friction: [1, 0.1, 0.01]
@@ -1720,6 +1744,7 @@ Entities:
       AssetID: 5133478079006087835
       MaterialTable:
         0: 7576578505346300868
+        1: 0
       Visible: true
   - Entity: 7240527291995012080
     Domain: Client
@@ -1729,13 +1754,14 @@ Entities:
     Children:
       []
     TransformComponent:
-      Position: [-1.25434, 0.888452, -0.345705]
+      Position: [-1.1925, 0.715965, -0.56994]
       Rotation: [3.14159, -0.923514, 3.14159]
       Scale: [1, 1, 1]
     StaticMeshComponent:
       AssetID: 8156052721691077848
       MaterialTable:
         0: 0
+        1: 0
       Visible: true
     MujocoMeshColliderComponent:
       StaticMesh: 8156052721691077848
@@ -1779,17 +1805,17 @@ Entities:
     Domain: Client
     TagComponent:
       Tag: Orbit Camera
-    Parent: 7300000000000000002
+    Parent: 16010961659864899065
     Children:
       []
     TransformComponent:
-      Position: [0.327704, 1.21604, 2.13465]
-      Rotation: [-0.608535, -0.0266023, -0.106645]
+      Position: [0.04742, 1.0534, 2.86477]
+      Rotation: [-0.350237, -0.0122378, -0.00892425]
       Scale: [1, 1, 1]
     CameraComponent:
       Camera:
         ProjectionType: 0
-        PerspectiveFOV: 42.4
+        PerspectiveFOV: 32.3
         PerspectiveNear: 0.01
         PerspectiveFar: 1000
         OrthographicSize: 10
@@ -1823,8 +1849,8 @@ Entities:
         BCCoeffP1: 0
         BCCoeffP2: 0
       Aperture:
-        ApertureFStop: 2.7
-        FocusDistanceM: 1.65
+        ApertureFStop: 4.2
+        FocusDistanceM: 2.25
       Sensor:
         VignettingExponent: 10
         VignettingCorrection: 1
@@ -1835,7 +1861,7 @@ Entities:
       Tag: Orbit_Root
     Parent: 16010961659864899065
     Children:
-      - Handle: 7300000000000000001
+      []
     TransformComponent:
       Position: [-0.0743909, 0.283099, 0.0802032]
       Rotation: [0.258287, -0.0137825, 0.100975]
@@ -1974,7 +2000,7 @@ Entities:
     Children:
       []
     TransformComponent:
-      Position: [-1.38142, -1.07048, 0.0121828]
+      Position: [-1.13823, -1.07048, 0.0308285]
       Rotation: [0, -0, 0]
       Scale: [0.455369, 0.455369, 0.0753284]
     MeshTagComponent:
@@ -1984,6 +2010,7 @@ Entities:
       SubmeshIndex: 0
       MaterialTable:
         0: 1586576839820826285
+        1: 0
       Visible: true
   - Entity: 9137416806086107952
     Domain: Client
@@ -2000,24 +2027,21 @@ Entities:
       Kind: 0
       PodGraph: 15029241309289565942
       ParamOverrides:
-        - Node: 358
-          Float: false
-          V: 169
-        - Node: 359
-          Float: false
-          V: 188
-        - Node: 357
-          Float: false
-          V: 50
         - Node: 355
           Float: false
-          V: 400
+          V: 75891
+        - Node: 357
+          Float: false
+          V: 84
+        - Node: 358
+          Float: false
+          V: 202
+        - Node: 359
+          Float: false
+          V: 248
       MaterialTable:
         0: 0
         1: 0
-        2: 0
-        3: 0
-        4: 0
   - Entity: 9252885569571503358
     Domain: Client
     TagComponent:
@@ -2107,7 +2131,7 @@ Entities:
     Children:
       []
     TransformComponent:
-      Position: [-0.860596, 0.888452, -0.0787017]
+      Position: [-1.16997, 0.715965, 0.157678]
       Rotation: [0, 1.48022, 0]
       Scale: [1, 1, 1]
     StaticMeshComponent:
@@ -2471,7 +2495,7 @@ Entities:
     Children:
       []
     TransformComponent:
-      Position: [-0.263382, 0.889052, -0.0289351]
+      Position: [-0.809431, 0.716565, 0.076981]
       Rotation: [0, 0.169399, 0]
       Scale: [1, 1, 1]
     StaticMeshComponent:
@@ -2524,6 +2548,7 @@ Entities:
     Parent: 0
     Children:
       - Handle: 9003140068306292320
+      - Handle: 3217273274944062226
     TransformComponent:
       Position: [0, 2.81639, -2.95585]
       Rotation: [0, 0, 0]
@@ -2610,7 +2635,7 @@ Entities:
     Children:
       []
     TransformComponent:
-      Position: [-0.23142, 0.888452, -0.157524]
+      Position: [-0.553735, 0.715965, 0.111494]
       Rotation: [0, -1.3309, 0]
       Scale: [1, 1, 1]
     StaticMeshComponent:
@@ -2922,8 +2947,8 @@ Entities:
     Children:
       []
     TransformComponent:
-      Position: [-0.282462, 0.944629, -0.201606]
-      Rotation: [0, -0, 0]
+      Position: [-1.14338, 0.715965, -0.291219]
+      Rotation: [3.14159, -0.616688, 3.14159]
       Scale: [2.69533, 2.69533, 2.69533]
     StaticMeshComponent:
       AssetID: 8950442275579669784
@@ -3153,6 +3178,7 @@ Entities:
     Parent: 0
     Children:
       - Handle: 7300000000000000002
+      - Handle: 7300000000000000001
     TransformComponent:
       Position: [-0.815543, 0.834071, -0.194404]
       Rotation: [0, 0.375885, 0]
@@ -3283,7 +3309,7 @@ Entities:
     Children:
       []
     TransformComponent:
-      Position: [-1.00002, 0.888452, -0.408484]
+      Position: [-0.90708, 0.715965, -0.632719]
       Rotation: [3.14159, -0.502488, 3.14159]
       Scale: [1, 1, 1]
     StaticMeshComponent:
